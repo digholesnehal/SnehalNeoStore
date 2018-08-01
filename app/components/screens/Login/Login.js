@@ -15,25 +15,24 @@ export default class Login extends Component{
                 
                 <View style={styles.loginMid}> 
                     <View style={styles.userPass}>
-                    <Icon name="user" size={30} color="white"/>
+                    <Icon name="user" style={styles.icon}/>
                     <TextInput style={styles.textField} placeholder="Username" placeholderTextColor="white">
                     </TextInput>
                     </View>
 
                     <View style={styles.userPass}>
-                    <Icon name="lock" size={30} color="white"/>
+                    <Icon name="lock" style={styles.icon}/>
                     <TextInput style={styles.textField} placeholder="Password" placeholderTextColor="white">
-
                     </TextInput>
                     </View>
                 </View>
                 <View style={styles.loginMid}> 
                     <View style={styles.pass}>
-                        <TouchableOpacity style={styles.buttonStyle}> 
+                        <TouchableOpacity style={styles.buttonStyle} > 
                             <Text style={styles.btnTxt}> LOGIN </Text> 
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.fgotPass}> 
+                    <TouchableOpacity style={styles.fgotPass} onPress={() => this.props.navigation.navigate('ForgotPass')}> 
                         <Text style={styles.fgotPass}>
                         Forgot Password?
                         </Text>
@@ -45,7 +44,7 @@ export default class Login extends Component{
                         <Text style={styles.noAcc}>
                             DONT HAVE AN ACCOUNT?
                         </Text>
-                        <TouchableOpacity style={styles.newAcc}> 
+                        <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}> 
                             <Icon name="plus" size={40} color="#fff"/>
                         </TouchableOpacity>
                     </View>

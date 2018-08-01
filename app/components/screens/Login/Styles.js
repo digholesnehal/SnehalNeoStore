@@ -29,8 +29,9 @@ export default styles = StyleSheet.create({
         width:250,
         height: 40,
         fontSize: 20,
-       alignSelf:'center',
+        alignSelf:'center',
         paddingLeft:15,
+        fontWeight:'500',
     },
 
     user:{
@@ -73,6 +74,11 @@ export default styles = StyleSheet.create({
         color: 'white',
         fontSize: 20,
         fontWeight: '600',
+    },
+
+    icon:{
+        fontSize:20,
+        color: 'white',
     },
 
      userPass:{

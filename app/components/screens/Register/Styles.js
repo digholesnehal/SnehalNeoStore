@@ -4,14 +4,47 @@ export default styles = StyleSheet.create({
     
     container:{
         flex:1,
-        justifyContent:"space-between",
+        alignItems:"center",
     },
 
-    fpHead:{
-        flex:3,
+    regHeader:{
+        flex:1,
+        flexDirection:'row',
+        backgroundColor:'#e91b1a',
+        alignItems:'center',
+        justifyContent:'center',
+        padding:5,
+    },
+
+    backAlign:{
+        flex:1,
+        alignSelf:"center",
+        justifyContent:'center',
+    },
+
+    back:{
+        color:"white",
+        fontSize:30,
+        alignSelf:"center",
+        justifyContent:'center',
+    },
+
+    headText:{
+        flex:5,
+        alignItems:'center',
+        justifyContent:'center',  
+    },
+
+    register:{
+        color:'white',
+        fontSize:20,
+    },
+
+    regHead:{
+        flex:2,
         alignItems: 'center',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
     },
 
     headFont:{
@@ -19,20 +52,11 @@ export default styles = StyleSheet.create({
         fontSize: 50,
         fontWeight: 'bold',
     },
-
-    midFont:{
-        color: 'white',
-        fontSize: 25,
-        fontWeight: 'bold',
-        padding:20,
-        paddingLeft: 40 ,
-        alignSelf:"flex-start",
-    },
   
-    fpMid:{
-        flex: 9,
+    regMid:{
+        flex: 10,
         flexDirection: 'column',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
     },
 
@@ -45,16 +69,16 @@ export default styles = StyleSheet.create({
         fontWeight:'500',
     },
 
-    pass:{ 
+    btn:{
+        flex:2,   
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center',
-        padding:20,
+        alignItems: 'flex-start',
     },
 
     buttonStyle:{
         backgroundColor: "white",
-        width: 280,
+        width: 300,
         height: 50,
         borderRadius: 5,
         color: '#ff0000',
@@ -66,8 +90,18 @@ export default styles = StyleSheet.create({
 
       btnTxt:{
         color: 'red',
-        fontSize: 25,
+        fontSize: 30,
         fontWeight: 'bold',
+    },
+
+    icon:{
+        fontSize:20,
+        color: 'white',
+    },
+
+    iconPhn:{
+        fontSize:25,
+        color: 'white',
     },
 
      userPass:{
@@ -81,8 +115,8 @@ export default styles = StyleSheet.create({
         justifyContent:'center'
     },
 
-    icon:{
-        fontSize:20,
-        color: 'white',
+    valueText: {
+        fontSize: 18, 
+        marginBottom: 50,
     },
 });
