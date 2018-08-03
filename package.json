@@ -9,7 +9,10 @@
   "dependencies": {
     "react": "16.4.1",
     "react-native": "0.56.0",
+    "react-native-check-box": "^2.1.0",
     "react-native-flexi-radio-button": "^0.2.2",
+    "react-native-modest-checkbox": "^3.0.2",
+    "react-native-simple-radio-button": "^2.7.2",
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.9.3"
   },

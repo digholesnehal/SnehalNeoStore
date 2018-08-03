@@ -32,6 +32,7 @@ export default styles = StyleSheet.create({
         alignSelf:'center',
         paddingLeft:15,
         fontWeight:'500',
+        color:'white',
     },
 
     user:{
@@ -61,7 +62,7 @@ export default styles = StyleSheet.create({
       },
 
       btnTxt:{
-        color: 'red',
+        color: '#e91c1a',
         fontSize: 30,
         fontWeight: 'bold',
     },

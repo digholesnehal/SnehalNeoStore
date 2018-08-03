@@ -1,4 +1,7 @@
 import {Platform, StyleSheet, Dimensions, } from 'react-native';
+import {primary, redBtnTxt } from '../../../utils/colors'
+import {} from '../../../utils/fonts'
+
 
 export default styles = StyleSheet.create({
     
@@ -15,13 +18,13 @@ export default styles = StyleSheet.create({
     },
 
     headFont:{
-        color: 'white',
+        color: primary,
         fontSize: 50,
         fontWeight: 'bold',
     },
 
     midFont:{
-        color: 'white',
+        color: primary,
         fontSize: 25,
         fontWeight: 'bold',
         padding:20,
@@ -43,6 +46,7 @@ export default styles = StyleSheet.create({
         alignSelf:'center',
         paddingLeft:15,
         fontWeight:'500',
+        color: primary,
     },
 
     pass:{ 
@@ -53,11 +57,11 @@ export default styles = StyleSheet.create({
     },
 
     buttonStyle:{
-        backgroundColor: "white",
+        backgroundColor: primary,
         width: 280,
         height: 50,
         borderRadius: 5,
-        color: '#ff0000',
+        color: redBtnTxt,
         fontSize: 80,
         fontWeight: 'bold',
         alignItems: 'center',
@@ -65,7 +69,7 @@ export default styles = StyleSheet.create({
       },
 
       btnTxt:{
-        color: 'red',
+        color: redBtnTxt,
         fontSize: 25,
         fontWeight: 'bold',
     },
@@ -73,7 +77,7 @@ export default styles = StyleSheet.create({
      userPass:{
         height:45,
         width:280, 
-        borderColor: 'white',
+        borderColor: primary,
         borderWidth: 1,
         padding:10,
         margin:6,
@@ -83,6 +87,6 @@ export default styles = StyleSheet.create({
 
     icon:{
         fontSize:20,
-        color: 'white',
+        color: primary,
     },
 });
