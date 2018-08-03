@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, ImageBackground, TextInput, TouchableOpacity  } from 'react-native';
+import {Platform, Dimensions, ScrollView, StyleSheet, Text, View, KeyboardAvoidingView,
+         ImageBackground, TextInput, TouchableOpacity  } from 'react-native';
 import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import Styles from './Styles';
 import CheckBox from 'react-native-check-box';
-import { white } from 'ansi-colors';
+import * as Colors from '../../../utils/colors';
+import Header from '../../../components/Header/PageHeader/header.js';
+
 
 
 var gender=[
@@ -119,90 +122,87 @@ export default class Register extends Component{
 
     render(){
         return(
+             
         
         <View style={styles.container}>
             <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
-                <View style={styles.regHeader}>
-                    <View style={styles.backAlign}>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}> 
-                            <Icon name="angle-left" style={styles.back}/> 
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.headText}>
-                        <Text style={styles.register}> Register </Text>
-                    </View>
-                    <View style={styles.backAlign}>
-                    </View>
-                </View>
-                <View style={styles.regHead}>
-                    <Text style={styles.headFont}> NeoSTORE </Text>
-                </View>
-                
-                <View style={styles.regMid}> 
-                    <View style={styles.userPass}>
-                    <Icon name="user" style={styles.icon}/>
-                    <TextInput onChangeText={(changedText)=>{this.setState({"firstname":changedText})}} value={this.state.firstname} style={styles.textField} placeholder="First Name" placeholderTextColor="white">
-                    </TextInput>
-                    </View>
-
-                    <View style={styles.userPass}>
-                    <Icon name="user" style={styles.icon}/>
-                    <TextInput onChangeText={(changedText)=>{this.setState({"lastname":changedText})}} value={this.state.lastname} style={styles.textField} placeholder="Last Name" placeholderTextColor="white">
-                    </TextInput>
-                    </View>
-
-                    <View style={styles.userPass}>
-                    <Icon name="envelope" style={styles.envelope}/>
-                    <TextInput onChangeText={(changedText)=>{this.setState({"email":changedText})}} value={this.state.email} style={styles.textField} placeholder="Email" placeholderTextColor="white">
-                    </TextInput>
-                    </View>
-
-                    <View style={styles.userPass}>
-                    <Icon name="lock" style={styles.icon}/>
-                    <TextInput onChangeText={(changedText)=>{this.setState({"password":changedText})}} secureTextEntry={true} value={this.state.password} style={styles.textField} placeholder="Password" placeholderTextColor="white">
-                    </TextInput>
-                    </View>
-
-                    <View style={styles.userPass}>
-                    <Icon name="lock" style={styles.icon}/>
-                    <TextInput onChangeText={(changedText)=>{this.setState({"cpassword":changedText})}} secureTextEntry={true} value={this.state.cpassword} style={styles.textField} placeholder="Confirm Password" placeholderTextColor="white">
-                    </TextInput>
-                    </View>
-
-                    <View style={styles.rowFlex}>
-                        <View style={styles.rowFlex}></View>
-                        <View style={styles.radio}>
-                            <Text style={styles.radioTitle}> Gender </Text>
-                            <RadioForm 
-                            formHorizontal={true} 
-                            buttonSize={10} 
-                            radio_props={gender} 
-                            initial={0}
-                            buttonColor={'#fff'}
-                            selectedButtonColor={'#fff'}
-                            labelStyle={{fontSize:17, fontWeight:'500', color:"#fff", padding:4}}
-                            onPress={(value)=>{}}/>
-                            <View style={styles.rowFlex}></View>
+            <Header
+                title={'Register'}
+                isDrawer={false}
+                back={() => {this.props.navigation.goBack(null)}}/>
+                {/* <ScrollView style={{height:Dimensions.get('window').height}}>
+                    <KeyboardAvoidingView> */}
+                        <View style={styles.regHead}>
+                            <Text style={styles.headFont}> NeoSTORE </Text>
                         </View>
-                    </View>
+                        
+                        <View style={styles.regMid}> 
+                            <View style={styles.userPass}>
+                            <Icon name="user" style={styles.icon}/>
+                            <TextInput onChangeText={(changedText)=>{this.setState({"firstname":changedText})}} value={this.state.firstname} style={styles.textField} placeholder="First Name" placeholderTextColor={Colors.primary}>
+                            </TextInput>
+                            </View>
 
-                    <View style={styles.userPass}>
-                        <Icon name="mobile" style={styles.iconPhn}/>
-                        <TextInput onChangeText={(changedText)=>{this.setState({"mobile":changedText})}} value={this.state.mobile} style={styles.textField} placeholder="Phone Number" placeholderTextColor="white">
-                        </TextInput>
-                    </View>
-                    <View style={styles.checkBox}>
-                    <CheckBox
-                        onClick={()=>this.setState({check:!this.state.check})}
-                        isChecked={this.state.check} checkBoxColor='white'/>
-                    <Text style={styles.checkBoxTitle}> I agree the Terms and Conditons </Text>
-                    </View>
-                </View>
-                <View style={styles.btn}>
-                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.snehal()}> 
-                            <Text style={styles.btnTxt}> REGISTER </Text> 
-                        </TouchableOpacity>
-                </View>
+                            <View style={styles.userPass}>
+                            <Icon name="user" style={styles.icon}/>
+                            <TextInput onChangeText={(changedText)=>{this.setState({"lastname":changedText})}} value={this.state.lastname} style={styles.textField} placeholder="Last Name" placeholderTextColor={Colors.primary}>
+                            </TextInput>
+                            </View>
+
+                            <View style={styles.userPass}>
+                            <Icon name="envelope" style={styles.envelope}/>
+                            <TextInput onChangeText={(changedText)=>{this.setState({"email":changedText})}} value={this.state.email} style={styles.textField} placeholder="Email" placeholderTextColor={Colors.primary}>
+                            </TextInput>
+                            </View>
+
+                            <View style={styles.userPass}>
+                            <Icon name="lock" style={styles.icon}/>
+                            <TextInput onChangeText={(changedText)=>{this.setState({"password":changedText})}} secureTextEntry={true} value={this.state.password} style={styles.textField} placeholder="Password" placeholderTextColor={Colors.primary}>
+                            </TextInput>
+                            </View>
+
+                            <View style={styles.userPass}>
+                            <Icon name="lock" style={styles.icon}/>
+                            <TextInput onChangeText={(changedText)=>{this.setState({"cpassword":changedText})}} secureTextEntry={true} value={this.state.cpassword} style={styles.textField} placeholder="Confirm Password" placeholderTextColor={Colors.primary}>
+                            </TextInput>
+                            </View>
+
+                            <View style={styles.rowFlex}>
+                                <View style={styles.rowFlex}></View>
+                                <View style={styles.radio}>
+                                    <Text style={styles.radioTitle}> Gender </Text>
+                                    <RadioForm 
+                                    formHorizontal={true} 
+                                    buttonSize={10} 
+                                    radio_props={gender} 
+                                    initial={0}
+                                    buttonColor={'#fff'}
+                                    selectedButtonColor={'#fff'}
+                                    labelStyle={{fontSize:17, fontWeight:'500', color:"#fff", padding:4}}
+                                    onPress={(value)=>{}}/>
+                                    <View style={styles.rowFlex}></View>
+                                </View>
+                            </View>
+
+                            <View style={styles.userPass}>
+                                <Icon name="mobile" style={styles.iconPhn}/>
+                                <TextInput onChangeText={(changedText)=>{this.setState({"mobile":changedText})}} value={this.state.mobile} style={styles.textField} placeholder="Phone Number" placeholderTextColor={Colors.primary}>
+                                </TextInput>
+                            </View>
+                            <View style={styles.checkBox}>
+                            <CheckBox
+                                onClick={()=>this.setState({check:!this.state.check})}
+                                isChecked={this.state.check} checkBoxColor={Colors.primary}/>
+                            <Text style={styles.checkBoxTitle}> I agree the Terms and Conditons </Text>
+                            </View>
+                        </View>
+                        <View style={styles.btn}>
+                                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.snehal()}> 
+                                    <Text style={styles.btnTxt}> REGISTER </Text> 
+                                </TouchableOpacity>
+                        </View>
+                    {/* </KeyboardAvoidingView>
+                </ScrollView> */}
             </ImageBackground>
         </View>
         );

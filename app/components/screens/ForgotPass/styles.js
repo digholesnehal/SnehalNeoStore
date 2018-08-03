@@ -1,6 +1,7 @@
 import {Platform, StyleSheet, Dimensions, } from 'react-native';
-import {primary, redBtnTxt } from '../../../utils/colors'
-import {} from '../../../utils/fonts'
+import {primary, redHeader, redBtnTxt} from '../../../utils/colors'
+import {xxSmall} from '../../../utils/fonts'
+
 
 
 export default styles = StyleSheet.create({
@@ -8,6 +9,38 @@ export default styles = StyleSheet.create({
     container:{
         flex:1,
         justifyContent:"space-between",
+    },
+    fpHeader:{
+        flex:1,
+        flexDirection:'row',
+        backgroundColor: redHeader,
+        alignItems:'center',
+        justifyContent:'center',
+        padding:5,
+    },
+
+    backAlign:{
+        flex:1,
+        alignSelf:"center",
+        justifyContent:'center',
+    },
+
+    back:{
+        color:primary,
+        fontSize: Platform.OS === 'ios'?30:25,
+        alignSelf:"center",
+        justifyContent:'center',
+    },
+
+    headText:{
+        flex:5,
+        alignItems:'center',
+        justifyContent:'center',  
+    },
+
+    fogotPass:{
+        color:primary,
+        fontSize:Platform.OS === 'ios'?20:17,
     },
 
     fpHead:{
@@ -19,17 +52,17 @@ export default styles = StyleSheet.create({
 
     headFont:{
         color: primary,
-        fontSize: 50,
+        fontSize: Platform.OS === 'ios'?50:45,
         fontWeight: 'bold',
     },
 
     midFont:{
         color: primary,
-        fontSize: 25,
+        fontSize: Platform.OS=== 'ios'?25:22,
         fontWeight: 'bold',
-        padding:20,
-        paddingLeft: 40 ,
-        alignSelf:"flex-start",
+        // padding:20,
+        // paddingLeft: 40 ,
+        alignSelf:"center",
     },
   
     fpMid:{

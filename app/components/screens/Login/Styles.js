@@ -1,4 +1,5 @@
 import {Platform, StyleSheet, Dimensions, } from 'react-native';
+import * as Colors from '../../../utils/colors';
 
 export default styles = StyleSheet.create({
     
@@ -12,8 +13,14 @@ export default styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
 
+    kb:{
+        flex: 1,
+        justifyContent:'center',
+        // alignItems: 'center',
+    },
+
     headFont:{
-        color: 'white',
+        color: Colors.primary,
         fontSize: 50,
         fontWeight: 'bold',
     },
@@ -32,7 +39,7 @@ export default styles = StyleSheet.create({
         alignSelf:'center',
         paddingLeft:15,
         fontWeight:'500',
-        color:'white',
+        color:Colors.primary,
     },
 
     user:{
@@ -50,11 +57,11 @@ export default styles = StyleSheet.create({
     },
 
     buttonStyle:{
-        backgroundColor: "white",
+        backgroundColor: Colors.primary,
         width: 300,
         height: 50,
         borderRadius: 5,
-        color: '#ff0000',
+        color: Colors.redBtnBG,
         fontSize: 80,
         fontWeight: 'bold',
         alignItems: 'center',
@@ -62,7 +69,7 @@ export default styles = StyleSheet.create({
       },
 
       btnTxt:{
-        color: '#e91c1a',
+        color: Colors.redBtnTxt,
         fontSize: 30,
         fontWeight: 'bold',
     },
@@ -72,20 +79,20 @@ export default styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        color: 'white',
+        color: Colors.primary,
         fontSize: 20,
         fontWeight: '600',
     },
 
     icon:{
         fontSize:20,
-        color: 'white',
+        color: Colors.primary,
     },
 
      userPass:{
         height:45,
         width:280, 
-        borderColor: 'white',
+        borderColor: Colors.primary,
         borderWidth: 1,
         padding:10,
         margin:6,
@@ -101,7 +108,7 @@ export default styles = StyleSheet.create({
 
     noAcc:{
         flex:5,
-        color: 'white',
+        color: Colors.primary,
         fontSize: 20,
         fontWeight: '600',
         alignSelf:"flex-end",
@@ -110,7 +117,7 @@ export default styles = StyleSheet.create({
 
     newAcc:{
         flex:1,
-        backgroundColor: "#9E0100",
+        backgroundColor: Colors.redAddAccBtn,
         width: 60,
         height: 60,
         alignSelf:"flex-end",

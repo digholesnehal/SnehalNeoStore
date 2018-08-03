@@ -6,6 +6,13 @@ container:{
     flex:1,
 },
 
+slide1:{
+    flex: 2,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    
+},
+
 hsHeader:{
     flex:1,
     flexDirection:'row',

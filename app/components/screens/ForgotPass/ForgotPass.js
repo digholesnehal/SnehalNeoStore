@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, ImageBackground, TextInput, TouchableOpacity  } from 'react-native';
+import {Platform,  Dimensions, ScrollView, StyleSheet, Text, View, KeyboardAvoidingView,
+        ImageBackground, TextInput, TouchableOpacity  } from 'react-native';
 import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Header from '../../../components/Header/PageHeader/header.js';
+import {primary} from '../../../utils/colors.js'
 
 export default class ForgotPass extends Component{
 
@@ -58,38 +61,46 @@ export default class ForgotPass extends Component{
         
         <View style={styles.container}>
             <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
-                <View style={styles.fpHead}>
-                    <Text style={styles.headFont}> NeoSTORE </Text>
-                </View>
-                
-                <View style={styles.fpMid}> 
-                    <Text style={styles.midFont}> Change Password: </Text>
-                    <View style={styles.userPass}>
-                        <Icon name="user" style={styles.icon}/>
-                        <TextInput onChangeText={(changedText)=>{this.setState({"username":changedText})}} value={this.state.username} 
-                        style={styles.textField} placeholder="Username" placeholderTextColor="white">
-                        </TextInput>
-                    </View>
+            <Header
+                title={'Forgot Password'}
+                isDrawer={false}
+                back={() => {this.props.navigation.goBack(null)}}/>
+                {/* <ScrollView style={{height:Dimensions.get('window').height}}>
+                    <KeyboardAvoidingView> */}
+                        <View style={styles.fpHead}>
+                            <Text style={styles.headFont}> NeoSTORE </Text>
+                        </View>
+                        
+                        <View style={styles.fpMid}> 
+                            <Text style={styles.midFont}> Change Password </Text>
+                            <View style={styles.userPass}>
+                                <Icon name="user" style={styles.icon}/>
+                                <TextInput onChangeText={(changedText)=>{this.setState({"username":changedText})}} value={this.state.username} 
+                                style={styles.textField} placeholder="Username" placeholderTextColor={primary}>
+                                </TextInput>
+                            </View>
 
-                    <View style={styles.userPass}>
-                        <Icon name="unlock" style={styles.icon}/>
-                        <TextInput onChangeText={(changedText)=>{this.setState({"npassword":changedText})}} value={this.state.npassword}
-                        style={styles.textField} placeholder="New Password" placeholderTextColor="white">
-                        </TextInput>
-                    </View>
+                            <View style={styles.userPass}>
+                                <Icon name="unlock" style={styles.icon}/>
+                                <TextInput onChangeText={(changedText)=>{this.setState({"npassword":changedText})}} value={this.state.npassword}
+                                style={styles.textField} placeholder="New Password" placeholderTextColor={primary}>
+                                </TextInput>
+                            </View>
 
-                    <View style={styles.userPass}>
-                        <Icon name="lock" style={styles.icon}/>
-                        <TextInput onChangeText={(changedText)=>{this.setState({"cpassword":changedText})}} value={this.state.cpassword}
-                        style={styles.textField} placeholder="Confirm Password" placeholderTextColor="white">
-                        </TextInput>
-                    </View>
-                    <View style={styles.pass}>
-                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.snehal()} style={styles.buttonStyle}> 
-                            <Text style={styles.btnTxt}> Save Password </Text> 
-                        </TouchableOpacity>
-                    </View>
-                </View>
+                            <View style={styles.userPass}>
+                                <Icon name="lock" style={styles.icon}/>
+                                <TextInput onChangeText={(changedText)=>{this.setState({"cpassword":changedText})}} value={this.state.cpassword}
+                                style={styles.textField} placeholder="Confirm Password" placeholderTextColor={primary}>
+                                </TextInput>
+                            </View>
+                            <View style={styles.pass}>
+                                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.snehal()} style={styles.buttonStyle}> 
+                                    <Text style={styles.btnTxt}> Save Password </Text> 
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    {/* </KeyboardAvoidingView>
+                </ScrollView> */}
             </ImageBackground>
         </View>
         );
