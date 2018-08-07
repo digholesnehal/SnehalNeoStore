@@ -4,7 +4,8 @@ import {Platform, StyleSheet, Dimensions, Text, View,
 import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
+import {AsyncStorage} from 'react-native';
+import * as url from '../../../lib/api.js';
 
 export default class Login extends Component{
     constructor(props){
@@ -15,8 +16,29 @@ export default class Login extends Component{
         }
     }
 
-
-    snehal = ()=>{
+    async login(){
+        let formData = new FormData();
+        formData.append('email', this.state.username)
+        formData.append('password', this.state.password)
+        await fetch(url.host.concat("" , url.login),       
+         {
+            method : 'POST',
+            body : formData,
+        })
+        .then(response => response.json())
+        .then(response => {
+            if(response.status==200)
+            {
+                alert("Logged In successfully")
+                this.props.navigation.navigate('DrawerStack');
+            }
+            else{
+                alert("Email or password is wrong. try again")
+            }
+        })
+        }
+    
+    validate = ()=>{
         var reg = /^[a-zA-Z{1}]+\w.+([\.-]?\w+)*@\w+([\.-]?\w+){1}(\.\w{2,3})$/;	
         var alNum=/^([a-zA-Z0-9]){5,10}$/;
         // if((!this.state.username.match(reg) || this.state.username=="") || (!this.state.password.match(alNum) || this.state.password==""))
@@ -24,9 +46,11 @@ export default class Login extends Component{
         //     alert("Username or Password is Invalid");
         // }
         // else
+        this.login();
         {
-            this.props.navigation.navigate('DrawerStack');
+            
         }
+        
     }
     render(){
         return(
@@ -51,7 +75,7 @@ export default class Login extends Component{
                         </View>
                         <View style={styles.loginMid}> 
                             <View style={styles.pass}>
-                                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.snehal()}> 
+                                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}> 
                                     <Text style={styles.btnTxt}> LOGIN </Text> 
                                 </TouchableOpacity>
                             </View>
@@ -77,6 +101,5 @@ export default class Login extends Component{
             </View>
         );
     }
-
 }
 
