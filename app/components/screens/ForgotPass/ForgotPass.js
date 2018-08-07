@@ -5,6 +5,7 @@ import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import Header from '../../../components/Header/PageHeader/header.js';
 import {primary} from '../../../utils/colors.js'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default class ForgotPass extends Component{
 
@@ -65,8 +66,8 @@ export default class ForgotPass extends Component{
                 title={'Forgot Password'}
                 isDrawer={false}
                 back={() => {this.props.navigation.goBack(null)}}/>
-                {/* <ScrollView style={{height:Dimensions.get('window').height}}>
-                    <KeyboardAvoidingView> */}
+                <KeyboardAwareScrollView style={flex=1}>
+
                         <View style={styles.fpHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>
                         </View>
@@ -99,8 +100,8 @@ export default class ForgotPass extends Component{
                                 </TouchableOpacity>
                             </View>
                         </View>
-                    {/* </KeyboardAvoidingView>
-                </ScrollView> */}
+                        
+                    </KeyboardAwareScrollView>
             </ImageBackground>
         </View>
         );

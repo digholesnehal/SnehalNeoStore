@@ -7,39 +7,36 @@ export default styles = StyleSheet.create({
         flex:1,
     },
     loginHead:{
-        flex:4,
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'flex-end',
     },
 
-    kb:{
-        flex: 1,
-        justifyContent:'center',
-        // alignItems: 'center',
-    },
-
     headFont:{
         color: Colors.primary,
-        fontSize: 50,
+        fontSize: Platform.OS === 'ios'?45:40,
         fontWeight: 'bold',
+        paddingTop:Platform.OS === 'ios'?150:100,
+        padding:30,
     },
   
     loginMid:{
-        flex: 3,
+        flex: 8,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
     },
 
     textField:{
+
         width:250,
-        height: 40,
-        fontSize: 20,
+        height: Platform.OS === 'ios'?40:60,
+        fontSize: Platform.OS === 'ios'?20:17,
         alignSelf:'center',
         paddingLeft:15,
         fontWeight:'500',
         color:Colors.primary,
+        padding:10
     },
 
     user:{
@@ -54,23 +51,24 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        padding:Platform.OS === 'ios'?20:15,
     },
 
     buttonStyle:{
         backgroundColor: Colors.primary,
-        width: 300,
-        height: 50,
+        width: Platform.OS === 'ios'?300:280,
+        height: Platform.OS === 'ios'?50:40,
         borderRadius: 5,
-        color: Colors.redBtnBG,
-        fontSize: 80,
+        color: Colors.redBtnTxt,
+        fontSize: Platform.OS === 'ios'?80:70,
         fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
       },
 
       btnTxt:{
-        color: Colors.redBtnTxt,
-        fontSize: 30,
+        color:Colors.redBtnTxt,
+        fontSize: Platform.OS === 'ios'?30:25,
         fontWeight: 'bold',
     },
 
@@ -80,48 +78,49 @@ export default styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         color: Colors.primary,
-        fontSize: 20,
+        fontSize: Platform.OS === 'ios'?20:18,
         fontWeight: '600',
+        // padding:5,
     },
 
     icon:{
-        fontSize:20,
+        fontSize:Platform.OS === 'ios'?20:15,
         color: Colors.primary,
     },
 
      userPass:{
-        height:45,
+        height:Platform.OS === 'ios'?45:35,
         width:280, 
         borderColor: Colors.primary,
         borderWidth: 1,
-        padding:10,
+        padding:Platform.OS === 'ios'?12:10,
         margin:6,
         flexDirection: 'row',
-        justifyContent:'center'
+        justifyContent:'center',
     },
      
     loginFoot:{
         flex: 3,
         flexDirection:'column',
         justifyContent: 'flex-end',
+        paddingTop: 120,
     },
 
     noAcc:{
         flex:5,
         color: Colors.primary,
-        fontSize: 20,
+        fontSize: Platform.OS === 'ios'?20:18,
         fontWeight: '600',
         alignSelf:"flex-end",
-        marginBottom:20,
+        marginBottom:Platform.OS === 'ios'?20:15,
     },
 
     newAcc:{
         flex:1,
         backgroundColor: Colors.redAddAccBtn,
-        width: 60,
-        height: 60,
+        width: Platform.OS === 'ios'?60:40,
+        height: Platform.OS === 'ios'?60:50,
         alignSelf:"flex-end",
-        bottom: 0,
         alignItems:'center',
         justifyContent: 'center',
 
@@ -131,8 +130,9 @@ export default styles = StyleSheet.create({
         flex:1,
         flexDirection:'row',
         alignSelf:"baseline",
-        padding:12,
+        padding:Platform.OS === 'ios'?12:10,
         alignItems:'center',
+        justifyContent:'flex-end',
     },
 
 });

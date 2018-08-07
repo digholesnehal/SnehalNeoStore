@@ -18,10 +18,11 @@ export default styles = StyleSheet.create({
         alignItems: 'center'
     },
     text: {
-        alignItems: 'center',
+        alignSelf: 'center',
         fontSize: 22,
         marginTop: 5,
         color: primary,
+        paddingBottom: 5,
     },
     menuIcon: {
         backgroundColor: 'transparent',

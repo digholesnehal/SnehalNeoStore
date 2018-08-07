@@ -10,38 +10,6 @@ export default styles = StyleSheet.create({
         flex:1,
         justifyContent:"space-between",
     },
-    fpHeader:{
-        flex:1,
-        flexDirection:'row',
-        backgroundColor: redHeader,
-        alignItems:'center',
-        justifyContent:'center',
-        padding:5,
-    },
-
-    backAlign:{
-        flex:1,
-        alignSelf:"center",
-        justifyContent:'center',
-    },
-
-    back:{
-        color:primary,
-        fontSize: Platform.OS === 'ios'?30:25,
-        alignSelf:"center",
-        justifyContent:'center',
-    },
-
-    headText:{
-        flex:5,
-        alignItems:'center',
-        justifyContent:'center',  
-    },
-
-    fogotPass:{
-        color:primary,
-        fontSize:Platform.OS === 'ios'?20:17,
-    },
 
     fpHead:{
         flex:3,
@@ -52,16 +20,16 @@ export default styles = StyleSheet.create({
 
     headFont:{
         color: primary,
-        fontSize: Platform.OS === 'ios'?50:45,
+        fontSize: Platform.OS === 'ios'?45:40,
         fontWeight: 'bold',
+        paddingTop:70,
+        padding:20,
     },
 
     midFont:{
         color: primary,
         fontSize: Platform.OS=== 'ios'?25:22,
         fontWeight: 'bold',
-        // padding:20,
-        // paddingLeft: 40 ,
         alignSelf:"center",
     },
   
@@ -74,12 +42,12 @@ export default styles = StyleSheet.create({
 
     textField:{
         width:250,
-        height: 40,
-        fontSize: 20,
+        height: Platform.OS === 'ios'?40:60,
+        fontSize: Platform.OS === 'ios'?20:17,
         alignSelf:'center',
         paddingLeft:15,
         fontWeight:'500',
-        color: primary,
+        color:'white',
     },
 
     pass:{ 
@@ -91,11 +59,11 @@ export default styles = StyleSheet.create({
 
     buttonStyle:{
         backgroundColor: primary,
-        width: 280,
-        height: 50,
+        width: Platform.OS === 'ios'?300:280,
+        height: Platform.OS === 'ios'?50:40,
         borderRadius: 5,
         color: redBtnTxt,
-        fontSize: 80,
+        fontSize: Platform.OS === 'ios'?80:70,
         fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',

@@ -16,7 +16,7 @@ class Header extends Component {
         
         <TouchableOpacity style={styles.Backcontainer} 
         onPress={this.props.back}>
-        {this.props.isDrawer ? <FeatherIcon name="menu" size={26} style={styles.menuIcon} color="#000" /> : <FeatherIcon name="chevron-left" size={26} style={styles.menuIcon} color={primary} />}
+        {this.props.isDrawer ? <FeatherIcon name="menu" size={26} style={styles.menuIcon} color={primary} /> : <FeatherIcon name="chevron-left" size={26} style={styles.menuIcon} color={primary} />}
             
         </TouchableOpacity>
         <View style={styles.Titlecontainer}>
@@ -26,7 +26,7 @@ class Header extends Component {
         </View>
         <TouchableOpacity style={styles.Backcontainer} 
         onPress={this.props.back}>
-        {this.props.isDrawer ? <FeatherIcon name="menu" size={26} style={styles.menuIcon} color="#000" /> : <FeatherIcon name="search" size={22} style={styles.menuIcon} color={primary} />}
+        {this.props.isDrawer ? <FeatherIcon name="search" size={26} style={styles.menuIcon} color={primary} /> : <FeatherIcon name="search" size={22} style={styles.menuIcon} color={primary} />}
             
         </TouchableOpacity>     
     </View>

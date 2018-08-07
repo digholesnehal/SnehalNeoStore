@@ -9,49 +9,17 @@ export default styles = StyleSheet.create({
         
     },
 
-    regHeader:{
-        flex:1,
-        flexDirection:'row',
-        backgroundColor: redHeader,
-        alignItems:'center',
-        justifyContent:'center',
-        padding:5,
-    },
-
-    backAlign:{
-        flex:1,
-        alignSelf:"center",
-        justifyContent:'center',
-    },
-
-    back:{
-        color:primary,
-        fontSize:30,
-        alignSelf:"center",
-        justifyContent:'center',
-    },
-
-    headText:{
-        flex:5,
-        alignItems:'center',
-        justifyContent:'center',  
-    },
-
-    register:{
-        color:primary,
-        fontSize:20,
-    },
-
     regHead:{
         flex:2,
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'flex-end',
+        padding:Platform.OS === 'ios'?15:12,
     },
 
     headFont:{
         color: primary,
-        fontSize: 50,
+        fontSize: Platform.OS === 'ios'?45:40,
         fontWeight: 'bold',
     },
   
@@ -64,8 +32,8 @@ export default styles = StyleSheet.create({
 
     textField:{
         width:250,
-        height: 40,
-        fontSize: 20,
+        height: Platform.OS === 'ios'?40:60,
+        fontSize: Platform.OS === 'ios'?20:17,
         alignSelf:'center',
         paddingLeft:15,
         fontWeight:'500',
@@ -77,15 +45,16 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'flex-start',
+        padding:10,
     },
 
     buttonStyle:{
         backgroundColor: primary,
-        width: 300,
-        height: 50,
+        width: Platform.OS === 'ios'?300:280,
+        height: Platform.OS === 'ios'?50:40,
         borderRadius: 5,
         color: redBtnTxt,
-        fontSize: 80,
+        fontSize: Platform.OS === 'ios'?80:70,
         fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
@@ -93,32 +62,32 @@ export default styles = StyleSheet.create({
 
     btnTxt:{
         color:redBtnTxt,
-        fontSize: 30,
+        fontSize: Platform.OS === 'ios'?30:25,
         fontWeight: 'bold',
     },
 
     icon:{
-        fontSize:20,
+        fontSize:Platform.OS === 'ios'?20:15,
         color: primary,
     },
 
     envelope:{
-        fontSize:20,
+        fontSize:Platform.OS === 'ios'?20:15,
         color: primary,
         paddingLeft:8,
     },
 
     iconPhn:{
-        fontSize:25,
+        fontSize:Platform.OS === 'ios'?25:18,
         color: primary,
     },
 
      userPass:{
-        height:45,
+        height:Platform.OS === 'ios'?45:35,
         width:280, 
         borderColor: primary,
         borderWidth: 1,
-        padding:10,
+        padding:Platform.OS === 'ios'?10:8,
         margin:6,
         flexDirection: 'row',
         justifyContent:'center'
@@ -130,7 +99,7 @@ export default styles = StyleSheet.create({
     },
 
     radioTitle:{
-        fontSize:20,
+        fontSize:Platform.OS === 'ios'?20:17,
         color: primary,
         paddingBottom:10,
         paddingRight:20,
@@ -158,9 +127,10 @@ export default styles = StyleSheet.create({
         flex:1,
         flexDirection: 'row',
         color: primary,
-        fontSize:xxSmall,
+        fontSize:Platform.OS === 'ios'?xxSmall:10,
         alignItems: 'center',
         justifyContent: 'center',
+        padding:10,
     },
 
     checkBoxTitle:{

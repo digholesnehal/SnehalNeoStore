@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, Dimensions, ScrollView, StyleSheet, Text, View, KeyboardAvoidingView,
+import {Platform, Dimensions, StyleSheet, Text, View, 
          ImageBackground, TextInput, TouchableOpacity  } from 'react-native';
 import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
@@ -8,8 +8,8 @@ import Styles from './Styles';
 import CheckBox from 'react-native-check-box';
 import * as Colors from '../../../utils/colors';
 import Header from '../../../components/Header/PageHeader/header.js';
-
-
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
+import Keyboard from 'react-native-keyboard';
 
 var gender=[
     {label: "Male" , value:0},
@@ -122,87 +122,83 @@ export default class Register extends Component{
 
     render(){
         return(
-             
-        
-        <View style={styles.container}>
-            <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
-            <Header
-                title={'Register'}
-                isDrawer={false}
-                back={() => {this.props.navigation.goBack(null)}}/>
-                {/* <ScrollView style={{height:Dimensions.get('window').height}}>
-                    <KeyboardAvoidingView> */}
+            <View style={styles.container}>
+                <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>   
+                    <Header
+                    title={'Register'}
+                    isDrawer={false}
+                    back={() => {this.props.navigation.goBack(null)}}/>
+                     <KeyboardAwareScrollView style={flex=1}>
                         <View style={styles.regHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>
                         </View>
                         
                         <View style={styles.regMid}> 
                             <View style={styles.userPass}>
-                            <Icon name="user" style={styles.icon}/>
-                            <TextInput onChangeText={(changedText)=>{this.setState({"firstname":changedText})}} value={this.state.firstname} style={styles.textField} placeholder="First Name" placeholderTextColor={Colors.primary}>
-                            </TextInput>
+                                <Icon name="user" style={styles.icon}/>
+                                <TextInput onChangeText={(changedText)=>{this.setState({"firstname":changedText})}} value={this.state.firstname} style={styles.textField} placeholder="First Name" placeholderTextColor={Colors.primary}>
+                                </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
-                            <Icon name="user" style={styles.icon}/>
-                            <TextInput onChangeText={(changedText)=>{this.setState({"lastname":changedText})}} value={this.state.lastname} style={styles.textField} placeholder="Last Name" placeholderTextColor={Colors.primary}>
-                            </TextInput>
+                                <Icon name="user" style={styles.icon}/>
+                                <TextInput onChangeText={(changedText)=>{this.setState({"lastname":changedText})}} value={this.state.lastname} style={styles.textField} placeholder="Last Name" placeholderTextColor={Colors.primary}>
+                                </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
-                            <Icon name="envelope" style={styles.envelope}/>
-                            <TextInput onChangeText={(changedText)=>{this.setState({"email":changedText})}} value={this.state.email} style={styles.textField} placeholder="Email" placeholderTextColor={Colors.primary}>
-                            </TextInput>
+                                <Icon name="envelope" style={styles.envelope}/>
+                                <TextInput onChangeText={(changedText)=>{this.setState({"email":changedText})}} value={this.state.email} style={styles.textField} placeholder="Email" placeholderTextColor={Colors.primary}>
+                                </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
-                            <Icon name="lock" style={styles.icon}/>
-                            <TextInput onChangeText={(changedText)=>{this.setState({"password":changedText})}} secureTextEntry={true} value={this.state.password} style={styles.textField} placeholder="Password" placeholderTextColor={Colors.primary}>
-                            </TextInput>
+                                <Icon name="lock" style={styles.icon}/>
+                                <TextInput onChangeText={(changedText)=>{this.setState({"password":changedText})}} secureTextEntry={true} value={this.state.password} style={styles.textField} placeholder="Password" placeholderTextColor={Colors.primary}>
+                                </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
-                            <Icon name="lock" style={styles.icon}/>
-                            <TextInput onChangeText={(changedText)=>{this.setState({"cpassword":changedText})}} secureTextEntry={true} value={this.state.cpassword} style={styles.textField} placeholder="Confirm Password" placeholderTextColor={Colors.primary}>
-                            </TextInput>
+                                <Icon name="lock" style={styles.icon}/>
+                                <TextInput onChangeText={(changedText)=>{this.setState({"cpassword":changedText})}} secureTextEntry={true} value={this.state.cpassword} style={styles.textField} placeholder="Confirm Password" placeholderTextColor={Colors.primary}>
+                                </TextInput>
                             </View>
 
                             <View style={styles.rowFlex}>
                                 <View style={styles.rowFlex}></View>
                                 <View style={styles.radio}>
                                     <Text style={styles.radioTitle}> Gender </Text>
-                                    <RadioForm 
-                                    formHorizontal={true} 
-                                    buttonSize={10} 
-                                    radio_props={gender} 
-                                    initial={0}
-                                    buttonColor={'#fff'}
-                                    selectedButtonColor={'#fff'}
-                                    labelStyle={{fontSize:17, fontWeight:'500', color:"#fff", padding:4}}
-                                    onPress={(value)=>{}}/>
+                                        <RadioForm 
+                                        formHorizontal={true} 
+                                        buttonSize={Platform.OS === 'ios'?10:8} 
+                                        radio_props={gender} 
+                                        initial={0}
+                                        buttonColor={'#fff'}
+                                        selectedButtonColor={'#fff'}
+                                        labelStyle={{fontSize:Platform.OS === 'ios'?17:13, fontWeight:'500', color:"#fff", padding:4}}
+                                        onPress={(value)=>{}}/>
                                     <View style={styles.rowFlex}></View>
                                 </View>
                             </View>
 
                             <View style={styles.userPass}>
                                 <Icon name="mobile" style={styles.iconPhn}/>
-                                <TextInput onChangeText={(changedText)=>{this.setState({"mobile":changedText})}} value={this.state.mobile} style={styles.textField} placeholder="Phone Number" placeholderTextColor={Colors.primary}>
+                                <TextInput keyboardType="phone-pad" onChangeText={(changedText)=>{this.setState({"mobile":changedText})}} value={this.state.mobile} style={styles.textField} placeholder="Phone Number" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
                             <View style={styles.checkBox}>
-                            <CheckBox
-                                onClick={()=>this.setState({check:!this.state.check})}
-                                isChecked={this.state.check} checkBoxColor={Colors.primary}/>
-                            <Text style={styles.checkBoxTitle}> I agree the Terms and Conditons </Text>
+                                <CheckBox
+                                    onClick={()=>this.setState({check:!this.state.check})}
+                                    isChecked={this.state.check} checkBoxColor={Colors.primary}/>
+                                <Text style={styles.checkBoxTitle}> I agree the Terms and Conditons </Text>
                             </View>
                         </View>
                         <View style={styles.btn}>
-                                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.snehal()}> 
-                                    <Text style={styles.btnTxt}> REGISTER </Text> 
-                                </TouchableOpacity>
+                            <TouchableOpacity style={styles.buttonStyle} onPress={() => this.snehal()}> 
+                                <Text style={styles.btnTxt}> REGISTER </Text> 
+                            </TouchableOpacity>
                         </View>
-                    {/* </KeyboardAvoidingView>
-                </ScrollView> */}
+                </KeyboardAwareScrollView>
             </ImageBackground>
         </View>
         );

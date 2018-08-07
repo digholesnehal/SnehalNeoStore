@@ -8,11 +8,30 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import Login from './app/components/screens/Login/Login.js';
 import ForgotPass from './app/components/screens/ForgotPass/ForgotPass.js'
 import Register from './app/components/screens/Register/Register.js'
 import HomeScreen from './app/components/screens/HomeScreen/HomeScreen.js'
+import SideBar from "./app/components/Drawer/SideBar.js";
+
+
+  const DrawerStack = createDrawerNavigator({
+    HomeScreen:{
+      screen:HomeScreen,
+      navigationOptions:{
+        header:null,
+      }
+    },
+  },
+  {
+    contentComponent: (props) => {
+      return <SideBar/>
+    },
+    }
+); 
+
+
   const RootStack = createStackNavigator({
     
       Login:{ 
@@ -36,21 +55,20 @@ import HomeScreen from './app/components/screens/HomeScreen/HomeScreen.js'
           header:null,
         }
       },
-
-
-      HomeScreen:{
-        screen:HomeScreen,
-        navigationOptions:{
-          header:null,
-        }
-      },
+    DrawerStack:{
+      screen:DrawerStack,
+      navigationOptions:{
+      header:null,
+      }
     },
-
-
+  },
       {
       initialRouteName: 'Login',
       },
+    
     );
+
+
 
   export default class App extends Component{
     render(){

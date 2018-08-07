@@ -5,32 +5,76 @@ import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import Header from '../../../components/Header/MainHeader/header.js';
 import Swiper from 'react-native-swiper';
-
+import SideBar from '../../Drawer/SideBar';
+import * as Colors from '../../../utils/colors';
 
 
 
 export default class HomeScreen extends Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          
+        }
+      }
+
     render(){
         return(
             <View style={styles.container}>
+
                 <Header
                 title={'NeoSTORE'}
-                isDrawer={false}
-                back={() => {this.props.navigation.goBack(null)}}/>
-                <Swiper>
-                    <View style={styles.slide1}>
-                    <Image style={{width:380, height: 220,}} source={require('../../../assets/images/furniture1.jpeg')}/>
+                isDrawer={true}
+                back={() => {
+                this.props.navigation.openDrawer(this.Drawer);
+                }}/>
+                <View style={styles.swipe}>
+                    <Swiper   activeDotColor={Colors.enterQtyB} dotColor={Colors.redHeader}>
+                        <View style={styles.slide}>
+                            <Image style={styles.images} source={require('../../../assets/images/furniture1.jpeg')}/>
+                        </View>
+                        <View style={styles.slide}>
+                            <Image style={styles.images} source={require('../../../assets/images/furniture2.jpeg')}/>
+                        </View>
+                        <View style={styles.slide}>
+                            <Image style={styles.images} source={require('../../../assets/images/furniture3.jpeg')}/>
+                        </View>
+                        <View style={styles.slide}>
+                            <Image style={styles.images} source={require('../../../assets/images/furniture4.jpeg')}/>
+                        </View>
+                    </Swiper>
+                </View>
+                <View style={styles.components}>
+                    <View style={styles.cpartitions}>
+                        <View style={styles.rpartitions}>
+                            <TouchableOpacity style={styles.TO}>
+                                <Text style={styles.cTitle1}> Tables </Text>
+                                <Icon name="columns" style={styles.icon1}/>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.rpartitions}>
+                            <TouchableOpacity style={styles.TO}>
+                            <Text style={styles.cTitle2}> Chairs </Text>
+                            <Icon name="cube" style={styles.icon2}/>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={styles.slide1}>
-                    <Image style={{width:380, height: 220,}} source={require('../../../assets/images/furniture2.jpeg')}/>
+                    <View style={styles.cpartitions}>
+                        <View style={styles.rpartitions}>
+                            <TouchableOpacity style={styles.TO}>
+                            <Icon name="archive" style={styles.icon3}/>
+                            <Text style={styles.cTitle3}> Sofas </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.rpartitions}>
+                            <TouchableOpacity style={styles.TO}>
+                            <Icon name="building" style={styles.icon4}/>
+                            <Text style={styles.cTitle4}> Cupboards </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={styles.slide1}>
-                    <Image style={{width:380, height: 220,}} source={require('../../../assets/images/furniture3.jpeg')}/>
-                    </View>
-                    <View style={styles.slide1}>
-                    <Image style={{width:380, height: 220,}} source={require('../../../assets/images/furniture4.jpeg')}/>
-                    </View>
-                </Swiper>
+                </View>
             </View>
         );
     }

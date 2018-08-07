@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Dimensions, ScrollView, Text, View, KeyboardAvoidingView ,
+import {Platform, StyleSheet, Dimensions, Text, View,
         ImageBackground, TextInput, TouchableOpacity  } from 'react-native';
 import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
 export default class Login extends Component{
@@ -24,16 +25,14 @@ export default class Login extends Component{
         // }
         // else
         {
-            this.props.navigation.navigate('HomeScreen');
+            this.props.navigation.navigate('DrawerStack');
         }
     }
     render(){
         return(
-        
-        <View style={styles.container}>
-            <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
-                {/* <ScrollView style={{height:Dimensions.get('window').height}}>
-                    <KeyboardAvoidingView behavior="" style={styles.kb}> */}
+                <View  style={styles.container}>
+                    <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
+                    <KeyboardAwareScrollView style={flex=1}>
                         <View style={styles.loginHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>
                         </View>
@@ -73,10 +72,9 @@ export default class Login extends Component{
                                 </TouchableOpacity>
                             </View>
                         </View>
-                    {/* </KeyboardAvoidingView>
-                </ScrollView> */}
-            </ImageBackground>
-        </View>
+                    </KeyboardAwareScrollView>
+                </ImageBackground>
+            </View>
         );
     }
 
