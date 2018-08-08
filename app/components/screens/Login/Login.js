@@ -16,6 +16,14 @@ export default class Login extends Component{
         }
     }
 
+    async storeData(){
+        await AsyncStorage.setItem('email', this.state.username);
+        await AsyncStorage.setItem('password', this.state.password);
+        const value = await AsyncStorage.getItem('email');
+        console.log(value);
+        return true;
+    }
+
     async login(){
         let formData = new FormData();
         formData.append('email', this.state.username)
@@ -29,12 +37,16 @@ export default class Login extends Component{
         .then(response => {
             if(response.status==200)
             {
-                alert("Logged In successfully")
+                console.log(response);
+                this.storeData();
                 this.props.navigation.navigate('DrawerStack');
             }
             else{
-                alert("Email or password is wrong. try again")
+                alert(response.user_msg)
             }
+        })
+        .catch((error)=>{
+            console.log(error.message);
         })
         }
     

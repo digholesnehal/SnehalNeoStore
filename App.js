@@ -14,6 +14,7 @@ import ForgotPass from './app/components/screens/ForgotPass/ForgotPass.js'
 import Register from './app/components/screens/Register/Register.js'
 import HomeScreen from './app/components/screens/HomeScreen/HomeScreen.js'
 import SideBar from "./app/components/Drawer/SideBar.js";
+import {AsyncStorage} from 'react-native';
 
 
   const DrawerStack = createDrawerNavigator({
@@ -21,12 +22,12 @@ import SideBar from "./app/components/Drawer/SideBar.js";
       screen:HomeScreen,
       navigationOptions:{
         header:null,
-      }
+      },
     },
   },
   {
     contentComponent: (props) => {
-      return <SideBar/>
+      return <SideBar navigation = {props.navigation}/>
     },
     }
 ); 
@@ -48,17 +49,17 @@ import SideBar from "./app/components/Drawer/SideBar.js";
         }
       },
 
-
       ForgotPass:{
         screen:ForgotPass,
         navigationOptions:{
           header:null,
         }
       },
+
     DrawerStack:{
       screen:DrawerStack,
       navigationOptions:{
-      header:null,
+        header:null,
       }
     },
   },
@@ -70,10 +71,82 @@ import SideBar from "./app/components/Drawer/SideBar.js";
 
 
 
+    const RootStack1= createStackNavigator({
+    
+      Login:{ 
+        screen:Login,
+        navigationOptions:{
+          header:null,
+        }
+      },
+
+      Register:{
+        screen:Register,
+        navigationOptions:{
+          header:null,
+        }
+      },
+
+      ForgotPass:{
+        screen:ForgotPass,
+        navigationOptions:{
+          header:null,
+        }
+      },
+
+    DrawerStack:{
+      screen:DrawerStack,
+      navigationOptions:{
+        header:null,
+      }
+    },
+  },
+      {
+      initialRouteName: 'DrawerStack',
+      },
+    
+    );
+
+
+
   export default class App extends Component{
+
+    constructor(props, context) {
+      super(props, context);
+      this.state = {
+        logged: false,
+        loading: true,
+      };
+    };
+
+    async componentWillMount(){
+      const value = await AsyncStorage.getItem('email');
+      console.log(value);
+      if(value !== null){
+          this.setState({
+            logged: true,
+            loading:false,
+          });
+          return <RootStack1/>;
+      }
+      else{
+
+        this.setState({
+          loading:false,
+        })
+        return <RootStack/>;
+        }
+    }
+
     render(){
-      return(
-        <RootStack/>
+      if (this.state.loading) {
+        return <View><Text>Loading...</Text></View>;
+      }
+      else if(this.state.logged && !this.state.loading)
+      return(  
+        <RootStack1/>
       );
+      else
+      return(<RootStack/>)
     }
   }

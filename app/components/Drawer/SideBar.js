@@ -1,8 +1,11 @@
 /**Drawer left menu */
 import React, {Component} from 'react';
-import { Text, TouchableOpacity, View, Image } from "react-native";
+import { Text, TouchableOpacity, View, Image, Platform } from "react-native";
 import styles from './styles';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import {AsyncStorage} from 'react-native';
+import { withNavigation } from 'react-navigation';
+
 
 export default class SideBar extends Component {
   constructor(props) {
@@ -12,6 +15,19 @@ export default class SideBar extends Component {
       .props
       .navigation);
   }
+
+  clearData=()=>{
+    
+    let keys = ['email', 'password'];
+    AsyncStorage.multiRemove(keys, (err) => {
+      // keys k1 & k2 removed, if they existed
+      // do most stuff after removal (if you want)
+      console.log('Log out na plzzz');
+      console.log(this.props);
+      this.props.navigation.navigate('Login');
+    });
+  }
+
   render() {
      return (
       <View style={styles.bg}>
@@ -69,7 +85,7 @@ export default class SideBar extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.partitions}>
-          <TouchableOpacity style={{flexDirection:'row'}}>
+          <TouchableOpacity style={{flexDirection:'row'}}  onPress={() => this.clearData()}>
             <Icon name="sign-out" style={styles.icon}/>
             <Text style={styles.options}>Logout</Text>
           </TouchableOpacity>

@@ -103,7 +103,7 @@ export default styles = StyleSheet.create({
         flex: 3,
         flexDirection:'column',
         justifyContent: 'flex-end',
-        paddingTop: 120,
+        paddingTop: Platform.OS === 'ios'?120:180,
     },
 
     noAcc:{

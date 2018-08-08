@@ -10,11 +10,14 @@ import * as Colors from '../../../utils/colors';
 import Header from '../../../components/Header/PageHeader/header.js';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 import Keyboard from 'react-native-keyboard';
+import {AsyncStorage} from 'react-native';
+import * as url from '../../../lib/api.js';
 
 var gender=[
     {label: "Male" , value:0},
     {label: "Female", value:1}
 ];
+
 
 
 export default class Register extends Component{
@@ -32,7 +35,38 @@ export default class Register extends Component{
         }
     }
 
-    snehal = ()=>{
+    async register(){
+        let formData = new FormData();
+        formData.append('first_name', this.state.firstname)
+        formData.append('last_name', this.state.lastname)
+        formData.append('email', this.state.email)
+        formData.append('password', this.state.password)
+        formData.append('confirm_password', this.state.cpassword)
+        formData.append('gender', this.state.gender)
+        formData.append('phone_no', this.state.mobile)
+        await fetch(url.host.concat("" , url.register),       
+         {
+            method : 'POST',
+            body : formData,
+        })
+        .then(response => response.json())
+        .then(response => {
+            if(response.status==200)
+            {
+                alert(response.user_msg)
+                this.props.navigation.navigate('HomeScreen');
+            }
+            else{
+                alert(response.user_msg)
+            }
+        })
+        .catch((error)=>{
+            console.log(error.message);
+        })
+    }
+
+
+    validate = ()=>{
         var regmail = /^[a-zA-Z{1}]+\w.+([\.-]?\w+)*@\w+([\.-]?\w+){1}(\.\w{2,3})$/;	
         var alphaExp = /^[a-zA-Zäöüß]+$/;
         var alNum=/^([a-zA-Z0-9]){5,10}$/;
@@ -115,7 +149,7 @@ export default class Register extends Component{
         }
         else
         {
-            this.props.navigation.navigate('HomeScreen');
+            this.register();
         }
         
     }
@@ -194,7 +228,7 @@ export default class Register extends Component{
                             </View>
                         </View>
                         <View style={styles.btn}>
-                            <TouchableOpacity style={styles.buttonStyle} onPress={() => this.snehal()}> 
+                            <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}> 
                                 <Text style={styles.btnTxt}> REGISTER </Text> 
                             </TouchableOpacity>
                         </View>
