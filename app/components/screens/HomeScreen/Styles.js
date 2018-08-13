@@ -1,138 +1,139 @@
-import {Platform, StyleSheet, Dimensions, } from 'react-native';
+import { Platform, StyleSheet, Dimensions, } from 'react-native';
 import * as Colors from '../../../utils/colors'
 
 export default styles = StyleSheet.create({
 
-container:{
-    flex:1,
-},
+    container: {
+        flex: 1,
+    },
 
-swipe:{
-    flex:3,
-},
+    swipe: {
+        flex: 3,
+    },
 
-slide:{
-    justifyContent: 'flex-start',
-    alignSelf: 'center',
-},
+    slide: {
+        justifyContent: 'flex-start',
+        alignSelf: 'center',
+        flex: 1,
+    },
 
-images:{
-    width:380, 
-    height: 225,
-},
+    images: {
+        width: 380,
+        height: 225,
+    },
 
-hsHeader:{
-    flex:1,
-    flexDirection:'row',
-    backgroundColor: Colors.redHeader,
-    alignItems:'center',
-    justifyContent:'center',
-    padding:5,
-},
+    hsHeader: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: Colors.redHeader,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 5,
+    },
 
-menuAlign:{
-    flex:1,
-    alignSelf:"center",
-    justifyContent:'center',
-},
+    menuAlign: {
+        flex: 1,
+        alignSelf: "center",
+        justifyContent: 'center',
+    },
 
-menu:{
-    color:"white",
-    fontSize:30,
-    alignSelf:"center",
-    justifyContent:'center',
-},
+    menu: {
+        color: "white",
+        fontSize: 30,
+        alignSelf: "center",
+        justifyContent: 'center',
+    },
 
-headText:{
-    flex:5,
-    alignItems:'center',
-    justifyContent:'center',  
-},
+    headText: {
+        flex: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 
-neostore:{
-    color:'white',
-    fontSize:30,
-    fontWeight:'bold',
-},
+    neostore: {
+        color: 'white',
+        fontSize: 30,
+        fontWeight: 'bold',
+    },
 
-components:{
-    flex: 5,
-    flexDirection: 'row',
-    padding:5,
-},
+    components: {
+        flex: 5,
+        flexDirection: 'row',
+        padding: 5,
+    },
 
-cpartitions:{
-    flex:1,
-    flexDirection:'column',
-    marginHorizontal:7.5,
-},
+    cpartitions: {
+        flex: 1,
+        flexDirection: 'column',
+        marginHorizontal: 7.5,
+    },
 
-rpartitions:{
-    flex:1,
-    flexDirection: 'row',
-    backgroundColor: Colors.redHeader,
-    borderColor:Colors.blackPrimary,
-    marginVertical:7.5,
-},
+    rpartitions: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: Colors.redHeader,
+        borderColor: Colors.blackPrimary,
+        marginVertical: 7.5,
+    },
 
-cTitle1:{
-    color: Colors.primary,
-    fontSize: 25,
-    fontWeight: '600',
-    padding:10,
-    alignSelf:'flex-end',
-},
+    cTitle1: {
+        color: Colors.primary,
+        fontSize: 25,
+        fontWeight: '600',
+        padding: 10,
+        alignSelf: 'flex-end',
+    },
 
-cTitle2:{
-    color: Colors.primary,
-    fontSize: 25,
-    fontWeight: '600',
-    padding:10,
-    alignSelf:'flex-end',
-},
+    cTitle2: {
+        color: Colors.primary,
+        fontSize: 25,
+        fontWeight: '600',
+        padding: 10,
+        alignSelf: 'flex-end',
+    },
 
-cTitle3:{
-    color: Colors.primary,
-    fontSize: 25,
-    fontWeight: '600',
-    padding:10,
-},
+    cTitle3: {
+        color: Colors.primary,
+        fontSize: 25,
+        fontWeight: '600',
+        padding: 10,
+    },
 
-cTitle4:{
-    color: Colors.primary,
-    fontSize: 25,
-    fontWeight: '600',
-    padding:10,
-    alignSelf:'flex-end',
-},
+    cTitle4: {
+        color: Colors.primary,
+        fontSize: 25,
+        fontWeight: '600',
+        padding: 10,
+        alignSelf: 'flex-end',
+    },
 
-icon1:{
-    fontSize:80,
-    color: Colors.primary,
-    padding:15,
-},
+    icon1: {
+        fontSize: 80,
+        color: Colors.primary,
+        padding: 15,
+    },
 
-icon2:{
-    fontSize:80,
-    color: Colors.primary,
-    padding:15,
-},
+    icon2: {
+        fontSize: 80,
+        color: Colors.primary,
+        padding: 15,
+    },
 
-icon3:{
-    fontSize:80,
-    color: Colors.primary,
-    padding:15,
-    alignSelf:'flex-end',
-},
+    icon3: {
+        fontSize: 80,
+        color: Colors.primary,
+        padding: 15,
+        alignSelf: 'flex-end',
+    },
 
-icon4:{
-    fontSize:80,
-    color: Colors.primary,
-    padding:15,
-},
+    icon4: {
+        fontSize: 80,
+        color: Colors.primary,
+        padding: 15,
+    },
 
-TO:{
-    flex:1,
-    justifyContent: 'space-between',
-},
+    TO: {
+        flex: 1,
+        justifyContent: 'space-between',
+    },
 })

@@ -1,110 +1,114 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Dimensions, Text, View,
-        ImageBackground, TextInput, TouchableOpacity  } from 'react-native';
+import React, { Component } from 'react';
+import {
+    Platform, StyleSheet, Dimensions, Text, View,
+    ImageBackground, TextInput, TouchableOpacity
+} from 'react-native';
 import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import {AsyncStorage} from 'react-native';
+import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
+import { apiCaller } from '../../../lib/Fetcher.js';
 
-export default class Login extends Component{
-    constructor(props){
+export default class Login extends Component {
+    constructor(props) {
         super(props);
         this.state = {
-            username : '',
-            password : '',
+            username: 'digholesnehal@gmail.com',
+            password: '123456789',
         }
     }
 
-    async storeData(){
-        await AsyncStorage.setItem('email', this.state.username);
-        await AsyncStorage.setItem('password', this.state.password);
-        const value = await AsyncStorage.getItem('email');
-        console.log(value);
-        return true;
-    }
-
-    async login(){
+    login() {
         let formData = new FormData();
         formData.append('email', this.state.username)
         formData.append('password', this.state.password)
-        await fetch(url.host.concat("" , url.login),       
-         {
-            method : 'POST',
-            body : formData,
-        })
-        .then(response => response.json())
-        .then(response => {
-            if(response.status==200)
-            {
-                console.log(response);
-                this.storeData();
-                this.props.navigation.navigate('DrawerStack');
+        apiCaller(url.host + url.login, 'POST', {}, formData,
+            callBack = (response) => {
+                if (response.status == 200) {
+                    AsyncStorage.setItem('access_token', response.data.access_token, () => {
+                        apiCaller(url.host + url.fAccDetails, 'GET', {}, null,
+                            (response) => {
+
+                                if (response.status == 200) { // Access Token valid please send to homescreen with response
+                                    this.props.navigation.replace('DrawerStack', response);
+                                }
+                                else { // Some Error. Stay on this page.
+                                    if (response.hasOwnProperty('user_msg')) {
+                                        alert(response.user_msg);
+                                    }
+                                    else {
+                                        alert(response.message);
+                                    }
+                                }
+                            }
+                        );
+                    });
+                }
+                else {
+                    if (response.hasOwnProperty('user_msg')) {
+                        alert(response.user_msg);
+                    }
+                    else {
+                        alert(response.message);
+                    }
+                }
+
             }
-            else{
-                alert(response.user_msg)
-            }
-        })
-        .catch((error)=>{
-            console.log(error.message);
-        })
-        }
-    
-    validate = ()=>{
-        var reg = /^[a-zA-Z{1}]+\w.+([\.-]?\w+)*@\w+([\.-]?\w+){1}(\.\w{2,3})$/;	
-        var alNum=/^([a-zA-Z0-9]){5,10}$/;
-        // if((!this.state.username.match(reg) || this.state.username=="") || (!this.state.password.match(alNum) || this.state.password==""))
-        // {
-        //     alert("Username or Password is Invalid");
-        // }
-        // else
-        this.login();
-        {
-            
-        }
-        
+        );
     }
-    render(){
-        return(
-                <View  style={styles.container}>
-                    <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
-                    <KeyboardAwareScrollView style={flex=1}>
+
+    validate = () => {
+        var reg = /^[a-zA-Z{1}]+\w.+([\.-]?\w+)*@\w+([\.-]?\w+){1}(\.\w{2,3})$/;
+        var alNum = /^([a-zA-Z0-9]){5,10}$/;
+        if ((!this.state.username.match(reg) || this.state.username == "") || (!this.state.password.match(alNum) || this.state.password == "")) {
+            alert("Username or Password is Invalid");
+        }
+        else
+            this.login();
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
+                    <KeyboardAwareScrollView style={flex = 1}>
                         <View style={styles.loginHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>
                         </View>
-                            <View style={styles.loginMid}> 
-                                <View style={styles.userPass}>
-                                <Icon name="user" style={styles.icon}/>
-                                <TextInput onChangeText={(changedText)=>{this.setState({"username":changedText})}} style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
+                        <View style={styles.loginMid}>
+                            <View style={styles.userPass}>
+                                <Icon name="user" style={styles.icon} />
+                                <TextInput onChangeText={(changedText) => { this.setState({ "username": changedText }) }} style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
                                 </TextInput>
-                                </View>
+                            </View>
 
-                                <View style={styles.userPass}>
-                                <Icon name="lock" style={styles.icon}/>
-                                <TextInput onChangeText={(changedText)=>{this.setState({"password":changedText})}} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
+                            <View style={styles.userPass}>
+                                <Icon name="lock" style={styles.icon} />
+                                <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
                                 </TextInput>
                             </View>
                         </View>
-                        <View style={styles.loginMid}> 
+                        <View style={styles.loginMid}>
                             <View style={styles.pass}>
-                                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}> 
-                                    <Text style={styles.btnTxt}> LOGIN </Text> 
+                                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}>
+                                    <Text style={styles.btnTxt}> LOGIN </Text>
                                 </TouchableOpacity>
                             </View>
-                            <TouchableOpacity style={styles.fgotPass} onPress={() => this.props.navigation.navigate('ForgotPass')}> 
+                            <TouchableOpacity style={styles.fgotPass} onPress={() => this.props.navigation.navigate('ForgotPass')}>
                                 <Text style={styles.fgotPass}>
                                     Forgot Password?
                                 </Text>
                             </TouchableOpacity>
                         </View>
-                            
-                        <View style={styles.loginFoot}> 
-                            <View style={styles.bottom}>                    
+
+                        <View style={styles.loginFoot}>
+                            <View style={styles.bottom}>
                                 <Text style={styles.noAcc}>
                                     DONT HAVE AN ACCOUNT?
                                 </Text>
-                                <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}> 
-                                    <Icon name="plus" size={40} color="#fff"/>
+                                <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}>
+                                    <Icon name="plus" size={40} color="#fff" />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -114,4 +118,3 @@ export default class Login extends Component{
         );
     }
 }
-

@@ -6,147 +6,86 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import Login from './app/components/screens/Login/Login.js';
 import ForgotPass from './app/components/screens/ForgotPass/ForgotPass.js'
 import Register from './app/components/screens/Register/Register.js'
 import HomeScreen from './app/components/screens/HomeScreen/HomeScreen.js'
 import SideBar from "./app/components/Drawer/SideBar.js";
-import {AsyncStorage} from 'react-native';
+import Starter from './app/components/screens/Starter/Starter.js';
+import Tables from './app/components/screens/ProductListing/Tables/Tables.js';
 
 
-  const DrawerStack = createDrawerNavigator({
-    HomeScreen:{
-      screen:HomeScreen,
-      navigationOptions:{
-        header:null,
-      },
+const DrawerStack = createDrawerNavigator({
+    HomeScreen: {
+        screen: HomeScreen,
+        navigationOptions: {
+            header: null,
+        },
     },
-  },
-  {
-    contentComponent: (props) => {
-      return <SideBar navigation = {props.navigation}/>
-    },
+},
+    {
+        contentComponent: (props) => {
+            return <SideBar navigation={props.navigation} />
+        },
     }
-); 
+);
 
 
-  const RootStack = createStackNavigator({
-    
-      Login:{ 
-        screen:Login,
-        navigationOptions:{
-          header:null,
+const RootStack = createStackNavigator({
+
+    Login: {
+        screen: Login,
+        navigationOptions: {
+            header: null,
         }
-      },
-
-      Register:{
-        screen:Register,
-        navigationOptions:{
-          header:null,
-        }
-      },
-
-      ForgotPass:{
-        screen:ForgotPass,
-        navigationOptions:{
-          header:null,
-        }
-      },
-
-    DrawerStack:{
-      screen:DrawerStack,
-      navigationOptions:{
-        header:null,
-      }
     },
-  },
-      {
-      initialRouteName: 'Login',
-      },
-    
-    );
 
-
-
-    const RootStack1= createStackNavigator({
-    
-      Login:{ 
-        screen:Login,
-        navigationOptions:{
-          header:null,
+    Register: {
+        screen: Register,
+        navigationOptions: {
+            header: null,
         }
-      },
-
-      Register:{
-        screen:Register,
-        navigationOptions:{
-          header:null,
-        }
-      },
-
-      ForgotPass:{
-        screen:ForgotPass,
-        navigationOptions:{
-          header:null,
-        }
-      },
-
-    DrawerStack:{
-      screen:DrawerStack,
-      navigationOptions:{
-        header:null,
-      }
     },
-  },
-      {
-      initialRouteName: 'DrawerStack',
-      },
-    
-    );
 
-
-
-  export default class App extends Component{
-
-    constructor(props, context) {
-      super(props, context);
-      this.state = {
-        logged: false,
-        loading: true,
-      };
-    };
-
-    async componentWillMount(){
-      const value = await AsyncStorage.getItem('email');
-      console.log(value);
-      if(value !== null){
-          this.setState({
-            logged: true,
-            loading:false,
-          });
-          return <RootStack1/>;
-      }
-      else{
-
-        this.setState({
-          loading:false,
-        })
-        return <RootStack/>;
+    ForgotPass: {
+        screen: ForgotPass,
+        navigationOptions: {
+            header: null,
         }
-    }
+    },
 
-    render(){
-      if (this.state.loading) {
-        return <View><Text>Loading...</Text></View>;
-      }
-      else if(this.state.logged && !this.state.loading)
-      return(  
-        <RootStack1/>
-      );
-      else
-      return(<RootStack/>)
+    DrawerStack: {
+        screen: DrawerStack,
+        navigationOptions: {
+            header: null,
+        }
+    },
+
+    Tables: {
+        screen: Tables,
+        navigationOptions: {
+            header: null
+        }
+    },
+
+    Starter: {
+        screen: Starter,
+        navigationOptions: {
+            header: null,
+        }
+    },
+},
+    {
+        initialRouteName: 'Starter',
+    },
+
+);
+
+export default class App extends Component {
+    render() {
+        return (<RootStack />);
     }
-  }
+}
