@@ -11,8 +11,9 @@ import * as url from '../../../../lib/api.js';
 import { apiCaller } from '../../../../lib/Fetcher.js';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+// import Stars from 'react-native-stars-rating';
 
-export default class Tables extends Component {
+export default class Beds extends Component {
 
     constructor(props) {
         super(props);
@@ -22,7 +23,7 @@ export default class Tables extends Component {
     }
 
     componentDidMount() {
-        return apiCaller(url.host + url.productListing + "?product_category_id=1", 'GET', {}, null,
+        return apiCaller(url.host + url.productListing + "?product_category_id=4", 'GET', {}, null,
             (response) => {
                 if (response.status == 200) {
                     this.setState({ dataArray: response.data });
@@ -40,11 +41,10 @@ export default class Tables extends Component {
     }
 
     render() {
-        console.log(this.state.dataArray)
         return (
             <View style={styles.container}>
                 <Header
-                    title={'Tables'}
+                    title={'Beds'}
                     mainTitle={false}
                     isDrawer={false}
                     isSearch={true}
@@ -70,7 +70,6 @@ export default class Tables extends Component {
                                             half={true}
                                             starSize={70}
                                             disabled={true}
-                                            backingColor={Colors.ratingBefore}
                                             fullStar={<Icon name={'star'} style={[styles.myStarStyle]} />}
                                             emptyStar={<Icon name={'star-outline'} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
                                             halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]} />}

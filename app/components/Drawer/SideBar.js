@@ -17,7 +17,7 @@ export default class SideBar extends Component {
 
     clearData = () => {
         AsyncStorage.removeItem('access_token', (err) => {
-            this.props.navigation.navigate('Login');
+            this.props.navigation.replace('Login');
         });
     }
 
@@ -54,7 +54,7 @@ export default class SideBar extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Cupboards')}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Beds')}>
                         <Icon name="building" style={styles.icon} />
                         <Text style={styles.options}>Cupboards</Text>
                     </TouchableOpacity>

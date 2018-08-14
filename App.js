@@ -18,7 +18,7 @@ import Starter from './app/components/screens/Starter/Starter.js';
 import Tables from './app/components/screens/ProductListing/Tables/Tables.js';
 import Sofas from './app/components/screens/ProductListing/Sofas/Sofas.js';
 import Chairs from './app/components/screens/ProductListing/Chairs/Chairs.js';
-import Cupboards from './app/components/screens/ProductListing/Cupboards/Cupboards.js';
+import Beds from './app/components/screens/ProductListing/Beds/Beds.js';
 
 
 const DrawerStack = createDrawerNavigator({
@@ -88,8 +88,8 @@ const RootStack = createStackNavigator({
         }
     },
 
-    Cupboards: {
-        screen: Cupboards,
+    Beds: {
+        screen: Beds,
         navigationOptions: {
             header: null
         }

@@ -71,7 +71,7 @@ export default class HomeScreen extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.rpartitions}>
-                            <TouchableOpacity style={styles.TO} onPress={() => this.props.navigation.navigate('Cupboards')}>
+                            <TouchableOpacity style={styles.TO} onPress={() => this.props.navigation.navigate('Beds')}>
                                 <Icon name="building" style={styles.icon4} />
                                 <Text style={styles.cTitle4}> Cupboards </Text>
                             </TouchableOpacity>

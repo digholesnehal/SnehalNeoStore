@@ -20,35 +20,49 @@ export default styles = StyleSheet.create({
     },
 
     img: {
-        height: 100,
-        width: 100,
+        height: '100%',
+        width: '100%',
     },
 
     itemRow: {
         flex: 1,
         flexDirection: 'row',
-        padding: 8,
+        padding: 12,
+        borderBottomColor: Colors.myCartSmallBG,
+        borderBottomWidth: 2,
     },
 
     productInfo: {
-        flex: 3,
+        flex: 2.5,
         flexDirection: 'column',
     },
 
     iName: {
         color: Colors.blackSecondary,
-        fontSize: Fonts.medium,
+        fontSize: Fonts.sMedium,
         fontWeight: Boldness.bookBM,
+        paddingLeft: 10,
     },
 
     iProducer: {
         color: Colors.blackSecondary,
         fontSize: Fonts.xxSmall,
+        paddingLeft: 10,
     },
 
     iCost: {
         color: Colors.tableRTxt,
-        fontSize: Fonts.mLarge,
+        fontSize: Fonts.lMedium,
         fontWeight: Boldness.bookBM,
+        padding: 10,
     },
+
+    myStarStyle: {
+        fontSize: 20,
+        color: Colors.ratingAfter,
+    },
+
+    myEmptyStarStyle: {
+        color: Colors.ratingBefore,
+    }
 })
