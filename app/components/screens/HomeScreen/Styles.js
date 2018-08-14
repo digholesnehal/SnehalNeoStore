@@ -12,14 +12,12 @@ export default styles = StyleSheet.create({
     },
 
     slide: {
-        justifyContent: 'flex-start',
-        alignSelf: 'center',
-        flex: 1,
+        flex: 3,
     },
 
     images: {
-        width: 380,
-        height: 225,
+        height: '100%',
+        width: '100%',
     },
 
     hsHeader: {
@@ -80,7 +78,7 @@ export default styles = StyleSheet.create({
         color: Colors.primary,
         fontSize: 25,
         fontWeight: '600',
-        padding: 10,
+        padding: Platform.OS === 'ios' ? 10 : 5,
         alignSelf: 'flex-end',
     },
 
@@ -88,7 +86,7 @@ export default styles = StyleSheet.create({
         color: Colors.primary,
         fontSize: 25,
         fontWeight: '600',
-        padding: 10,
+        padding: Platform.OS === 'ios' ? 10 : 5,
         alignSelf: 'flex-end',
     },
 
@@ -96,40 +94,40 @@ export default styles = StyleSheet.create({
         color: Colors.primary,
         fontSize: 25,
         fontWeight: '600',
-        padding: 10,
+        padding: Platform.OS === 'ios' ? 10 : 5,
     },
 
     cTitle4: {
         color: Colors.primary,
         fontSize: 25,
         fontWeight: '600',
-        padding: 10,
+        padding: Platform.OS === 'ios' ? 10 : 5,
         alignSelf: 'flex-end',
     },
 
     icon1: {
         fontSize: 80,
         color: Colors.primary,
-        padding: 15,
+        padding: Platform.OS === 'ios' ? 15 : 10,
     },
 
     icon2: {
         fontSize: 80,
         color: Colors.primary,
-        padding: 15,
+        padding: Platform.OS === 'ios' ? 15 : 10,
     },
 
     icon3: {
         fontSize: 80,
         color: Colors.primary,
-        padding: 15,
+        padding: Platform.OS === 'ios' ? 15 : 10,
         alignSelf: 'flex-end',
     },
 
     icon4: {
         fontSize: 80,
         color: Colors.primary,
-        padding: 15,
+        padding: Platform.OS === 'ios' ? 15 : 10,
     },
 
     TO: {

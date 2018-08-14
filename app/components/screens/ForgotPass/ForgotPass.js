@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import Header from '../../../components/Header/PageHeader/header.js';
+import Header from '../../../components/Header/header.js';
 import { primary } from '../../../utils/colors.js'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import * as url from '../../../lib/api';
@@ -67,7 +67,9 @@ export default class ForgotPass extends Component {
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
                     <Header
                         title={'Forgot Password'}
+                        mainTitle={false}
                         isDrawer={false}
+                        isSearch={false}
                         back={() => { this.props.navigation.goBack(null) }} />
                     <KeyboardAwareScrollView style={flex = 1}>
                         <View style={styles.fpHead}>

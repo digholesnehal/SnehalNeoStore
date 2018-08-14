@@ -1,6 +1,6 @@
 /** Globally used styles in app are declared here */
 
-import {  StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 export const appStyles = StyleSheet.create({
 
     bookM: {
@@ -9,7 +9,7 @@ export const appStyles = StyleSheet.create({
     bookB: {
         fontWeight: 'bold',
     },
-    bookBM:{
-        fontWeight: '600',
+    bookBM: {
+        fontWeight: '700',
     },
 });

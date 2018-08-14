@@ -1,10 +1,10 @@
-import {Platform, StyleSheet} from 'react-native';
-import {redHeader, primary} from '../../../utils/colors.js'
+import { Platform, StyleSheet } from 'react-native';
+import { redHeader, primary } from '../../utils/colors.js'
 
 export default styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        height: Platform.OS === 'ios'? 55: 50,
+        height: Platform.OS === 'ios' ? 55 : 50,
         width: '100%',
         backgroundColor: redHeader,
         alignItems: 'center'
@@ -17,12 +17,19 @@ export default styles = StyleSheet.create({
         width: '15%',
         alignItems: 'center'
     },
-    text: {
+    mainText: {
         alignItems: 'center',
         fontSize: 28,
         marginTop: 5,
         color: primary,
-        fontWeight:'bold',
+        fontWeight: 'bold',
+    },
+    text: {
+        alignSelf: 'center',
+        fontSize: 22,
+        marginTop: 5,
+        color: primary,
+        paddingBottom: 5,
     },
     menuIcon: {
         backgroundColor: 'transparent',

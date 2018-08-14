@@ -53,11 +53,12 @@ export default styles = StyleSheet.create({
         fontSize: 18,
         color: Colors.primary,
         fontWeight: FW.bookBM,
+        padding: 10,
     },
     icon: {
-        fontSize: Platform.OS === 'ios' ? 20 : 15,
+        fontSize: Platform.OS === 'ios' ? 20 : 18,
         color: Colors.primary,
-        paddingLeft: 10,
-        paddingRight: 10,
+        paddingTop: Platform.OS === 'ios' ? 10 : 14,
+        padding: Platform.OS === 'ios' ? 10 : 10,
     },
 });

@@ -30,7 +30,7 @@ export default class SideBar extends Component {
                     <Text style={styles.email}>snehal.dighole@neosofttech.com</Text>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
                         <Icon name="shopping-cart" style={styles.icon} />
                         <Text style={styles.options}>My Cart</Text>
                     </TouchableOpacity>
@@ -42,37 +42,37 @@ export default class SideBar extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Sofas')}>
                         <Icon name="archive" style={styles.icon} />
                         <Text style={styles.options}>Sofas</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Chairs')}>
                         <Icon name="cube" style={styles.icon} />
                         <Text style={styles.options}>Chairs</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Cupboards')}>
                         <Icon name="building" style={styles.icon} />
                         <Text style={styles.options}>Cupboards</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
                         <Icon name="user" style={styles.icon} />
                         <Text style={styles.options}>My Account</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
                         <Icon name="map-marker" style={styles.icon} />
                         <Text style={styles.options}>Store Locator</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
                         <Icon name="list-alt" style={styles.icon} />
                         <Text style={styles.options}>My Orders</Text>
                     </TouchableOpacity>

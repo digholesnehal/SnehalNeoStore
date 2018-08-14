@@ -8,7 +8,7 @@ import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'reac
 import styles from './Styles';
 import CheckBox from 'react-native-check-box';
 import * as Colors from '../../../utils/colors';
-import Header from '../../../components/Header/PageHeader/header.js';
+import Header from '../../../components/Header/header.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 import Keyboard from 'react-native-keyboard';
 import { AsyncStorage } from 'react-native';
@@ -149,7 +149,9 @@ export default class Register extends Component {
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
                     <Header
                         title={'Register'}
+                        mainTitle={false}
                         isDrawer={false}
+                        isSearch={false}
                         back={() => { this.props.navigation.goBack(null) }} />
                     <KeyboardAwareScrollView style={flex = 1}>
                         <View style={styles.regHead}>

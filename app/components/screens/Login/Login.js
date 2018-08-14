@@ -24,12 +24,11 @@ export default class Login extends Component {
         formData.append('email', this.state.username)
         formData.append('password', this.state.password)
         apiCaller(url.host + url.login, 'POST', {}, formData,
-            callBack = (response) => {
+            (response) => {
                 if (response.status == 200) {
                     AsyncStorage.setItem('access_token', response.data.access_token, () => {
                         apiCaller(url.host + url.fAccDetails, 'GET', {}, null,
                             (response) => {
-
                                 if (response.status == 200) { // Access Token valid please send to homescreen with response
                                     this.props.navigation.replace('DrawerStack', response);
                                 }
@@ -53,7 +52,6 @@ export default class Login extends Component {
                         alert(response.message);
                     }
                 }
-
             }
         );
     }
