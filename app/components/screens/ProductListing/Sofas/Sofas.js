@@ -11,7 +11,6 @@ import * as url from '../../../../lib/api.js';
 import { apiCaller } from '../../../../lib/Fetcher.js';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-// import Stars from 'react-native-stars-rating';
 
 export default class Sofas extends Component {
 
