@@ -51,6 +51,7 @@ export default class Tables extends Component {
                     back={() => { this.props.navigation.goBack(null) }} />
                 <FlatList
                     data={this.state.dataArray}
+                    keyExtractor={(item, index) => index + ""}
                     renderItem={({ item }) =>
                         <TouchableOpacity>
                             <View style={styles.itemRow}>
@@ -79,7 +80,8 @@ export default class Tables extends Component {
                                 </View>
                             </View>
                         </TouchableOpacity>
-                    } />
+                    }
+                />
             </View>
         );
     }

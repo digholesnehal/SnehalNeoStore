@@ -51,6 +51,7 @@ export default class Sofas extends Component {
                     back={() => { this.props.navigation.goBack(null) }} />
                 <FlatList
                     data={this.state.dataArray}
+                    keyExtractor={(item, index) => index + ""}
                     renderItem={({ item }) =>
                         <TouchableOpacity>
                             <View style={styles.itemRow}>

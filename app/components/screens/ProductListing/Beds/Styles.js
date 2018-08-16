@@ -12,6 +12,7 @@ export default styles = StyleSheet.create({
     cPartition: {
         flex: 1,
         flexDirection: 'row',
+        alignItems: 'center',
     },
 
     rPartition: {
