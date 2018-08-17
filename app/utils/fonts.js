@@ -14,5 +14,3 @@ export const large = 30;
 export const xLarge = 40;
 export const xxLarge = 50;
 export const largeBtn = 80;
-
-

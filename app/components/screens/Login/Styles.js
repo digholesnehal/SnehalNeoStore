@@ -1,139 +1,139 @@
-import {Platform, StyleSheet, Dimensions, } from 'react-native';
+import { Platform, StyleSheet, Dimensions, } from 'react-native';
 import * as Colors from '../../../utils/colors';
 
 export default styles = StyleSheet.create({
-    
-    container:{
-        flex:1,
+
+    container: {
+        flex: 1,
     },
-    
-    loginHead:{
+
+    loginHead: {
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'flex-end',
     },
 
-    headFont:{
+    headFont: {
         color: Colors.primary,
-        fontSize: Platform.OS === 'ios'?45:40,
+        fontSize: Platform.OS === 'ios' ? 45 : 40,
         fontWeight: 'bold',
-        paddingTop:Platform.OS === 'ios'?150:100,
-        padding:30,
+        paddingTop: Platform.OS === 'ios' ? 150 : 100,
+        padding: 30,
     },
-  
-    loginMid:{
+
+    loginMid: {
         flex: 8,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
     },
 
-    textField:{
+    textField: {
 
-        width:250,
-        height: Platform.OS === 'ios'?40:60,
-        fontSize: Platform.OS === 'ios'?20:17,
-        alignSelf:'center',
-        paddingLeft:15,
-        fontWeight:'500',
-        color:Colors.primary,
-        padding:10
+        width: 250,
+        height: Platform.OS === 'ios' ? 40 : 60,
+        fontSize: Platform.OS === 'ios' ? 20 : 17,
+        alignSelf: 'center',
+        paddingLeft: 15,
+        fontWeight: '500',
+        color: Colors.primary,
+        padding: 10
     },
 
-    user:{
-        flex:1,   
+    user: {
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'flex-end',
 
     },
-    pass:{
-        flex:1,   
+    pass: {
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        padding:Platform.OS === 'ios'?20:15,
+        padding: Platform.OS === 'ios' ? 20 : 15,
     },
 
-    buttonStyle:{
+    buttonStyle: {
         backgroundColor: Colors.primary,
-        width: Platform.OS === 'ios'?300:280,
-        height: Platform.OS === 'ios'?50:40,
+        width: Platform.OS === 'ios' ? 300 : 280,
+        height: Platform.OS === 'ios' ? 50 : 40,
         borderRadius: 5,
         color: Colors.redBtnTxt,
-        fontSize: Platform.OS === 'ios'?80:70,
+        fontSize: Platform.OS === 'ios' ? 80 : 70,
         fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
-      },
+    },
 
-      btnTxt:{
-        color:Colors.redBtnTxt,
-        fontSize: Platform.OS === 'ios'?30:25,
+    btnTxt: {
+        color: Colors.redBtnTxt,
+        fontSize: Platform.OS === 'ios' ? 30 : 25,
         fontWeight: 'bold',
     },
 
-    fgotPass:{
-        flex:1,   
+    fgotPass: {
+        flex: 1,
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
         color: Colors.primary,
-        fontSize: Platform.OS === 'ios'?20:18,
+        fontSize: Platform.OS === 'ios' ? 20 : 18,
         fontWeight: '600',
         // padding:5,
     },
 
-    icon:{
-        fontSize:Platform.OS === 'ios'?20:15,
+    icon: {
+        fontSize: Platform.OS === 'ios' ? 20 : 15,
         color: Colors.primary,
     },
 
-     userPass:{
-        height:Platform.OS === 'ios'?45:35,
-        width:280, 
+    userPass: {
+        height: Platform.OS === 'ios' ? 45 : 35,
+        width: 280,
         borderColor: Colors.primary,
         borderWidth: 1,
-        padding:Platform.OS === 'ios'?12:10,
-        margin:6,
+        padding: Platform.OS === 'ios' ? 12 : 10,
+        margin: 6,
         flexDirection: 'row',
-        justifyContent:'center',
+        justifyContent: 'center',
     },
-     
-    loginFoot:{
+
+    loginFoot: {
         flex: 3,
-        flexDirection:'column',
+        flexDirection: 'column',
         justifyContent: 'flex-end',
-        paddingTop: Platform.OS === 'ios'?120:180,
+        paddingTop: Platform.OS === 'ios' ? 120 : 180,
     },
 
-    noAcc:{
-        flex:5,
+    noAcc: {
+        flex: 5,
         color: Colors.primary,
-        fontSize: Platform.OS === 'ios'?20:18,
+        fontSize: Platform.OS === 'ios' ? 20 : 18,
         fontWeight: '600',
-        alignSelf:"flex-end",
-        marginBottom:Platform.OS === 'ios'?20:15,
+        alignSelf: "flex-end",
+        marginBottom: Platform.OS === 'ios' ? 20 : 15,
     },
 
-    newAcc:{
-        flex:1,
+    newAcc: {
+        flex: 1,
         backgroundColor: Colors.redAddAccBtn,
-        width: Platform.OS === 'ios'?60:40,
-        height: Platform.OS === 'ios'?60:50,
-        alignSelf:"flex-end",
-        alignItems:'center',
+        width: Platform.OS === 'ios' ? 60 : 40,
+        height: Platform.OS === 'ios' ? 60 : 50,
+        alignSelf: "flex-end",
+        alignItems: 'center',
         justifyContent: 'center',
 
     },
 
-    bottom:{
-        flex:1,
-        flexDirection:'row',
-        alignSelf:"baseline",
-        padding:Platform.OS === 'ios'?12:10,
-        alignItems:'center',
-        justifyContent:'flex-end',
+    bottom: {
+        flex: 1,
+        flexDirection: 'row',
+        alignSelf: "baseline",
+        padding: Platform.OS === 'ios' ? 12 : 10,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
     },
 
 });

@@ -23,7 +23,6 @@ export default class HomeScreen extends Component {
     swiperContent = (data) => {
         let returnData = [];
         for (let i = 0; i < 4; i++) {
-            console.log(data[i]);
             returnData.push(
                 <View key={"k" + i} style={styles.slide}>
                     <Image style={styles.images} source={{ uri: data[i].icon_image }} />
@@ -51,13 +50,13 @@ export default class HomeScreen extends Component {
                 <View style={styles.components}>
                     <View style={styles.cpartitions}>
                         <View style={styles.rpartitions}>
-                            <TouchableOpacity style={styles.TO} onPress={() => this.props.navigation.navigate('Tables')}>
+                            <TouchableOpacity style={styles.TO} onPress={() => this.props.navigation.navigate('ProductList', { ID: 1, Name: 'Tables' })}>
                                 <Text style={styles.cTitle1}> Tables </Text>
                                 <Icon name="columns" style={styles.icon1} />
                             </TouchableOpacity>
                         </View>
                         <View style={styles.rpartitions}>
-                            <TouchableOpacity style={styles.TO} onPress={() => this.props.navigation.navigate('Chairs')}>
+                            <TouchableOpacity style={styles.TO} onPress={() => this.props.navigation.navigate('ProductList', { ID: 2, Name: 'Chairs' })} >
                                 <Text style={styles.cTitle2}> Chairs </Text>
                                 <Icon name="cube" style={styles.icon2} />
                             </TouchableOpacity>
@@ -65,13 +64,13 @@ export default class HomeScreen extends Component {
                     </View>
                     <View style={styles.cpartitions}>
                         <View style={styles.rpartitions}>
-                            <TouchableOpacity style={styles.TO} onPress={() => this.props.navigation.navigate('Sofas')}>
+                            <TouchableOpacity style={styles.TO} onPress={() => this.props.navigation.navigate('ProductList', { ID: 3, Name: 'Sofas' })} >
                                 <Icon name="archive" style={styles.icon3} />
                                 <Text style={styles.cTitle3}> Sofas </Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.rpartitions}>
-                            <TouchableOpacity style={styles.TO} onPress={() => this.props.navigation.navigate('Beds')}>
+                            <TouchableOpacity style={styles.TO} onPress={() => this.props.navigation.navigate('ProductList', { ID: 4, Name: 'Cupboards' })} >
                                 <Icon name="building" style={styles.icon4} />
                                 <Text style={styles.cTitle4}> Cupboards </Text>
                             </TouchableOpacity>

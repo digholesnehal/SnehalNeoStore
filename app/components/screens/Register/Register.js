@@ -13,6 +13,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import Keyboard from 'react-native-keyboard';
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
+import Loader from '../../Loader/Loader.js';
+import { DEFAULT_ICON_SIZE } from 'react-native-vector-icons/dist/lib/create-icon-set';
 
 var gender = [
     { label: "Male", value: 0 },
@@ -32,6 +34,9 @@ export default class Register extends Component {
             mobile: '7588961004',
             check: false,
         }
+        this.state = {
+            loader: false,
+        }
     }
 
     register() {
@@ -43,9 +48,10 @@ export default class Register extends Component {
         formData.append('confirm_password', this.state.cpassword)
         formData.append('gender', this.state.gender)
         formData.append('phone_no', this.state.mobile)
+        this.setState({ loader: true })
         apiCaller(url.host + url.register, 'POST', {}, formData,
             callBack = (response) => {
-
+                this.setState({ loader: false })
                 if (response.status == 200) {
                     AsyncStorage.setItem('first_name', this.state.firstname)
                     AsyncStorage.setItem('last_name', this.state.lastname)
@@ -153,6 +159,7 @@ export default class Register extends Component {
                         isDrawer={false}
                         isSearch={false}
                         back={() => { this.props.navigation.goBack(null) }} />
+                    {this.state.loader ? <Loader /> : null}
                     <KeyboardAwareScrollView style={flex = 1}>
                         <View style={styles.regHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>

@@ -1,7 +1,7 @@
 import { Platform, StyleSheet, Dimensions, } from 'react-native';
-import * as Colors from '../../../../utils/colors.js';
-import * as Fonts from '../../../../utils/fonts.js';
-import * as Boldness from '../../../../styles/appStyles.js'
+import * as Colors from '../../../utils/colors';
+import * as Fonts from '../../../utils/fonts.js';
+import * as Boldness from '../../../styles/appStyles.js'
 
 export default styles = StyleSheet.create({
     container: {
@@ -35,7 +35,7 @@ export default styles = StyleSheet.create({
     },
 
     productInfo: {
-        flex: 3,
+        flex: 2.5,
         flexDirection: 'column',
     },
 
@@ -66,5 +66,20 @@ export default styles = StyleSheet.create({
 
     myEmptyStarStyle: {
         color: Colors.ratingBefore,
-    }
+    },
+
+    footer: {
+        height: '3%',
+        width: '15%',
+        marginBottom: '2%',
+        alignSelf: 'center',
+        backgroundColor: Colors.blackPrimary,
+    },
+
+    counter: {
+        marginTop: '3%',
+        color: Colors.primary,
+        alignSelf: 'center',
+        fontSize: Platform.OS.ios ? 15 : 12,
+    },
 })

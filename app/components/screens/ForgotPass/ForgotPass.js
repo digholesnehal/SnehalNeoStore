@@ -11,6 +11,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import * as url from '../../../lib/api';
 import { AsyncStorage } from 'react-native';
 import { apiCaller } from '../../../lib/Fetcher';
+import Loader from '../../Loader/Loader.js';
 
 export default class ForgotPass extends Component {
 
@@ -19,6 +20,7 @@ export default class ForgotPass extends Component {
 
         this.state = {
             email: 'snehal.dighole@neosofttech.com',
+            loader: false,
         }
     }
 
@@ -26,9 +28,10 @@ export default class ForgotPass extends Component {
         let formData = new FormData();
         formData.append('email', this.state.email)
         AsyncStorage.setItem('email', this.state.email)
-        console.log(formData)
+        this.setState({ loader: true })
         apiCaller(url.host + url.forgot, 'POST', {}, formData,
             callBack = (response) => {
+                this.setState({ loader: false })
                 if (response.status == 200) {
                     AsyncStorage.getItem('email').then((value) => {
                     })
@@ -71,6 +74,7 @@ export default class ForgotPass extends Component {
                         isDrawer={false}
                         isSearch={false}
                         back={() => { this.props.navigation.goBack(null) }} />
+                    {this.state.loader ? <Loader /> : null}
                     <KeyboardAwareScrollView style={flex = 1}>
                         <View style={styles.fpHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>

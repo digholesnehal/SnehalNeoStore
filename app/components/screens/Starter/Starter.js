@@ -9,17 +9,23 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher';
+import Loader from '../../Loader/Loader.js';
+
 
 export default class Starter extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            loader: false,
+        }
     }
 
     componentDidMount() {
         AsyncStorage.getItem('access_token').then((value) => {
             //Check if the value exists or not
             if (value !== null) {
+                this.setState({ loader: true })
                 //Check if the accesstoken is valid or not by calling the api.
                 apiCaller(url.host + url.fAccDetails, 'GET', {}, null, callback = (response) => {
                     if (response.status == 200) { // Access Token valid please send to homescreen with response
@@ -31,12 +37,6 @@ export default class Starter extends Component {
                         });
                     }
                 })
-                    .catch((error) => {
-                        //Some error. Navigate to login.
-                        console.log(error.message);
-                        this.props.navigation.replace('Login');
-
-                    })
             }
             else { // accesstoken doesnt exists please navigate to login
                 this.props.navigation.replace('Login');
@@ -53,6 +53,7 @@ export default class Starter extends Component {
         return (
             <View style={styles.container}>
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
+                    {this.state.loader ? <Loader /> : null}
                     <View style={styles.Head}>
                         <Text style={styles.headFont}> NeoSTORE </Text>
                     </View>

@@ -15,10 +15,8 @@ import Register from './app/components/screens/Register/Register.js'
 import HomeScreen from './app/components/screens/HomeScreen/HomeScreen.js'
 import SideBar from "./app/components/Drawer/SideBar.js";
 import Starter from './app/components/screens/Starter/Starter.js';
-import Tables from './app/components/screens/ProductListing/Tables/Tables.js';
-import Sofas from './app/components/screens/ProductListing/Sofas/Sofas.js';
-import Chairs from './app/components/screens/ProductListing/Chairs/Chairs.js';
-import Beds from './app/components/screens/ProductListing/Beds/Beds.js';
+import ProductList from './app/components/screens/ProductListing/ProductList.js';
+import ProductDetail from './app/components/screens/ProductDetail/ProductDetail.js';
 
 
 const DrawerStack = createDrawerNavigator({
@@ -67,29 +65,15 @@ const RootStack = createStackNavigator({
         }
     },
 
-    Tables: {
-        screen: Tables,
+    ProductList: {
+        screen: ProductList,
         navigationOptions: {
             header: null
         }
     },
 
-    Chairs: {
-        screen: Chairs,
-        navigationOptions: {
-            header: null
-        }
-    },
-
-    Sofas: {
-        screen: Sofas,
-        navigationOptions: {
-            header: null
-        }
-    },
-
-    Beds: {
-        screen: Beds,
+    ProductDetail: {
+        screen: ProductDetail,
         navigationOptions: {
             header: null
         }

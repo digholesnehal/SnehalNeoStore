@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Platform, StyleSheet, Dimensions, Text, View,
-    ImageBackground, TextInput, TouchableOpacity
+    ImageBackground, TextInput, TouchableOpacity, ActivityIndicator
 } from 'react-native';
 import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
@@ -9,6 +9,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
+import Loader from '../../Loader/Loader.js';
 
 export default class Login extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ export default class Login extends Component {
         this.state = {
             username: 'digholesnehal@gmail.com',
             password: '123456789',
+            loader: false,
         }
     }
 
@@ -23,9 +25,12 @@ export default class Login extends Component {
         let formData = new FormData();
         formData.append('email', this.state.username)
         formData.append('password', this.state.password)
+        this.setState({ loader: true })
         apiCaller(url.host + url.login, 'POST', {}, formData,
             (response) => {
+                this.setState({ loader: false })
                 if (response.status == 200) {
+
                     AsyncStorage.setItem('access_token', response.data.access_token, () => {
                         apiCaller(url.host + url.fAccDetails, 'GET', {}, null,
                             (response) => {
@@ -70,6 +75,7 @@ export default class Login extends Component {
         return (
             <View style={styles.container}>
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
+                    {this.state.loader ? <Loader /> : null}
                     <KeyboardAwareScrollView style={flex = 1}>
                         <View style={styles.loginHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>

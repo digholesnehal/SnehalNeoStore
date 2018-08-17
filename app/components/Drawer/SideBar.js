@@ -36,25 +36,25 @@ export default class SideBar extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 1, Name: 'Tables' })}>
                         <Icon name="columns" style={styles.icon} />
                         <Text style={styles.options}>Tables</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Sofas')}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 3, Name: 'Sofas' })}>
                         <Icon name="archive" style={styles.icon} />
                         <Text style={styles.options}>Sofas</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Chairs')}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 2, Name: 'Chairs' })}>
                         <Icon name="cube" style={styles.icon} />
                         <Text style={styles.options}>Chairs</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Beds')}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 4, Name: 'Cupboards' })}>
                         <Icon name="building" style={styles.icon} />
                         <Text style={styles.options}>Cupboards</Text>
                     </TouchableOpacity>
