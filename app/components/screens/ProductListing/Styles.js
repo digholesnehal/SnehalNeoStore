@@ -77,7 +77,7 @@ export default styles = StyleSheet.create({
     },
 
     counter: {
-        marginTop: '3%',
+        marginTop: Platform.OS === 'ios' ? '3%' : '0%',
         color: Colors.primary,
         alignSelf: 'center',
         fontSize: Platform.OS.ios ? 15 : 12,

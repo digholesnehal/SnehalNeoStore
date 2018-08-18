@@ -29,7 +29,6 @@ export default class ProductList extends Component {
     }
 
     componentDidMount() {
-        this.setState({ loader: true })
         this.fetchResult();
     }
 

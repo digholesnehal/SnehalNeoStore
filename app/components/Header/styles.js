@@ -27,6 +27,7 @@ export default styles = StyleSheet.create({
     text: {
         alignSelf: 'center',
         fontSize: 22,
+        fontWeight: Platform.OS === 'ios' ? '500' : 'normal',
         marginTop: 5,
         color: primary,
         paddingBottom: 5,
@@ -35,5 +36,4 @@ export default styles = StyleSheet.create({
         backgroundColor: 'transparent',
         marginLeft: 10
     }
-
 });

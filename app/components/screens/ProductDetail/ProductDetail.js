@@ -23,12 +23,14 @@ export default class ProductList extends Component {
             loader: false,
             product_id: this.props.navigation.state.params.ID,
             category: this.props.navigation.state.params.category,
+            URI: 'abc',
+            horizontalScroll: false,
         }
     }
 
     componentDidMount() {
         this.setState({ loader: true })
-        const { dataArray } = this.state
+        const { dataArray, URI } = this.state
         return apiCaller(
             url.host + url.productDetailing + "?product_id=" + this.state.product_id,
             'GET', {}, null,
@@ -37,8 +39,9 @@ export default class ProductList extends Component {
                 if (response.status == 200) {
                     this.setState({
                         dataArray: response.data,
+                        URI: response.data.product_images[0].image,
                     });
-                    console.log('dataArray', this.state.dataArray)
+                    response.data.product_images.length > 2 ? this.setState({ horizontalScroll: true }) : null
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
@@ -53,31 +56,28 @@ export default class ProductList extends Component {
 
     }
     imgContent = (data) => {
-        console.log("m here", data)
         let returnData = [];
         for (let i = 0; i < data.length; i++) {
             returnData.push(
-                <TouchableOpacity key={"k" + i} onPress={() => this.bigImg(data, i)}>
-                    <Image style={styles.img} source={{ uri: data[i].image }} />
+                <TouchableOpacity key={"k" + i} onPress={() => this.setState({ URI: data[i].image })}>
+                    {console.log('hey', data[i].image)}
+                    {(this.state.URI === data[i].image) ? <Image source={{ uri: data[i].image }} style={styles.Rimg} /> : <Image source={{ uri: data[i].image }} style={styles.Gimg} />}
                 </TouchableOpacity>
             );
         }
         return returnData;
     }
-    bigImg = (data, i) => {
-        console.log("m again here", data, i)
-        return ()
-    }
+
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <Header
                     title={this.state.dataArray.name}
                     mainTitle={false}
                     isDrawer={false}
                     isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
-                <ScrollView>
+                <ScrollView >
                     {this.state.loader ? <Loader /> : null}
                     <View style={styles.Details}>
                         <View >
@@ -117,13 +117,28 @@ export default class ProductList extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.largeImg}>
-                            <Image style={styles.img} source={{ uri: this.state.URI.image }} />
+                            {this.state.URI !== 'abc' ? <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
+                                : null}
                         </View>
-                        <View style={styles.subImages}>
-                            {this.state.dataArray.product_images !== undefined ? this.imgContent(this.state.dataArray.product_images) : null}
+                        <ScrollView horizontal={this.state.horizontalScroll}>
+                            <View style={styles.subImages}>
+                                {this.state.dataArray.product_images !== undefined ? this.imgContent(this.state.dataArray.product_images) : null}
+                            </View>
+                        </ScrollView>
+
+                        <View style={styles.Description}>
+                            <Text style={styles.heading}>DESCRIPTION</Text>
+                            <Text style={styles.normalTxt}>{this.state.dataArray.description}</Text>
                         </View>
                     </View>
-
+                    <View style={styles.footerBtn}>
+                        <TouchableOpacity style={styles.BuyNow}>
+                            <Text style={styles.BuyNowTxt}> BUY NOW </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.Rate}>
+                            <Text style={styles.RateTxt}> RATE </Text>
+                        </TouchableOpacity>
+                    </View>
                 </ScrollView>
             </View>
         )

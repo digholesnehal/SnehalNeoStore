@@ -10,13 +10,13 @@ export default styles = StyleSheet.create({
         backgroundColor: Colors.primary,
         padding: 10,
     },
-    NameView: {
+    container: {
         flex: 1,
     },
     Name: {
         color: Colors.proHeading,
         fontSize: size.mLarge,
-        fontWeight: weight.bookBM,
+        fontWeight: Platform.OS === 'ios' ? '500' : '400',
     },
     categoryView: {
         flex: 1,
@@ -44,7 +44,7 @@ export default styles = StyleSheet.create({
         color: Colors.ratingBefore,
     },
     imgGrp: {
-        flex: 5,
+        flex: 8,
         flexDirection: 'column',
         margin: 10,
         backgroundColor: Colors.primary,
@@ -60,21 +60,94 @@ export default styles = StyleSheet.create({
     price: {
         color: Colors.redBtnTxt,
         fontSize: size.lMedium,
-        fontWeight: weight.bookB,
+        fontWeight: Platform.OS === 'ios' ? '500' : '400',
     },
     largeImg: {
-        flex: 5,
+        flex: 6,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 10,
     },
     subImages: {
         flex: 3,
         flexDirection: 'row',
+        justifyContent: 'center',
+        paddingBottom: 20,
+        padding: 5,
+    },
+    Rimg: {
+        height: 90,
+        width: 105,
+        marginTop: 0,
+        margin: Platform.OS === 'ios' ? 5 : 3,
+        borderColor: Colors.redBtnBG,
+        borderWidth: 1,
+    },
+    Gimg: {
+        height: 90,
+        width: 105,
+        marginTop: 0,
+        margin: Platform.OS === 'ios' ? 5 : 3,
+        borderColor: Colors.ratingBefore,
+        borderWidth: 0.7,
+    },
+    Bimg: {
+        height: 200,
+        width: 300,
+        borderColor: Colors.gRadioUnchecked,
+        borderWidth: 0.5,
+    },
+    Description: {
+        flex: 3,
+        paddingTop: 10,
+        paddingLeft: 10,
+        borderTopColor: Colors.gRadioUnchecked,
+        borderTopWidth: 1,
+    },
+    heading: {
+        color: Colors.sbarBGdesc,
+        fontSize: size.sMedium,
+        fontWeight: '700',
+    },
+    normalTxt: {
+        color: Colors.sbarBGdesc,
+        fontSize: size.xSmall,
+        fontWeight: 'normal',
+        paddingTop: 3,
+        paddingBottom: 10,
+    },
+    footerBtn: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: Colors.primary,
         justifyContent: 'space-around',
+        alignItems: 'center',
+        padding: 10,
     },
-    img: {
-        height: 100,
-        width: 100,
+    BuyNow: {
+        backgroundColor: Colors.redBtnTxt,
+        width: Platform.OS === 'ios' ? 170 : 160,
+        height: Platform.OS === 'ios' ? 40 : 40,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    Limg: {
-
+    BuyNowTxt: {
+        color: Colors.primary,
+        fontSize: Platform.OS === 'ios' ? size.medium : size.medium,
+        fontWeight: '500',
+    },
+    Rate: {
+        backgroundColor: Colors.gRadioUnchecked,
+        width: Platform.OS === 'ios' ? 170 : 160,
+        height: Platform.OS === 'ios' ? 40 : 40,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    RateTxt: {
+        color: Colors.rateText,
+        fontSize: Platform.OS === 'ios' ? size.medium : size.medium,
+        fontWeight: '500',
     },
 });

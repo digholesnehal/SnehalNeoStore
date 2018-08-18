@@ -61,8 +61,6 @@ export default styles = StyleSheet.create({
         height: Platform.OS === 'ios' ? 50 : 40,
         borderRadius: 5,
         color: Colors.redBtnTxt,
-        fontSize: Platform.OS === 'ios' ? 80 : 70,
-        fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -81,7 +79,6 @@ export default styles = StyleSheet.create({
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 20 : 18,
         fontWeight: '600',
-        // padding:5,
     },
 
     icon: {
