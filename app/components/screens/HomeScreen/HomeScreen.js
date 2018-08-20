@@ -43,7 +43,7 @@ export default class HomeScreen extends Component {
                         this.props.navigation.openDrawer(this.Drawer);
                     }} />
                 <View style={styles.swipe}>
-                    <Swiper activeDotColor={Colors.enterQtyB} dotColor={Colors.redHeader}>
+                    <Swiper activeDotColor={Colors.enterQtyB} dotColor={Colors.redHeader} autoplay={true}>
                         {this.swiperContent(this.product_categories)}
                     </Swiper>
                 </View>

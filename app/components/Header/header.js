@@ -21,8 +21,7 @@ class Header extends Component {
                 <View style={styles.Titlecontainer}>
                     {this.props.mainTitle ? <Text style={styles.mainText}>{this.props.title}</Text> : <Text style={styles.text}>{this.props.title}</Text>}
                 </View>
-                <TouchableOpacity style={styles.Backcontainer}
-                    onPress={this.props.back}>
+                <TouchableOpacity style={styles.Backcontainer}>
                     {this.props.isSearch ? <FeatherIcon name="search" size={26} style={styles.menuIcon} color={primary} /> : null}
                 </TouchableOpacity>
             </View>

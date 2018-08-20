@@ -7,6 +7,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "add": "^2.0.6",
+    "or": "^0.2.0",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-check-box": "^2.1.0",
@@ -17,13 +19,16 @@
     "react-native-keyboard-aware-scroll-view": "^0.6.0",
     "react-native-keyboard-aware-scrollview": "^2.0.0",
     "react-native-lazyload-deux": "^2.0.4",
+    "react-native-modal": "^6.5.0",
     "react-native-modest-checkbox": "^3.0.2",
+    "react-native-popupwindow": "^0.3.0",
     "react-native-simple-radio-button": "^2.7.2",
     "react-native-stars": "^1.1.5",
     "react-native-stars-rating": "^0.1.7",
     "react-native-swiper": "^1.5.13",
     "react-native-vector-icons": "^5.0.0",
-    "react-navigation": "^2.9.3"
+    "react-navigation": "^2.9.3",
+    "yarn": "^1.9.4"
   },
   "devDependencies": {
     "babel-jest": "23.4.2",

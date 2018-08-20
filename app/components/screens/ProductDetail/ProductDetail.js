@@ -13,7 +13,7 @@ import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Loader from '../../Loader/Loader.js';
 import Feather from 'react-native-vector-icons/dist/Feather';
-
+import Modal from "react-native-modal";
 
 export default class ProductList extends Component {
     constructor(props) {
@@ -25,6 +25,7 @@ export default class ProductList extends Component {
             category: this.props.navigation.state.params.category,
             URI: 'abc',
             horizontalScroll: false,
+            buyNowVisible: false,
         }
     }
 
@@ -55,12 +56,16 @@ export default class ProductList extends Component {
         );
 
     }
+
+    BuyNowPopUp() {
+        this.setState({ buyNowVisible: true })
+    }
+
     imgContent = (data) => {
         let returnData = [];
         for (let i = 0; i < data.length; i++) {
             returnData.push(
                 <TouchableOpacity key={"k" + i} onPress={() => this.setState({ URI: data[i].image })}>
-                    {console.log('hey', data[i].image)}
                     {(this.state.URI === data[i].image) ? <Image source={{ uri: data[i].image }} style={styles.Rimg} /> : <Image source={{ uri: data[i].image }} style={styles.Gimg} />}
                 </TouchableOpacity>
             );
@@ -77,8 +82,9 @@ export default class ProductList extends Component {
                     isDrawer={false}
                     isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
+                {this.state.loader ? <Loader /> : null}
+
                 <ScrollView >
-                    {this.state.loader ? <Loader /> : null}
                     <View style={styles.Details}>
                         <View >
                             <Text style={styles.Name}>
@@ -132,12 +138,19 @@ export default class ProductList extends Component {
                         </View>
                     </View>
                     <View style={styles.footerBtn}>
-                        <TouchableOpacity style={styles.BuyNow}>
+                        <TouchableOpacity style={styles.BuyNow} onPress={() => {
+                            this.BuyNowPopUp();
+                        }}>
                             <Text style={styles.BuyNowTxt}> BUY NOW </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.Rate}>
                             <Text style={styles.RateTxt}> RATE </Text>
                         </TouchableOpacity>
+                    </View>
+                    {/* modal for buy now */}
+                    <View style={{ marginTop: 30 }}>
+                        <Modal visible={this.state.buyNowVisible} style={styles.modalView}>
+                        </Modal>
                     </View>
                 </ScrollView>
             </View>

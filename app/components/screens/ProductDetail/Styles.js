@@ -150,4 +150,14 @@ export default styles = StyleSheet.create({
         fontSize: Platform.OS === 'ios' ? size.medium : size.medium,
         fontWeight: '500',
     },
+    modalView: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: Colors.primary,
+        borderRadius: 5,
+        paddingTop: 60,
+
+    },
 });
