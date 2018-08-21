@@ -10,9 +10,6 @@ export default class SideBar extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-        console.log(this
-            .props
-            .navigation);
     }
 
     clearData = () => {
@@ -60,7 +57,7 @@ export default class SideBar extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
+                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('MyAccount')}>
                         <Icon name="user" style={styles.icon} />
                         <Text style={styles.options}>My Account</Text>
                     </TouchableOpacity>

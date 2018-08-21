@@ -13,37 +13,38 @@ import Loader from '../../Loader/Loader.js';
 import Header from '../../Header/header.js';
 
 
-export default class MyAccount extends Component {
+export default class EditProfile extends Component {
     constructor(props) {
         super(props);
+        console.log(props)
+        this.first_name = props.navigation.state.params.first_name;
+        this.last_name = props.navigation.state.params.last_name;
+        this.email = props.navigation.state.params.email;
+        this.phone_no = props.navigation.state.params.phone_no;
+        this.dob = props.navigation.state.params.dob;
         this.state = {
-            user_data: [],
             loader: false,
-            first_name: '',
-            last_name: '',
-            email: '',
-            phone_no: '',
-            dob: '',
+            access_token: '',
         }
     }
 
     componentDidMount() {
         this.setState({ loader: true })
-        const { first_name, last_name, email, phone_no, dob } = this.state
+        AsyncStorage.getItem('access_token').then((value) => {
+            this.setState({ access_token: value })
+        })
+        let formData = new FormData();
+        formData.append('first_name', this.first_name)
+        formData.append('last_name', this.last_name)
+        formData.append('email', this.email)
+        formData.append('phone_no', this.phone_no)
+        formData.append('dob', this.dob)
         return apiCaller(
-            url.host + url.fAccDetails,
-            'GET', {}, null,
+            url.host + url.update,
+            'POST', { access_token: this.state.access_token }, formData,
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
-                    this.setState({
-                        user_data: response.data.user_data,
-                        first_name: response.data.user_data.first_name,
-                        last_name: response.data.user_data.last_name,
-                        email: response.data.user_data.email,
-                        phone_no: response.data.user_data.phone_no,
-                        dob: response.data.user_data.dob,
-                    });
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
@@ -62,7 +63,7 @@ export default class MyAccount extends Component {
             <View style={styles.container}>
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
                     <Header
-                        title={'My Account'}
+                        title={'Edit Profile'}
                         mainTitle={false}
                         isDrawer={false}
                         isSearch={true}
@@ -74,40 +75,36 @@ export default class MyAccount extends Component {
                     <View style={styles.mid}>
                         <View style={styles.textFieldView}>
                             <Icon name="user" style={styles.icon} />
-                            <TextInput style={styles.textField} value={this.state.first_name} editable={false}>
+                            <TextInput style={styles.textField} value={this.first_name}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="user" style={styles.icon} />
-                            <TextInput style={styles.textField} value={this.state.last_name} editable={false}>
+                            <TextInput style={styles.textField} value={this.last_name}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="envelope" style={styles.envelope} />
-                            <TextInput style={styles.textField} value={this.state.email} editable={false}>
+                            <TextInput style={styles.textField} value={this.email}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="mobile" style={styles.iconPhn} />
-                            <TextInput style={styles.textField} value={this.state.phone_no} editable={false}>
+                            <TextInput style={styles.textField} value={this.phone_no}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="birthday-cake" style={styles.iconCake} />
-                            <TextInput style={styles.textField} value={this.state.dob} editable={false}>
+                            <TextInput style={styles.textField} value={this.dob}>
                             </TextInput>
                         </View>
                     </View>
                     <View style={styles.btnView}>
-                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('EditProfile', this.state.user_data)}>
-                            <Text style={styles.btnTxt}> EDIT PROFILE </Text>
+                        <TouchableOpacity style={styles.buttonStyle}>
+                            <Text style={styles.btnTxt}> SUBMIT </Text>
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.resetPass}>
-                        <TouchableOpacity>
-                            <Text style={styles.ResetBtnTxt}> RESET PASSWORD </Text>
-                        </TouchableOpacity>
-                    </View>
+
                 </ImageBackground>
             </View>
         )

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
     Platform, Dimensions, StyleSheet, Text, View,
-    TextInput, TouchableOpacity, FlatList, Image, ScrollView
+    TextInput, TouchableOpacity, FlatList, Image,
+    ScrollView, KeyboardAvoidingView
 } from 'react-native';
 import styles from './Styles';
 import * as Colors from '../../../utils/colors.js';
@@ -14,6 +15,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Loader from '../../Loader/Loader.js';
 import Feather from 'react-native-vector-icons/dist/Feather';
 import Modal from "react-native-modal";
+import Share from 'react-native-share';
+
 
 export default class ProductList extends Component {
     constructor(props) {
@@ -26,6 +29,11 @@ export default class ProductList extends Component {
             URI: 'abc',
             horizontalScroll: false,
             buyNowVisible: false,
+            RatingVisible: false,
+            opacity: 1,
+            Qty: '',
+            access_token: '',
+            stars: ''
         }
     }
 
@@ -56,9 +64,67 @@ export default class ProductList extends Component {
         );
 
     }
+    Submit(Qty) {
+        AsyncStorage.getItem('access_token').then((value) => {
+            this.setState({ access_token: value })
+        })
+        this.setState({ loader: true })
+        let formData = new FormData();
+        formData.append('quantity', this.state.Qty)
+        formData.append('product_id', this.state.product_id)
+        apiCaller(url.host + url.AddToCart, 'POST', { access_token: this.state.access_token }, formData,
+            (response) => {
+                console.log('url=', url.host + url.AddToCart)
+                this.setState({ loader: false })
+                if (response.status == 200) {
+                    this.BuyNowPopUp(!this.state.buyNowVisible)
+                }
+                else {
+                    if (response.hasOwnProperty('user_msg')) {
+                        console.log(response.status)
 
-    BuyNowPopUp() {
-        this.setState({ buyNowVisible: true })
+                        alert(response.user_msg);
+                    }
+                    else {
+                        alert(response.message);
+                    }
+                }
+            }
+        );
+    }
+    Rate() {
+        this.setState({ loader: true })
+        let formData = new FormData();
+        formData.append('rating', this.state.stars)
+        formData.append('product_id', this.state.product_id)
+        apiCaller(url.host + url.Rating, 'POST', {}, formData,
+            (response) => {
+                this.setState({ loader: false })
+                if (response.status == 200) {
+                    this.setState({ dataArray: response.data, })
+                    this.RatingPopUp(!this.state.RatingVisible)
+                }
+                else {
+                    if (response.hasOwnProperty('user_msg')) {
+                        alert(response.user_msg);
+                    }
+                    else {
+
+                        alert(response.message);
+                    }
+                }
+            }
+        );
+    }
+
+    RatingPopUp(visible) {
+        this.setState({ RatingVisible: visible })
+        visible ? this.setState({ opacity: 0.3 }) : this.setState({ opacity: 1 });
+    }
+
+    BuyNowPopUp(visible) {
+        this.setState({ buyNowVisible: visible })
+        visible ? this.setState({ opacity: 0.3 }) : this.setState({ opacity: 1 });
     }
 
     imgContent = (data) => {
@@ -75,7 +141,7 @@ export default class ProductList extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, { opacity: this.state.opacity }]}>
                 <Header
                     title={this.state.dataArray.name}
                     mainTitle={false}
@@ -84,14 +150,14 @@ export default class ProductList extends Component {
                     back={() => { this.props.navigation.goBack(null) }} />
                 {this.state.loader ? <Loader /> : null}
 
-                <ScrollView >
+                <ScrollView>
                     <View style={styles.Details}>
                         <View >
                             <Text style={styles.Name}>
                                 {this.state.dataArray.name}
                             </Text>
                         </View>
-                        <View style={styles.categoryView}>
+                        <View style={styles.container}>
                             <Text style={styles.category}>
                                 Category - {this.state.category}
                             </Text>
@@ -138,20 +204,85 @@ export default class ProductList extends Component {
                         </View>
                     </View>
                     <View style={styles.footerBtn}>
-                        <TouchableOpacity style={styles.BuyNow} onPress={() => {
-                            this.BuyNowPopUp();
-                        }}>
+                        <TouchableOpacity style={styles.BuyNow} onPress={() => { this.BuyNowPopUp(!this.state.buyNowVisible); }}>
                             <Text style={styles.BuyNowTxt}> BUY NOW </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.Rate}>
+                        <TouchableOpacity style={styles.Rate} onPress={() => { this.RatingPopUp(!this.state.RatingVisible); }}>
                             <Text style={styles.RateTxt}> RATE </Text>
                         </TouchableOpacity>
                     </View>
                     {/* modal for buy now */}
-                    <View style={{ marginTop: 30 }}>
-                        <Modal visible={this.state.buyNowVisible} style={styles.modalView}>
-                        </Modal>
-                    </View>
+                    <Modal visible={this.state.buyNowVisible} style={styles.modalView} transparent={true}>
+                        <View style={{ flex: 2 }}></View>
+                        <View style={styles.modalInnerView}>
+                            <TouchableOpacity onPress={() => { this.BuyNowPopUp(!this.state.buyNowVisible); }}>
+                                <Feather name="x-square" size={20} style={styles.close} color={Colors.redBtnBG} />
+                            </TouchableOpacity>
+                            <View style={styles.Submit}>
+                                <Text style={styles.ModalName}>
+                                    {this.state.dataArray.name}
+                                </Text>
+                            </View>
+                            <View style={styles.Submit}>
+                                <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
+                            </View>
+                            <View style={styles.Submit}>
+                                <Text style={styles.category}>
+                                    Enter Qty
+                            </Text>
+                            </View>
+                            <View style={styles.Submit}>
+                                <View style={styles.qtyInput}>
+                                    <TextInput maxLength={1} onChangeText={(changedText) => { this.setState({ "Qty": changedText }) }} style={styles.textField} keyboardType="number-pad">
+                                    </TextInput>
+                                </View>
+                            </View>
+                            <View style={styles.Submit}>
+                                <TouchableOpacity style={styles.BuyNow} onPress={() => { this.Submit(!this.state.Qty); }}>
+                                    <Text style={styles.BuyNowTxt}>SUBMIT</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        <View style={{ flex: 2 }}></View>
+                    </Modal>
+
+
+                    {/* modal for rating button */}
+                    <Modal visible={this.state.RatingVisible} style={styles.modalView} transparent={true}>
+                        <View style={{ flex: 1 }}></View>
+                        <View style={styles.modalInnerView}>
+                            <TouchableOpacity onPress={() => { this.RatingPopUp(!this.state.RatingVisible); }}>
+                                <Feather name="x-square" size={20} style={styles.close} color={Colors.redBtnBG} />
+                            </TouchableOpacity>
+                            <View style={styles.Submit}>
+                                <Text style={styles.ModalName}>
+                                    {this.state.dataArray.name}
+                                </Text>
+                            </View>
+                            <View style={styles.Submit}>
+                                <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
+                            </View>
+                            <View style={styles.Submit}>
+                                <Stars
+                                    default={this.state.dataArray.rating}
+                                    count={5}
+                                    half={true}
+                                    disabled={false}
+                                    backingColor={Colors.ratingBefore}
+                                    fullStar={<Icon name={'star'} style={[styles.ratingStarStyle]} />}
+                                    emptyStar={<Icon name={'star-outline'} style={[styles.ratingStarStyle, styles.myEmptyStarStyle]} />}
+                                    halfStar={<Icon name={'star-half'} style={[styles.ratingStarStyle]} />}
+                                    update={(val) => this.setState({ stars: val })}
+                                />
+                            </View>
+                            <View style={styles.Submit}>
+                                <TouchableOpacity style={styles.BuyNow} onPress={() => { this.Rate(); }}>
+                                    <Text style={styles.BuyNowTxt}>RATE NOW</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        <View style={{ flex: 2 }}></View>
+                    </Modal>
                 </ScrollView>
             </View>
         )

@@ -18,9 +18,6 @@ export default styles = StyleSheet.create({
         fontSize: size.mLarge,
         fontWeight: Platform.OS === 'ios' ? '500' : '400',
     },
-    categoryView: {
-        flex: 1,
-    },
     category: {
         fontSize: size.medium,
         color: Colors.proHeading,
@@ -153,11 +150,52 @@ export default styles = StyleSheet.create({
     modalView: {
         flex: 1,
         flexDirection: 'column',
+    },
+    ModalName: {
+        color: Colors.proHeading,
+        fontSize: size.mLarge,
+        paddingBottom: 10,
+    },
+    textField: {
+        height: 30,
+        width: 80,
+        fontSize: Platform.OS === 'ios' ? 17 : 17,
+        fontWeight: '500',
+        color: Colors.blackPrimary,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignSelf: 'center',
+        padding: 5,
+        paddingLeft: 35,
+    },
+    qtyInput: {
+        height: Platform.OS === 'ios' ? 30 : 28,
+        width: 80,
+        borderColor: Colors.blackPrimary,
+        borderWidth: 2,
+        padding: 10,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignSelf: 'center',
+    },
+    close: {
         backgroundColor: Colors.primary,
-        borderRadius: 5,
-        paddingTop: 60,
-
+        alignSelf: 'flex-end',
+    },
+    modalInnerView: {
+        flex: 15,
+        justifyContent: 'center',
+        flexDirection: 'column',
+        borderRadius: 10,
+        padding: 10,
+        backgroundColor: Colors.primary,
+    },
+    Submit: {
+        backgroundColor: Colors.primary,
+        padding: 7,
+        alignItems: 'center',
+    },
+    ratingStarStyle: {
+        fontSize: 50,
+        color: Colors.ratingAfter,
     },
 });

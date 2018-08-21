@@ -65,13 +65,6 @@ export default styles = StyleSheet.create({
         color: Colors.primary,
         paddingLeft: 8,
     },
-    resetPass: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: Colors.primary,
-    },
     btnView: {
         flex: 1,
         flexDirection: 'row',
@@ -95,9 +88,4 @@ export default styles = StyleSheet.create({
         fontSize: Platform.OS === 'ios' ? 25 : 25,
         fontWeight: '500',
     },
-    ResetBtnTxt: {
-        color: Colors.blackSecondary,
-        fontSize: Platform.OS === 'ios' ? 25 : 25,
-        fontWeight: '500',
-    }
 });

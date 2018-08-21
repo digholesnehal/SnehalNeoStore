@@ -17,7 +17,8 @@ import SideBar from "./app/components/Drawer/SideBar.js";
 import Starter from './app/components/screens/Starter/Starter.js';
 import ProductList from './app/components/screens/ProductListing/ProductList.js';
 import ProductDetail from './app/components/screens/ProductDetail/ProductDetail.js';
-
+import MyAccount from './app/components/screens/MyAccount/MyAccount.js';
+import EditProfile from './app/components/screens/EditProfile/EditProfile.js';
 
 const DrawerStack = createDrawerNavigator({
     HomeScreen: {
@@ -60,6 +61,20 @@ const RootStack = createStackNavigator({
 
     DrawerStack: {
         screen: DrawerStack,
+        navigationOptions: {
+            header: null,
+        }
+    },
+
+    MyAccount: {
+        screen: MyAccount,
+        navigationOptions: {
+            header: null,
+        }
+    },
+
+    EditProfile: {
+        screen: EditProfile,
         navigationOptions: {
             header: null,
         }
