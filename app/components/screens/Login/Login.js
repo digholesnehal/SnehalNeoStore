@@ -10,6 +10,7 @@ import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import Loader from '../../Loader/Loader.js';
+import { userObj, userProvider } from '../../../lib/UserProvider.js';
 
 export default class Login extends Component {
     constructor(props) {
@@ -35,6 +36,7 @@ export default class Login extends Component {
                         apiCaller(url.host + url.fAccDetails, 'GET', {}, null,
                             (response) => {
                                 if (response.status == 200) { // Access Token valid please send to homescreen with response
+                                    userProvider.setUserObj(response.data);
                                     this.props.navigation.replace('DrawerStack', response);
                                 }
                                 else { // Some Error. Stay on this page.

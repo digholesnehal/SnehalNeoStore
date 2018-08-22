@@ -10,7 +10,7 @@ import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher';
 import Loader from '../../Loader/Loader.js';
-
+import { userObj, userProvider } from '../../../lib/UserProvider.js';
 
 export default class Starter extends Component {
 
@@ -29,7 +29,10 @@ export default class Starter extends Component {
                 //Check if the accesstoken is valid or not by calling the api.
                 apiCaller(url.host + url.fAccDetails, 'GET', {}, null, callback = (response) => {
                     if (response.status == 200) { // Access Token valid please send to homescreen with response
-                        this.props.navigation.replace('DrawerStack', response);
+                        console.log(userProvider);
+                        userProvider.setUserObj(response.data);
+                        this.props.navigation.replace('DrawerStack');
+
                     }
                     else {// Access Token invalid please send to Login
                         AsyncStorage.removeItem('access_token').then(() => {

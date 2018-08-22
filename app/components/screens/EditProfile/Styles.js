@@ -7,9 +7,10 @@ export default styles = StyleSheet.create({
         flex: 1,
     },
     imageView: {
-        flex: 3,
+        flex: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 20,
     },
     image: {
         flexDirection: 'row',

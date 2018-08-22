@@ -15,6 +15,8 @@ import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import Loader from '../../Loader/Loader.js';
 import { DEFAULT_ICON_SIZE } from 'react-native-vector-icons/dist/lib/create-icon-set';
+import { userObj, userProvider } from '../../../lib/UserProvider.js';
+
 
 var gender = [
     { label: "Male", value: 0 },

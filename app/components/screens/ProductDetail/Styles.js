@@ -51,8 +51,8 @@ export default styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingLeft: 10,
-        paddingRight: 10,
+        padding: 10,
+        paddingBottom: 0,
     },
     price: {
         color: Colors.redBtnTxt,
@@ -90,7 +90,7 @@ export default styles = StyleSheet.create({
     },
     Bimg: {
         height: 200,
-        width: 300,
+        width: 290,
         borderColor: Colors.gRadioUnchecked,
         borderWidth: 0.5,
     },

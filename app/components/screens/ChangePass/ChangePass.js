@@ -8,6 +8,8 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import Header from '../../../components/Header/header.js';
 import { primary } from '../../../utils/colors.js'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { userObj, userProvider } from '../../../lib/UserProvider.js';
+
 
 export default class ForgotPass extends Component {
 

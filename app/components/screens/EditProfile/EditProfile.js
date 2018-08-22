@@ -11,34 +11,39 @@ import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import Loader from '../../Loader/Loader.js';
 import Header from '../../Header/header.js';
+import DateTimePicker from 'react-native-modal-datetime-picker';
+import { userObj, userProvider } from '../../../lib/UserProvider.js';
 
 
 export default class EditProfile extends Component {
     constructor(props) {
         super(props);
         console.log(props)
-        this.first_name = props.navigation.state.params.first_name;
-        this.last_name = props.navigation.state.params.last_name;
-        this.email = props.navigation.state.params.email;
-        this.phone_no = props.navigation.state.params.phone_no;
-        this.dob = props.navigation.state.params.dob;
+        this.data = props.navigation.state.params.user_data;
         this.state = {
             loader: false,
             access_token: '',
+            isDateTimePickerVisible: false,
+            first_name: null,
+            last_name: null,
+            email: null,
+            phone_no: null,
+            dob: null,
         }
     }
 
-    componentDidMount() {
+
+    setData() {
         this.setState({ loader: true })
         AsyncStorage.getItem('access_token').then((value) => {
             this.setState({ access_token: value })
         })
         let formData = new FormData();
-        formData.append('first_name', this.first_name)
-        formData.append('last_name', this.last_name)
-        formData.append('email', this.email)
-        formData.append('phone_no', this.phone_no)
-        formData.append('dob', this.dob)
+        formData.append('first_name', this.data.first_name)
+        formData.append('last_name', this.data.last_name)
+        formData.append('email', this.data.email)
+        formData.append('phone_no', this.data.phone_no)
+        formData.append('dob', this.data.dob)
         return apiCaller(
             url.host + url.update,
             'POST', { access_token: this.state.access_token }, formData,
@@ -58,6 +63,16 @@ export default class EditProfile extends Component {
         );
     }
 
+    _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+
+    _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+
+    _handleDatePicked = (date) => {
+        console.log('A date has been picked: ', date);
+        this._hideDateTimePicker();
+        this.setState({ dob: date })
+    };
+
     render() {
         return (
             <View style={styles.container}>
@@ -69,44 +84,51 @@ export default class EditProfile extends Component {
                         isSearch={true}
                         back={() => { this.props.navigation.goBack(null) }} />
                     {this.state.loader ? <Loader /> : null}
-                    <View style={styles.imageView}>
-                        <Image style={styles.image} source={require('../../../assets/images/appdp.jpg')} />
-                    </View>
-                    <View style={styles.mid}>
-                        <View style={styles.textFieldView}>
-                            <Icon name="user" style={styles.icon} />
-                            <TextInput style={styles.textField} value={this.first_name}>
-                            </TextInput>
+                    <KeyboardAwareScrollView style={styles.container}>
+                        <View style={styles.imageView}>
+                            <Image style={styles.image} source={require('../../../assets/images/appdp.jpg')} />
                         </View>
-                        <View style={styles.textFieldView}>
-                            <Icon name="user" style={styles.icon} />
-                            <TextInput style={styles.textField} value={this.last_name}>
-                            </TextInput>
-                        </View>
-                        <View style={styles.textFieldView}>
-                            <Icon name="envelope" style={styles.envelope} />
-                            <TextInput style={styles.textField} value={this.email}>
-                            </TextInput>
-                        </View>
-                        <View style={styles.textFieldView}>
-                            <Icon name="mobile" style={styles.iconPhn} />
-                            <TextInput style={styles.textField} value={this.phone_no}>
-                            </TextInput>
-                        </View>
-                        <View style={styles.textFieldView}>
-                            <Icon name="birthday-cake" style={styles.iconCake} />
-                            <TextInput style={styles.textField} value={this.dob}>
-                            </TextInput>
-                        </View>
-                    </View>
-                    <View style={styles.btnView}>
-                        <TouchableOpacity style={styles.buttonStyle}>
-                            <Text style={styles.btnTxt}> SUBMIT </Text>
-                        </TouchableOpacity>
-                    </View>
+                        <View style={styles.mid}>
+                            <View style={styles.textFieldView}>
+                                <Icon name="user" style={styles.icon} />
+                                <TextInput style={styles.textField} onChangeText={(changedText) => { this.setState({ "first_name": changedText }) }} value={this.state.first_name == null ? this.data.first_name : this.state.first_name}>
+                                </TextInput>
+                            </View>
+                            <View style={styles.textFieldView}>
+                                <Icon name="user" style={styles.icon} />
+                                <TextInput style={styles.textField} onChangeText={(changedText) => { this.setState({ "last_name": changedText }) }} value={this.state.first_name == null ? this.data.first_name : this.state.first_name}>
+                                </TextInput>
+                            </View>
+                            <View style={styles.textFieldView}>
+                                <Icon name="envelope" style={styles.envelope} />
+                                <TextInput style={styles.textField} onChangeText={(changedText) => { this.setState({ "email": changedText }) }} value={this.state.first_name == null ? this.data.first_name : this.state.first_name}>
+                                </TextInput>
+                            </View>
+                            <View style={styles.textFieldView}>
+                                <Icon name="mobile" style={styles.iconPhn} />
+                                <TextInput style={styles.textField} onChangeText={(changedText) => { this.setState({ "phone_no": changedText }) }} value={this.state.first_name == null ? this.data.first_name : this.state.first_name}>
+                                </TextInput>
+                            </View>
+                            <View style={styles.textFieldView}>
+                                <Icon name="birthday-cake" style={styles.iconCake} />
+                                <TextInput style={styles.textField} value={this.dob} onFocus={this._showDateTimePicker}>
+                                </TextInput>
+                            </View>
+                            <DateTimePicker
+                                isVisible={this.state.isDateTimePickerVisible}
+                                onConfirm={this._handleDatePicked}
+                                onCancel={this._hideDateTimePicker}
+                            />
 
+                        </View>
+                        <View style={styles.btnView}>
+                            <TouchableOpacity style={styles.buttonStyle} onPress={() => { this.setData(); }}>
+                                <Text style={styles.btnTxt}> SUBMIT </Text>
+                            </TouchableOpacity>
+                        </View>
+                    </KeyboardAwareScrollView>
                 </ImageBackground>
-            </View>
+            </View >
         )
     }
 }

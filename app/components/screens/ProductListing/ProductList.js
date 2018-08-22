@@ -12,8 +12,7 @@ import { apiCaller } from '../../../lib/Fetcher.js';
 import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Loader from '../../Loader/Loader.js';
-
-
+import { userObj, userProvider } from '../../../lib/UserProvider.js';
 
 export default class ProductList extends Component {
 

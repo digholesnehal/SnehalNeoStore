@@ -11,6 +11,8 @@ import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import Loader from '../../Loader/Loader.js';
 import Header from '../../Header/header.js';
+import { userObj, userProvider } from '../../../lib/UserProvider.js';
+
 
 
 export default class MyAccount extends Component {

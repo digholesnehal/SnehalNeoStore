@@ -4,7 +4,7 @@ import styles from './Styles';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { AsyncStorage } from 'react-native';
 import { withNavigation } from 'react-navigation';
-
+import { userObj, userProvider } from '../../lib/UserProvider.js';
 
 export default class SideBar extends Component {
     constructor(props) {
@@ -23,8 +23,8 @@ export default class SideBar extends Component {
             <View style={styles.bg}>
                 <View style={styles.top}>
                     <Image style={styles.image} source={require('../../assets/images/appdp.jpg')} />
-                    <Text style={styles.UserName}> Snehal Dighole </Text>
-                    <Text style={styles.email}>snehal.dighole@neosofttech.com</Text>
+                    <Text style={styles.UserName}> {userObj.user_data.username} </Text>
+                    <Text style={styles.email}>{userObj.user_data.email}</Text>
                 </View>
                 <View style={styles.partitions}>
                     <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>

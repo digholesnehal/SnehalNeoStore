@@ -9,15 +9,14 @@ import Header from '../../../components/Header/header.js';
 import Swiper from 'react-native-swiper';
 import SideBar from '../../Drawer/SideBar';
 import * as Colors from '../../../utils/colors';
-
-
+import { userObj, userProvider } from '../../../lib/UserProvider.js';
 
 export default class HomeScreen extends Component {
 
 
     constructor(props) {
         super(props);
-        this.product_categories = props.navigation.state.params.data.product_categories;
+        // this.product_categories = props.navigation.state.params.data.product_categories;
     }
 
     swiperContent = (data) => {
@@ -25,7 +24,7 @@ export default class HomeScreen extends Component {
         for (let i = 0; i < 4; i++) {
             returnData.push(
                 <View key={"k" + i} style={styles.slide}>
-                    <Image style={styles.images} source={{ uri: data[i].icon_image }} />
+                    <Image style={styles.images} source={{ uri: userObj.product_categories[i].icon_image }} />
                 </View>);
         }
         return returnData;
