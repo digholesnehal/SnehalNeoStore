@@ -37,7 +37,7 @@ export default class Login extends Component {
                             (response) => {
                                 if (response.status == 200) { // Access Token valid please send to homescreen with response
                                     userProvider.setUserObj(response.data);
-                                    this.props.navigation.replace('DrawerStack', response);
+                                    this.props.navigation.replace('DrawerStack');
                                 }
                                 else { // Some Error. Stay on this page.
                                     if (response.hasOwnProperty('user_msg')) {

@@ -26,60 +26,69 @@ export default class SideBar extends Component {
                     <Text style={styles.UserName}> {userObj.user_data.username} </Text>
                     <Text style={styles.email}>{userObj.user_data.email}</Text>
                 </View>
-                <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
+                    <View style={styles.partitions}>
                         <Icon name="shopping-cart" style={styles.icon} />
                         <Text style={styles.options}>My Cart</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 1, Name: 'Tables' })}>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 1, Name: 'Tables' })}>
+                    <View style={styles.partitions}>
                         <Icon name="columns" style={styles.icon} />
                         <Text style={styles.options}>Tables</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 3, Name: 'Sofas' })}>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 3, Name: 'Sofas' })}>
+                    <View style={styles.partitions}>
                         <Icon name="archive" style={styles.icon} />
                         <Text style={styles.options}>Sofas</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 2, Name: 'Chairs' })}>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 2, Name: 'Chairs' })}>
+                    <View style={styles.partitions}>
                         <Icon name="cube" style={styles.icon} />
                         <Text style={styles.options}>Chairs</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 4, Name: 'Cupboards' })}>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('ProductList', { ID: 4, Name: 'Cupboards' })}>
+                    <View style={styles.partitions}>
                         <Icon name="building" style={styles.icon} />
                         <Text style={styles.options}>Cupboards</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('MyAccount')}>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('MyAccount')}>
+                    <View style={styles.partitions}>
                         <Icon name="user" style={styles.icon} />
                         <Text style={styles.options}>My Account</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
+                    <View style={styles.partitions}>
+
                         <Icon name="map-marker" style={styles.icon} />
                         <Text style={styles.options}>Store Locator</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
+                    <View style={styles.partitions}>
                         <Icon name="list-alt" style={styles.icon} />
                         <Text style={styles.options}>My Orders</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.partitions}>
-                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.clearData()}>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.clearData()}>
+                    <View style={styles.partitions}>
                         <Icon name="sign-out" style={styles.icon} />
                         <Text style={styles.options}>Logout</Text>
-                    </TouchableOpacity>
-                </View>
+                    </View>
+                </TouchableOpacity>
             </View>
 
         );

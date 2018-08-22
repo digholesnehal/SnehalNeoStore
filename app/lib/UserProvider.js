@@ -6,5 +6,6 @@ export const userProvider = {
         userObj = obj;
         console.log('Provider Updated');
         console.log(userObj);
+        return true;
     }
 } 

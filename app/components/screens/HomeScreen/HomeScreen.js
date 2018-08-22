@@ -43,7 +43,7 @@ export default class HomeScreen extends Component {
                     }} />
                 <View style={styles.swipe}>
                     <Swiper activeDotColor={Colors.enterQtyB} dotColor={Colors.redHeader} autoplay={true}>
-                        {this.swiperContent(this.product_categories)}
+                        {this.swiperContent(userObj.product_categories)}
                     </Swiper>
                 </View>
                 <View style={styles.components}>

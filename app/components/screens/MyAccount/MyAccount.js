@@ -19,45 +19,43 @@ export default class MyAccount extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user_data: [],
             loader: false,
-            first_name: '',
-            last_name: '',
-            email: '',
-            phone_no: '',
-            dob: '',
+            user_data: userObj.user_data,
+            first_name: userObj.user_data.first_name,
+            last_name: userObj.user_data.last_name,
+            email: userObj.user_data.email,
+            phone_no: userObj.user_data.phone_no,
+            dob: userObj.user_data.dob,
         }
     }
 
-    componentDidMount() {
-        this.setState({ loader: true })
-        const { first_name, last_name, email, phone_no, dob } = this.state
-        return apiCaller(
-            url.host + url.fAccDetails,
-            'GET', {}, null,
-            (response) => {
-                this.setState({ loader: false })
-                if (response.status == 200) {
-                    this.setState({
-                        user_data: response.data.user_data,
-                        first_name: response.data.user_data.first_name,
-                        last_name: response.data.user_data.last_name,
-                        email: response.data.user_data.email,
-                        phone_no: response.data.user_data.phone_no,
-                        dob: response.data.user_data.dob,
-                    });
-                }
-                else {
-                    if (response.hasOwnProperty('user_msg')) {
-                        // alert(response.user_msg);
-                    }
-                    else {
-                        alert(response.message);
-                    }
-                }
-            }
-        );
-    }
+    // componentDidMount() {
+    //     // this.setState({ loader: true })
+    //     // return apiCaller(
+    //     //     url.host + url.fAccDetails,
+    //     //     'GET', {}, null,
+    //     //     (response) => {
+    //     //         this.setState({ loader: false })
+    //     //         if (response.status == 200) {
+    //     //             this.setState({
+    //     //                 first_name: userObj.user_data.first_name,
+    //     //                 last_name: userObj.user_data.last_name,
+    //     //                 email: userObj.user_data.email,
+    //     //                 phone_no: userObj.user_data.phone_no,
+    //     //                 dob: userObj.user_data.dob,
+    //     //             });
+    //     //         }
+    //     //         else {
+    //     //             if (response.hasOwnProperty('user_msg')) {
+    //     //                 // alert(response.user_msg);
+    //     //             }
+    //     //             else {
+    //     //                 alert(response.message);
+    //     //             }
+    //     //         }
+    //     //     }
+    //     // );
+    // }
 
     render() {
         return (
@@ -101,7 +99,7 @@ export default class MyAccount extends Component {
                         </View>
                     </View>
                     <View style={styles.btnView}>
-                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('EditProfile', this.state.user_data)}>
+                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('EditProfile', { aa: this.state.user_data })}>
                             <Text style={styles.btnTxt}> EDIT PROFILE </Text>
                         </TouchableOpacity>
                     </View>
