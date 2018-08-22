@@ -46,6 +46,12 @@ export default styles = StyleSheet.create({
         fontWeight: '500',
         color: Colors.primary,
     },
+    text: {
+        paddingTop: 5,
+        fontSize: Platform.OS === 'ios' ? 20 : 17,
+        fontWeight: '500',
+        color: Colors.primary,
+    },
     icon: {
         fontSize: Platform.OS === 'ios' ? 20 : 15,
         color: Colors.primary,

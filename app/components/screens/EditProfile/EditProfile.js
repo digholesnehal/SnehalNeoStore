@@ -68,9 +68,14 @@ export default class EditProfile extends Component {
     _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
 
     _handleDatePicked = (date) => {
-        console.log('A date has been picked: ', date);
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        console.log('A day: ', day);
+        console.log('A month:', month);
+        console.log('A year:', year);
         this._hideDateTimePicker();
-        this.setState({ dob: date })
+        this.setState({ dob: day + '-' + month + '-' + year })
     };
 
     render() {
@@ -111,8 +116,9 @@ export default class EditProfile extends Component {
                             </View>
                             <View style={styles.textFieldView}>
                                 <Icon name="birthday-cake" style={styles.iconCake} />
-                                <TextInput style={styles.textField} value={this.dob} onFocus={this._showDateTimePicker}>
-                                </TextInput>
+                                <TouchableOpacity style={styles.textField} onPress={this._showDateTimePicker}>
+                                    <Text style={styles.text}> {this.state.dob} </Text>
+                                </TouchableOpacity>
                             </View>
                             <DateTimePicker
                                 isVisible={this.state.isDateTimePickerVisible}
