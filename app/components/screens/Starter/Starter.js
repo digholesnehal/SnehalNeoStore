@@ -11,6 +11,7 @@ import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher';
 import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
+import SplashScreen from 'react-native-splash-screen'
 
 export default class Starter extends Component {
 
@@ -25,23 +26,24 @@ export default class Starter extends Component {
         AsyncStorage.getItem('access_token').then((value) => {
             //Check if the value exists or not
             if (value !== null) {
-                this.setState({ loader: true })
                 //Check if the accesstoken is valid or not by calling the api.
                 apiCaller(url.host + url.fAccDetails, 'GET', {}, null, callback = (response) => {
                     if (response.status == 200) { // Access Token valid please send to homescreen with response
                         console.log(userProvider);
                         userProvider.setUserObj(response.data);
+                        this.setState({ loader: true })
                         this.props.navigation.replace('DrawerStack');
-
                     }
                     else {// Access Token invalid please send to Login
                         AsyncStorage.removeItem('access_token').then(() => {
+                            this.setState({ loader: true })
                             this.props.navigation.replace('Login');
                         });
                     }
                 })
             }
             else { // accesstoken doesnt exists please navigate to login
+                this.setState({ loader: true })
                 this.props.navigation.replace('Login');
             }
         })
@@ -55,13 +57,13 @@ export default class Starter extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
-                    {this.state.loader ? <Loader /> : null}
-                    <View style={styles.Head}>
-                        <Text style={styles.headFont}> NeoSTORE </Text>
-                    </View>
-                </ImageBackground>
-            </View>
+                {/* <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}> */}
+                {this.state.loader ? <Loader /> : null}
+                <View style={styles.Head}>
+                    {/* <Text style={styles.headFont}> NeoSTORE </Text> */}
+                </View>
+                {/* </ImageBackground> */}
+            </View >
         );
     }
 };

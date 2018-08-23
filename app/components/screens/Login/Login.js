@@ -11,6 +11,7 @@ import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
+import SplashScreen from 'react-native-splash-screen'
 
 export default class Login extends Component {
     constructor(props) {
@@ -21,7 +22,9 @@ export default class Login extends Component {
             loader: false,
         }
     }
-
+    componentDidMount() {
+        SplashScreen.hide();
+    }
     login() {
         let formData = new FormData();
         formData.append('email', this.state.username)

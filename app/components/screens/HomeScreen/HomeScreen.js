@@ -10,6 +10,7 @@ import Swiper from 'react-native-swiper';
 import SideBar from '../../Drawer/SideBar';
 import * as Colors from '../../../utils/colors';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
+import SplashScreen from 'react-native-splash-screen';
 
 export default class HomeScreen extends Component {
 
@@ -28,6 +29,10 @@ export default class HomeScreen extends Component {
                 </View>);
         }
         return returnData;
+    }
+
+    componentDidMount() {
+        SplashScreen.hide();
     }
 
     render = () => {
