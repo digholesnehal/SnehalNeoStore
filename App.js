@@ -19,6 +19,7 @@ import ProductList from './app/components/screens/ProductListing/ProductList.js'
 import ProductDetail from './app/components/screens/ProductDetail/ProductDetail.js';
 import MyAccount from './app/components/screens/MyAccount/MyAccount.js';
 import EditProfile from './app/components/screens/EditProfile/EditProfile.js';
+import ResetPass from './app/components/screens/ResetPass/ResetPass.js';
 
 const DrawerStack = createDrawerNavigator({
     HomeScreen: {
@@ -54,6 +55,13 @@ const RootStack = createStackNavigator({
 
     ForgotPass: {
         screen: ForgotPass,
+        navigationOptions: {
+            header: null,
+        }
+    },
+
+    ResetPass: {
+        screen: ResetPass,
         navigationOptions: {
             header: null,
         }

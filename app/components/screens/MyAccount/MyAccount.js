@@ -29,34 +29,6 @@ export default class MyAccount extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     // this.setState({ loader: true })
-    //     // return apiCaller(
-    //     //     url.host + url.fAccDetails,
-    //     //     'GET', {}, null,
-    //     //     (response) => {
-    //     //         this.setState({ loader: false })
-    //     //         if (response.status == 200) {
-    //     //             this.setState({
-    //     //                 first_name: userObj.user_data.first_name,
-    //     //                 last_name: userObj.user_data.last_name,
-    //     //                 email: userObj.user_data.email,
-    //     //                 phone_no: userObj.user_data.phone_no,
-    //     //                 dob: userObj.user_data.dob,
-    //     //             });
-    //     //         }
-    //     //         else {
-    //     //             if (response.hasOwnProperty('user_msg')) {
-    //     //                 // alert(response.user_msg);
-    //     //             }
-    //     //             else {
-    //     //                 alert(response.message);
-    //     //             }
-    //     //         }
-    //     //     }
-    //     // );
-    // }
-
     render() {
         return (
             <View style={styles.container}>
@@ -104,7 +76,7 @@ export default class MyAccount extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.resetPass}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('ResetPass')}>
                             <Text style={styles.ResetBtnTxt}> RESET PASSWORD </Text>
                         </TouchableOpacity>
                     </View>
