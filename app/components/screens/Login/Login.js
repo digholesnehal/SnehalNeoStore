@@ -11,7 +11,8 @@ import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
-import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen';
+import Modal from "react-native-modal";
 
 export default class Login extends Component {
     constructor(props) {
@@ -80,7 +81,6 @@ export default class Login extends Component {
         return (
             <View style={styles.container}>
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
-                    {this.state.loader ? <Loader /> : null}
                     <KeyboardAwareScrollView style={flex = 1}>
                         <View style={styles.loginHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>
@@ -121,6 +121,9 @@ export default class Login extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
+                        <Modal visible={this.state.loader} style={styles.container} transparent={true}>
+                            <Loader />
+                        </Modal>
                     </KeyboardAwareScrollView>
                 </ImageBackground>
             </View>

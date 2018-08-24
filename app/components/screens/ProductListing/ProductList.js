@@ -66,7 +66,9 @@ export default class ProductList extends Component {
                     isDrawer={false}
                     isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
-                {this.state.loader ? <Loader /> : null}
+                <Modal visible={this.state.loader} style={styles.container} transparent={true}>
+                    <Loader />
+                </Modal>
                 <FlatList
                     onEndReachedThreshold={0.1}
                     data={this.state.dataArray}

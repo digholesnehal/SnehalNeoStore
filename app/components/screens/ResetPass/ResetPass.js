@@ -6,7 +6,7 @@ import {
 import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import Header from '../../../components/Header/header.js';
-import { primary } from '../../../utils/colors.js'
+import { primary } from '../../../utils/colors.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
@@ -18,6 +18,7 @@ export default class ResetPass extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loader: false,
             password: '',
             npassword: '',
             cpassword: '',
@@ -48,6 +49,7 @@ export default class ResetPass extends Component {
         }
     }
     reset() {
+        thi.setState({ loader: true })
         let formData = new FormData();
         formData.append('old_password', this.state.password)
         formData.append('password', this.state.npassword)
@@ -113,6 +115,9 @@ export default class ResetPass extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
+                    <Modal visible={this.state.loader} style={styles.container} transparent={true}>
+                        <Loader />
+                    </Modal>
                 </ImageBackground>
             </View >
         );

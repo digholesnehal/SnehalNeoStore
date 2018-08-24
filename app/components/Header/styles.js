@@ -15,7 +15,12 @@ export default styles = StyleSheet.create({
     },
     Backcontainer: {
         width: '15%',
-        alignItems: 'center'
+        alignItems: 'flex-start'
+    },
+    SearchBackcontainer: {
+        width: '15%',
+        alignItems: 'flex-end',
+        paddingRight: 10,
     },
     mainText: {
         alignItems: 'center',
@@ -34,6 +39,10 @@ export default styles = StyleSheet.create({
     },
     menuIcon: {
         backgroundColor: 'transparent',
-        marginLeft: 10
+        paddingLeft: 10,
+    },
+    backMenuIcon: {
+        backgroundColor: 'transparent',
+        paddingLeft: 5,
     }
 });

@@ -87,7 +87,7 @@ export default styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: '600',
         padding: Platform.OS === 'ios' ? 10 : 5,
-        alignSelf: 'flex-end',
+        alignSelf: 'flex-start',
     },
 
     cTitle3: {
@@ -115,6 +115,7 @@ export default styles = StyleSheet.create({
         fontSize: 80,
         color: Colors.primary,
         padding: Platform.OS === 'ios' ? 15 : 10,
+        alignSelf: 'flex-end',
     },
 
     icon3: {
