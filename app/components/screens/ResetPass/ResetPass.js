@@ -12,7 +12,6 @@ import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import * as url from '../../../lib/api.js';
 
-
 export default class ResetPass extends Component {
 
     constructor(props) {
@@ -84,6 +83,7 @@ export default class ResetPass extends Component {
                         isDrawer={false}
                         isSearch={false}
                         back={() => { this.props.navigation.goBack(null) }} />
+                    {this.state.loader ? <Loader /> : null}
                     <View style={styles.fpHead}>
                         <Text style={styles.headFont}> NeoSTORE </Text>
                     </View>
@@ -115,9 +115,6 @@ export default class ResetPass extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <Modal visible={this.state.loader} style={styles.container} transparent={true}>
-                        <Loader />
-                    </Modal>
                 </ImageBackground>
             </View >
         );

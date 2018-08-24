@@ -161,6 +161,7 @@ export default class Register extends Component {
                         isDrawer={false}
                         isSearch={false}
                         back={() => { this.props.navigation.goBack(null) }} />
+                    {this.state.loader ? <Loader /> : null}
                     <KeyboardAwareScrollView style={flex = 1}>
                         <View style={styles.regHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>
@@ -231,9 +232,6 @@ export default class Register extends Component {
                                 <Text style={styles.btnTxt}> REGISTER </Text>
                             </TouchableOpacity>
                         </View>
-                        <Modal visible={this.state.loader} style={styles.container} transparent={true}>
-                            <Loader />
-                        </Modal>
                     </KeyboardAwareScrollView>
                 </ImageBackground>
             </View>

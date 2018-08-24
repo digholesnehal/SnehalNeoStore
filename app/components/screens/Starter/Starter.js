@@ -26,16 +26,18 @@ export default class Starter extends Component {
         AsyncStorage.getItem('access_token').then((value) => {
             //Check if the value exists or not
             if (value !== null) {
+                2
                 //Check if the accesstoken is valid or not by calling the api.
                 apiCaller(url.host + url.fAccDetails, 'GET', {}, null, callback = (response) => {
                     if (response.status == 200) { // Access Token valid please send to homescreen with response
-                        console.log(userProvider);
+                        console.log('1');
                         userProvider.setUserObj(response.data);
                         this.setState({ loader: true })
                         this.props.navigation.replace('DrawerStack');
                     }
                     else {// Access Token invalid please send to Login
                         AsyncStorage.removeItem('access_token').then(() => {
+                            console.log('2');
                             this.setState({ loader: true })
                             this.props.navigation.replace('Login');
                         });
@@ -43,12 +45,14 @@ export default class Starter extends Component {
                 })
             }
             else { // accesstoken doesnt exists please navigate to login
+                console.log('3');
                 this.setState({ loader: true })
                 this.props.navigation.replace('Login');
             }
         })
             .catch((error) => {
                 //Some error. Navigate to login.
+                console.log('4');
                 console.log(error.message);
             })
     }
@@ -57,12 +61,9 @@ export default class Starter extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {/* <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}> */}
                 {this.state.loader ? <Loader /> : null}
                 <View style={styles.Head}>
-                    {/* <Text style={styles.headFont}> NeoSTORE </Text> */}
                 </View>
-                {/* </ImageBackground> */}
             </View >
         );
     }

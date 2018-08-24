@@ -5,12 +5,13 @@ import {
     StyleSheet,
     Text,
     View,
+    Dimensions
 } from 'react-native'
 
 export default class Loader extends Component {
     render() {
         return (
-            <View style={{ position: 'absolute', margin: '100%', alignSelf: 'center', justifyContent: 'center' }}>
+            <View style={{ position: 'absolute', zIndex: 10, height: Dimensions.get('window').height, width: 360, alignSelf: 'center', justifyContent: 'center' }}>
                 <ActivityIndicator size="large" color="#000" />
             </View>
         );

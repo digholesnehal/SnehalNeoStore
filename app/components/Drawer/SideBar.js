@@ -26,7 +26,7 @@ export default class SideBar extends Component {
                     <Text style={styles.UserName}> {userObj.user_data.username} </Text>
                     <Text style={styles.email}>{userObj.user_data.email}</Text>
                 </View>
-                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('Tables')}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.props.navigation.navigate('MyCart')}>
                     <View style={styles.partitions}>
                         <Icon name="shopping-cart" style={styles.icon} />
                         <Text style={styles.options}>My Cart</Text>

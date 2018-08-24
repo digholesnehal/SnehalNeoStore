@@ -12,7 +12,6 @@ import { apiCaller } from '../../../lib/Fetcher.js';
 import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import SplashScreen from 'react-native-splash-screen';
-import Modal from "react-native-modal";
 
 export default class Login extends Component {
     constructor(props) {
@@ -30,7 +29,6 @@ export default class Login extends Component {
         let formData = new FormData();
         formData.append('email', this.state.username)
         formData.append('password', this.state.password)
-        this.setState({ loader: true })
         apiCaller(url.host + url.login, 'POST', {}, formData,
             (response) => {
                 this.setState({ loader: false })
@@ -68,10 +66,12 @@ export default class Login extends Component {
     }
 
     validate = () => {
+        this.setState({ loader: true })
         var reg = /^[a-zA-Z{1}]+\w.+([\.-]?\w+)*@\w+([\.-]?\w+){1}(\.\w{2,3})$/;
         var alNum = /^([a-zA-Z0-9]){5,10}$/;
         if ((!this.state.username.match(reg) || this.state.username == "") || (!this.state.password.match(alNum) || this.state.password == "")) {
             alert("Username or Password is Invalid");
+            this.setState({ loader: false })
         }
         else
             this.login();
@@ -81,6 +81,7 @@ export default class Login extends Component {
         return (
             <View style={styles.container}>
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
+                    {this.state.loader ? <Loader /> : null}
                     <KeyboardAwareScrollView style={flex = 1}>
                         <View style={styles.loginHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>
@@ -121,9 +122,6 @@ export default class Login extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <Modal visible={this.state.loader} style={styles.container} transparent={true}>
-                            <Loader />
-                        </Modal>
                     </KeyboardAwareScrollView>
                 </ImageBackground>
             </View>

@@ -20,7 +20,9 @@ import ProductDetail from './app/components/screens/ProductDetail/ProductDetail.
 import MyAccount from './app/components/screens/MyAccount/MyAccount.js';
 import EditProfile from './app/components/screens/EditProfile/EditProfile.js';
 import ResetPass from './app/components/screens/ResetPass/ResetPass.js';
-import SplashScreen from 'react-native-splash-screen'
+import MyCart from './app/components/screens/MyCart/MyCart.js';
+import SplashScreen from 'react-native-splash-screen';
+
 
 const DrawerStack = createDrawerNavigator({
     HomeScreen: {
@@ -98,6 +100,13 @@ const RootStack = createStackNavigator({
 
     ProductDetail: {
         screen: ProductDetail,
+        navigationOptions: {
+            header: null
+        }
+    },
+
+    MyCart: {
+        screen: MyCart,
         navigationOptions: {
             header: null
         }
