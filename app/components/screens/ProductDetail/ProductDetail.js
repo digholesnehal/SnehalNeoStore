@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Loader from '../../Loader/Loader.js';
 import Feather from 'react-native-vector-icons/dist/Feather';
 import Modal from "react-native-modal";
-import { Share } from 'react-native';
+// import { Share } from 'react-native';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 
 export default class ProductList extends Component {
@@ -64,20 +64,20 @@ export default class ProductList extends Component {
         );
 
     }
-    sharing() {
-        Share.share({
-            message: 'Product Name:' + this.state.dataArray.name + '  Category:' + this.state.category,
-            url: 'http://bam.tech',
-            title: 'Category:' + this.state.category
-        }, {
-                // Android only:
-                dialogTitle: 'Product Name:' + this.state.dataArray.name,
-                // iOS only:
-                excludedActivityTypes: [
-                    'com.apple.UIKit.activity.PostToTwitter'
-                ]
-            })
-    }
+    // sharing() {
+    //     Share.share({
+    //         message: 'Product Name:' + this.state.dataArray.name + '  Category:' + this.state.category,
+    //         url: 'http://bam.tech',
+    //         title: 'Category:' + this.state.category
+    //     }, {
+    //             // Android only:
+    //             dialogTitle: 'Product Name:' + this.state.dataArray.name,
+    //             // iOS only:
+    //             excludedActivityTypes: [
+    //                 'com.apple.UIKit.activity.PostToTwitter'
+    //             ]
+    //         })
+    // }
 
     Submit(Qty) {
         AsyncStorage.getItem('access_token').then((value) => {
@@ -199,7 +199,7 @@ export default class ProductList extends Component {
                             <Text style={styles.price}>
                                 Rs. {this.state.dataArray.cost}
                             </Text>
-                            <TouchableOpacity onPress={() => { this.sharing(); }}>
+                            <TouchableOpacity >
                                 <Feather name="share-2" size={20} color={Colors.ratingBefore} />
                             </TouchableOpacity>
                         </View>

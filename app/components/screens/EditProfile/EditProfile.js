@@ -13,7 +13,7 @@ import Loader from '../../Loader/Loader.js';
 import Header from '../../Header/header.js';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
-
+import ImagePicker from 'react-native-image-picker';
 
 export default class EditProfile extends Component {
     constructor(props) {
@@ -78,6 +78,33 @@ export default class EditProfile extends Component {
         this.setState({ dob: day + '-' + month + '-' + year })
     };
 
+    showImagePicker = () => {
+        ImagePicker.showImagePicker((response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            }
+            else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            }
+            else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            }
+            else {
+                let source = { uri: response.uri };
+
+                // You can also display the image using data:
+                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                this.setState({
+                    avatarSource: source
+                });
+            }
+        });
+
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -91,7 +118,9 @@ export default class EditProfile extends Component {
                     {this.state.loader ? <Loader /> : null}
                     <KeyboardAwareScrollView style={styles.container}>
                         <View style={styles.imageView}>
-                            <Image style={styles.image} source={require('../../../assets/images/appdp.jpg')} />
+                            <TouchableOpacity onPress={() => { this.showImagePicker() }}>
+                                <Image style={styles.image} source={this.state.avatarSource} />
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.mid}>
                             <View style={styles.textFieldView}>

@@ -19,6 +19,7 @@ public class MainActivity extends ReactActivity {
         return "NeoStore";
     }
     
+    
     //for splash screen
       @Override
     protected void onCreate(Bundle savedInstanceState) {
