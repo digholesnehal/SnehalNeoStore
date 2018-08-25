@@ -67,7 +67,7 @@ export default class ProductList extends Component {
                     isDrawer={false}
                     isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
-                <Modal visible={this.state.loader} style={styles.container} transparent={true}>
+                <Modal visible={this.state.loader} style={{ flex: 1 }} transparent={true}>
                     <Loader />
                 </Modal>
                 <FlatList

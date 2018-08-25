@@ -17,7 +17,6 @@ export default class HomeScreen extends Component {
 
     constructor(props) {
         super(props);
-        // this.product_categories = props.navigation.state.params.data.product_categories;
     }
 
     swiperContent = (data) => {
