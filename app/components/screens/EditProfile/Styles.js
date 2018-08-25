@@ -13,6 +13,8 @@ export default styles = StyleSheet.create({
         padding: 20,
     },
     image: {
+        borderColor: Colors.primary,
+        borderWidth: 2,
         flexDirection: 'row',
         alignSelf: 'center',
         justifyContent: 'center',

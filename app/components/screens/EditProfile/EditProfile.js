@@ -18,24 +18,21 @@ import ImagePicker from 'react-native-image-picker';
 export default class EditProfile extends Component {
     constructor(props) {
         super(props);
-        this.data = props.navigation.state.params.aa;
         this.state = {
             loader: false,
-            access_token: '',
+            access_token: userObj.user_data.access_token,
             isDateTimePickerVisible: false,
             first_name: userObj.user_data.first_name,
             last_name: userObj.user_data.last_name,
             email: userObj.user_data.email,
             phone_no: userObj.user_data.phone_no,
             dob: userObj.user_data.dob,
-            profile_pic: ''
+            profile_pic: userObj.user_data.profile_pic,
         }
     }
 
-
     setData() {
         this.setState({ loader: true })
-        this.setState({ access_token: userObj.user_data.access_token })
         let formData = new FormData();
         formData.append('first_name', this.state.first_name)
         formData.append('last_name', this.state.last_name)
@@ -49,7 +46,8 @@ export default class EditProfile extends Component {
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
-                    userProvider.setUserObj(formData);
+                    userProvider.setUserObj(userObj.user_data, response.data);
+                    console.log('here user response', response)
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
@@ -71,9 +69,6 @@ export default class EditProfile extends Component {
         var day = date.getDate();
         var month = date.getMonth() + 1;
         var year = date.getFullYear();
-        console.log('A day: ', day);
-        console.log('A month:', month);
-        console.log('A year:', year);
         this._hideDateTimePicker();
         this.setState({ dob: day + '-' + month + '-' + year })
     };
@@ -92,13 +87,13 @@ export default class EditProfile extends Component {
                 console.log('User tapped custom button: ', response.customButton);
             }
             else {
-                let source = { uri: response.uri };
+                // let source = { uri: response.uri };
 
                 // You can also display the image using data:
-                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+                let source = 'data:image/jpeg;base64,' + response.data;
 
                 this.setState({
-                    avatarSource: source
+                    profile_pic: source
                 });
             }
         });
@@ -119,7 +114,7 @@ export default class EditProfile extends Component {
                     <KeyboardAwareScrollView style={styles.container}>
                         <View style={styles.imageView}>
                             <TouchableOpacity onPress={() => { this.showImagePicker() }}>
-                                <Image style={styles.image} source={this.state.avatarSource} />
+                                {this.state.profile_pic === null || this.state.profile_pic === '' ? <Image style={styles.image} source={require('../../../assets/images/appdp.jpg')} /> : <Image style={styles.image} source={{ uri: this.state.profile_pic }} />}
                             </TouchableOpacity>
                         </View>
                         <View style={styles.mid}>

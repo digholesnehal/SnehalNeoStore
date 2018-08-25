@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import styles from "./Styles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
@@ -82,49 +81,47 @@ export default class Login extends Component {
             <View style={styles.container}>
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
                     {this.state.loader ? <Loader /> : null}
-                    <KeyboardAwareScrollView style={flex = 1}>
-                        <View style={styles.loginHead}>
-                            <Text style={styles.headFont}> NeoSTORE </Text>
+                    <View style={styles.loginHead}>
+                        <Text style={styles.headFont}> NeoSTORE </Text>
+                    </View>
+                    <View style={styles.loginMid}>
+                        <View style={styles.userPass}>
+                            <Icon name="user" style={styles.icon} />
+                            <TextInput onChangeText={(changedText) => { this.setState({ "username": changedText }) }} style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
+                            </TextInput>
                         </View>
-                        <View style={styles.loginMid}>
-                            <View style={styles.userPass}>
-                                <Icon name="user" style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ "username": changedText }) }} style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
-                                </TextInput>
-                            </View>
 
-                            <View style={styles.userPass}>
-                                <Icon name="lock" style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
-                                </TextInput>
-                            </View>
+                        <View style={styles.userPass}>
+                            <Icon name="lock" style={styles.icon} />
+                            <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
+                            </TextInput>
                         </View>
-                        <View style={styles.loginMid}>
-                            <View style={styles.pass}>
-                                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}>
-                                    <Text style={styles.btnTxt}> LOGIN </Text>
-                                </TouchableOpacity>
-                            </View>
-                            <TouchableOpacity style={styles.fgotPass} onPress={() => this.props.navigation.navigate('ForgotPass')}>
-                                <Text style={styles.fgotPass}>
-                                    Forgot Password?
-                                </Text>
+                    </View>
+                    <View style={styles.loginMid}>
+                        <View style={styles.pass}>
+                            <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}>
+                                <Text style={styles.btnTxt}> LOGIN </Text>
                             </TouchableOpacity>
                         </View>
-
-                        <View style={styles.loginFoot}>
-                            <View style={styles.bottom}>
-                                <Text style={styles.noAcc}>
-                                    DONT HAVE AN ACCOUNT?
+                        <TouchableOpacity style={styles.fgotPass} onPress={() => this.props.navigation.navigate('ForgotPass')}>
+                            <Text style={styles.fgotPass}>
+                                Forgot Password?
                                 </Text>
-                                <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}>
-                                    <Icon name="plus" size={40} color="#fff" />
-                                </TouchableOpacity>
-                            </View>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.loginFoot}>
+                        <View style={styles.bottom}>
+                            <Text style={styles.noAcc}>
+                                DONT HAVE AN ACCOUNT?
+                                </Text>
+                            <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}>
+                                <Icon name="plus" size={40} color="#fff" />
+                            </TouchableOpacity>
                         </View>
-                    </KeyboardAwareScrollView>
+                    </View>
                 </ImageBackground>
-            </View>
+            </View >
         );
     }
 }

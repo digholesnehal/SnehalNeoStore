@@ -20,12 +20,6 @@ export default class MyAccount extends Component {
         super(props);
         this.state = {
             loader: false,
-            user_data: userObj.user_data,
-            first_name: userObj.user_data.first_name,
-            last_name: userObj.user_data.last_name,
-            email: userObj.user_data.email,
-            phone_no: userObj.user_data.phone_no,
-            dob: userObj.user_data.dob,
         }
     }
 
@@ -41,37 +35,37 @@ export default class MyAccount extends Component {
                         back={() => { this.props.navigation.goBack(null) }} />
                     {this.state.loader ? <Loader /> : null}
                     <View style={styles.imageView}>
-                        <Image style={styles.image} source={require('../../../assets/images/appdp.jpg')} />
+                        {userObj.user_data.profile_pic === null || userObj.user_data.profile_pic === '' ? <Image style={styles.image} source={require('../../../assets/images/appdp.jpg')} /> : <Image style={styles.image} source={{ uri: userObj.user_data.profile_pic }} />}
                     </View>
                     <View style={styles.mid}>
                         <View style={styles.textFieldView}>
                             <Icon name="user" style={styles.icon} />
-                            <TextInput style={styles.textField} value={this.state.first_name} editable={false}>
+                            <TextInput style={styles.textField} value={userObj.user_data.first_name} editable={false}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="user" style={styles.icon} />
-                            <TextInput style={styles.textField} value={this.state.last_name} editable={false}>
+                            <TextInput style={styles.textField} value={userObj.user_data.last_name} editable={false}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="envelope" style={styles.envelope} />
-                            <TextInput style={styles.textField} value={this.state.email} editable={false}>
+                            <TextInput style={styles.textField} value={userObj.user_data.email} editable={false}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="mobile" style={styles.iconPhn} />
-                            <TextInput style={styles.textField} value={this.state.phone_no} editable={false}>
+                            <TextInput style={styles.textField} value={userObj.user_data.phone_no} editable={false}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="birthday-cake" style={styles.iconCake} />
-                            <TextInput style={styles.textField} value={this.state.dob} editable={false}>
+                            <TextInput style={styles.textField} value={userObj.user_data.dob} editable={false}>
                             </TextInput>
                         </View>
                     </View>
                     <View style={styles.btnView}>
-                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('EditProfile', { aa: this.state.user_data })}>
+                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('EditProfile')}>
                             <Text style={styles.btnTxt}> EDIT PROFILE </Text>
                         </TouchableOpacity>
                     </View>

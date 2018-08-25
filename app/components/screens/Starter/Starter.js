@@ -26,7 +26,6 @@ export default class Starter extends Component {
         AsyncStorage.getItem('access_token').then((value) => {
             //Check if the value exists or not
             if (value !== null) {
-                2
                 //Check if the accesstoken is valid or not by calling the api.
                 apiCaller(url.host + url.fAccDetails, 'GET', {}, null, callback = (response) => {
                     if (response.status == 200) { // Access Token valid please send to homescreen with response
