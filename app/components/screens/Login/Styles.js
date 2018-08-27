@@ -121,7 +121,6 @@ export default styles = StyleSheet.create({
         alignSelf: "flex-end",
         alignItems: 'center',
         justifyContent: 'center',
-
     },
 
     bottom: {
