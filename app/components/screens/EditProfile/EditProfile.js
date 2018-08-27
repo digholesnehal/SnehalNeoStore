@@ -46,12 +46,12 @@ export default class EditProfile extends Component {
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
-                    userProvider.setUserObj(userObj.user_data, response.data);
-                    console.log('here user response', response)
+                    // userProvider.setUserObj(response.data);
+                    alert(response.user_msg)
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
-                        // alert(response.user_msg);
+                        alert(response.user_msg);
                     }
                     else {
                         alert(response.message);

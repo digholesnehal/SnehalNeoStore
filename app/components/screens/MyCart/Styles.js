@@ -14,7 +14,7 @@ export default styles = StyleSheet.create({
         padding: 10,
         borderBottomColor: Colors.myCartSmallBG,
         borderBottomWidth: 1,
-        height: 90,
+        height: 100,
     },
     imgView: {
         flex: 1,
@@ -32,15 +32,19 @@ export default styles = StyleSheet.create({
         padding: 10,
     },
     name: {
-        fontSize: 20,
+        fontSize: 23,
         color: Colors.orderIDH,
     },
     quantity: {
-        fontSize: 13,
+        fontSize: 15,
         color: Colors.orderIDH,
         padding: 3,
         paddingLeft: 5,
         alignSelf: 'center',
+    },
+    dropDown: {
+        width: 40,
+        alignItems: 'center',
     },
     midPartitionC: {
         flex: 2,
@@ -51,6 +55,7 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        paddingTop: 5,
     },
     quantityView: {
         alignItems: 'center',
@@ -62,7 +67,10 @@ export default styles = StyleSheet.create({
         height: 26,
     },
     category: {
+        fontSize: 15,
+        fontWeight: 'normal',
         color: Colors.blackSecondary,
+        paddingTop: 3,
     },
     icon: {
         fontSize: 20,
@@ -95,5 +103,24 @@ export default styles = StyleSheet.create({
         alignSelf: "flex-end",
         alignItems: 'center',
         justifyContent: 'center',
-    }
+    },
+    btnView: {
+        padding: 10,
+        paddingTop: 30,
+    },
+    buttonStyle: {
+        backgroundColor: Colors.redBtnBG,
+        height: Platform.OS === 'ios' ? 50 : 40,
+        borderRadius: 5,
+        color: Colors.redBtnTxt,
+        fontSize: Platform.OS === 'ios' ? 80 : 70,
+        fontWeight: 'bold',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    btnTxt: {
+        color: Colors.primary,
+        fontSize: Platform.OS === 'ios' ? 25 : 25,
+        fontWeight: '500',
+    },
 })

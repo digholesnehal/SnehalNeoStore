@@ -42,7 +42,6 @@ export default class MyCart extends Component {
                     this.setState({
                         response: response,
                     });
-                    console.log('dataArray:', response)
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
@@ -56,18 +55,58 @@ export default class MyCart extends Component {
         );
     }
 
-    trash = (id) => {
+    order = () => {
         this.setState({ loader: true })
+        let formData = new formData();
+    }
+
+    trash = (item, index) => {
+        this.setState({ loader: true })
+
         let formData = new FormData();
-        console.log('id:', id.item.product_id)
-        formData.append('product_id', id.item.product_id)
+        formData.append('product_id', item.product_id)
         return apiCaller(
             url.host + url.Delete,
             'POST', { access_token: this.state.access_token }, formData,
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
+                    this.state.response.total = this.state.response.total - this.state.response.data[index].product.sub_total;
+                    this.state.response.data.splice(index, 1)
+                    console.log(this.state.response)
+                    this.setState({ loader: false })
                     alert(response.user_msg)
+                }
+                else {
+                    if (response.hasOwnProperty('user_msg')) {
+                        alert(response.user_msg);
+                    }
+                    else {
+                        alert(response.message);
+                    }
+                }
+            }
+        );
+    }
+
+    selectQty = (index, id, value) => {
+        this.setState({ loader: true })
+        let formData = new FormData();
+        formData.append('product_id', id)
+        formData.append('quantity', value)
+        console.log(this.state.response.data[index])
+        return apiCaller(
+            url.host + url.EditCart,
+            'POST', { access_token: this.state.access_token }, formData,
+            (response) => {
+                this.setState({ loader: false })
+                if (response.status == 200) {
+                    alert(response.user_msg)
+                    this.state.response.data[index].quantity = value
+                    this.state.response.total = this.state.response.total - this.state.response.data[index].product.sub_total;
+                    this.state.response.data[index].product.sub_total = (this.state.response.data[index].product.cost) * (this.state.response.data[index].quantity);
+                    this.state.response.total = this.state.response.total + this.state.response.data[index].product.sub_total;
+                    this.setState({ loader: false })
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
@@ -95,7 +134,8 @@ export default class MyCart extends Component {
                         useFlatList
                         data={this.state.response.data}
                         keyExtractor={(item, index) => "" + index}
-                        renderItem={({ item }) => (
+
+                        renderItem={({ item, index }) => (
                             <View style={styles.SwipeView}>
                                 <View style={styles.imgView}>
                                     <Image style={styles.img} source={{ uri: item.product.product_images }} />
@@ -106,21 +146,24 @@ export default class MyCart extends Component {
                                         <Text style={styles.category}>({item.product.product_category})</Text>
                                     </View>
                                     <View style={styles.midPartitionR}>
-                                        <ModalDropdown options={['1', '2', '3', '4', '5', '6', '7', '8']}>
+                                        <ModalDropdown
+                                            dropdownTextStyle={styles.quantity}
+                                            onSelect={(i, value) => { return this.selectQty(index, item.product_id, value) }}
+                                            options={['1', '2', '3', '4', '5', '6', '7', '8']}
+                                            dropdownStyle={styles.dropDown}>
                                             <View style={styles.quantityView} >
                                                 <Text style={styles.quantity}>{item.quantity}</Text>
                                                 <FeatherIcon name="chevron-down" size={20} color={Colors.blackPrimary} />
                                             </View>
                                         </ModalDropdown>
-                                        <Text>&#8377;{item.product.cost}</Text>
+                                        <Text>&#8377;{item.product.sub_total}</Text>
                                     </View>
                                 </View>
-
                             </View>
                         )}
-                        renderHiddenItem={(item, rowMap) => (
+                        renderHiddenItem={({ item, index }) => (
                             <View style={styles.deleteView}>
-                                <TouchableOpacity style={styles.trash} onPress={() => this.trash(item)}>
+                                <TouchableOpacity style={styles.trash} onPress={() => this.trash(item, index)}>
                                     <FeatherIcon name="trash-2" size={30} color={Colors.primary} />
                                 </TouchableOpacity>
                             </View>
@@ -130,6 +173,11 @@ export default class MyCart extends Component {
                     <View style={styles.totalView}>
                         <Text style={styles.totalTxt}>TOTAL</Text>
                         <Text style={styles.totalTxt}>&#8377;{this.state.response.total}</Text>
+                    </View>
+                    <View style={styles.btnView}>
+                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.order()}>
+                            <Text style={styles.btnTxt}> ORDER NOW </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
 

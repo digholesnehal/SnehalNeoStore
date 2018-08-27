@@ -33,6 +33,20 @@ export default styles = StyleSheet.create({
         fontWeight: FW.bookBM,
         padding: 10,
     },
+    itemCount: {
+        marginRight: 10,
+        borderRadius: Platform.OS === 'ios' ? 15 : 5,
+        backgroundColor: Colors.redBtnBG,
+        width: Platform.OS === 'ios' ? 26 : 30,
+        height: Platform.OS === 'ios' ? 26 : 30,
+        alignSelf: "center",
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    count: {
+        color: Colors.primary,
+        fontSize: 13,
+    },
     email: {
         justifyContent: 'center',
         alignSelf: 'center',
