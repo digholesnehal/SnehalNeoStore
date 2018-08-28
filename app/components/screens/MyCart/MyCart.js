@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Platform, Dimensions, ScrollView, StyleSheet, Text, View,
-    KeyboardAvoidingView, Image,
+    KeyboardAvoidingView, Image, Alert,
     TextInput, TouchableOpacity
 } from 'react-native';
 import styles from "./Styles";
@@ -15,6 +15,7 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 import * as Colors from '../../../utils/colors';
 import FeatherIcon from 'react-native-vector-icons/dist/Feather';
 import ModalDropdown from 'react-native-modal-dropdown';
+import { DrawerActions } from 'react-navigation';
 
 
 export default class MyCart extends Component {
@@ -61,6 +62,19 @@ export default class MyCart extends Component {
     }
 
     trash = (item, index) => {
+        Alert.alert(
+            'Alert Title',
+            'My Alert Msg',
+            [
+                { text: 'Cancel', onPress: () => '', style: 'cancel' },
+                { text: 'OK', onPress: () => this.delete(item, index) },
+            ],
+            { cancelable: false }
+        )
+
+    }
+
+    delete = (item, index) => {
         this.setState({ loader: true })
 
         let formData = new FormData();
@@ -73,7 +87,7 @@ export default class MyCart extends Component {
                 if (response.status == 200) {
                     this.state.response.total = this.state.response.total - this.state.response.data[index].product.sub_total;
                     this.state.response.data.splice(index, 1)
-                    console.log(this.state.response)
+                    userProvider.setObjKey('total_carts', response.total_carts)
                     this.setState({ loader: false })
                     alert(response.user_msg)
                 }

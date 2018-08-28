@@ -46,7 +46,7 @@ export default class EditProfile extends Component {
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
-                    // userProvider.setUserObj(response.data);
+                    userProvider.setObjKey('user_data', response.data);
                     alert(response.user_msg)
                 }
                 else {
@@ -101,6 +101,7 @@ export default class EditProfile extends Component {
     }
 
     render() {
+
         return (
             <View style={styles.container}>
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>

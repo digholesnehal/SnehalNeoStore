@@ -23,6 +23,15 @@ export default class MyAccount extends Component {
         }
     }
 
+    componentDidMount() {
+        const didBlurSubscription = this.props.navigation.addListener(
+            'willFocus',
+            payload => {
+                this.setState({ loader: false })
+            }
+        );
+    }
+
     render() {
         return (
             <View style={styles.container}>

@@ -88,10 +88,11 @@ export default class ProductList extends Component {
         formData.append('product_id', this.state.product_id)
         apiCaller(url.host + url.AddToCart, 'POST', { access_token: this.state.access_token }, formData,
             (response) => {
-                console.log('url=', url.host + url.AddToCart)
+                console.log('response=', response)
                 this.setState({ loader: false })
                 if (response.status == 200) {
                     this.BuyNowPopUp(!this.state.buyNowVisible)
+                    userProvider.setObjKey('total_carts', response.total_carts)
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
