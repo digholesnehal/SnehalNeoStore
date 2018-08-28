@@ -57,7 +57,7 @@ export default styles = StyleSheet.create({
     },
 
     iconPhn: {
-        fontSize: Platform.OS === 'ios' ? 25 : 20,
+        fontSize: Platform.OS === 'ios' ? 22 : 18,
         color: Colors.primary,
     },
     iconCake: {

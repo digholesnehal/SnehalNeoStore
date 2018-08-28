@@ -4,7 +4,7 @@ import {
     ImageBackground, TextInput, TouchableOpacity
 } from 'react-native';
 import styles from "./Styles";
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from '../../../utils/Icons.js';
 import Header from '../../../components/Header/header.js';
 import { primary } from '../../../utils/colors.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -90,21 +90,21 @@ export default class ResetPass extends Component {
 
                     <View style={styles.fpMid}>
                         <View style={styles.userPass}>
-                            <Icon name="lock" style={styles.icon} />
+                            <Icon name="Lock" style={styles.icon} />
                             <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} value={this.state.username}
                                 style={styles.textField} placeholder="Current Password" placeholderTextColor={primary}>
                             </TextInput>
                         </View>
 
                         <View style={styles.userPass}>
-                            <Icon name="unlock" style={styles.icon} />
+                            <Icon name="Lock" style={styles.icon} />
                             <TextInput onChangeText={(changedText) => { this.setState({ "npassword": changedText }) }} value={this.state.npassword}
                                 style={styles.textField} placeholder="New Password" placeholderTextColor={primary}>
                             </TextInput>
                         </View>
 
                         <View style={styles.userPass}>
-                            <Icon name="lock" style={styles.icon} />
+                            <Icon name="Lock" style={styles.icon} />
                             <TextInput onChangeText={(changedText) => { this.setState({ "cpassword": changedText }) }} value={this.state.cpassword}
                                 style={styles.textField} placeholder="Confirm Password" placeholderTextColor={primary}>
                             </TextInput>

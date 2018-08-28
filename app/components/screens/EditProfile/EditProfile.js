@@ -4,7 +4,7 @@ import {
     ImageBackground, TextInput, TouchableOpacity, ActivityIndicator
 } from 'react-native';
 import styles from "./Styles";
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from '../../../utils/Icons.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
@@ -130,17 +130,17 @@ export default class EditProfile extends Component {
                                 </TextInput>
                             </View>
                             <View style={styles.textFieldView}>
-                                <Icon name="envelope" style={styles.envelope} />
+                                <Icon name="email" style={styles.envelope} />
                                 <TextInput style={styles.textField} onChangeText={(changedText) => { this.setState({ "email": changedText }) }} value={this.state.email == null ? this.data.email : this.state.email}>
                                 </TextInput>
                             </View>
                             <View style={styles.textFieldView}>
-                                <Icon name="mobile" style={styles.iconPhn} />
+                                <Icon name="phone" style={styles.iconPhn} />
                                 <TextInput style={styles.textField} onChangeText={(changedText) => { this.setState({ "phone_no": changedText }) }} value={this.state.phone_no == null ? this.data.phone_no : this.state.phone_no}>
                                 </TextInput>
                             </View>
                             <View style={styles.textFieldView}>
-                                <Icon name="birthday-cake" style={styles.iconCake} />
+                                <Icon name="birthday" style={styles.iconCake} />
                                 <TouchableOpacity style={styles.textField} onPress={this._showDateTimePicker}>
                                     <Text style={styles.text}> {this.state.dob} </Text>
                                 </TouchableOpacity>

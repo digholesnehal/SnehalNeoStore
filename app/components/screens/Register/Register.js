@@ -3,7 +3,7 @@ import {
     Platform, Dimensions, StyleSheet, Text, View,
     ImageBackground, TextInput, TouchableOpacity
 } from 'react-native';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from '../../../utils/Icons.js';
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 import styles from './Styles';
 import CheckBox from 'react-native-check-box';
@@ -14,7 +14,7 @@ import Keyboard from 'react-native-keyboard';
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import Loader from '../../Loader/Loader.js';
-import { DEFAULT_ICON_SIZE } from 'react-native-vector-icons/dist/lib/create-icon-set';
+// import { DEFAULT_ICON_SIZE } from 'react-native-vector-icons/dist/lib/create-icon-set';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 
 
@@ -181,19 +181,19 @@ export default class Register extends Component {
                             </View>
 
                             <View style={styles.userPass}>
-                                <Icon name="envelope" style={styles.envelope} />
+                                <Icon name="email" style={styles.envelope} />
                                 <TextInput onChangeText={(changedText) => { this.setState({ "email": changedText }) }} value={this.state.email} style={styles.textField} placeholder="Email" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
-                                <Icon name="lock" style={styles.icon} />
+                                <Icon name="Lock" style={styles.icon} />
                                 <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} value={this.state.password} style={styles.textField} placeholder="Password" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
-                                <Icon name="lock" style={styles.icon} />
+                                <Icon name="Lock" style={styles.icon} />
                                 <TextInput onChangeText={(changedText) => { this.setState({ "cpassword": changedText }) }} secureTextEntry={true} value={this.state.cpassword} style={styles.textField} placeholder="Confirm Password" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
@@ -216,7 +216,7 @@ export default class Register extends Component {
                             </View>
 
                             <View style={styles.userPass}>
-                                <Icon name="mobile" style={styles.iconPhn} />
+                                <Icon name="phone" style={styles.iconPhn} />
                                 <TextInput keyboardType="phone-pad" onChangeText={(changedText) => { this.setState({ "mobile": changedText }) }} value={this.state.mobile} style={styles.textField} placeholder="Phone Number" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>

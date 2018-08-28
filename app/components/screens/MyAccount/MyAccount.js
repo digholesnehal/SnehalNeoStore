@@ -4,7 +4,7 @@ import {
     ImageBackground, TextInput, TouchableOpacity, ActivityIndicator
 } from 'react-native';
 import styles from "./Styles";
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from '../../../utils/Icons.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
@@ -58,17 +58,17 @@ export default class MyAccount extends Component {
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
-                            <Icon name="envelope" style={styles.envelope} />
+                            <Icon name="email" style={styles.envelope} />
                             <TextInput style={styles.textField} value={userObj.user_data.email} editable={false}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
-                            <Icon name="mobile" style={styles.iconPhn} />
+                            <Icon name="phone" style={styles.iconPhn} />
                             <TextInput style={styles.textField} value={userObj.user_data.phone_no} editable={false}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
-                            <Icon name="birthday-cake" style={styles.iconCake} />
+                            <Icon name="birthday" style={styles.iconCake} />
                             <TextInput style={styles.textField} value={userObj.user_data.dob} editable={false}>
                             </TextInput>
                         </View>

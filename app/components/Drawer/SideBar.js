@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity, View, Image, Platform } from "react-native";
 import styles from './Styles';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from '../../utils/Icons.js';
 import { AsyncStorage } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { userObj, userProvider } from '../../lib/UserProvider.js';
@@ -16,20 +16,11 @@ export default class SideBar extends Component {
         };
     }
 
-    drawerClose() {
+    drawerClose(screen, id) {
         setTimeout(() => {
-        }, 0);
+            this.props.navigation.navigate(screen, id);
+        }, 700);
     }
-
-
-    // componentDidMount() {
-    //     const didBlurSubscription = this.props.navigation.addListener(
-    //         'willFocus',
-    //         payload => {
-    //             this.setState({ loader: false })
-    //         }
-    //     );
-    // }
 
     clearData = () => {
         AsyncStorage.removeItem('access_token', (err) => {
@@ -45,10 +36,10 @@ export default class SideBar extends Component {
                     <Text style={styles.UserName}> {userObj.user_data.username} </Text>
                     <Text style={styles.email}>{userObj.user_data.email}</Text>
                 </View>
-                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.props.navigation.navigate('MyCart') }}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('MyCart', {}); this.props.navigation.closeDrawer() }}>
                     <View style={styles.partitions}>
                         <View style={{ flex: 1 }}>
-                            <Icon name="shopping-cart" style={styles.icon} />
+                            <Icon name="cart" style={styles.icon} />
                         </View>
                         <View style={{ flex: 6 }}>
                             <Text style={styles.options}>My Cart</Text>
@@ -61,58 +52,58 @@ export default class SideBar extends Component {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.props.navigation.navigate('ProductList', { ID: 1, Name: 'Tables' }, this.props.navigation.closeDrawer()) }}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('ProductList', { ID: 1, Name: 'Tables' }); this.props.navigation.closeDrawer() }}>
                     <View style={styles.partitions}>
-                        <Icon name="columns" style={styles.icon} />
+                        <Icon name="table" style={styles.icon} />
                         <Text style={styles.options}>Tables</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.props.navigation.navigate('ProductList', { ID: 3, Name: 'Sofas' }) }}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('ProductList', { ID: 3, Name: 'Sofas' }); this.props.navigation.closeDrawer() }}>
                     <View style={styles.partitions}>
-                        <Icon name="archive" style={styles.icon} />
+                        <Icon name="sofa" style={styles.icon} />
                         <Text style={styles.options}>Sofas</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.props.navigation.navigate('ProductList', { ID: 2, Name: 'Chairs' }) }}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('ProductList', { ID: 2, Name: 'Chairs' }); this.props.navigation.closeDrawer() }}>
                     <View style={styles.partitions}>
-                        <Icon name="cube" style={styles.icon} />
+                        <Icon name="chair" style={styles.icon} />
                         <Text style={styles.options}>Chairs</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.props.navigation.navigate('ProductList', { ID: 4, Name: 'Cupboards' }) }}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('ProductList', { ID: 4, Name: 'Cupboards' }); this.props.navigation.closeDrawer() }}>
                     <View style={styles.partitions}>
-                        <Icon name="building" style={styles.icon} />
+                        <Icon name="cupboard" style={styles.icon} />
                         <Text style={styles.options}>Cupboards</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.props.navigation.navigate('MyAccount') }}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('MyAccount', {}); this.props.navigation.closeDrawer() }}>
                     <View style={styles.partitions}>
                         <Icon name="user" style={styles.icon} />
                         <Text style={styles.options}>My Account</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.props.navigation.navigate('Tables') }}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('StoreLocator', {}); this.props.navigation.closeDrawer() }}>
                     <View style={styles.partitions}>
-                        <Icon name="map-marker" style={styles.icon} />
+                        <Icon name="Locator" style={styles.icon} />
                         <Text style={styles.options}>Store Locator</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.props.navigation.navigate('Tables') }}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('MyOrders', {}); this.props.navigation.closeDrawer() }}>
                     <View style={styles.partitions}>
-                        <Icon name="list-alt" style={styles.icon} />
+                        <Icon name="orders" style={styles.icon} />
                         <Text style={styles.options}>My Orders</Text>
                     </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.clearData()}>
                     <View style={styles.partitions}>
-                        <Icon name="sign-out" style={styles.icon} />
+                        <Icon name="log_out" style={styles.icon} />
                         <Text style={styles.options}>Logout</Text>
                     </View>
                 </TouchableOpacity>

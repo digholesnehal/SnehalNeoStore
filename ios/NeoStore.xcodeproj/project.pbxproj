@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -54,6 +55,7 @@
 		F274832321107F9000165A1D /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F274831521107F9000165A1D /* Foundation.ttf */; };
 		F274832421107F9000165A1D /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F274831621107F9000165A1D /* FontAwesome5_Brands.ttf */; };
 		F274832521107F9000165A1D /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F274831721107F9000165A1D /* FontAwesome5_Regular.ttf */; };
+		F2AD046F213575C100A46C9F /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2AD046E213575C100A46C9F /* icomoon.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -407,6 +409,7 @@
 		F274831521107F9000165A1D /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		F274831621107F9000165A1D /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		F274831721107F9000165A1D /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		F2AD046E213575C100A46C9F /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = icomoon.ttf; path = ../../../../Downloads/icomoon/fonts/icomoon.ttf; sourceTree = "<group>"; };
 		FD38EDFD720E46B1958A2BAB /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -645,6 +648,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F2AD046E213575C100A46C9F /* icomoon.ttf */,
 				F274831021107F8F00165A1D /* Entypo.ttf */,
 				F274831121107F8F00165A1D /* EvilIcons.ttf */,
 				F27482E521107F8D00165A1D /* Feather.ttf */,
@@ -722,7 +726,6 @@
 				FD38EDFD720E46B1958A2BAB /* libSplashScreen.a */,
 				92B4C8311DD04813B1043310 /* libRCTDirectedScrollView.a */,
 				9EB6EB01BC874D2D9D6BA4E7 /* libRNImagePicker.a */,
-				5AAC3637BE7C48F49E666CFC /* libRNShare.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1242,6 +1245,7 @@
 				F274831B21107F9000165A1D /* FontAwesome5_Solid.ttf in Resources */,
 				F274832421107F9000165A1D /* FontAwesome5_Brands.ttf in Resources */,
 				F274831921107F9000165A1D /* MaterialCommunityIcons.ttf in Resources */,
+				F2AD046F213575C100A46C9F /* icomoon.ttf in Resources */,
 				F274831C21107F9000165A1D /* SimpleLineIcons.ttf in Resources */,
 				F274832221107F9000165A1D /* Octicons.ttf in Resources */,
 				F274831E21107F9000165A1D /* Entypo.ttf in Resources */,
@@ -1366,9 +1370,7 @@
 				INFOPLIST_FILE = NeoStoreTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1393,9 +1395,7 @@
 				INFOPLIST_FILE = NeoStoreTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1477,9 +1477,7 @@
 				);
 				INFOPLIST_FILE = "NeoStore-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1513,9 +1511,7 @@
 				);
 				INFOPLIST_FILE = "NeoStore-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1548,9 +1544,7 @@
 				);
 				INFOPLIST_FILE = "NeoStore-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1583,9 +1577,7 @@
 				);
 				INFOPLIST_FILE = "NeoStore-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",

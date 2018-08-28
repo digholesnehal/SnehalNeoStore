@@ -109,8 +109,8 @@ export default styles = StyleSheet.create({
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 20 : 18,
         fontWeight: '600',
-        alignSelf: "flex-end",
-        marginBottom: Platform.OS === 'ios' ? 20 : 15,
+        alignSelf: "center",
+        paddingBottom: Platform.OS === 'ios' ? 60 : 50,
     },
 
     newAcc: {
@@ -129,7 +129,7 @@ export default styles = StyleSheet.create({
         alignSelf: "baseline",
         padding: Platform.OS === 'ios' ? 12 : 10,
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
     },
 
 });

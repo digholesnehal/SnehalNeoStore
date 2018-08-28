@@ -1,13 +1,22 @@
 import { Platform, StyleSheet } from 'react-native';
-import { redHeader, primary } from '../../utils/colors.js'
+import * as Colors from '../../utils/colors.js'
 
 export default styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
-        height: Platform.OS === 'ios' ? 55 : 50,
         width: '100%',
-        backgroundColor: redHeader,
-        alignItems: 'center'
+        flexDirection: 'column',
+    },
+    white: {
+        height: Platform.OS === 'ios' ? 20 : 50,
+        width: '100%',
+        backgroundColor: '#282727',
+    },
+    header: {
+        backgroundColor: Colors.redHeader,
+        height: Platform.OS === 'ios' ? 55 : 50,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
     },
     Titlecontainer: {
         width: '70%',
@@ -26,7 +35,7 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         fontSize: 28,
         marginTop: 5,
-        color: primary,
+        color: Colors.primary,
         fontWeight: 'bold',
     },
     text: {
@@ -34,7 +43,7 @@ export default styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: Platform.OS === 'ios' ? '500' : 'normal',
         marginTop: 5,
-        color: primary,
+        color: Colors.primary,
         paddingBottom: 5,
     },
     menuIcon: {

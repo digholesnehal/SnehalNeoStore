@@ -33,7 +33,7 @@ export default styles = StyleSheet.create({
 
     },
     myStarStyle: {
-        fontSize: 20,
+        fontSize: 17,
         color: Colors.ratingAfter,
     },
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import FeatherIcon from 'react-native-vector-icons/dist/Feather';
+import Icon from '../../utils/Icons.js';
 import styles from './styles';
 import { primary } from '../../utils/colors.js';
 
@@ -12,16 +12,20 @@ class Header extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={styles.Backcontainer}
-                    onPress={this.props.back}>
-                    {this.props.isDrawer ? <FeatherIcon name="menu" size={26} style={styles.menuIcon} color={primary} /> : <FeatherIcon name="chevron-left" size={26} style={styles.backMenuIcon} color={primary} />}
-                </TouchableOpacity>
-                <View style={styles.Titlecontainer}>
-                    {this.props.mainTitle ? <Text style={styles.mainText}>{this.props.title}</Text> : <Text style={styles.text}>{this.props.title}</Text>}
+                <View style={styles.white}>
                 </View>
-                <TouchableOpacity style={styles.SearchBackcontainer}>
-                    {this.props.isSearch ? <FeatherIcon name="search" size={26} style={styles.menuIcon} color={primary} /> : null}
-                </TouchableOpacity>
+                <View style={styles.header}>
+                    <TouchableOpacity style={styles.Backcontainer}
+                        onPress={this.props.back}>
+                        {this.props.isDrawer ? <Icon name="menu" size={20} style={styles.menuIcon} color={primary} /> : <Icon name="back" size={18} style={styles.backMenuIcon} color={primary} />}
+                    </TouchableOpacity>
+                    <View style={styles.Titlecontainer}>
+                        {this.props.mainTitle ? <Text style={styles.mainText}>{this.props.title}</Text> : <Text style={styles.text}>{this.props.title}</Text>}
+                    </View>
+                    <TouchableOpacity style={styles.SearchBackcontainer}>
+                        {this.props.isSearch ? <Icon name="search" size={26} style={styles.menuIcon} color={primary} /> : null}
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }

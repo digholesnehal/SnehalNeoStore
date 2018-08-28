@@ -4,7 +4,7 @@ import {
     ImageBackground, TextInput, TouchableOpacity
 } from 'react-native';
 import styles from "./Styles";
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from '../../../utils/Icons.js';
 import Header from '../../../components/Header/header.js';
 import { primary } from '../../../utils/colors.js'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';

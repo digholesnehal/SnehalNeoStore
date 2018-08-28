@@ -5,7 +5,7 @@ import {
     TextInput, TouchableOpacity
 } from 'react-native';
 import styles from "./Styles";
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from '../../../utils/Icons.js';
 import Header from '../../../components/Header/header.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
@@ -13,7 +13,6 @@ import { apiCaller } from '../../../lib/Fetcher.js';
 import * as url from '../../../lib/api.js';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import * as Colors from '../../../utils/colors';
-import FeatherIcon from 'react-native-vector-icons/dist/Feather';
 import ModalDropdown from 'react-native-modal-dropdown';
 import { DrawerActions } from 'react-navigation';
 
@@ -56,15 +55,9 @@ export default class MyCart extends Component {
         );
     }
 
-    order = () => {
-        this.setState({ loader: true })
-        let formData = new formData();
-    }
-
     trash = (item, index) => {
         Alert.alert(
-            'Alert Title',
-            'My Alert Msg',
+            'Are you sure, you want to delete?',
             [
                 { text: 'Cancel', onPress: () => '', style: 'cancel' },
                 { text: 'OK', onPress: () => this.delete(item, index) },
@@ -141,7 +134,7 @@ export default class MyCart extends Component {
                     title={'My Cart'}
                     mainTitle={false}
                     isDrawer={false}
-                    isSearch={false}
+                    isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
                 <View>
                     <SwipeListView
@@ -167,7 +160,7 @@ export default class MyCart extends Component {
                                             dropdownStyle={styles.dropDown}>
                                             <View style={styles.quantityView} >
                                                 <Text style={styles.quantity}>{item.quantity}</Text>
-                                                <FeatherIcon name="chevron-down" size={20} color={Colors.blackPrimary} />
+                                                <Icon name="dropDown" size={10} color={Colors.blackPrimary} />
                                             </View>
                                         </ModalDropdown>
                                         <Text>&#8377;{item.product.sub_total}</Text>
@@ -178,7 +171,7 @@ export default class MyCart extends Component {
                         renderHiddenItem={({ item, index }) => (
                             <View style={styles.deleteView}>
                                 <TouchableOpacity style={styles.trash} onPress={() => this.trash(item, index)}>
-                                    <FeatherIcon name="trash-2" size={30} color={Colors.primary} />
+                                    <Icon name="Delete" size={25} color={Colors.primary} />
                                 </TouchableOpacity>
                             </View>
                         )}
@@ -189,12 +182,11 @@ export default class MyCart extends Component {
                         <Text style={styles.totalTxt}>&#8377;{this.state.response.total}</Text>
                     </View>
                     <View style={styles.btnView}>
-                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.order()}>
+                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('AddAddress')}>
                             <Text style={styles.btnTxt}> ORDER NOW </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
-
             </View>
 
         )

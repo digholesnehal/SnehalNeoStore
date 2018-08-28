@@ -4,7 +4,7 @@ import {
     ImageBackground, TextInput, TouchableOpacity, ActivityIndicator
 } from 'react-native';
 import styles from "./Styles";
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import Icon from '../../../utils/Icons.js';
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
@@ -86,13 +86,13 @@ export default class Login extends Component {
                     </View>
                     <View style={styles.loginMid}>
                         <View style={styles.userPass}>
-                            <Icon name="user" style={styles.icon} />
+                            <Icon name='user' style={styles.icon} />
                             <TextInput onChangeText={(changedText) => { this.setState({ "username": changedText }) }} style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
                             </TextInput>
                         </View>
 
                         <View style={styles.userPass}>
-                            <Icon name="lock" style={styles.icon} />
+                            <Icon name="Lock" style={styles.icon} />
                             <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
                             </TextInput>
                         </View>
@@ -116,7 +116,7 @@ export default class Login extends Component {
                                 DONT HAVE AN ACCOUNT?
                                 </Text>
                             <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}>
-                                <Icon name="plus" size={40} color="#fff" />
+                                <Icon name="addAcc" size={30} color="#fff" />
                             </TouchableOpacity>
                         </View>
                     </View>

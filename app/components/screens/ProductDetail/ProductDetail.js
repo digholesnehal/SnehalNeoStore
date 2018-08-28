@@ -11,9 +11,8 @@ import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import Stars from 'react-native-stars';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Loader from '../../Loader/Loader.js';
-import Feather from 'react-native-vector-icons/dist/Feather';
+import Icon from '../../../utils/Icons.js';
 import Modal from "react-native-modal";
 import { Share } from 'react-native';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
@@ -185,12 +184,10 @@ export default class ProductList extends Component {
                                 default={this.state.dataArray.rating}
                                 count={5}
                                 half={true}
-                                starSize={70}
                                 disabled={true}
                                 backingColor={Colors.ratingBefore}
                                 fullStar={<Icon name={'star'} style={[styles.myStarStyle]} />}
-                                emptyStar={<Icon name={'star-outline'} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
-                                halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]} />}
+                                emptyStar={<Icon name={'star'} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
                             />
                         </View>
                     </View>
@@ -200,7 +197,7 @@ export default class ProductList extends Component {
                                 Rs. {this.state.dataArray.cost}
                             </Text>
                             <TouchableOpacity onPress={() => { this.sharing() }}>
-                                <Feather name="share-2" size={20} color={Colors.ratingBefore} />
+                                <Icon name="share" size={25} color={Colors.ratingBefore} />
                             </TouchableOpacity>
                         </View>
                         <View style={styles.largeImg}>
@@ -231,7 +228,7 @@ export default class ProductList extends Component {
                         <View style={{ flex: 2 }}></View>
                         <View style={styles.modalInnerView}>
                             <TouchableOpacity onPress={() => { this.BuyNowPopUp(!this.state.buyNowVisible); }}>
-                                <Feather name="x-square" size={20} style={styles.close} color={Colors.redBtnBG} />
+                                <Icon name="multiply" size={20} style={styles.close} color={Colors.redBtnBG} />
                             </TouchableOpacity>
                             <View style={styles.Submit}>
                                 <Text style={styles.ModalName}>
@@ -267,7 +264,7 @@ export default class ProductList extends Component {
                         <View style={{ flex: 1 }}></View>
                         <View style={styles.modalInnerView}>
                             <TouchableOpacity onPress={() => { this.RatingPopUp(!this.state.RatingVisible); }}>
-                                <Feather name="x-square" size={20} style={styles.close} color={Colors.redBtnBG} />
+                                <Icon name="multiply" size={20} style={styles.close} color={Colors.redBtnBG} />
                             </TouchableOpacity>
                             <View style={styles.Submit}>
                                 <Text style={styles.ModalName}>
@@ -285,8 +282,7 @@ export default class ProductList extends Component {
                                     disabled={false}
                                     backingColor={Colors.ratingBefore}
                                     fullStar={<Icon name={'star'} style={[styles.ratingStarStyle]} />}
-                                    emptyStar={<Icon name={'star-outline'} style={[styles.ratingStarStyle, styles.myEmptyStarStyle]} />}
-                                    halfStar={<Icon name={'star-half'} style={[styles.ratingStarStyle]} />}
+                                    emptyStar={<Icon name={'star'} style={[styles.ratingStarStyle, styles.myEmptyStarStyle]} />}
                                     update={(val) => this.setState({ stars: val })}
                                 />
                             </View>

@@ -10,7 +10,7 @@ import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import Stars from 'react-native-stars';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from '../../../utils/Icons.js';
 import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import Modal from "react-native-modal";
@@ -91,12 +91,10 @@ export default class ProductList extends Component {
                                             default={item.rating}
                                             count={5}
                                             half={true}
-                                            starSize={70}
                                             disabled={true}
                                             backingColor={Colors.ratingBefore}
                                             fullStar={<Icon name={'star'} style={[styles.myStarStyle]} />}
-                                            emptyStar={<Icon name={'star-outline'} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
-                                            halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]} />}
+                                            emptyStar={<Icon name={'star'} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
                                         />
                                     </View>
                                 </View>
