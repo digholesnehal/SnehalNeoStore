@@ -178,7 +178,6 @@ export default styles = StyleSheet.create({
         alignSelf: 'center',
     },
     close: {
-        backgroundColor: Colors.primary,
         alignSelf: 'flex-end',
     },
     modalInnerView: {

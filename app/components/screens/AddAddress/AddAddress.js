@@ -7,10 +7,10 @@ import {
 import styles from "./Styles";
 import Header from '../../../components/Header/header.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import * as url from '../../../lib/api.js';
 import * as Colors from '../../../utils/colors';
+import { AsyncStorage } from 'react-native';
 
 
 export default class AddAddress extends Component {
@@ -18,13 +18,57 @@ export default class AddAddress extends Component {
         super(props);
 
         this.state = {
-            address: '',
-            landmark: '',
-            city: '',
-            state: '',
-            zip: '',
-            country: '',
-            loader: false,
+            address: 'Santosh Nagar, TTN college road, Khadaki',
+            landmark: 'Near Anand Park appartment',
+            city: 'Akola',
+            state: 'Maharashtra',
+            zip: '444001',
+            country: 'India',
+            UserAdd: '',
+        }
+    }
+
+    AddAddress = () => {
+        var alphaExp = /^[a-zA-Zäöüß]+$/;
+        var num = /^([0-9*\+\#]){4,8}$/;
+
+        if (this.state.address == "") {
+            alert("Address field sould not remain empty");
+            return false;
+        }
+
+        else if (this.state.landmark == "") {
+            alert("Landmark..??");
+            return false;
+        }
+        else if (this.state.city == "" || !this.state.city.match(alphaExp)) {
+            alert("City..??");
+            return false;
+        }
+        else if (this.state.state == "" || !this.state.state.match(alphaExp)) {
+            alert("State..??");
+            return false;
+        }
+        else if (this.state.zip == "" || !this.state.zip.match(num)) {
+            alert("Zip Code..??");
+            return false;
+        }
+        else if (this.state.country == "" || !this.state.country.match(alphaExp)) {
+            alert("Country..??");
+            return false;
+        }
+        else {
+            this.state.UserAdd = this.state.address + ',\n' + this.state.landmark
+                + ',\n' + this.state.city + ',' + this.state.state + ' - ' + this.state.zip + ',\n' + this.state.country;
+
+            AsyncStorage.getItem('Address')
+                .then((Address) => {
+                    const UserAddress = Address ? JSON.parse(Address) : [];
+                    UserAddress.push(this.state.UserAdd);
+                    AsyncStorage.setItem('Address', JSON.stringify(UserAddress), () => {
+                        alert('Address added successfully.')
+                    });
+                });
         }
     }
 
@@ -77,7 +121,7 @@ export default class AddAddress extends Component {
                         </View>
                     </View>
                     <View style={styles.button}>
-                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('AddressList')}>
+                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.AddAddress()}>
                             <Text style={styles.btnTxt}> SAVE ADDRESS </Text>
                         </TouchableOpacity>
                     </View>

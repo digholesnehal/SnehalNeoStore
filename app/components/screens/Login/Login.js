@@ -32,7 +32,6 @@ export default class Login extends Component {
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
-
                     AsyncStorage.setItem('access_token', response.data.access_token, () => {
                         apiCaller(url.host + url.fAccDetails, 'GET', {}, null,
                             (response) => {

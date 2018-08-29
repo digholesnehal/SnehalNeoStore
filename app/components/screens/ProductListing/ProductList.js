@@ -48,7 +48,6 @@ export default class ProductList extends Component {
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
-                        // alert(response.user_msg);
                     }
                     else {
                         alert(response.message);

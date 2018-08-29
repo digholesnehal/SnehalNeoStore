@@ -92,6 +92,7 @@ export default class ProductList extends Component {
                 if (response.status == 200) {
                     this.BuyNowPopUp(!this.state.buyNowVisible)
                     userProvider.setObjKey('total_carts', response.total_carts)
+                    alert(response.user_msg)
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
@@ -117,6 +118,7 @@ export default class ProductList extends Component {
                 if (response.status == 200) {
                     this.setState({ dataArray: response.data, })
                     this.RatingPopUp(!this.state.RatingVisible)
+                    alert(response.user_msg)
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {

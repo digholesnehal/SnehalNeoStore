@@ -14,7 +14,6 @@ import Keyboard from 'react-native-keyboard';
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import Loader from '../../Loader/Loader.js';
-// import { DEFAULT_ICON_SIZE } from 'react-native-vector-icons/dist/lib/create-icon-set';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 
 
@@ -55,13 +54,14 @@ export default class Register extends Component {
             callBack = (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
-                    AsyncStorage.setItem('first_name', this.state.firstname)
-                    AsyncStorage.setItem('last_name', this.state.lastname)
-                    AsyncStorage.setItem('email', this.state.email)
-                    AsyncStorage.setItem('password', this.state.password)
-                    AsyncStorage.setItem('confirm_password', this.state.cpassword)
-                    AsyncStorage.setItem('gender', this.state.gender)
-                    AsyncStorage.setItem('phone_no', this.state.mobile)
+                    // AsyncStorage.setItem('first_name', this.state.firstname)
+                    // AsyncStorage.setItem('last_name', this.state.lastname)
+                    // AsyncStorage.setItem('email', this.state.email)
+                    // AsyncStorage.setItem('password', this.state.password)
+                    // AsyncStorage.setItem('confirm_password', this.state.cpassword)
+                    // AsyncStorage.setItem('gender', this.state.gender)
+                    // AsyncStorage.setItem('phone_no', this.state.mobile)
+                    userProvider.setObjKey('user_data', response.data);
                     alert(response.user_msg)
                     this.props.navigation.navigate('HomeScreen');
                 }

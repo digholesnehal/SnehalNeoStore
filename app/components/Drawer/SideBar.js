@@ -19,7 +19,7 @@ export default class SideBar extends Component {
     drawerClose(screen, id) {
         setTimeout(() => {
             this.props.navigation.navigate(screen, id);
-        }, 700);
+        }, 800);
     }
 
     clearData = () => {

@@ -22,8 +22,9 @@ class Header extends Component {
                     <View style={styles.Titlecontainer}>
                         {this.props.mainTitle ? <Text style={styles.mainText}>{this.props.title}</Text> : <Text style={styles.text}>{this.props.title}</Text>}
                     </View>
-                    <TouchableOpacity style={styles.SearchBackcontainer}>
-                        {this.props.isSearch ? <Icon name="search" size={26} style={styles.menuIcon} color={primary} /> : null}
+                    <TouchableOpacity style={styles.SearchBackcontainer}
+                        onPress={this.props.search}>
+                        {this.props.isSearch ? <Icon name="search" size={26} style={styles.menuIcon} color={primary} /> : <Icon name="add" size={26} style={styles.menuIcon} color={primary} />}
                     </TouchableOpacity>
                 </View>
             </View>

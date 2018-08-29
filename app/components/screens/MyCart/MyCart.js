@@ -57,51 +57,50 @@ export default class MyCart extends Component {
 
     trash = (item, index) => {
         Alert.alert(
-            'Are you sure, you want to delete?',
+            'Are you sure?',
+            'Want to delete this item?',
             [
-                { text: 'Cancel', onPress: () => '', style: 'cancel' },
-                { text: 'OK', onPress: () => this.delete(item, index) },
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                {
+                    text: 'OK', onPress: () => {
+                        this.setState({ loader: true })
+                        let formData = new FormData();
+                        formData.append('product_id', item.product_id)
+                        return apiCaller(
+                            url.host + url.Delete,
+                            'POST', { access_token: this.state.access_token }, formData,
+                            (response) => {
+                                this.setState({ loader: false })
+                                if (response.status == 200) {
+                                    this.state.response.total = this.state.response.total - this.state.response.data[index].product.sub_total;
+                                    this.state.response.data.splice(index, 1)
+                                    userProvider.setObjKey('total_carts', response.total_carts)
+                                    this.setState({ loader: false })
+                                    alert(response.user_msg)
+                                }
+                                else {
+                                    if (response.hasOwnProperty('user_msg')) {
+                                        alert(response.user_msg);
+                                    }
+                                    else {
+                                        alert(response.message);
+                                    }
+                                }
+                            }
+                        );
+                    }
+                },
             ],
             { cancelable: false }
         )
-
     }
 
-    delete = (item, index) => {
-        this.setState({ loader: true })
-
-        let formData = new FormData();
-        formData.append('product_id', item.product_id)
-        return apiCaller(
-            url.host + url.Delete,
-            'POST', { access_token: this.state.access_token }, formData,
-            (response) => {
-                this.setState({ loader: false })
-                if (response.status == 200) {
-                    this.state.response.total = this.state.response.total - this.state.response.data[index].product.sub_total;
-                    this.state.response.data.splice(index, 1)
-                    userProvider.setObjKey('total_carts', response.total_carts)
-                    this.setState({ loader: false })
-                    alert(response.user_msg)
-                }
-                else {
-                    if (response.hasOwnProperty('user_msg')) {
-                        alert(response.user_msg);
-                    }
-                    else {
-                        alert(response.message);
-                    }
-                }
-            }
-        );
-    }
 
     selectQty = (index, id, value) => {
         this.setState({ loader: true })
         let formData = new FormData();
         formData.append('product_id', id)
         formData.append('quantity', value)
-        console.log(this.state.response.data[index])
         return apiCaller(
             url.host + url.EditCart,
             'POST', { access_token: this.state.access_token }, formData,
@@ -182,7 +181,7 @@ export default class MyCart extends Component {
                         <Text style={styles.totalTxt}>&#8377;{this.state.response.total}</Text>
                     </View>
                     <View style={styles.btnView}>
-                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('AddAddress')}>
+                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('AddressList')}>
                             <Text style={styles.btnTxt}> ORDER NOW </Text>
                         </TouchableOpacity>
                     </View>
