@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {
-    Platform, Dimensions, ScrollView, StyleSheet, Text, View,
-    KeyboardAvoidingView, Image, Alert,
-    TextInput, TouchableOpacity
+    Platform, Dimensions, ScrollView, StyleSheet,
+    Text, View, Image, Alert, TouchableOpacity
 } from 'react-native';
 import styles from "./Styles";
 import Icon from '../../../utils/Icons.js';
@@ -135,57 +134,59 @@ export default class MyCart extends Component {
                     isDrawer={false}
                     isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
-                <View>
-                    <SwipeListView
-                        useFlatList
-                        data={this.state.response.data}
-                        keyExtractor={(item, index) => "" + index}
+                <ScrollView>
+                    <View>
+                        <SwipeListView
+                            useFlatList
+                            data={this.state.response.data}
+                            keyExtractor={(item, index) => "" + index}
 
-                        renderItem={({ item, index }) => (
-                            <View style={styles.SwipeView}>
-                                <View style={styles.imgView}>
-                                    <Image style={styles.img} source={{ uri: item.product.product_images }} />
-                                </View>
-                                <View style={styles.midSwipe}>
-                                    <View style={styles.midPartitionC}>
-                                        <Text style={styles.name}>{item.product.name}</Text>
-                                        <Text style={styles.category}>({item.product.product_category})</Text>
+                            renderItem={({ item, index }) => (
+                                <View style={styles.SwipeView}>
+                                    <View style={styles.imgView}>
+                                        <Image style={styles.img} source={{ uri: item.product.product_images }} />
                                     </View>
-                                    <View style={styles.midPartitionR}>
-                                        <ModalDropdown
-                                            dropdownTextStyle={styles.quantity}
-                                            onSelect={(i, value) => { return this.selectQty(index, item.product_id, value) }}
-                                            options={['1', '2', '3', '4', '5', '6', '7', '8']}
-                                            dropdownStyle={styles.dropDown}>
-                                            <View style={styles.quantityView} >
-                                                <Text style={styles.quantity}>{item.quantity}</Text>
-                                                <Icon name="dropDown" size={10} color={Colors.blackPrimary} />
-                                            </View>
-                                        </ModalDropdown>
-                                        <Text>&#8377;{item.product.sub_total}</Text>
+                                    <View style={styles.midSwipe}>
+                                        <View style={styles.midPartitionC}>
+                                            <Text style={styles.name}>{item.product.name}</Text>
+                                            <Text style={styles.category}>({item.product.product_category})</Text>
+                                        </View>
+                                        <View style={styles.midPartitionR}>
+                                            <ModalDropdown
+                                                dropdownTextStyle={styles.quantity}
+                                                onSelect={(i, value) => { return this.selectQty(index, item.product_id, value) }}
+                                                options={['1', '2', '3', '4', '5', '6', '7', '8']}
+                                                dropdownStyle={styles.dropDown}>
+                                                <View style={styles.quantityView} >
+                                                    <Text style={styles.quantity}>{item.quantity}</Text>
+                                                    <Icon name="dropDown" size={10} color={Colors.blackPrimary} />
+                                                </View>
+                                            </ModalDropdown>
+                                            <Text>&#8377;{item.product.sub_total}</Text>
+                                        </View>
                                     </View>
                                 </View>
-                            </View>
-                        )}
-                        renderHiddenItem={({ item, index }) => (
-                            <View style={styles.deleteView}>
-                                <TouchableOpacity style={styles.trash} onPress={() => this.trash(item, index)}>
-                                    <Icon name="Delete" size={25} color={Colors.primary} />
-                                </TouchableOpacity>
-                            </View>
-                        )}
-                        rightOpenValue={-80}
-                    />
-                    <View style={styles.totalView}>
-                        <Text style={styles.totalTxt}>TOTAL</Text>
-                        <Text style={styles.totalTxt}>&#8377;{this.state.response.total}</Text>
+                            )}
+                            renderHiddenItem={({ item, index }) => (
+                                <View style={styles.deleteView}>
+                                    <TouchableOpacity style={styles.trash} onPress={() => this.trash(item, index)}>
+                                        <Icon name="Delete" size={25} color={Colors.primary} />
+                                    </TouchableOpacity>
+                                </View>
+                            )}
+                            rightOpenValue={-80}
+                        />
+                        <View style={styles.totalView}>
+                            <Text style={styles.totalTxt}>TOTAL</Text>
+                            <Text style={styles.totalTxt}>&#8377;{this.state.response.total}</Text>
+                        </View>
+                        <View style={styles.btnView}>
+                            <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('AddressList')}>
+                                <Text style={styles.btnTxt}> ORDER NOW </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={styles.btnView}>
-                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('AddressList')}>
-                            <Text style={styles.btnTxt}> ORDER NOW </Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+                </ScrollView>
             </View>
 
         )

@@ -139,6 +139,7 @@ export default class ProductList extends Component {
     }
 
     BuyNowPopUp(visible) {
+        console.log('visibility', visible)
         this.setState({ buyNowVisible: visible })
         visible ? this.setState({ opacity: 0.3 }) : this.setState({ opacity: 1 });
     }
@@ -156,6 +157,7 @@ export default class ProductList extends Component {
     }
 
     render() {
+        console.log('product detail')
         return (
             <View style={[styles.container, { opacity: this.state.opacity }]}>
                 <Header

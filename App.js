@@ -24,6 +24,8 @@ import MyCart from './app/components/screens/MyCart/MyCart.js';
 import SplashScreen from 'react-native-splash-screen';
 import AddAddress from './app/components/screens/AddAddress/AddAddress.js';
 import AddressList from './app/components/screens/AddressList/AddressList.js';
+import MyOrders from './app/components/screens/MyOrders/MyOrders.js';
+import OrderID from './app/components/screens/OrderID/OrderID.js';
 
 const DrawerStack = createDrawerNavigator({
     HomeScreen: {
@@ -129,6 +131,18 @@ const RootStack = createStackNavigator({
 
     AddressList: {
         screen: AddressList,
+        navigationOptions: {
+            header: null,
+        }
+    },
+    MyOrders: {
+        screen: MyOrders,
+        navigationOptions: {
+            header: null,
+        }
+    },
+    OrderID: {
+        screen: OrderID,
         navigationOptions: {
             header: null,
         }
