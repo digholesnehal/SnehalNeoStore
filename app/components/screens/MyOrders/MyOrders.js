@@ -38,7 +38,6 @@ export default class MyOrders extends Component {
                     this.setState({
                         response: response.data
                     });
-                    console.log(this.state.response)
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {

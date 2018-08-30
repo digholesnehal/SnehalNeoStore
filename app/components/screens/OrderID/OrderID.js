@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Platform, Dimensions, StyleSheet, Text, View,
-    TouchableOpacity, FlatList,
+    TouchableOpacity, FlatList, ScrollView, Image
 } from 'react-native';
 import styles from './Styles';
 import * as Colors from '../../../utils/colors.js';
@@ -25,13 +25,9 @@ export default class OrderID extends Component {
     }
 
     componentDidMount() {
-        this.fetchOrdersData();
-    }
-
-    fetchOrdersData = () => {
         this.setState({ loader: true })
         return apiCaller(
-            url.host + url.OrderDetail,
+            url.host + url.OrderDetail + "?order_id=" + this.state.OrderId,
             'GET', { access_token: userObj.user_data.access_token }, null,
             (response) => {
                 this.setState({ loader: false })
@@ -44,9 +40,11 @@ export default class OrderID extends Component {
                 else {
                     if (response.hasOwnProperty('user_msg')) {
                         alert(response.user_msg)
+                        console.log(response)
                     }
                     else {
                         alert(response.message);
+                        console.log('error2')
                     }
                 }
             }
@@ -57,33 +55,40 @@ export default class OrderID extends Component {
         return (
             <View style={styles.container}>
                 <Header
-                    title={'Order ID: ' + this.OrderId}
+                    title={'Order ID: ' + this.state.OrderId}
                     mainTitle={false}
                     isDrawer={false}
                     isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
-                {/* <FlatList
-                    onEndReachedThreshold={0.1}
-                    data={this.state.response}
-                    keyExtractor={(item, index) => index + ""}
-                    renderItem={({ item }) =>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('OrderID', { ID: item.id })}>
-                            <View style={styles.itemRow}>
-                                <View style={styles.column1}>
-                                    <View style={styles.headingPadding}>
-                                        <Text style={styles.Heading}>Order ID : {item.id}</Text>
-                                    </View>
-                                    <View style={styles.dateView}>
-                                        <Text style={styles.orderDate}>Ordered Date : {item.created}</Text>
-                                    </View>
+                <ScrollView>
+
+                    <FlatList
+                        onEndReachedThreshold={0.1}
+                        data={this.state.response.order_details}
+                        keyExtractor={(item, index) => index + ""}
+                        renderItem={({ item }) =>
+                            <View style={styles.SwipeView}>
+                                <View style={styles.imgView}>
+                                    <Image style={styles.img} source={{ uri: item.prod_image }} />
                                 </View>
-                                <View style={styles.column2}>
-                                    <Text style={styles.Heading}>&#8377;{item.cost}</Text>
+                                <View style={styles.midSwipe}>
+                                    <View style={styles.midPartitionC}>
+                                        <Text style={styles.name}>{item.prod_name}</Text>
+                                        <Text style={styles.category}>({item.prod_cat_name})</Text>
+                                    </View>
+                                    <View style={styles.midPartitionR}>
+                                        <Text style={styles.quantity}>QTY : {item.quantity}</Text>
+                                        <Text>&#8377;{item.total}</Text>
+                                    </View>
                                 </View>
                             </View>
-                        </TouchableOpacity>
-                    }
-                /> */}
+                        }
+                    />
+                    <View style={styles.totalView}>
+                        <Text style={styles.totalTxt}>TOTAL</Text>
+                        <Text style={styles.totalTxt}>&#8377;{this.state.response.cost}</Text>
+                    </View>
+                </ScrollView>
             </View>
         );
     }
