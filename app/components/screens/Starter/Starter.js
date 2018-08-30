@@ -29,7 +29,6 @@ export default class Starter extends Component {
                 //Check if the accesstoken is valid or not by calling the api.
                 apiCaller(url.host + url.fAccDetails, 'GET', {}, null, callback = (response) => {
                     if (response.status == 200) { // Access Token valid please send to homescreen with response
-                        console.log('1');
                         userProvider.setUserObj(response.data);
                         this.setState({ loader: true })
                         this.props.navigation.replace('DrawerStack');

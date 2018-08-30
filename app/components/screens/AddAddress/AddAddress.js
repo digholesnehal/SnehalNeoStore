@@ -8,7 +8,6 @@ import styles from "./Styles";
 import Header from '../../../components/Header/header.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { apiCaller } from '../../../lib/Fetcher.js';
-import * as url from '../../../lib/api.js';
 import * as Colors from '../../../utils/colors';
 import { AsyncStorage } from 'react-native';
 
@@ -58,8 +57,8 @@ export default class AddAddress extends Component {
             return false;
         }
         else {
-            this.state.UserAdd = this.state.address + ',\n' + this.state.landmark
-                + ',\n' + this.state.city + ',' + this.state.state + ' - ' + this.state.zip + ',\n' + this.state.country;
+            this.state.UserAdd = this.state.address + ', ' + this.state.landmark
+                + ', ' + this.state.city + ',\n' + this.state.state + ' - ' + this.state.zip + '.' + this.state.country;
 
             AsyncStorage.getItem('Address')
                 .then((Address) => {

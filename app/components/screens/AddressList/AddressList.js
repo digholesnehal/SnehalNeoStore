@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import {
     Platform, Dimensions, StyleSheet, Text, View,
-    ImageBackground, TextInput, TouchableOpacity, FlatList
+    TouchableOpacity,
+    FlatList, backgroundColor
 } from 'react-native';
 import Icon from '../../../utils/Icons.js';
-import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 import styles from './Styles';
 import * as Colors from '../../../utils/colors';
 import Header from '../../../components/Header/header.js';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 import { AsyncStorage } from 'react-native';
-import * as url from '../../../lib/api.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
+import * as url from '../../../lib/api.js';
+import { apiCaller } from '../../../lib/Fetcher.js';
+
 
 export default class AddressList extends Component {
     constructor(props) {
@@ -19,21 +20,55 @@ export default class AddressList extends Component {
 
         this.state = {
             Address: [],
+            selected: 0,
+            loader: true,
         }
     }
 
     componentDidMount() {
-        AsyncStorage.getItem('Address').then((Address) => {
-
-            const UserAddress = Address ? JSON.parse(Address) : [];
-            this.state.Address.push(UserAddress);
-
-            console.log(this.state.Address)
-        })
+        this.setState({ loader: true })
+        const didBlurSubscription = this.props.navigation.addListener(
+            'willFocus',
+            payload => {
+                AsyncStorage.getItem('Address').then((Address) => {
+                    const UserAddress = Address ? JSON.parse(Address) : [];
+                    this.state.Address.push(UserAddress);
+                    this.setState({ loader: false })
+                })
+            }
+        );
     }
 
+    delete = (index) => {
+        this.setState({ loader: false })
+        this.state.Address[0].splice(index, 1)
+        AsyncStorage.setItem('Address', JSON.stringify(this.state.Address[0]));
+        this.setState({ loader: true })
+    }
+
+    placeOrder = () => {
+        var order = this.state.Address[0].slice(this.state.selected, this.state.selected + 1)
+        var place = JSON.stringify(order[0])
+        let formData = new FormData();
+        formData.append('address', place)
+        this.setState({ loader: true })
+        apiCaller(url.host + url.Order, 'POST', { access_token: userObj.user_data.access_token }, formData,
+            (response) => {
+                console.log('response', response)
+                this.setState({ loader: false })
+                if (response.status == 200) {
+                    alert(response.user_msg)
+                    this.props.navigation.navigate('HomeScreen')
+                }
+                else {
+                    alert(response.user_msg)
+                }
+            });
+    }
 
     render() {
+        console.log('m here')
+
         return (
             <View style={styles.container}>
                 <Header
@@ -47,23 +82,31 @@ export default class AddressList extends Component {
                     <Text style={styles.shippping}>Shipping Address</Text>
                     <FlatList
                         onEndReachedThreshold={0.1}
-                        data={this.state.Address}
+                        data={this.state.Address[0]}
                         keyExtractor={(item, index) => index + ""}
-                        renderItem={({ item }) =>
+                        renderItem={({ item, index }) =>
                             <View style={styles.itemRow}>
-                                <View>
-                                </View>
+                                <TouchableOpacity style={styles.radioView} onPress={() => this.setState({ selected: index })} >
+                                    <View style={[styles.radio, this.state.selected == index ? { backgroundColor: Colors.gRadioChecked } : { backgroundColor: Colors.primary }]} />
+                                </TouchableOpacity>
                                 <View style={styles.addressBox}>
                                     <View style={styles.HeadView}>
                                         <Text style={styles.Heading}>{userObj.user_data.first_name} {userObj.user_data.last_name}</Text>
-                                        <Icon name="multiply" size={15} style={styles.close} color={Colors.blackSecondary} />
+                                        <TouchableOpacity onPress={() => this.delete(index)}>
+                                            <Icon name="multiply" size={15} color={Colors.blackSecondary} />
+                                        </TouchableOpacity>
                                     </View>
+                                    <Text style={styles.shippping}>
+                                        {item}
+                                    </Text>
                                 </View>
                             </View>
-
-                        }
-                        onEndReached={this.fetchResult}
-                    />
+                        } />
+                    <View style={styles.btnView}>
+                        <TouchableOpacity style={styles.buttonStyle} onPress={() => this.placeOrder()}>
+                            <Text style={styles.btnTxt}> PLACE ORDER </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         )
