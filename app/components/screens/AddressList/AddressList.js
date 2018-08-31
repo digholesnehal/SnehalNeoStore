@@ -36,7 +36,6 @@ export default class AddressList extends Component {
                     const UserAddress = Address ? JSON.parse(Address) : [];
                     this.state.Address.push(UserAddress);
                     this.setState({ selected: rad })
-                    console.log('address list refreshed')
                 })
             }
         );
@@ -50,7 +49,6 @@ export default class AddressList extends Component {
     }
 
     select = (index) => {
-        console.log('index', index)
         this.setState({ selected: index })
     }
 
@@ -74,7 +72,6 @@ export default class AddressList extends Component {
     }
 
     render() {
-        console.log('render index value=', this.state.selected)
         return (
             <View style={styles.container} >
                 <Header
@@ -82,6 +79,7 @@ export default class AddressList extends Component {
                     mainTitle={false}
                     isDrawer={false}
                     isSearch={false}
+                    isAdd={true}
                     back={() => { this.props.navigation.goBack(null) }}
                     search={() => { this.props.navigation.navigate('AddAddress') }} />
                 <ScrollView>
@@ -94,8 +92,6 @@ export default class AddressList extends Component {
                             extraData={this.state.selected}
                             renderItem={({ item, index }) =>
                                 <View style={styles.itemRow}>
-                                    {console.log(index)}
-
                                     <TouchableOpacity style={styles.radioView} onPress={() => this.select(index)} >
                                         <View style={[styles.radio, this.state.selected == index ? { backgroundColor: Colors.gRadioChecked } : { backgroundColor: Colors.primary }]} />
                                     </TouchableOpacity>

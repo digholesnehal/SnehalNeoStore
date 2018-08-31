@@ -35,16 +35,13 @@ export default class OrderID extends Component {
                     this.setState({
                         response: response.data
                     });
-                    console.log(this.state.response)
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
                         alert(response.user_msg)
-                        console.log(response)
                     }
                     else {
                         alert(response.message);
-                        console.log('error2')
                     }
                 }
             }

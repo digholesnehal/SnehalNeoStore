@@ -26,7 +26,6 @@ export default class ResetPass extends Component {
     }
 
     validate = () => {
-        console.log(userObj);
         var alNum = /^([a-zA-Z0-9]){5,10}$/;
         if (this.state.password == "" || !this.state.password.match(alNum)) {
             alert("Please enter the correct password");

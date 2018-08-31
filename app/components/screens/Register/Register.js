@@ -15,6 +15,7 @@ import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
+import { apiCaller } from '../../../lib/Fetcher.js';
 
 
 var gender = [
@@ -54,16 +55,9 @@ export default class Register extends Component {
             callBack = (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
-                    // AsyncStorage.setItem('first_name', this.state.firstname)
-                    // AsyncStorage.setItem('last_name', this.state.lastname)
-                    // AsyncStorage.setItem('email', this.state.email)
-                    // AsyncStorage.setItem('password', this.state.password)
-                    // AsyncStorage.setItem('confirm_password', this.state.cpassword)
-                    // AsyncStorage.setItem('gender', this.state.gender)
-                    // AsyncStorage.setItem('phone_no', this.state.mobile)
                     userProvider.setObjKey('user_data', response.data);
                     alert(response.user_msg)
-                    this.props.navigation.navigate('HomeScreen');
+                    this.props.navigation.navigate('Login');
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
@@ -143,6 +137,7 @@ export default class Register extends Component {
         }
         else if (this.state.check == false) {
             alert("Please agree terms and conditions.")
+            console.log('checkbox', this.state.check)
             return false;
         }
         else {
@@ -160,6 +155,7 @@ export default class Register extends Component {
                         mainTitle={false}
                         isDrawer={false}
                         isSearch={false}
+                        isADD={true}
                         back={() => { this.props.navigation.goBack(null) }} />
                     {this.state.loader ? <Loader /> : null}
                     <KeyboardAwareScrollView style={flex = 1}>

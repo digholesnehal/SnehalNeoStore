@@ -75,16 +75,14 @@ export default class EditProfile extends Component {
 
     showImagePicker = () => {
         ImagePicker.showImagePicker((response) => {
-            console.log('Response = ', response);
-
             if (response.didCancel) {
-                console.log('User cancelled image picker');
+                alert('cancelled')
             }
             else if (response.error) {
-                console.log('ImagePicker Error: ', response.error);
+                alert(response.error);
             }
             else if (response.customButton) {
-                console.log('User tapped custom button: ', response.customButton);
+                // alert('User tapped custom button: ', response.customButton);
             }
             else {
                 // let source = { uri: response.uri };

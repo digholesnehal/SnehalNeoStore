@@ -23,7 +23,8 @@ class Header extends Component {
                     </View>
                     <TouchableOpacity style={styles.SearchBackcontainer}
                         onPress={this.props.search}>
-                        {this.props.isSearch ? <Icon name="search" size={26} style={styles.menuIcon} color={primary} /> : <Icon name="add" size={26} style={styles.menuIcon} color={primary} />}
+                        {this.props.isSearch ? <Icon name="search" size={26} style={styles.menuIcon} color={primary} /> : null}
+                        {this.props.isAdd ? <Icon name="add" size={26} style={styles.menuIcon} color={primary} /> : null}
                     </TouchableOpacity>
                 </View>
             </View>

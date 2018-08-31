@@ -35,7 +35,6 @@ export default class Starter extends Component {
                     }
                     else {// Access Token invalid please send to Login
                         AsyncStorage.removeItem('access_token').then(() => {
-                            console.log('2');
                             this.setState({ loader: true })
                             this.props.navigation.replace('Login');
                         });
@@ -43,15 +42,14 @@ export default class Starter extends Component {
                 })
             }
             else { // accesstoken doesnt exists please navigate to login
-                console.log('3');
                 this.setState({ loader: true })
                 this.props.navigation.replace('Login');
             }
         })
             .catch((error) => {
                 //Some error. Navigate to login.
-                console.log('4');
-                console.log(error.message);
+                this.props.navigation.replace('Login');
+                // console.log(error.message);
             })
     }
 

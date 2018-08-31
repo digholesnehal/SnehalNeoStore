@@ -9,7 +9,8 @@ export default styles = StyleSheet.create({
         backgroundColor: Colors.enterQtyB,
     },
     top: {
-        flex: 5,
+        paddingTop: Platform.OS === 'ios' ? 40 : 10,
+        flex: 7,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
@@ -52,7 +53,7 @@ export default styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 13,
         color: Colors.primary,
-        paddingBottom: 13,
+        paddingBottom: Platform.OS === 'ios' ? 20 : 13,
     },
     partitions: {
         flex: 1,

@@ -87,7 +87,6 @@ export default class ProductList extends Component {
         formData.append('product_id', this.state.product_id)
         apiCaller(url.host + url.AddToCart, 'POST', { access_token: this.state.access_token }, formData,
             (response) => {
-                console.log('response=', response)
                 this.setState({ loader: false })
                 if (response.status == 200) {
                     this.BuyNowPopUp(!this.state.buyNowVisible)
@@ -96,8 +95,6 @@ export default class ProductList extends Component {
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
-                        console.log(response.status)
-
                         alert(response.user_msg);
                     }
                     else {
@@ -139,7 +136,6 @@ export default class ProductList extends Component {
     }
 
     BuyNowPopUp(visible) {
-        console.log('visibility', visible)
         this.setState({ buyNowVisible: visible })
         visible ? this.setState({ opacity: 0.3 }) : this.setState({ opacity: 1 });
     }
@@ -157,7 +153,6 @@ export default class ProductList extends Component {
     }
 
     render() {
-        console.log('product detail')
         return (
             <View style={[styles.container, { opacity: this.state.opacity }]}>
                 <Header
