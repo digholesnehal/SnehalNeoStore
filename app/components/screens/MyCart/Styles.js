@@ -14,10 +14,10 @@ export default styles = StyleSheet.create({
         padding: 10,
         borderBottomColor: Colors.myCartSmallBG,
         borderBottomWidth: 1,
-        height: 100,
+        height: 110,
     },
     imgView: {
-        flex: 1,
+        flex: 1.2,
     },
     img: {
         height: '100%',
@@ -88,6 +88,7 @@ export default styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '600',
         color: Colors.orderIDH,
+        paddingLeft: 15,
     },
     deleteView: {
         flex: 1,
@@ -96,10 +97,10 @@ export default styles = StyleSheet.create({
         alignItems: 'flex-end',
     },
     trash: {
-        borderRadius: Platform.OS === 'ios' ? 25 : 5,
+        borderRadius: 25,
         backgroundColor: Colors.redBtnBG,
-        width: Platform.OS === 'ios' ? 50 : 30,
-        height: Platform.OS === 'ios' ? 50 : 30,
+        width: 50,
+        height: 50,
         alignSelf: "flex-end",
         alignItems: 'center',
         justifyContent: 'center',

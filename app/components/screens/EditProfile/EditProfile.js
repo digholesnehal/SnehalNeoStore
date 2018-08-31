@@ -131,12 +131,12 @@ export default class EditProfile extends Component {
                             </View>
                             <View style={styles.textFieldView}>
                                 <Icon name="email" style={styles.envelope} />
-                                <TextInput style={styles.textField} onChangeText={(changedText) => { this.setState({ "email": changedText }) }} value={this.state.email == null ? this.data.email : this.state.email}>
+                                <TextInput style={styles.textField} keyboardType={'email-address'} onChangeText={(changedText) => { this.setState({ "email": changedText }) }} value={this.state.email == null ? this.data.email : this.state.email}>
                                 </TextInput>
                             </View>
                             <View style={styles.textFieldView}>
                                 <Icon name="phone" style={styles.iconPhn} />
-                                <TextInput style={styles.textField} onChangeText={(changedText) => { this.setState({ "phone_no": changedText }) }} value={this.state.phone_no == null ? this.data.phone_no : this.state.phone_no}>
+                                <TextInput style={styles.textField} keyboardType={'phone-pad'} onChangeText={(changedText) => { this.setState({ "phone_no": changedText }) }} value={this.state.phone_no == null ? this.data.phone_no : this.state.phone_no}>
                                 </TextInput>
                             </View>
                             <View style={styles.textFieldView}>

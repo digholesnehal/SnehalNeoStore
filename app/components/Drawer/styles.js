@@ -35,10 +35,10 @@ export default styles = StyleSheet.create({
     },
     itemCount: {
         marginRight: 10,
-        borderRadius: Platform.OS === 'ios' ? 15 : 5,
+        borderRadius: Platform.OS === 'ios' ? 13 : 13,
         backgroundColor: Colors.redBtnBG,
-        width: Platform.OS === 'ios' ? 26 : 30,
-        height: Platform.OS === 'ios' ? 26 : 30,
+        width: Platform.OS === 'ios' ? 26 : 26,
+        height: Platform.OS === 'ios' ? 26 : 26,
         alignSelf: "center",
         alignItems: 'center',
         justifyContent: 'center',
@@ -52,7 +52,7 @@ export default styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 13,
         color: Colors.primary,
-        paddingBottom: 5,
+        paddingBottom: 13,
     },
     partitions: {
         flex: 1,

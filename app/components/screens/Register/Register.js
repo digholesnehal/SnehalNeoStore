@@ -182,7 +182,7 @@ export default class Register extends Component {
 
                             <View style={styles.userPass}>
                                 <Icon name="email" style={styles.envelope} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ "email": changedText }) }} value={this.state.email} style={styles.textField} placeholder="Email" placeholderTextColor={Colors.primary}>
+                                <TextInput keyboardType={'email-address'} onChangeText={(changedText) => { this.setState({ "email": changedText }) }} value={this.state.email} style={styles.textField} placeholder="Email" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
 

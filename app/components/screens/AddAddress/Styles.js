@@ -37,7 +37,7 @@ export default styles = StyleSheet.create({
         backgroundColor: Colors.primary,
         height: 35,
         fontSize: 17,
-        padding: 10,
+        padding: Platform.OS === 'ios' ? 10 : 5,
     },
     hrPartition: {
         flex: 1,

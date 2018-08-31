@@ -66,5 +66,6 @@ export default styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '600',
         color: Colors.orderIDH,
+        paddingLeft: 15,
     },
 })

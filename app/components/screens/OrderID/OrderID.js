@@ -73,7 +73,7 @@ export default class OrderID extends Component {
                                 </View>
                                 <View style={styles.midSwipe}>
                                     <View style={styles.midPartitionC}>
-                                        <Text style={styles.name}>{item.prod_name}</Text>
+                                        <Text style={styles.name} numberOfLines={1}>{item.prod_name}</Text>
                                         <Text style={styles.category}>({item.prod_cat_name})</Text>
                                     </View>
                                     <View style={styles.midPartitionR}>

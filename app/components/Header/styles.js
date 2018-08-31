@@ -7,8 +7,8 @@ export default styles = StyleSheet.create({
         flexDirection: 'column',
     },
     white: {
-        height: Platform.OS === 'ios' ? 20 : 50,
-        width: '100%',
+        height: Platform.OS === 'ios' ? 20 : 0,
+        width: Platform.OS === 'ios' ? '100%' : 0,
         backgroundColor: '#282727',
     },
     header: {

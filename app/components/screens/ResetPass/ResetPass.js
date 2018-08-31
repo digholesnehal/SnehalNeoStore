@@ -84,37 +84,40 @@ export default class ResetPass extends Component {
                         isSearch={false}
                         back={() => { this.props.navigation.goBack(null) }} />
                     {this.state.loader ? <Loader /> : null}
-                    <View style={styles.fpHead}>
-                        <Text style={styles.headFont}> NeoSTORE </Text>
-                    </View>
-
-                    <View style={styles.fpMid}>
-                        <View style={styles.userPass}>
-                            <Icon name="Lock" style={styles.icon} />
-                            <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} value={this.state.username}
-                                style={styles.textField} placeholder="Current Password" placeholderTextColor={primary}>
-                            </TextInput>
+                    <KeyboardAwareScrollView style={{ flex: 1 }}>
+                        <View style={styles.fpHead}>
+                            <Text style={styles.headFont}> NeoSTORE </Text>
                         </View>
 
-                        <View style={styles.userPass}>
-                            <Icon name="Lock" style={styles.icon} />
-                            <TextInput onChangeText={(changedText) => { this.setState({ "npassword": changedText }) }} value={this.state.npassword}
-                                style={styles.textField} placeholder="New Password" placeholderTextColor={primary}>
-                            </TextInput>
-                        </View>
+                        <View style={styles.fpMid}>
+                            <View style={styles.userPass}>
+                                <Icon name="Lock" style={styles.icon} />
+                                <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} value={this.state.username}
+                                    style={styles.textField} placeholder="Current Password" placeholderTextColor={primary}>
+                                </TextInput>
+                            </View>
 
-                        <View style={styles.userPass}>
-                            <Icon name="Lock" style={styles.icon} />
-                            <TextInput onChangeText={(changedText) => { this.setState({ "cpassword": changedText }) }} value={this.state.cpassword}
-                                style={styles.textField} placeholder="Confirm Password" placeholderTextColor={primary}>
-                            </TextInput>
+                            <View style={styles.userPass}>
+                                <Icon name="Lock" style={styles.icon} />
+                                <TextInput onChangeText={(changedText) => { this.setState({ "npassword": changedText }) }} value={this.state.npassword}
+                                    style={styles.textField} placeholder="New Password" placeholderTextColor={primary}>
+                                </TextInput>
+                            </View>
+
+                            <View style={styles.userPass}>
+                                <Icon name="Lock" style={styles.icon} />
+                                <TextInput onChangeText={(changedText) => { this.setState({ "cpassword": changedText }) }} value={this.state.cpassword}
+                                    style={styles.textField} placeholder="Confirm Password" placeholderTextColor={primary}>
+                                </TextInput>
+                            </View>
+                            <View style={styles.pass}>
+                                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}>
+                                    <Text style={styles.btnTxt}> Reset Password </Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                        <View style={styles.pass}>
-                            <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}>
-                                <Text style={styles.btnTxt}> Reset Password </Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
+                    </KeyboardAwareScrollView>
+
                 </ImageBackground>
             </View >
         );
