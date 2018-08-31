@@ -66,6 +66,8 @@ export default class AddAddress extends Component {
                     UserAddress.push(this.state.UserAdd);
                     AsyncStorage.setItem('Address', JSON.stringify(UserAddress), () => {
                         alert('Address added successfully.')
+                        console.log(UserAddress)
+                        this.props.navigation.replace('AddressList');
                     });
                 });
         }
@@ -79,7 +81,7 @@ export default class AddAddress extends Component {
                     mainTitle={false}
                     isDrawer={false}
                     isSearch={true}
-                    back={() => { this.props.navigation.goBack(null) }} />
+                    back={() => { this.props.navigation.replace('AddressList') }} />
                 <KeyboardAwareScrollView style={styles.container}>
                     <View style={styles.container1}>
                         <View style={styles.addressHead}>

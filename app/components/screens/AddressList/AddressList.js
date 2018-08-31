@@ -27,25 +27,24 @@ export default class AddressList extends Component {
     }
 
     componentDidMount() {
-        var rad = this.state.selected
-        this.setState({ selected: rad - 1 })
         const didBlurSubscription = this.props.navigation.addListener(
             'willFocus',
             payload => {
                 AsyncStorage.getItem('Address').then((Address) => {
                     const UserAddress = Address ? JSON.parse(Address) : [];
                     this.state.Address.push(UserAddress);
-                    this.setState({ selected: rad })
+                    this.setState({ loader: false })
                 })
             }
         );
     }
 
     delete = (index) => {
-        this.setState({ selected: index - 2 })
+        console.log(index)
         this.state.Address[0].splice(index, 1)
         AsyncStorage.setItem('Address', JSON.stringify(this.state.Address[0]));
-        this.setState({ selected: index })
+        console.log(this.state)
+        this.setState({ loader: false })
     }
 
     select = (index) => {
@@ -81,7 +80,7 @@ export default class AddressList extends Component {
                     isSearch={false}
                     isAdd={true}
                     back={() => { this.props.navigation.goBack(null) }}
-                    search={() => { this.props.navigation.navigate('AddAddress') }} />
+                    search={() => { this.props.navigation.replace('AddAddress') }} />
                 <ScrollView>
                     <View style={styles.container1}>
                         <Text style={styles.shippping}>Shipping Address</Text>
@@ -89,7 +88,7 @@ export default class AddressList extends Component {
                             onEndReachedThreshold={0.1}
                             data={this.state.Address[0]}
                             keyExtractor={(item, index) => index + ""}
-                            extraData={this.state.selected}
+                            extraData={this.state}
                             renderItem={({ item, index }) =>
                                 <View style={styles.itemRow}>
                                     <TouchableOpacity style={styles.radioView} onPress={() => this.select(index)} >
