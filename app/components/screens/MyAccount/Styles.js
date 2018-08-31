@@ -1,5 +1,6 @@
 import { Platform, StyleSheet, Dimensions, } from 'react-native';
 import * as Colors from '../../../utils/colors';
+import * as family from '../../../utils/fontFamily';
 
 export default styles = StyleSheet.create({
 
@@ -44,6 +45,7 @@ export default styles = StyleSheet.create({
         paddingLeft: 15,
         fontWeight: '500',
         color: Colors.primary,
+        fontFamily: "Gotham-Book"
     },
     icon: {
         fontSize: Platform.OS === 'ios' ? 20 : 15,

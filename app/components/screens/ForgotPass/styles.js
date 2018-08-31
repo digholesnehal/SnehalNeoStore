@@ -1,93 +1,92 @@
-import {Platform, StyleSheet, Dimensions, } from 'react-native';
-import {primary, redHeader, redBtnTxt} from '../../../utils/colors'
-import {xxSmall} from '../../../utils/fonts'
-
-
+import { Platform, StyleSheet, Dimensions, } from 'react-native';
+import { primary, redHeader, redBtnTxt } from '../../../utils/colors';
+import { xxSmall } from '../../../utils/fonts';
+import * as family from '../../../utils/fontFamily';
 
 export default styles = StyleSheet.create({
-    
-    container:{
-        flex:1,
-        justifyContent:"space-between",
+
+    container: {
+        flex: 1,
+        justifyContent: "space-between",
     },
 
-    fpHead:{
-        flex:3,
+    fpHead: {
+        flex: 3,
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'center',
     },
 
-    headFont:{
+    headFont: {
         color: primary,
-        fontSize: Platform.OS === 'ios'?45:40,
-        fontWeight: 'bold',
-        paddingTop:70,
-        padding:20,
+        fontSize: Platform.OS === 'ios' ? 48 : 45,
+        paddingTop: Platform.OS === 'ios' ? 150 : 100,
+        paddingBottom: Platform.OS === 'ios' ? 0 : 20,
+        fontFamily: family.Bold,
     },
 
-    midFont:{
+    midFont: {
         color: primary,
-        fontSize: Platform.OS=== 'ios'?25:22,
+        fontSize: Platform.OS === 'ios' ? 25 : 22,
         fontWeight: 'bold',
-        alignSelf:"center",
+        alignSelf: "center",
     },
-  
-    fpMid:{
+
+    fpMid: {
         flex: 9,
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
 
-    textField:{
-        width:250,
-        height: Platform.OS === 'ios'?40:60,
-        fontSize: Platform.OS === 'ios'?20:17,
-        alignSelf:'center',
-        paddingLeft:15,
-        fontWeight:'500',
-        color:'white',
+    textField: {
+        fontFamily: family.Medium,
+        width: 250,
+        height: Platform.OS === 'ios' ? 40 : 60,
+        fontSize: Platform.OS === 'ios' ? 20 : 18,
+        alignSelf: 'center',
+        paddingLeft: 15,
+        color: primary,
+        padding: 10
     },
 
-    pass:{ 
+    pass: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        padding:20,
+        padding: 20,
     },
 
-    buttonStyle:{
+    buttonStyle: {
         backgroundColor: primary,
-        width: Platform.OS === 'ios'?300:280,
-        height: Platform.OS === 'ios'?50:40,
+        width: 280,
+        height: Platform.OS === 'ios' ? 50 : 45,
         borderRadius: 5,
         color: redBtnTxt,
-        fontSize: Platform.OS === 'ios'?80:70,
-        fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
-      },
-
-      btnTxt:{
-        color: redBtnTxt,
-        fontSize: 25,
-        fontWeight: 'bold',
     },
 
-     userPass:{
-        height:45,
-        width:280, 
+    btnTxt: {
+        color: redBtnTxt,
+        fontSize: Platform.OS === 'ios' ? 30 : 26,
+        fontFamily: family.Medium,
+        paddingTop: Platform.OS === 'ios' ? 10 : 0,
+    },
+
+    userPass: {
+        height: 45,
+        width: 280,
         borderColor: primary,
         borderWidth: 1,
-        padding:10,
-        margin:6,
+        padding: 10,
+        margin: 6,
         flexDirection: 'row',
-        justifyContent:'center'
+        justifyContent: 'center'
     },
 
-    icon:{
-        fontSize:20,
+    icon: {
+        fontSize: 20,
         color: primary,
     },
 });

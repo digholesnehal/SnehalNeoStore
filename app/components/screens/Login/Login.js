@@ -120,7 +120,7 @@ export default class Login extends Component {
                         </View>
                     </View>
                 </ImageBackground>
-            </View >
+            </View>
         );
     }
 }

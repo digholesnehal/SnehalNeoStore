@@ -34,7 +34,7 @@ export default class SideBar extends Component {
                 <ScrollView>
                     <View style={styles.top}>
                         {userObj.user_data.profile_pic === null || userObj.user_data.profile_pic === '' ? <Image style={styles.image} source={require('../../assets/images/appdp.jpg')} /> : <Image style={styles.image} source={{ uri: userObj.user_data.profile_pic }} />}
-                        <Text style={styles.UserName}> {userObj.user_data.username} </Text>
+                        <Text style={styles.UserName}>{userObj.user_data.first_name} {userObj.user_data.last_name}</Text>
                         <Text style={styles.email}>{userObj.user_data.email}</Text>
                     </View>
                     <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('MyCart', {}); this.props.navigation.closeDrawer() }}>
@@ -42,7 +42,7 @@ export default class SideBar extends Component {
                             <View style={{ flex: 1 }}>
                                 <Icon name="cart" style={styles.icon} />
                             </View>
-                            <View style={{ flex: 6 }}>
+                            <View style={{ flex: 5 }}>
                                 <Text style={styles.options}>My Cart</Text>
                             </View>
                             <View style={styles.itemCount}>

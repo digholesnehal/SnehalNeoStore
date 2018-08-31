@@ -1,5 +1,6 @@
 import { Platform, StyleSheet } from 'react-native';
-import * as Colors from '../../utils/colors.js'
+import * as Colors from '../../utils/colors.js';
+import * as family from '../../utils/fontFamily.js';
 
 export default styles = StyleSheet.create({
     container: {
@@ -32,19 +33,18 @@ export default styles = StyleSheet.create({
         paddingRight: 10,
     },
     mainText: {
+        fontFamily: family.Bold,
         alignItems: 'center',
-        fontSize: 28,
-        marginTop: 5,
+        fontSize: 26,
+        marginTop: Platform.OS === 'ios' ? 5 : 0,
         color: Colors.primary,
-        fontWeight: 'bold',
     },
     text: {
         alignSelf: 'center',
+        fontFamily: family.Book,
         fontSize: 22,
-        fontWeight: Platform.OS === 'ios' ? '500' : 'normal',
-        marginTop: 5,
+        marginTop: Platform.OS === 'ios' ? 5 : 0,
         color: Colors.primary,
-        paddingBottom: 5,
     },
     menuIcon: {
         backgroundColor: 'transparent',

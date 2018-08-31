@@ -1,5 +1,6 @@
 import { Platform, StyleSheet, Dimensions, } from 'react-native';
-import * as Colors from '../../../utils/colors'
+import * as Colors from '../../../utils/colors';
+import * as family from '../../../utils/fontFamily';
 
 export default styles = StyleSheet.create({
 
@@ -75,31 +76,35 @@ export default styles = StyleSheet.create({
     },
 
     cTitle1: {
+        fontFamily: family.Medium,
         color: Colors.primary,
-        fontSize: 25,
+        fontSize: 24,
         fontWeight: '600',
         padding: Platform.OS === 'ios' ? 10 : 5,
         alignSelf: 'flex-end',
     },
 
     cTitle2: {
+        fontFamily: family.Medium,
         color: Colors.primary,
-        fontSize: 25,
+        fontSize: 24,
         fontWeight: '600',
         padding: Platform.OS === 'ios' ? 10 : 5,
         alignSelf: 'flex-start',
     },
 
     cTitle3: {
+        fontFamily: family.Medium,
         color: Colors.primary,
-        fontSize: 25,
+        fontSize: 24,
         fontWeight: '600',
         padding: Platform.OS === 'ios' ? 10 : 5,
     },
 
     cTitle4: {
+        fontFamily: family.Medium,
         color: Colors.primary,
-        fontSize: 25,
+        fontSize: 24,
         fontWeight: '600',
         padding: Platform.OS === 'ios' ? 10 : 5,
         alignSelf: 'flex-end',

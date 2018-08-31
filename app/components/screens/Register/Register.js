@@ -16,6 +16,7 @@ import * as url from '../../../lib/api.js';
 import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
+import * as family from '../../../utils/fontFamily';
 
 
 var gender = [
@@ -204,7 +205,7 @@ export default class Register extends Component {
                                         initial={0}
                                         buttonColor={'#fff'}
                                         selectedButtonColor={'#fff'}
-                                        labelStyle={{ fontSize: Platform.OS === 'ios' ? 17 : 13, fontWeight: '500', color: "#fff", padding: 4 }}
+                                        labelStyle={{ fontSize: Platform.OS === 'ios' ? 17 : 15, fontFamily: family.Medium, color: "#fff", padding: 4 }}
                                         onPress={(value) => { }} />
                                     <View style={styles.rowFlex}></View>
                                 </View>

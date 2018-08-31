@@ -1,6 +1,7 @@
 import { Platform, StyleSheet } from 'react-native';
 import * as Colors from '../../utils/colors';
 import * as FW from '../../styles/appStyles.js';
+import * as family from '../../utils/fontFamily.js';
 
 export default styles = StyleSheet.create({
     bg: {
@@ -27,6 +28,7 @@ export default styles = StyleSheet.create({
         borderWidth: 2,
     },
     UserName: {
+        fontFamily: family.Medium,
         justifyContent: 'center',
         alignSelf: 'center',
         fontSize: 23,
@@ -45,13 +47,16 @@ export default styles = StyleSheet.create({
         justifyContent: 'center',
     },
     count: {
+        paddingTop: Platform.OS === 'ios' ? 5 : 0,
+        fontFamily: family.Book,
         color: Colors.primary,
-        fontSize: 13,
+        fontSize: 14,
     },
     email: {
+        fontFamily: family.Book,
         justifyContent: 'center',
         alignSelf: 'center',
-        fontSize: 13,
+        fontSize: 14,
         color: Colors.primary,
         paddingBottom: Platform.OS === 'ios' ? 20 : 13,
     },
@@ -65,15 +70,17 @@ export default styles = StyleSheet.create({
 
     },
     options: {
-        fontSize: 18,
+        fontFamily: family.Medium,
+        fontSize: 17,
         color: Colors.primary,
         fontWeight: FW.bookBM,
-        padding: 10,
+        paddingLeft: 5,
+        paddingTop: Platform.OS === 'ios' ? 5 : 0,
     },
     icon: {
-        fontSize: Platform.OS === 'ios' ? 20 : 18,
+        fontSize: Platform.OS === 'ios' ? 20 : 20,
         color: Colors.primary,
-        paddingTop: Platform.OS === 'ios' ? 10 : 14,
+        paddingTop: Platform.OS === 'ios' ? 10 : 12,
         padding: Platform.OS === 'ios' ? 10 : 10,
     },
 });

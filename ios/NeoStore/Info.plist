@@ -56,6 +56,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>icomoon.ttf</string>
+		<string>Gotham-Bold.otf</string>
+		<string>Gotham-Book.otf</string>
+		<string>Gotham-Medium.otf</string>
 		<string>Entypo.ttf</string>
 		<string>Evillcons.ttf</string>
 		<string>Foundation.ttf</string>

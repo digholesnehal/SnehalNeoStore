@@ -1,5 +1,6 @@
 import { Platform, StyleSheet, Dimensions, } from 'react-native';
 import * as Colors from '../../../utils/colors';
+import * as family from '../../../utils/fontFamily';
 
 export default styles = StyleSheet.create({
 
@@ -15,10 +16,10 @@ export default styles = StyleSheet.create({
 
     headFont: {
         color: Colors.primary,
-        fontSize: Platform.OS === 'ios' ? 45 : 40,
-        fontWeight: 'bold',
+        fontSize: Platform.OS === 'ios' ? 48 : 45,
         paddingTop: Platform.OS === 'ios' ? 150 : 100,
-        padding: 30,
+        paddingBottom: Platform.OS === 'ios' ? 0 : 20,
+        fontFamily: family.Bold,
     },
 
     loginMid: {
@@ -29,13 +30,12 @@ export default styles = StyleSheet.create({
     },
 
     textField: {
-
+        fontFamily: family.Medium,
         width: 250,
         height: Platform.OS === 'ios' ? 40 : 60,
-        fontSize: Platform.OS === 'ios' ? 20 : 17,
+        fontSize: Platform.OS === 'ios' ? 20 : 18,
         alignSelf: 'center',
         paddingLeft: 15,
-        fontWeight: '500',
         color: Colors.primary,
         padding: 10
     },
@@ -52,13 +52,13 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: Platform.OS === 'ios' ? 20 : 15,
+        paddingTop: Platform.OS === 'ios' ? 0 : 10,
     },
 
     buttonStyle: {
         backgroundColor: Colors.primary,
-        width: Platform.OS === 'ios' ? 300 : 280,
-        height: Platform.OS === 'ios' ? 50 : 40,
+        width: 280,
+        height: Platform.OS === 'ios' ? 50 : 45,
         borderRadius: 5,
         color: Colors.redBtnTxt,
         alignItems: 'center',
@@ -67,8 +67,9 @@ export default styles = StyleSheet.create({
 
     btnTxt: {
         color: Colors.redBtnTxt,
-        fontSize: Platform.OS === 'ios' ? 30 : 25,
-        fontWeight: 'bold',
+        fontSize: Platform.OS === 'ios' ? 30 : 26,
+        fontFamily: family.Medium,
+        paddingTop: Platform.OS === 'ios' ? 10 : 0,
     },
 
     fgotPass: {
@@ -78,7 +79,8 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 20 : 18,
-        fontWeight: '600',
+        fontFamily: family.Medium,
+        paddingTop: 3,
     },
 
     icon: {
@@ -87,7 +89,7 @@ export default styles = StyleSheet.create({
     },
 
     userPass: {
-        height: Platform.OS === 'ios' ? 45 : 35,
+        height: Platform.OS === 'ios' ? 45 : 40,
         width: 280,
         borderColor: Colors.primary,
         borderWidth: 1,
@@ -107,10 +109,10 @@ export default styles = StyleSheet.create({
     noAcc: {
         flex: 5,
         color: Colors.primary,
-        fontSize: Platform.OS === 'ios' ? 20 : 18,
-        fontWeight: '600',
+        fontSize: Platform.OS === 'ios' ? 18 : 16,
         alignSelf: "center",
-        paddingBottom: Platform.OS === 'ios' ? 60 : 50,
+        paddingBottom: Platform.OS === 'ios' ? 50 : 25,
+        fontFamily: family.Medium,
     },
 
     newAcc: {

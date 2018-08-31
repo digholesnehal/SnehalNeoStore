@@ -1,12 +1,12 @@
 import { Platform, StyleSheet, Dimensions, } from 'react-native';
 import { primary, redHeader, redBtnTxt } from '../../../utils/colors'
 import { xxSmall } from '../../../utils/fonts'
+import * as family from '../../../utils/fontFamily';
 
 export default styles = StyleSheet.create({
 
     container: {
         flex: 1,
-
     },
 
     regHead: {
@@ -14,13 +14,14 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        padding: Platform.OS === 'ios' ? 15 : 12,
+        paddingTop: Platform.OS === 'ios' ? 45 : 12,
+        paddingBottom: 10,
     },
 
     headFont: {
         color: primary,
-        fontSize: Platform.OS === 'ios' ? 45 : 40,
-        fontWeight: 'bold',
+        fontSize: Platform.OS === 'ios' ? 48 : 45,
+        fontFamily: family.Bold,
     },
 
     regMid: {
@@ -31,13 +32,14 @@ export default styles = StyleSheet.create({
     },
 
     textField: {
+        fontFamily: family.Medium,
         width: 250,
         height: Platform.OS === 'ios' ? 40 : 60,
-        fontSize: Platform.OS === 'ios' ? 20 : 17,
+        fontSize: Platform.OS === 'ios' ? 20 : 18,
         alignSelf: 'center',
         paddingLeft: 15,
-        fontWeight: '500',
-        color: 'white',
+        color: primary,
+        padding: 10
     },
 
     btn: {
@@ -51,19 +53,17 @@ export default styles = StyleSheet.create({
     buttonStyle: {
         backgroundColor: primary,
         width: Platform.OS === 'ios' ? 300 : 280,
-        height: Platform.OS === 'ios' ? 50 : 40,
+        height: Platform.OS === 'ios' ? 50 : 45,
         borderRadius: 5,
-        color: redBtnTxt,
-        fontSize: Platform.OS === 'ios' ? 80 : 70,
-        fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
     },
 
     btnTxt: {
         color: redBtnTxt,
-        fontSize: Platform.OS === 'ios' ? 30 : 25,
-        fontWeight: 'bold',
+        fontSize: Platform.OS === 'ios' ? 30 : 26,
+        fontFamily: family.Medium,
+        paddingTop: Platform.Os === 'ios' ? 10 : 0,
     },
 
     icon: {
@@ -83,11 +83,11 @@ export default styles = StyleSheet.create({
     },
 
     userPass: {
-        height: Platform.OS === 'ios' ? 45 : 35,
+        height: Platform.OS === 'ios' ? 40 : 35,
         width: 280,
         borderColor: primary,
         borderWidth: 1,
-        padding: Platform.OS === 'ios' ? 10 : 8,
+        padding: 8,
         margin: 6,
         flexDirection: 'row',
         justifyContent: 'center'
@@ -99,9 +99,9 @@ export default styles = StyleSheet.create({
     },
 
     radioTitle: {
-        fontSize: Platform.OS === 'ios' ? 20 : 17,
+        fontFamily: family.Medium,
+        fontSize: Platform.OS === 'ios' ? 20 : 18,
         color: primary,
-        paddingBottom: 10,
         paddingRight: 20,
         paddingLeft: 5,
         fontWeight: '500',
@@ -127,7 +127,6 @@ export default styles = StyleSheet.create({
             flex: 1,
             flexDirection: 'row',
             color: primary,
-            fontSize: Platform.OS === 'ios' ? xxSmall : 10,
             alignItems: 'center',
             justifyContent: 'center',
             padding: 10,
@@ -135,6 +134,7 @@ export default styles = StyleSheet.create({
 
     checkBoxTitle: {
         color: primary,
+        fontFamily: family.Medium,
     }
 
 

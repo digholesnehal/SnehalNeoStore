@@ -2,6 +2,7 @@ import { Platform, StyleSheet, Dimensions, } from 'react-native';
 import * as Colors from '../../../utils/colors';
 import * as Fonts from '../../../utils/fonts.js';
 import * as Boldness from '../../../styles/appStyles.js'
+import * as family from '../../../utils/fontFamily';
 
 export default styles = StyleSheet.create({
     container: {
@@ -41,12 +42,13 @@ export default styles = StyleSheet.create({
 
     iName: {
         color: Colors.blackSecondary,
-        fontSize: Fonts.sMedium,
-        fontWeight: Boldness.bookBM,
+        fontSize: Fonts.small,
+        fontFamily: family.Medium,
         paddingLeft: 10,
     },
 
     iProducer: {
+        fontFamily: family.Book,
         color: Colors.blackSecondary,
         fontSize: Fonts.xxSmall,
         paddingLeft: 10,
@@ -54,8 +56,8 @@ export default styles = StyleSheet.create({
 
     iCost: {
         color: Colors.tableRTxt,
-        fontSize: Fonts.lMedium,
-        fontWeight: Boldness.bookBM,
+        fontSize: Fonts.medium,
+        fontFamily: family.Medium,
         padding: 10,
     },
 
@@ -81,5 +83,6 @@ export default styles = StyleSheet.create({
         color: Colors.primary,
         alignSelf: 'center',
         fontSize: Platform.OS.ios ? 15 : 12,
+        fontFamily: family.Book,
     },
 })
