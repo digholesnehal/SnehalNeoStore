@@ -40,10 +40,8 @@ export default class AddressList extends Component {
     }
 
     delete = (index) => {
-        console.log(index)
         this.state.Address[0].splice(index, 1)
         AsyncStorage.setItem('Address', JSON.stringify(this.state.Address[0]));
-        console.log(this.state)
         this.setState({ loader: false })
     }
 
@@ -57,17 +55,23 @@ export default class AddressList extends Component {
         let formData = new FormData();
         formData.append('address', place)
         this.setState({ loader: true })
-        apiCaller(url.host + url.Order, 'POST', { access_token: userObj.user_data.access_token }, formData,
-            (response) => {
-                this.setState({ loader: false })
-                if (response.status == 200) {
-                    alert(response.user_msg)
-                    this.props.navigation.navigate('HomeScreen')
-                }
-                else {
-                    alert(response.user_msg)
-                }
-            });
+        console.log(this.state.Address[0].length)
+        if (this.state.Address[0].length !== 0) {
+            apiCaller(url.host + url.Order, 'POST', { access_token: userObj.user_data.access_token }, formData,
+                (response) => {
+                    this.setState({ loader: false })
+                    if (response.status == 200) {
+                        alert(response.user_msg)
+                        this.props.navigation.navigate('HomeScreen')
+                    }
+                    else {
+                        alert(response.user_msg)
+                    }
+                });
+        }
+        else {
+            alert('Please, provide your address.')
+        }
     }
 
     render() {
@@ -80,7 +84,7 @@ export default class AddressList extends Component {
                     isSearch={false}
                     isAdd={true}
                     back={() => { this.props.navigation.goBack(null) }}
-                    search={() => { this.props.navigation.replace('AddAddress') }} />
+                    search={() => { this.props.navigation.navigate('AddAddress') }} />
                 <ScrollView>
                     <View style={styles.container1}>
                         <Text style={styles.shippping}>Shipping Address</Text>

@@ -19,7 +19,7 @@ export default styles = StyleSheet.create({
     },
     Headings: {
         fontSize: 17,
-        fontWeight: '600',
+        fontFamily: family.Medium,
         color: Colors.blackPrimary,
         paddingTop: 27,
         paddingBottom: 17,
@@ -38,6 +38,7 @@ export default styles = StyleSheet.create({
         backgroundColor: Colors.primary,
         height: 35,
         fontSize: 17,
+        fontFamily: family.Book,
         padding: Platform.OS === 'ios' ? 10 : 5,
     },
     hrPartition: {
@@ -50,16 +51,14 @@ export default styles = StyleSheet.create({
         backgroundColor: Colors.redBtnBG,
         height: Platform.OS === 'ios' ? 50 : 40,
         borderRadius: 5,
-        color: Colors.redBtnTxt,
-        fontSize: Platform.OS === 'ios' ? 80 : 70,
-        fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
     },
     btnTxt: {
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 25 : 25,
-        fontWeight: '500',
+        fontFamily: family.Medium,
+        paddingTop: Platform.OS === 'ios' ? 10 : 0,
     },
     button: {
         padding: 6.5,

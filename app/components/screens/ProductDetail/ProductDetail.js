@@ -240,7 +240,7 @@ export default class ProductList extends Component {
                             <View style={styles.Submit}>
                                 <Text style={styles.category}>
                                     Enter Qty
-                            </Text>
+                                </Text>
                             </View>
                             <View style={styles.Submit}>
                                 <View style={styles.qtyInput}>

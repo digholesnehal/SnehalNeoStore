@@ -9,7 +9,6 @@ export default styles = StyleSheet.create({
     },
 
     itemRow: {
-        flex: 1,
         flexDirection: 'row',
         padding: 12,
         borderBottomColor: Colors.myCartSmallBG,
@@ -26,7 +25,8 @@ export default styles = StyleSheet.create({
         justifyContent: 'center',
     },
     Heading: {
-        fontSize: 17,
+        fontSize: 18,
+        fontFamily: family.Book,
         color: Colors.orderIDH,
     },
     headingPadding: {
@@ -40,5 +40,10 @@ export default styles = StyleSheet.create({
     orderDate: {
         color: Colors.blackSecondary,
         fontSize: 12,
+        fontFamily: family.Book,
+    },
+    cost: {
+        fontFamily: family.Book,
+        fontSize: 20,
     },
 })

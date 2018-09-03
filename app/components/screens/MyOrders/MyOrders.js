@@ -78,7 +78,7 @@ export default class MyOrders extends Component {
                                     </View>
                                 </View>
                                 <View style={styles.column2}>
-                                    <Text style={styles.Heading}>&#8377;{item.cost}</Text>
+                                    <Text style={styles.cost}>&#8377;{item.cost}</Text>
                                 </View>
                             </View>
                         </TouchableOpacity>

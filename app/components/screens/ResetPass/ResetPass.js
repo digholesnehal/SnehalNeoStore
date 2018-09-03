@@ -116,7 +116,6 @@ export default class ResetPass extends Component {
                             </View>
                         </View>
                     </KeyboardAwareScrollView>
-
                 </ImageBackground>
             </View >
         );

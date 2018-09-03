@@ -148,7 +148,7 @@ export default class MyCart extends Component {
                                     </View>
                                     <View style={styles.midSwipe}>
                                         <View style={styles.midPartitionC}>
-                                            <Text style={styles.name}>{item.product.name}</Text>
+                                            <Text style={styles.name} numberOfLines={1}>{item.product.name}</Text>
                                             <Text style={styles.category}>({item.product.product_category})</Text>
                                         </View>
                                         <View style={styles.midPartitionR}>
@@ -162,7 +162,7 @@ export default class MyCart extends Component {
                                                     <Icon name="dropDown" size={10} color={Colors.blackPrimary} />
                                                 </View>
                                             </ModalDropdown>
-                                            <Text>&#8377;{item.product.sub_total}</Text>
+                                            <Text style={styles.price}>&#8377;{item.product.sub_total}</Text>
                                         </View>
                                     </View>
                                 </View>

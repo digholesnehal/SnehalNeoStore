@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
-    Platform, StyleSheet, Dimensions, Text, View,
-    ImageBackground, TextInput, TouchableOpacity, ActivityIndicator
+    KeyboardAvoidingView, Platform, StyleSheet, Dimensions, Text, View,
+    ScrollView, ImageBackground, TextInput, TouchableOpacity, ActivityIndicator
 } from 'react-native';
 import styles from "./Styles";
 import Icon from '../../../utils/Icons.js';
@@ -83,42 +83,44 @@ export default class Login extends Component {
                     <View style={styles.loginHead}>
                         <Text style={styles.headFont}> NeoSTORE </Text>
                     </View>
-                    <View style={styles.loginMid}>
-                        <View style={styles.userPass}>
-                            <Icon name='user' style={styles.icon} />
-                            <TextInput onChangeText={(changedText) => { this.setState({ "username": changedText }) }} style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
-                            </TextInput>
-                        </View>
+                    <ScrollView>
+                        <KeyboardAvoidingView>
 
-                        <View style={styles.userPass}>
-                            <Icon name="Lock" style={styles.icon} />
-                            <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
-                            </TextInput>
-                        </View>
-                    </View>
-                    <View style={styles.loginMid}>
-                        <View style={styles.pass}>
-                            <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}>
-                                <Text style={styles.btnTxt}> LOGIN </Text>
-                            </TouchableOpacity>
-                        </View>
-                        <TouchableOpacity style={styles.fgotPass} onPress={() => this.props.navigation.navigate('ForgotPass')}>
-                            <Text style={styles.fgotPass}>
-                                Forgot Password?
-                                </Text>
-                        </TouchableOpacity>
-                    </View>
+                            <View style={styles.loginMid}>
+                                <View style={styles.userPass}>
+                                    <Icon name='user' style={styles.icon} />
+                                    <TextInput onChangeText={(changedText) => { this.setState({ "username": changedText }) }} style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
+                                    </TextInput>
+                                </View>
 
-                    <View style={styles.loginFoot}>
-                        <View style={styles.bottom}>
-                            <Text style={styles.noAcc}>
-                                DONT HAVE AN ACCOUNT?
+                                <View style={styles.userPass}>
+                                    <Icon name="Lock" style={styles.icon} />
+                                    <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
+                                    </TextInput>
+                                </View>
+                                <View style={styles.pass}>
+                                    <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}>
+                                        <Text style={styles.btnTxt}> LOGIN </Text>
+                                    </TouchableOpacity>
+                                </View>
+                                <TouchableOpacity style={styles.fgotPass} onPress={() => this.props.navigation.navigate('ForgotPass')}>
+                                    <Text style={styles.fgotPass}>
+                                        Forgot Password?
                                 </Text>
-                            <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}>
-                                <Icon name="addAcc" size={30} color="#fff" />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.loginFoot}>
+                                <View style={styles.bottom}>
+                                    <Text style={styles.noAcc}>
+                                        DONT HAVE AN ACCOUNT?
+                                </Text>
+                                    <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}>
+                                        <Icon name="addAcc" size={30} color="#fff" />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </KeyboardAvoidingView>
+                    </ScrollView>
                 </ImageBackground>
             </View>
         );

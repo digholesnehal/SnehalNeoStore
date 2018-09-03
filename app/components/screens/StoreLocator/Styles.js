@@ -34,12 +34,12 @@ export default styles = StyleSheet.create({
     },
     HeadText: {
         fontSize: 15,
-        fontWeight: 'bold',
+        fontFamily: family.Bold,
         color: Colors.blackPrimary,
     },
     NormalText: {
         fontSize: 13.5,
-        fontWeight: '500',
+        fontFamily: family.Medium,
         color: Colors.blackSecondary,
     },
 });

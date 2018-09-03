@@ -16,12 +16,13 @@ export default styles = StyleSheet.create({
     },
     Name: {
         color: Colors.proHeading,
-        fontSize: size.mLarge,
-        fontWeight: Platform.OS === 'ios' ? '500' : '400',
+        fontSize: size.medium,
+        fontFamily: family.Medium,
     },
     category: {
-        fontSize: size.medium,
+        fontSize: size.small,
         color: Colors.proHeading,
+        fontFamily: family.Book,
     },
     row: {
         flex: 1,
@@ -30,6 +31,7 @@ export default styles = StyleSheet.create({
     },
     producer: {
         fontSize: size.xxSmall,
+        fontFamily: family.Book,
         color: Colors.proHeading,
 
     },
@@ -57,8 +59,8 @@ export default styles = StyleSheet.create({
     },
     price: {
         color: Colors.redBtnTxt,
-        fontSize: size.lMedium,
-        fontWeight: Platform.OS === 'ios' ? '500' : '400',
+        fontSize: size.medium,
+        fontFamily: family.Medium,
     },
     largeImg: {
         flex: 6,
@@ -104,13 +106,13 @@ export default styles = StyleSheet.create({
     },
     heading: {
         color: Colors.sbarBGdesc,
-        fontSize: size.sMedium,
-        fontWeight: '700',
+        fontSize: size.xxSmall,
+        fontFamily: family.Bold,
     },
     normalTxt: {
+        fontFamily: family.Book,
         color: Colors.sbarBGdesc,
-        fontSize: size.xSmall,
-        fontWeight: 'normal',
+        fontSize: size.xxSmall,
         paddingTop: 3,
         paddingBottom: 10,
     },
@@ -132,8 +134,9 @@ export default styles = StyleSheet.create({
     },
     BuyNowTxt: {
         color: Colors.primary,
-        fontSize: Platform.OS === 'ios' ? size.medium : size.medium,
-        fontWeight: '500',
+        fontSize: Platform.OS === 'ios' ? 20 : 16,
+        fontFamily: family.Medium,
+        paddingTop: Platform.OS === 'ios' ? 7 : 0,
     },
     Rate: {
         backgroundColor: Colors.gRadioUnchecked,
@@ -145,8 +148,9 @@ export default styles = StyleSheet.create({
     },
     RateTxt: {
         color: Colors.rateText,
-        fontSize: Platform.OS === 'ios' ? size.medium : size.medium,
-        fontWeight: '500',
+        fontSize: Platform.OS === 'ios' ? 20 : 16,
+        fontFamily: family.Medium,
+        paddingTop: Platform.OS === 'ios' ? 7 : 0,
     },
     modalView: {
         flex: 1,
@@ -154,6 +158,7 @@ export default styles = StyleSheet.create({
     },
     ModalName: {
         color: Colors.proHeading,
+        fontFamily: family.Book,
         fontSize: size.mLarge,
         paddingBottom: 10,
     },
@@ -191,7 +196,7 @@ export default styles = StyleSheet.create({
     },
     Submit: {
         backgroundColor: Colors.primary,
-        padding: 7,
+        padding: 10,
         alignItems: 'center',
     },
     ratingStarStyle: {

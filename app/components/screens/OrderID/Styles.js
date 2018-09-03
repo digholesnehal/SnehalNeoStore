@@ -33,7 +33,8 @@ export default styles = StyleSheet.create({
         padding: 10,
     },
     name: {
-        fontSize: 23,
+        fontSize: 20,
+        fontFamily: family.Book,
         color: Colors.orderIDH,
     },
     midPartitionC: {
@@ -50,12 +51,11 @@ export default styles = StyleSheet.create({
     category: {
         fontStyle: 'italic',
         fontSize: 15,
-        fontWeight: 'normal',
         color: Colors.blackSecondary,
         paddingTop: 3,
     },
     totalView: {
-        padding: 10,
+        padding: 20,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -65,8 +65,11 @@ export default styles = StyleSheet.create({
     },
     totalTxt: {
         fontSize: 15,
-        fontWeight: '600',
+        fontFamily: family.Medium,
         color: Colors.orderIDH,
-        paddingLeft: 15,
+    },
+    quantity: {
+        fontSize: 14,
+        fontFamily: family.Book,
     },
 })

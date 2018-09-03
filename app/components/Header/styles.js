@@ -10,7 +10,7 @@ export default styles = StyleSheet.create({
     white: {
         height: Platform.OS === 'ios' ? 20 : 0,
         width: Platform.OS === 'ios' ? '100%' : 0,
-        backgroundColor: '#282727',
+        backgroundColor: Colors.redAddAccBtn,
     },
     header: {
         backgroundColor: Colors.redHeader,

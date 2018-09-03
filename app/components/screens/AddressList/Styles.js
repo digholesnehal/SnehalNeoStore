@@ -14,6 +14,7 @@ export default styles = StyleSheet.create({
     },
     shippping: {
         fontSize: 17,
+        fontFamily: family.Book,
         color: Colors.blackPrimary,
     },
     radioView: {
@@ -50,17 +51,14 @@ export default styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     Heading: {
-        fontSize: 20,
-        fontWeight: '600',
+        fontSize: 17,
+        fontFamily: family.Medium,
         color: Colors.blackPrimary,
     },
     buttonStyle: {
         backgroundColor: Colors.redBtnBG,
         height: Platform.OS === 'ios' ? 50 : 40,
         borderRadius: 5,
-        color: Colors.redBtnTxt,
-        fontSize: Platform.OS === 'ios' ? 80 : 70,
-        fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -70,7 +68,8 @@ export default styles = StyleSheet.create({
     btnTxt: {
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 25 : 25,
-        fontWeight: '500',
+        fontFamily: family.Medium,
+        paddingTop: Platform.OS === 'ios' ? 10 : 0,
     },
 
 })

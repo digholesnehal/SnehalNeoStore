@@ -6,27 +6,28 @@ export default styles = StyleSheet.create({
 
     container: {
         flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
     },
 
     loginHead: {
         alignItems: 'center',
         flexDirection: 'column',
-        justifyContent: 'flex-end',
     },
 
     headFont: {
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 48 : 45,
-        paddingTop: Platform.OS === 'ios' ? 150 : 100,
-        paddingBottom: Platform.OS === 'ios' ? 0 : 20,
+        paddingTop: Platform.OS === 'ios' ? 140 : 120,
         fontFamily: family.Bold,
     },
 
     loginMid: {
-        flex: 8,
+        flex: 3,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 20,
     },
 
     textField: {
@@ -63,6 +64,7 @@ export default styles = StyleSheet.create({
         color: Colors.redBtnTxt,
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 20,
     },
 
     btnTxt: {
@@ -100,18 +102,18 @@ export default styles = StyleSheet.create({
     },
 
     loginFoot: {
-        flex: 3,
+        flex: 4,
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        paddingTop: Platform.OS === 'ios' ? 120 : 180,
+        paddingTop: Platform.OS === 'ios' ? 140 : 70,
     },
 
     noAcc: {
         flex: 5,
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 18 : 16,
-        alignSelf: "center",
-        paddingBottom: Platform.OS === 'ios' ? 50 : 25,
+        alignSelf: "flex-end",
+        paddingBottom: 15,
         fontFamily: family.Medium,
     },
 

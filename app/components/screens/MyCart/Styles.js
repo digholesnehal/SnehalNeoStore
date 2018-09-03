@@ -33,6 +33,7 @@ export default styles = StyleSheet.create({
         padding: 10,
     },
     name: {
+        fontFamily: family.Book,
         fontSize: 23,
         color: Colors.orderIDH,
     },
@@ -46,6 +47,11 @@ export default styles = StyleSheet.create({
     dropDown: {
         width: 40,
         alignItems: 'center',
+    },
+    price: {
+        fontFamily: family.Book,
+        fontSize: 15,
+        color: Colors.blackPrimary,
     },
     midPartitionC: {
         flex: 2,
@@ -69,7 +75,7 @@ export default styles = StyleSheet.create({
     },
     category: {
         fontSize: 15,
-        fontWeight: 'normal',
+        fontFamily: family.Book,
         color: Colors.blackSecondary,
         paddingTop: 3,
     },
@@ -77,7 +83,7 @@ export default styles = StyleSheet.create({
         fontSize: 20,
     },
     totalView: {
-        padding: 10,
+        padding: 20,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -87,9 +93,8 @@ export default styles = StyleSheet.create({
     },
     totalTxt: {
         fontSize: 15,
-        fontWeight: '600',
+        fontFamily: family.Medium,
         color: Colors.orderIDH,
-        paddingLeft: 15,
     },
     deleteView: {
         flex: 1,
@@ -107,7 +112,7 @@ export default styles = StyleSheet.create({
         justifyContent: 'center',
     },
     btnView: {
-        padding: 10,
+        padding: 15,
         paddingTop: 30,
     },
     buttonStyle: {
@@ -123,6 +128,7 @@ export default styles = StyleSheet.create({
     btnTxt: {
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 25 : 25,
-        fontWeight: '500',
+        fontFamily: family.Medium,
+        paddingTop: Platform.OS === 'ios' ? 10 : 0,
     },
 })
