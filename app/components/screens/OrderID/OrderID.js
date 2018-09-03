@@ -57,8 +57,8 @@ export default class OrderID extends Component {
                     isDrawer={false}
                     isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
+                {this.state.loader ? <Loader /> : null}
                 <ScrollView>
-
                     <FlatList
                         onEndReachedThreshold={0.1}
                         data={this.state.response.order_details}

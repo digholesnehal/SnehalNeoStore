@@ -59,9 +59,8 @@ export default class MyOrders extends Component {
                     mainTitle={false}
                     isDrawer={false}
                     isSearch={true}
-                    back={() => { this.props.navigation.goBack(null) }} />
-
-
+                    back={() => { this.props.navigation.goBack() }} />
+                {this.state.loader ? <Loader /> : null}
                 <FlatList
                     onEndReachedThreshold={0.1}
                     data={this.state.response}

@@ -16,6 +16,7 @@ import Icon from '../../../utils/Icons.js';
 import Modal from "react-native-modal";
 import { Share } from 'react-native';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default class ProductList extends Component {
     constructor(props) {
@@ -224,39 +225,42 @@ export default class ProductList extends Component {
                     </View>
                     {/* modal for buy now */}
                     <Modal visible={this.state.buyNowVisible} style={styles.modalView} transparent={true}>
-                        <View style={{ flex: 2 }}></View>
-                        <View style={styles.modalInnerView}>
-                            <TouchableOpacity onPress={() => { this.BuyNowPopUp(!this.state.buyNowVisible); }}>
-                                <Icon name="multiply" size={20} style={styles.close} color={Colors.redBtnBG} />
-                            </TouchableOpacity>
-                            <View style={styles.Submit}>
-                                <Text style={styles.ModalName}>
-                                    {this.state.dataArray.name}
+                        <View style={{ flex: 1 }}></View>
+
+                        <KeyboardAwareScrollView>
+                            <View style={styles.modalInnerView}>
+                                <TouchableOpacity onPress={() => { this.BuyNowPopUp(!this.state.buyNowVisible); }}>
+                                    <Icon name="multiply" size={20} style={styles.close} color={Colors.redBtnBG} />
+                                </TouchableOpacity>
+                                <View style={styles.Submit}>
+                                    <Text style={styles.ModalName}>
+                                        {this.state.dataArray.name}
+                                    </Text>
+                                </View>
+                                <View style={styles.Submit}>
+                                    <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
+                                </View>
+                                <View style={styles.Submit}>
+                                    <Text style={styles.category}>
+                                        Enter Qty
                                 </Text>
-                            </View>
-                            <View style={styles.Submit}>
-                                <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
-                            </View>
-                            <View style={styles.Submit}>
-                                <Text style={styles.category}>
-                                    Enter Qty
-                                </Text>
-                            </View>
-                            <View style={styles.Submit}>
-                                <View style={styles.qtyInput}>
-                                    <TextInput maxLength={1} onChangeText={(changedText) => { this.setState({ "Qty": changedText }) }} style={styles.textField} keyboardType="number-pad">
-                                    </TextInput>
+                                </View>
+                                <View style={styles.Submit}>
+                                    <View style={styles.qtyInput}>
+                                        <TextInput maxLength={1} onChangeText={(changedText) => { this.setState({ "Qty": changedText }) }} style={styles.textField} keyboardType="number-pad">
+                                        </TextInput>
+                                    </View>
+                                </View>
+                                <View style={styles.Submit}>
+                                    <TouchableOpacity style={styles.BuyNow} onPress={() => { this.Submit(!this.state.Qty); }}>
+                                        <Text style={styles.BuyNowTxt}>SUBMIT</Text>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
-                            <View style={styles.Submit}>
-                                <TouchableOpacity style={styles.BuyNow} onPress={() => { this.Submit(!this.state.Qty); }}>
-                                    <Text style={styles.BuyNowTxt}>SUBMIT</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                        <View style={{ flex: 2 }}></View>
-                    </Modal>
+                        </KeyboardAwareScrollView>
+                        <View style={{ flex: 1 }}></View>
 
+                    </Modal>
 
                     {/* modal for rating button */}
                     <Modal visible={this.state.RatingVisible} style={styles.modalView} transparent={true}>

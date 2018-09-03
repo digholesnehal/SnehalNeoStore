@@ -9,10 +9,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
-import Loader from '../../Loader/Loader.js';
 import Header from '../../Header/header.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
-
 
 
 export default class MyAccount extends Component {
@@ -42,7 +40,6 @@ export default class MyAccount extends Component {
                         isDrawer={false}
                         isSearch={true}
                         back={() => { this.props.navigation.goBack(null) }} />
-                    {this.state.loader ? <Loader /> : null}
                     <View style={styles.imageView}>
                         {userObj.user_data.profile_pic === null || userObj.user_data.profile_pic === '' ? <Image style={styles.image} source={require('../../../assets/images/appdp.jpg')} /> : <Image style={styles.image} source={{ uri: userObj.user_data.profile_pic }} />}
                     </View>

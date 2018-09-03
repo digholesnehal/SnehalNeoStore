@@ -14,7 +14,7 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 import * as Colors from '../../../utils/colors';
 import ModalDropdown from 'react-native-modal-dropdown';
 import { DrawerActions } from 'react-navigation';
-
+import Loader from '../../Loader/Loader.js';
 
 export default class MyCart extends Component {
 
@@ -134,6 +134,7 @@ export default class MyCart extends Component {
                     isDrawer={false}
                     isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
+                {this.state.loader ? <Loader /> : null}
                 <ScrollView>
                     <View>
                         <SwipeListView
