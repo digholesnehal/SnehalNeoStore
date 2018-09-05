@@ -9,14 +9,13 @@ import styles from './Styles';
 import * as Colors from '../../../utils/colors';
 import Header from '../../../components/Header/header.js';
 import { AsyncStorage } from 'react-native';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Loader from '../../Loader/Loader.js';
+import { connect } from 'react-redux';
 
-
-export default class AddressList extends Component {
+class AddressList extends Component {
     constructor(props) {
         super(props);
 
@@ -57,7 +56,7 @@ export default class AddressList extends Component {
         let formData = new FormData();
         formData.append('address', place)
         if (this.state.Address[0].length !== 0) {
-            apiCaller(url.host + url.Order, 'POST', { access_token: userObj.user_data.access_token }, formData,
+            apiCaller(url.host + url.Order, 'POST', { access_token: this.props.user_data.access_token }, formData,
                 (response) => {
                     this.setState({ loader: false })
                     if (response.status == 200) {
@@ -125,3 +124,9 @@ export default class AddressList extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    console.log(state);
+    return state;
+};
+
+export default connect(mapStateToProps)(AddressList);

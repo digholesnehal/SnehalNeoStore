@@ -15,15 +15,23 @@ import * as Colors from '../../../utils/colors';
 import ModalDropdown from 'react-native-modal-dropdown';
 import { DrawerActions } from 'react-navigation';
 import Loader from '../../Loader/Loader.js';
+import { connect } from 'react-redux';
 
-export default class MyCart extends Component {
+const setDelete = (state) => {
+    return {
+        type: 'EDIT',
+        state,
+    }
+}
+
+class MyCart extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             response: '',
             loader: false,
-            access_token: userObj.user_data.access_token,
+            access_token: this.props.user_data.access_token,
         }
     }
 
@@ -73,6 +81,7 @@ export default class MyCart extends Component {
                                 if (response.status == 200) {
                                     this.state.response.total = this.state.response.total - this.state.response.data[index].product.sub_total;
                                     this.state.response.data.splice(index, 1)
+                                    this.props.setDelete({ 'total_carts': response.total_carts })
                                     userProvider.setObjKey('total_carts', response.total_carts)
                                     this.setState({ loader: false })
                                     alert(response.user_msg)
@@ -193,3 +202,10 @@ export default class MyCart extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps, { setDelete })(MyCart);

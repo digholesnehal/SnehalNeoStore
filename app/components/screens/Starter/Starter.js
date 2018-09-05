@@ -11,10 +11,17 @@ import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher';
 import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
-import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen';
+import { connect } from "react-redux";
 
-export default class Starter extends Component {
+const setProfile = (state) => {
+    return {
+        type: 'EDIT',
+        state,
+    }
+}
 
+class Starter extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -29,6 +36,7 @@ export default class Starter extends Component {
                 //Check if the accesstoken is valid or not by calling the api.
                 apiCaller(url.host + url.fAccDetails, 'GET', {}, null, callback = (response) => {
                     if (response.status == 200) { // Access Token valid please send to homescreen with response
+                        this.props.setProfile(response.data)
                         userProvider.setUserObj(response.data);
                         this.setState({ loader: true })
                         this.props.navigation.replace('DrawerStack');
@@ -65,3 +73,8 @@ export default class Starter extends Component {
     }
 };
 
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps, { setProfile })(Starter);

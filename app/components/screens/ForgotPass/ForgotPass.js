@@ -12,7 +12,6 @@ import * as url from '../../../lib/api';
 import { AsyncStorage } from 'react-native';
 import { apiCaller } from '../../../lib/Fetcher';
 import Loader from '../../Loader/Loader.js';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 
 export default class ForgotPass extends Component {
 
@@ -99,5 +98,4 @@ export default class ForgotPass extends Component {
             </View>
         );
     }
-
 }

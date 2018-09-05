@@ -11,23 +11,14 @@ import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import Header from '../../Header/header.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
+import { connect } from 'react-redux';
 
-
-export default class MyAccount extends Component {
+class MyAccount extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loader: false,
         }
-    }
-
-    componentDidMount() {
-        const didBlurSubscription = this.props.navigation.addListener(
-            'willFocus',
-            payload => {
-                this.setState({ loader: false })
-            }
-        );
     }
 
     render() {
@@ -41,32 +32,32 @@ export default class MyAccount extends Component {
                         isSearch={true}
                         back={() => { this.props.navigation.goBack(null) }} />
                     <View style={styles.imageView}>
-                        {userObj.user_data.profile_pic === null || userObj.user_data.profile_pic === '' ? <Image style={styles.image} source={require('../../../assets/images/appdp.jpg')} /> : <Image style={styles.image} source={{ uri: userObj.user_data.profile_pic }} />}
+                        {this.props.user_data.profile_pic === null || this.props.user_data.profile_pic === '' ? <Image style={styles.image} source={require('../../../assets/images/appdp.jpg')} /> : <Image style={styles.image} source={{ uri: this.props.user_data.profile_pic }} />}
                     </View>
                     <View style={styles.mid}>
                         <View style={styles.textFieldView}>
                             <Icon name="user" style={styles.icon} />
-                            <TextInput style={styles.textField} value={userObj.user_data.first_name} editable={false}>
+                            <TextInput style={styles.textField} value={this.props.user_data.first_name} editable={false}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="user" style={styles.icon} />
-                            <TextInput style={styles.textField} value={userObj.user_data.last_name} editable={false}>
+                            <TextInput style={styles.textField} value={this.props.user_data.last_name} editable={false}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="email" style={styles.envelope} />
-                            <TextInput style={styles.textField} value={userObj.user_data.email} editable={false}>
+                            <TextInput style={styles.textField} value={this.props.user_data.email} editable={false}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="phone" style={styles.iconPhn} />
-                            <TextInput style={styles.textField} value={userObj.user_data.phone_no} editable={false}>
+                            <TextInput style={styles.textField} value={this.props.user_data.phone_no} editable={false}>
                             </TextInput>
                         </View>
                         <View style={styles.textFieldView}>
                             <Icon name="birthday" style={styles.iconCake} />
-                            <TextInput style={styles.textField} value={userObj.user_data.dob} editable={false}>
+                            <TextInput style={styles.textField} value={this.props.user_data.dob} editable={false}>
                             </TextInput>
                         </View>
                     </View>
@@ -85,3 +76,9 @@ export default class MyAccount extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps)(MyAccount);

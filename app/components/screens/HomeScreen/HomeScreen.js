@@ -9,10 +9,10 @@ import Header from '../../../components/Header/header.js';
 import Swiper from 'react-native-swiper';
 import SideBar from '../../Drawer/SideBar';
 import * as Colors from '../../../utils/colors';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import SplashScreen from 'react-native-splash-screen';
+import { connect } from 'react-redux';
 
-export default class HomeScreen extends Component {
+class HomeScreen extends Component {
 
 
     constructor(props) {
@@ -24,7 +24,7 @@ export default class HomeScreen extends Component {
         for (let i = 0; i < 4; i++) {
             returnData.push(
                 <View key={"k" + i} style={styles.slide}>
-                    <Image style={styles.images} source={{ uri: userObj.product_categories[i].icon_image }} />
+                    <Image style={styles.images} source={{ uri: this.props.product_categories[i].icon_image }} />
                 </View>);
         }
         return returnData;
@@ -47,7 +47,7 @@ export default class HomeScreen extends Component {
                     }} />
                 <View style={styles.swipe}>
                     <Swiper activeDotColor={Colors.enterQtyB} dotColor={Colors.redHeader} autoplay={true}>
-                        {this.swiperContent(userObj.product_categories)}
+                        {this.swiperContent(this.props.product_categories)}
                     </Swiper>
                 </View>
                 <View style={styles.components}>
@@ -83,6 +83,10 @@ export default class HomeScreen extends Component {
             </View>
         );
     }
-
 }
 
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps)(HomeScreen);

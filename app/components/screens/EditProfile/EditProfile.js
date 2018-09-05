@@ -12,22 +12,29 @@ import { apiCaller } from '../../../lib/Fetcher.js';
 import Loader from '../../Loader/Loader.js';
 import Header from '../../Header/header.js';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import ImagePicker from 'react-native-image-picker';
+import { connect } from 'react-redux';
 
-export default class EditProfile extends Component {
+const setProfile = (state) => {
+    return {
+        type: 'EDIT',
+        state,
+    }
+}
+
+class EditProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loader: false,
-            access_token: userObj.user_data.access_token,
+            access_token: this.props.user_data.access_token,
             isDateTimePickerVisible: false,
-            first_name: userObj.user_data.first_name,
-            last_name: userObj.user_data.last_name,
-            email: userObj.user_data.email,
-            phone_no: userObj.user_data.phone_no,
-            dob: userObj.user_data.dob,
-            profile_pic: userObj.user_data.profile_pic,
+            first_name: this.props.user_data.first_name,
+            last_name: this.props.user_data.last_name,
+            email: this.props.user_data.email,
+            phone_no: this.props.user_data.phone_no,
+            dob: this.props.user_data.dob,
+            profile_pic: this.props.user_data.profile_pic,
         }
     }
 
@@ -46,6 +53,7 @@ export default class EditProfile extends Component {
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
+                    this.props.setProfile({ user_data: response.data })
                     userProvider.setObjKey('user_data', response.data);
                     alert(response.user_msg)
                 }
@@ -160,3 +168,9 @@ export default class EditProfile extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps, { setProfile })(EditProfile);

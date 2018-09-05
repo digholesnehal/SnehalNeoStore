@@ -11,8 +11,16 @@ import { apiCaller } from '../../../lib/Fetcher.js';
 import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import SplashScreen from 'react-native-splash-screen';
+import { connect } from "react-redux";
 
-export default class Login extends Component {
+const setProfile = (state) => {
+    return {
+        type: 'EDIT',
+        state,
+    }
+}
+
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,6 +44,7 @@ export default class Login extends Component {
                         apiCaller(url.host + url.fAccDetails, 'GET', {}, null,
                             (response) => {
                                 if (response.status == 200) { // Access Token valid please send to homescreen with response
+                                    this.props.setProfile(response.data)
                                     userProvider.setUserObj(response.data);
                                     this.props.navigation.replace('DrawerStack');
                                 }
@@ -126,3 +135,8 @@ export default class Login extends Component {
         );
     }
 }
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps, { setProfile })(Login);

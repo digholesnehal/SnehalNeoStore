@@ -17,8 +17,17 @@ import Modal from "react-native-modal";
 import { Share } from 'react-native';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import ImageZoom from 'react-native-image-pan-zoom';
+import { connect } from 'react-redux';
 
-export default class ProductList extends Component {
+const setQuantity = (state) => {
+    return {
+        type: 'EDIT',
+        state,
+    }
+}
+
+class ProductDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -91,6 +100,7 @@ export default class ProductList extends Component {
                 this.setState({ loader: false })
                 if (response.status == 200) {
                     this.BuyNowPopUp(!this.state.buyNowVisible)
+                    this.props.setQuantity({ 'total_carts': response.total_carts })
                     userProvider.setObjKey('total_carts', response.total_carts)
                     alert(response.user_msg)
                 }
@@ -201,8 +211,14 @@ export default class ProductList extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.largeImg}>
-                            {this.state.URI !== 'abc' ? <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
-                                : null}
+                            <ImageZoom cropWidth={290}
+                                cropHeight={200}
+                                imageWidth={290}
+                                imageHeight={200}>
+                                {this.state.URI !== 'abc' ? <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
+                                    : null}
+                            </ImageZoom>
+
                         </View>
                         <ScrollView horizontal={this.state.horizontalScroll}>
                             <View style={styles.subImages}>
@@ -298,8 +314,14 @@ export default class ProductList extends Component {
                         <View style={{ flex: 2 }}></View>
                     </Modal>
                 </ScrollView>
-            </View>
+            </View >
         )
     }
 
 }
+
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps, { setQuantity })(ProductDetail);

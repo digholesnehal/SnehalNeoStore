@@ -11,9 +11,9 @@ import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import Icon from '../../../utils/Icons.js';
 import Loader from '../../Loader/Loader.js';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
+import { connect } from 'react-redux';
 
-export default class OrderID extends Component {
+class OrderID extends Component {
 
     constructor(props) {
         super(props);
@@ -28,7 +28,7 @@ export default class OrderID extends Component {
         this.setState({ loader: true })
         return apiCaller(
             url.host + url.OrderDetail + "?order_id=" + this.state.OrderId,
-            'GET', { access_token: userObj.user_data.access_token }, null,
+            'GET', { access_token: this.props.user_data.access_token }, null,
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
@@ -91,3 +91,8 @@ export default class OrderID extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps)(OrderID);

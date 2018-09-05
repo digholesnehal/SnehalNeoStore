@@ -4,11 +4,11 @@ import styles from './Styles';
 import Icon from '../../utils/Icons.js';
 import { AsyncStorage } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import { userObj, userProvider } from '../../lib/UserProvider.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { MyCart } from '../../lib/api';
+import { connect } from 'react-redux';
 
-export default class SideBar extends Component {
+class SideBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,9 +34,9 @@ export default class SideBar extends Component {
                 <ScrollView>
                     {/* <TouchableOpacity style={styles.}> */}
                     <View style={styles.top}>
-                        {userObj.user_data.profile_pic === null || userObj.user_data.profile_pic === '' ? <Image style={styles.image} source={require('../../assets/images/appdp.jpg')} /> : <Image style={styles.image} source={{ uri: userObj.user_data.profile_pic }} />}
-                        <Text style={styles.UserName}>{userObj.user_data.first_name} {userObj.user_data.last_name}</Text>
-                        <Text style={styles.email}>{userObj.user_data.email}</Text>
+                        {this.props.user_data.profile_pic === null || this.props.user_data.profile_pic === '' ? <Image style={styles.image} source={require('../../assets/images/appdp.jpg')} /> : <Image style={styles.image} source={{ uri: this.props.user_data.profile_pic }} />}
+                        <Text style={styles.UserName}>{this.props.user_data.first_name} {this.props.user_data.last_name}</Text>
+                        <Text style={styles.email}>{this.props.user_data.email}</Text>
                     </View>
                     {/* </TouchableOpacity> */}
                     <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('MyCart', {}); this.props.navigation.closeDrawer() }}>
@@ -49,7 +49,7 @@ export default class SideBar extends Component {
                             </View>
                             <View style={styles.itemCount}>
                                 <Text style={styles.count}>
-                                    {userObj.total_carts}
+                                    {this.props.total_carts}
                                 </Text>
                             </View>
                         </View>
@@ -115,3 +115,10 @@ export default class SideBar extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    console.log(state);
+    return state;
+};
+
+export default connect(mapStateToProps)(SideBar);

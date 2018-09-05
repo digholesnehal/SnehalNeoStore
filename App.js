@@ -26,7 +26,12 @@ import AddAddress from './app/components/screens/AddAddress/AddAddress.js';
 import AddressList from './app/components/screens/AddressList/AddressList.js';
 import MyOrders from './app/components/screens/MyOrders/MyOrders.js';
 import OrderID from './app/components/screens/OrderID/OrderID.js';
-import StoreLocator from './app/components/screens/StoreLocator/StoreLocator.js'
+import StoreLocator from './app/components/screens/StoreLocator/StoreLocator.js';
+// import { store } from "./app/redux/store.js";
+import { Provider } from "react-redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+// import { userObj, userProvider } from '../../lib/UserProvider.js';
+
 
 const DrawerStack = createDrawerNavigator({
     HomeScreen: {
@@ -161,8 +166,31 @@ const RootStack = createStackNavigator({
 
 );
 
+const initialState = {}
+
+const profileReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case "EDIT":
+            return { ...state, ...action.state }
+            break;
+
+        default:
+            return state;
+    }
+};
+
+
+const store = createStore(
+    profileReducer
+);
+
 export default class App extends Component {
     render() {
-        return (<RootStack />);
+        console.log(store.getState())
+        return (
+            <Provider store={store}>
+                <RootStack />
+            </Provider>
+        );
     }
 }
