@@ -13,6 +13,8 @@ import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import SplashScreen from 'react-native-splash-screen';
 import { connect } from "react-redux";
+import { Toast } from 'native-base';
+
 
 const setProfile = (state) => {
     return {
@@ -57,7 +59,10 @@ class Starter extends Component {
             .catch((error) => {
                 //Some error. Navigate to login.
                 this.props.navigation.replace('Login');
-                // console.log(error.message);
+                Toast.show({
+                    text: error.message,
+                    duration: 5000
+                })
             })
     }
 

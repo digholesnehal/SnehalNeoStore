@@ -17,6 +17,7 @@ import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import * as family from '../../../utils/fontFamily';
+import { Toast } from 'native-base';
 
 
 var gender = [
@@ -55,15 +56,24 @@ export default class Register extends Component {
                 this.setState({ loader: false })
                 if (response.status == 200) {
                     userProvider.setObjKey('user_data', response.data);
-                    alert(response.user_msg)
+                    Toast.show({
+                        text: response.user_msg,
+                        duration: 5000
+                    })
                     this.props.navigation.navigate('Login');
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
-                        alert(response.user_msg);
+                        Toast.show({
+                            text: response.user_msg,
+                            duration: 5000
+                        })
                     }
                     else {
-                        alert(response.message);
+                        Toast.show({
+                            text: response.message,
+                            duration: 5000
+                        })
                     }
                 }
             })
@@ -77,67 +87,67 @@ export default class Register extends Component {
         var alNum = /^([a-zA-Z0-9]){5,10}$/;
         var num = /^([0-9*\+\#]){10,13}$/;
 
-        if (this.state.firstname == "") {
-            alert("Please enter the First Name");
+        if (this.state.firstname == "" || !this.state.firstname.match(alphaExp)) {
+            Toast.show({
+                text: "Please enter the correct First Name.",
+                duration: 5000
+            })
             return false;
         }
 
-        else if (!this.state.firstname.match(alphaExp)) {
-            alert("Enter the valid First Name");
-            return false;
-        }
-
-        else if (this.state.lastname == "") {
-            alert("Please enter the Last Name");
-            return false;
-        }
-
-        else if (!this.state.lastname.match(alphaExp)) {
-            alert("Enter the valid Last Name");
+        else if (this.state.lastname == "" || !this.state.lastname.match(alphaExp)) {
+            Toast.show({
+                text: "Please enter the correct Last Name.",
+                duration: 5000
+            })
             return false;
         }
 
         else if (this.state.email == "") {
-            alert("Please provide your Email address");
+            Toast.show({
+                text: "Please provide your Email address.",
+                duration: 5000
+            })
             return false;
         }
 
         else if (!this.state.email.match(regmail)) {
-            alert("Invalid Email address");
+            Toast.show({
+                text: "Invalid Email address.",
+                duration: 5000
+            })
             return false;
         }
 
-        else if (this.state.password == "") {
-            alert("Password field shouldn't remain empty");
+        else if (this.state.password == "" || !this.state.password.match(alNum)) {
+            Toast.show({
+                text: " Password should contain 5-10 alphanumeric characters",
+                duration: 5000
+            })
             return false;
         }
 
-        else if (!this.state.password.match(alNum)) {
-            alert("Password should contain 5-10 alphanumeric characters");
+        else if (this.state.cpassword != this.state.password || this.state.cpassword == "") {
+            Toast.show({
+                text: "Password should be same as above.",
+                duration: 5000
+            })
             return false;
         }
 
-        else if (this.state.cpassword != this.state.password) {
-            alert("Password should be same as above");
+        else if (this.state.mobile == "" || !this.state.mobile.match(num)) {
+            Toast.show({
+                text: "Mobile number should contain 10-13 numbers.",
+                duration: 5000
+            })
             return false;
         }
 
-        else if (this.state.cpassword == "") {
-            alert("Please confirm the password");
-            return false;
-        }
-        else if (this.state.mobile == "") {
-            alert("Please enter your mobile number");
-            return false;
-        }
-
-        else if (!this.state.mobile.match(num)) {
-            alert("Mobile number should contain 10-13 numbers only");
-            return false;
-        }
         else if (this.state.check == false) {
-            alert("Please agree terms and conditions.")
-            console.log('checkbox', this.state.check)
+            Toast.show({
+                text: "Please agree terms and conditions.",
+                duration: 5000
+            })
             return false;
         }
         else {

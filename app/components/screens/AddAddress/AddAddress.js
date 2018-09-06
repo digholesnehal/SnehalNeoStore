@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {
-    Platform, Dimensions, ScrollView, StyleSheet, Text, View,
-    KeyboardAvoidingView, Image, Alert,
-    TextInput, TouchableOpacity
+    Platform, Dimensions, ScrollView, StyleSheet,
+    KeyboardAvoidingView, Image, Alert, Text,
+    TextInput, TouchableOpacity, View
 } from 'react-native';
 import styles from "./Styles";
 import Header from '../../../components/Header/header.js';
@@ -10,6 +10,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { apiCaller } from '../../../lib/Fetcher.js';
 import * as Colors from '../../../utils/colors';
 import { AsyncStorage } from 'react-native';
+import { Toast } from 'native-base';
 
 
 export default class AddAddress extends Component {
@@ -32,28 +33,46 @@ export default class AddAddress extends Component {
         var num = /^([0-9*\+\#]){4,8}$/;
 
         if (this.state.address == "") {
-            alert("Address field sould not remain empty");
+            Toast.show({
+                text: 'Address field sould not remain empty.',
+                duration: 3000
+            })
             return false;
         }
 
         else if (this.state.landmark == "") {
-            alert("Landmark..??");
+            Toast.show({
+                text: 'Landmark..??',
+                duration: 3000
+            })
             return false;
         }
         else if (this.state.city == "" || !this.state.city.match(alphaExp)) {
-            alert("City..??");
+            Toast.show({
+                text: 'City..??',
+                duration: 3000
+            })
             return false;
         }
         else if (this.state.state == "" || !this.state.state.match(alphaExp)) {
-            alert("State..??");
+            Toast.show({
+                text: 'State..??',
+                duration: 3000
+            })
             return false;
         }
         else if (this.state.zip == "" || !this.state.zip.match(num)) {
-            alert("Zip Code..??");
+            Toast.show({
+                text: 'Zip Code..??',
+                duration: 3000
+            })
             return false;
         }
         else if (this.state.country == "" || !this.state.country.match(alphaExp)) {
-            alert("Country..??");
+            Toast.show({
+                text: 'Country..??',
+                duration: 3000
+            })
             return false;
         }
         else {
@@ -65,7 +84,10 @@ export default class AddAddress extends Component {
                     const UserAddress = Address ? JSON.parse(Address) : [];
                     UserAddress.push(this.state.UserAdd);
                     AsyncStorage.setItem('Address', JSON.stringify(UserAddress), () => {
-                        alert('Address added successfully.')
+                        Toast.show({
+                            text: 'Address added successfully.',
+                            duration: 3000
+                        })
                         this.props.navigation.replace('AddressList');
                     });
                 });

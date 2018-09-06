@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Platform, StyleSheet, Dimensions, Image, ScrollView, Text, View, KeyboardAvoidingView,
-    ImageBackground, TextInput, TouchableOpacity
+    ImageBackground, TextInput, TouchableOpacity, BackHandler,
 } from 'react-native';
 import styles from "./styles";
 import Icon from '../../../utils/Icons.js';
@@ -11,12 +11,16 @@ import SideBar from '../../Drawer/SideBar';
 import * as Colors from '../../../utils/colors';
 import SplashScreen from 'react-native-splash-screen';
 import { connect } from 'react-redux';
+import { Toast } from 'native-base';
 
 class HomeScreen extends Component {
 
 
     constructor(props) {
         super(props);
+        this.state = {
+            back: false
+        }
     }
 
     swiperContent = (data) => {
@@ -31,7 +35,31 @@ class HomeScreen extends Component {
     }
 
     componentDidMount() {
+        if (Platform.OS == "android") {
+            BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+        }
+
         SplashScreen.hide();
+    }
+    handleBackButton = () => {
+        if (!this.props.navigation.isFocused()) return false
+        Toast.show({
+            text: 'Double Tap to exit.',
+            type: "warning",
+            duration: 2000
+        })
+        if (this.state.back) {
+            BackHandler.exitApp()
+        }
+        setTimeout(() => {
+            this.setState({ back: false })
+        }, 2000);
+        this.setState({ back: true })
+        return true;
+    }
+    componentWillUnmount() {
+        this.setState({ back: !this.state.back })
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
     }
 
     render = () => {

@@ -12,6 +12,7 @@ import { apiCaller } from '../../../lib/Fetcher.js';
 import Icon from '../../../utils/Icons.js';
 import Loader from '../../Loader/Loader.js';
 import { connect } from 'react-redux';
+import { Toast } from 'native-base';
 
 class MyOrders extends Component {
 
@@ -41,10 +42,16 @@ class MyOrders extends Component {
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
-                        alert(response.user_msg)
+                        Toast.show({
+                            text: response.user_msg,
+                            duration: 5000
+                        })
                     }
                     else {
-                        alert(response.message);
+                        Toast.show({
+                            text: response.message,
+                            duration: 5000
+                        })
                     }
                 }
             }

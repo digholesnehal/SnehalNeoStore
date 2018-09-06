@@ -131,4 +131,10 @@ export default styles = StyleSheet.create({
         fontFamily: family.Medium,
         paddingTop: Platform.OS === 'ios' ? 10 : 0,
     },
+    emptyCart: {
+        alignSelf: 'center',
+        color: Colors.redBtnBG,
+        fontSize: 20,
+        fontFamily: family.Medium,
+    }
 })

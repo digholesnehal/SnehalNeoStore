@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {
     Platform, Dimensions, StyleSheet, Text, View,
-    TouchableOpacity, ScrollView,
-    FlatList, backgroundColor
+    TouchableOpacity, ScrollView, Alert,
+    FlatList, backgroundColor, Vibration
 } from 'react-native';
 import Icon from '../../../utils/Icons.js';
 import styles from './Styles';
@@ -14,6 +14,7 @@ import { apiCaller } from '../../../lib/Fetcher.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Loader from '../../Loader/Loader.js';
 import { connect } from 'react-redux';
+import { Toast } from 'native-base';
 
 class AddressList extends Component {
     constructor(props) {
@@ -40,9 +41,26 @@ class AddressList extends Component {
     }
 
     delete = (index) => {
-        this.state.Address[0].splice(index, 1)
-        AsyncStorage.setItem('Address', JSON.stringify(this.state.Address[0]));
-        this.setState({ loader: false })
+        Alert.alert(
+            'Are you sure?',
+            'Want to delete this item?',
+            [
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                {
+                    text: 'OK', onPress: () => {
+                        this.state.Address[0].splice(index, 1)
+                        AsyncStorage.setItem('Address', JSON.stringify(this.state.Address[0]));
+                        Vibration.vibrate(150)
+                        Toast.show({
+                            text: 'Address deleted successfully.',
+                            duration: 3000
+                        })
+                        this.setState({ loader: false })
+                    }
+                },
+            ],
+            { cancelable: false }
+        )
     }
 
     select = (index) => {
@@ -60,16 +78,31 @@ class AddressList extends Component {
                 (response) => {
                     this.setState({ loader: false })
                     if (response.status == 200) {
-                        alert(response.user_msg)
+                        Vibration.vibrate(150)
+                        Toast.show({
+                            text: response.user_msg,
+                            duration: 3000
+                        })
                         this.props.navigation.replace('DrawerStack');
                     }
                     else {
-                        alert(response.user_msg)
+                        Toast.show({
+                            text: response.user_msg,
+                            type: "warning",
+                            duration: 3000
+                        })
+                        this.setState({ loader: false })
                     }
                 });
         }
         else {
-            alert('Please, provide your address.')
+            Vibration.vibrate(200);
+            Toast.show({
+                text: 'Please, provide your address.',
+                duration: 3000,
+                type: "warning"
+            })
+            this.setState({ loader: false })
         }
     }
 
@@ -101,7 +134,7 @@ class AddressList extends Component {
                                     </TouchableOpacity>
                                     <View style={styles.addressBox}>
                                         <View style={styles.HeadView}>
-                                            <Text style={styles.Heading}>{userObj.user_data.first_name} {userObj.user_data.last_name}</Text>
+                                            <Text style={styles.Heading}>{this.props.user_data.first_name} {this.props.user_data.last_name}</Text>
                                             <TouchableOpacity onPress={() => this.delete(index)}>
                                                 <Icon name="multiply" size={15} color={Colors.blackSecondary} />
                                             </TouchableOpacity>

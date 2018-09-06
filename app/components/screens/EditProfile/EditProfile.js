@@ -14,6 +14,7 @@ import Header from '../../Header/header.js';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import ImagePicker from 'react-native-image-picker';
 import { connect } from 'react-redux';
+import { Toast } from 'native-base';
 
 const setProfile = (state) => {
     return {
@@ -54,15 +55,23 @@ class EditProfile extends Component {
                 this.setState({ loader: false })
                 if (response.status == 200) {
                     this.props.setProfile({ user_data: response.data })
-                    userProvider.setObjKey('user_data', response.data);
-                    alert(response.user_msg)
+                    Toast.show({
+                        text: response.user_msg,
+                        duration: 3000
+                    })
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
-                        alert(response.user_msg);
+                        Toast.show({
+                            text: response.user_msg,
+                            duration: 3000
+                        })
                     }
                     else {
-                        alert(response.message);
+                        Toast.show({
+                            text: response.message,
+                            duration: 3000
+                        })
                     }
                 }
             }
@@ -85,9 +94,16 @@ class EditProfile extends Component {
         ImagePicker.showImagePicker((response) => {
             if (response.didCancel) {
                 alert('cancelled')
+                Toast.show({
+                    text: 'Cancelled..!',
+                    duration: 3000
+                })
             }
             else if (response.error) {
-                alert(response.error);
+                Toast.show({
+                    text: response.error,
+                    duration: 3000
+                })
             }
             else if (response.customButton) {
                 // alert('User tapped custom button: ', response.customButton);

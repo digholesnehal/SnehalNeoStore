@@ -28,7 +28,14 @@ export default class OrderID extends Component {
                     isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
                 <View style={styles.map}>
-                    <MapView style={styles.map}>
+                    <MapView style={styles.map}
+                        initialRegion={{
+                            latitude: 19.0244,
+                            longitude: 72.8438,
+                            latitudeDelta: 1,
+                            longitudeDelta: 1,
+                        }}
+                    >
                         <Marker
                             coordinate={{ latitude: 19.0244, longitude: 72.8438 }}
                             title={'NeoSoft Technologies'}
@@ -51,7 +58,7 @@ export default class OrderID extends Component {
                         />
                     </MapView>
                 </View>
-                <View style={styles.addressView}>
+                <TouchableOpacity style={styles.addressView}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />
                     </View>
@@ -61,11 +68,11 @@ export default class OrderID extends Component {
                         </Text>
                         <Text style={styles.NormalText}>
                             6335 Edgewood Road Reisterstown, MD 21136
-
                         </Text>
                     </View>
-                </View>
-                <View style={styles.addressView}>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.addressView}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />
                     </View>
@@ -77,8 +84,9 @@ export default class OrderID extends Component {
                             9437 Pin Oak Drive South Plainfield, NJ 07080
                         </Text>
                     </View>
-                </View>
-                <View style={styles.addressView}>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.addressView}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />
                     </View>
@@ -90,8 +98,9 @@ export default class OrderID extends Component {
                             3798 Pennsylvania Avenue Brandon, FL 33510
                         </Text>
                     </View>
-                </View>
-                <View style={styles.addressView}>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.addressView}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />
                     </View>
@@ -103,8 +112,9 @@ export default class OrderID extends Component {
                             9311 Garfield Avenue Hamburg, NY 14075
                         </Text>
                     </View>
-                </View>
-                <View style={styles.addressView}>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.addressView}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />
                     </View>
@@ -116,8 +126,8 @@ export default class OrderID extends Component {
                             7346 Hanover Court Arlington, MA 02474
                         </Text>
                     </View>
-                </View>
-            </View>
+                </TouchableOpacity>
+            </View >
         );
     }
 }

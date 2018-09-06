@@ -12,6 +12,7 @@ import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import SplashScreen from 'react-native-splash-screen';
 import { connect } from "react-redux";
+import { Toast } from 'native-base';
 
 const setProfile = (state) => {
     return {
@@ -50,10 +51,16 @@ class Login extends Component {
                                 }
                                 else { // Some Error. Stay on this page.
                                     if (response.hasOwnProperty('user_msg')) {
-                                        alert(response.user_msg);
+                                        Toast.show({
+                                            text: response.user_msg,
+                                            duration: 5000
+                                        })
                                     }
                                     else {
-                                        alert(response.message);
+                                        Toast.show({
+                                            text: response.message,
+                                            duration: 5000
+                                        })
                                     }
                                 }
                             }
@@ -86,52 +93,54 @@ class Login extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
-                    {this.state.loader ? <Loader /> : null}
-                    <View style={styles.loginHead}>
-                        <Text style={styles.headFont}> NeoSTORE </Text>
-                    </View>
-                    <ScrollView>
-                        <KeyboardAvoidingView>
+            <KeyboardAvoidingView style={{ flex: 1, height: Dimensions.get('screen').height }}>
+                <ScrollView style={{ flex: 1 }}>
+                    <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
+                        {this.state.loader ? <Loader /> : null}
 
-                            <View style={styles.loginMid}>
-                                <View style={styles.userPass}>
-                                    <Icon name='user' style={styles.icon} />
-                                    <TextInput onChangeText={(changedText) => { this.setState({ "username": changedText }) }} style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
-                                    </TextInput>
-                                </View>
 
-                                <View style={styles.userPass}>
-                                    <Icon name="Lock" style={styles.icon} />
-                                    <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
-                                    </TextInput>
-                                </View>
-                                <View style={styles.pass}>
-                                    <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}>
-                                        <Text style={styles.btnTxt}> LOGIN </Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <TouchableOpacity style={styles.fgotPass} onPress={() => this.props.navigation.navigate('ForgotPass')}>
-                                    <Text style={styles.fgotPass}>
-                                        Forgot Password?
-                                </Text>
+                        <View style={styles.loginHead}>
+                            <Text style={styles.headFont}> NeoSTORE </Text>
+                        </View>
+
+                        <View style={styles.loginMid}>
+                            <View style={styles.userPass}>
+                                <Icon name='user' style={styles.icon} />
+                                <TextInput onChangeText={(changedText) => { this.setState({ "username": changedText }) }} style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
+                                </TextInput>
+                            </View>
+
+                            <View style={styles.userPass}>
+                                <Icon name="Lock" style={styles.icon} />
+                                <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
+                                </TextInput>
+                            </View>
+                            <View style={styles.pass}>
+                                <TouchableOpacity style={styles.buttonStyle} onPress={() => this.validate()}>
+                                    <Text style={styles.btnTxt}> LOGIN </Text>
                                 </TouchableOpacity>
                             </View>
-                            <View style={styles.loginFoot}>
-                                <View style={styles.bottom}>
-                                    <Text style={styles.noAcc}>
-                                        DONT HAVE AN ACCOUNT?
+                            <TouchableOpacity style={styles.fgotPass} onPress={() => this.props.navigation.navigate('ForgotPass')}>
+                                <Text style={styles.fgotPass}>
+                                    Forgot Password?
                                 </Text>
-                                    <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}>
-                                        <Icon name="addAcc" size={30} color="#fff" />
-                                    </TouchableOpacity>
-                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.loginFoot}>
+                            <View style={styles.bottom}>
+                                <Text style={styles.noAcc}>
+                                    DONT HAVE AN ACCOUNT?
+                                </Text>
+                                <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}>
+                                    <Icon name="addAcc" size={30} color="#fff" />
+                                </TouchableOpacity>
                             </View>
-                        </KeyboardAvoidingView>
-                    </ScrollView>
-                </ImageBackground>
-            </View>
+                        </View>
+
+
+                    </ImageBackground>
+                </ScrollView>
+            </KeyboardAvoidingView >
         );
     }
 }

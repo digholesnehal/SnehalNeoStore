@@ -11,6 +11,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import * as url from '../../../lib/api.js';
+import { Toast } from 'native-base';
 
 export default class ResetPass extends Component {
 
@@ -28,18 +29,18 @@ export default class ResetPass extends Component {
     validate = () => {
         var alNum = /^([a-zA-Z0-9]){5,10}$/;
         if (this.state.password == "" || !this.state.password.match(alNum)) {
-            alert("Please enter the correct password");
+            Toast.show({
+                text: "Please enter the correct password",
+                duration: 5000
+            })
             return false;
         }
-        else if (!this.state.npassword.match(alNum)) {
-            alert("Password should contain 5-10 alphanumeric characters")
-        }
+
         else if (this.state.cpassword != this.state.npassword) {
-            alert("Password should be same as above");
-            return false;
-        }
-        else if (this.state.cpassword == "") {
-            alert("Please confirm the password");
+            Toast.show({
+                text: "Password should be same as above",
+                duration: 5000
+            })
             return false;
         }
         else {
@@ -58,14 +59,23 @@ export default class ResetPass extends Component {
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
-                    alert(response.user_msg);
+                    Toast.show({
+                        text: response.user_msg,
+                        duration: 5000
+                    })
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
-                        alert(response.user_msg);
+                        Toast.show({
+                            text: response.user_msg,
+                            duration: 5000
+                        })
                     }
                     else {
-                        alert(response.message);
+                        Toast.show({
+                            text: response.user_msg,
+                            duration: 5000
+                        })
                     }
                 }
             }

@@ -105,7 +105,7 @@ export default styles = StyleSheet.create({
         flex: 4,
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        paddingTop: Platform.OS === 'ios' ? 140 : 120,
+        paddingTop: Platform.OS === 'ios' ? 130 : 70,
     },
 
     noAcc: {

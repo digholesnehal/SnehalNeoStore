@@ -12,6 +12,7 @@ import * as url from '../../../lib/api';
 import { AsyncStorage } from 'react-native';
 import { apiCaller } from '../../../lib/Fetcher';
 import Loader from '../../Loader/Loader.js';
+import { Toast } from 'native-base';
 
 export default class ForgotPass extends Component {
 
@@ -37,10 +38,16 @@ export default class ForgotPass extends Component {
                     })
                 }
                 else {
-                    alert(response.user_msg)
+                    Toast.show({
+                        text: response.user_msg,
+                        duration: 5000
+                    })
                     AsyncStorage.getItem('email').then((value) => {
                     }).catch = ((error) => {
-                        alert(error.message);
+                        Toast.show({
+                            text: error.message,
+                            duration: 5000
+                        })
                     })
                 }
 

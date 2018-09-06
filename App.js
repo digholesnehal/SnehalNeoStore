@@ -27,10 +27,9 @@ import AddressList from './app/components/screens/AddressList/AddressList.js';
 import MyOrders from './app/components/screens/MyOrders/MyOrders.js';
 import OrderID from './app/components/screens/OrderID/OrderID.js';
 import StoreLocator from './app/components/screens/StoreLocator/StoreLocator.js';
-// import { store } from "./app/redux/store.js";
 import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
-// import { userObj, userProvider } from '../../lib/UserProvider.js';
+import { Root } from 'native-base';
 
 
 const DrawerStack = createDrawerNavigator({
@@ -186,10 +185,11 @@ const store = createStore(
 
 export default class App extends Component {
     render() {
-        console.log(store.getState())
         return (
             <Provider store={store}>
-                <RootStack />
+                <Root>
+                    <RootStack />
+                </Root>
             </Provider>
         );
     }

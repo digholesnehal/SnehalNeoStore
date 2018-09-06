@@ -14,6 +14,7 @@ import Icon from '../../../utils/Icons.js';
 import Loader from '../../Loader/Loader.js';
 import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import Modal from "react-native-modal";
+import { Toast } from 'native-base';
 
 export default class ProductList extends Component {
 
@@ -50,7 +51,10 @@ export default class ProductList extends Component {
                     if (response.hasOwnProperty('user_msg')) {
                     }
                     else {
-                        alert(response.message);
+                        Toast.show({
+                            text: response.message,
+                            duration: 5000
+                        })
                     }
                 }
             }

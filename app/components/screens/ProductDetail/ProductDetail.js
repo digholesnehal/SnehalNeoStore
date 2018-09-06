@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Platform, Dimensions, StyleSheet, Text, View,
+    Platform, Dimensions, StyleSheet, Text, View, Vibration,
     TextInput, TouchableOpacity, FlatList, Image,
     ScrollView, KeyboardAvoidingView
 } from 'react-native';
@@ -19,6 +19,7 @@ import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ImageZoom from 'react-native-image-pan-zoom';
 import { connect } from 'react-redux';
+import { Toast } from 'native-base';
 
 const setQuantity = (state) => {
     return {
@@ -42,7 +43,8 @@ class ProductDetail extends Component {
             opacity: 1,
             Qty: '',
             access_token: '',
-            stars: ''
+            stars: '',
+            showToast: false
         }
     }
 
@@ -63,10 +65,16 @@ class ProductDetail extends Component {
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
-                        alert(response.user_msg);
+                        Toast.show({
+                            text: response.user_msg,
+                            duration: 3000
+                        })
                     }
                     else {
-                        alert(response.message);
+                        Toast.show({
+                            text: response.user_msg,
+                            duration: 3000
+                        })
                     }
                 }
             }
@@ -99,17 +107,26 @@ class ProductDetail extends Component {
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
+                    Vibration.vibrate(200)
                     this.BuyNowPopUp(!this.state.buyNowVisible)
                     this.props.setQuantity({ 'total_carts': response.total_carts })
-                    userProvider.setObjKey('total_carts', response.total_carts)
-                    alert(response.user_msg)
+                    Toast.show({
+                        text: response.user_msg,
+                        duration: 3000
+                    })
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
-                        alert(response.user_msg);
+                        Toast.show({
+                            text: response.user_msg,
+                            duration: 3000
+                        })
                     }
                     else {
-                        alert(response.message);
+                        Toast.show({
+                            text: response.user_msg,
+                            duration: 3000
+                        })
                     }
                 }
             }
@@ -125,8 +142,12 @@ class ProductDetail extends Component {
                 this.setState({ loader: false })
                 if (response.status == 200) {
                     this.setState({ dataArray: response.data, })
+                    Vibration.vibrate(200)
                     this.RatingPopUp(!this.state.RatingVisible)
-                    alert(response.user_msg)
+                    Toast.show({
+                        text: response.user_msg,
+                        duration: 3000
+                    })
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
@@ -193,7 +214,7 @@ class ProductDetail extends Component {
                             <Stars
                                 default={this.state.dataArray.rating}
                                 count={5}
-                                half={true}
+                                half={false}
                                 disabled={true}
                                 backingColor={Colors.ratingBefore}
                                 fullStar={<Icon name={'star'} style={[styles.myStarStyle]} />}
@@ -297,7 +318,7 @@ class ProductDetail extends Component {
                                 <Stars
                                     default={this.state.dataArray.rating}
                                     count={5}
-                                    half={true}
+                                    half={false}
                                     disabled={false}
                                     backingColor={Colors.ratingBefore}
                                     fullStar={<Icon name={'star'} style={[styles.ratingStarStyle]} />}
