@@ -78,10 +78,12 @@ export default class AddAddress extends Component {
         }
         else {
             this.state.UserAdd = [{ address: this.state.address, landmark: this.state.landmark, city: this.state.city, state: this.state.state, zip: this.state.zip, country: this.state.country }]
+            this.state.UserAdd1 = { address: this.state.address, landmark: this.state.landmark, city: this.state.city, state: this.state.state, zip: this.state.zip, country: this.state.country }
             AsyncStorage.getItem('Address').then((Address) => {
                 this.state.addList = Address ? JSON.parse(Address) : [];
                 if (this.state.Index == 0) {
                     this.state.addList = this.state.addList.concat(this.state.UserAdd);
+                    console.log('addList', this.state.addList)
                     AsyncStorage.setItem('Address', JSON.stringify(this.state.addList), () => {
                         Toast.show({
                             text: 'Address added successfully.',
@@ -91,12 +93,13 @@ export default class AddAddress extends Component {
                     });
                 }
                 else {
-                    this.state.addList.splice(this.props.navigation.state.params.Index, 1, this.state.UserAdd);
+                    this.state.addList.splice(this.props.navigation.state.params.Index, 1, this.state.UserAdd1);
                     AsyncStorage.setItem('Address', JSON.stringify(this.state.addList), () => {
                         Toast.show({
                             text: 'Address edited successfully.',
                             duration: 3000
                         })
+                        console.log(this.state.addList)
                         this.props.navigation.replace('AddressList');
                     });
                 }
@@ -106,7 +109,6 @@ export default class AddAddress extends Component {
 
     componentDidMount() {
         if (this.props.navigation.state.params == undefined) {
-            console.log('addressList1', this.props.navigation.state.params.Item)
         }
         else {
             console.log('addressList2', this.props.navigation.state.params.Item)

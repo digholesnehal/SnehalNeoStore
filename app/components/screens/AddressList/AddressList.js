@@ -32,9 +32,11 @@ class AddressList extends Component {
         const didBlurSubscription = this.props.navigation.addListener(
             'willFocus',
             payload => {
+                // AsyncStorage.removeItem('Address');
                 AsyncStorage.getItem('Address').then((Address) => {
                     // const UserAddress = Address ? JSON.parse(Address) : [];
                     this.UserAddress = JSON.parse(Address)
+                    console.log('UserADd', this.UserAddress)
                     // this.state.Address = this.state.Address.concat(this.UserAddress);
                     this.setState({ loader: false })
                 })
@@ -136,7 +138,7 @@ class AddressList extends Component {
                                     <View style={styles.addressBox}>
                                         <View style={styles.HeadView}>
                                             <Text style={styles.Heading}>{this.props.user_data.first_name} {this.props.user_data.last_name}</Text>
-                                            <TouchableOpacity onPress={() => this.props.navigation.replace('AddAddress', { Index: index, Item: item })}>
+                                            <TouchableOpacity style={styles.edit} onPress={() => this.props.navigation.replace('AddAddress', { Index: index, Item: item })}>
                                                 <Text>Edit</Text>
                                             </TouchableOpacity>
                                             <TouchableOpacity onPress={() => this.delete(index)}>

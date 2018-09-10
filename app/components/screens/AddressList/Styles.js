@@ -71,5 +71,7 @@ export default styles = StyleSheet.create({
         fontFamily: family.Medium,
         paddingTop: Platform.OS === 'ios' ? 10 : 0,
     },
-
+    edit: {
+        paddingLeft: 120,
+    }
 })
