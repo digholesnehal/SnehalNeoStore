@@ -3,6 +3,7 @@ package com.neostore;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.gettipsi.stripe.StripeReactPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.rnds.DirectedScrollViewPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new StripeReactPackage(),
             new ImagePickerPackage(),
             new DirectedScrollViewPackage(),
             new SplashScreenReactPackage(),

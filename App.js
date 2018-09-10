@@ -30,7 +30,7 @@ import StoreLocator from './app/components/screens/StoreLocator/StoreLocator.js'
 import { Provider } from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Root } from 'native-base';
-
+import MakePayment from './app/components/screens/MakePayment/MakePayment.js';
 
 const DrawerStack = createDrawerNavigator({
     HomeScreen: {
@@ -154,6 +154,12 @@ const RootStack = createStackNavigator({
     },
     StoreLocator: {
         screen: StoreLocator,
+        navigationOptions: {
+            header: null
+        }
+    },
+    MakePayment: {
+        screen: MakePayment,
         navigationOptions: {
             header: null
         }

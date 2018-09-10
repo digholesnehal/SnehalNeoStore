@@ -83,7 +83,6 @@ export default class AddAddress extends Component {
                 this.state.addList = Address ? JSON.parse(Address) : [];
                 if (this.state.Index == 0) {
                     this.state.addList = this.state.addList.concat(this.state.UserAdd);
-                    console.log('addList', this.state.addList)
                     AsyncStorage.setItem('Address', JSON.stringify(this.state.addList), () => {
                         Toast.show({
                             text: 'Address added successfully.',
@@ -99,7 +98,6 @@ export default class AddAddress extends Component {
                             text: 'Address edited successfully.',
                             duration: 3000
                         })
-                        console.log(this.state.addList)
                         this.props.navigation.replace('AddressList');
                     });
                 }

@@ -72,6 +72,9 @@ export default styles = StyleSheet.create({
         paddingTop: Platform.OS === 'ios' ? 10 : 0,
     },
     edit: {
-        paddingLeft: 120,
+        borderColor: Colors.blackSecondary,
+        borderWidth: 1,
+        marginLeft: 120,
+        padding: 2,
     }
 })
