@@ -15,16 +15,17 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Loader from '../../Loader/Loader.js';
 import { connect } from 'react-redux';
 import { Toast } from 'native-base';
+// import { Feather } from 'react-native-vector-cons/Feather';
 
 class AddressList extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            Address: [],
             selected: 0,
             loader: false,
         }
+        this.UserAddress = []
     }
 
     componentDidMount() {
@@ -32,8 +33,9 @@ class AddressList extends Component {
             'willFocus',
             payload => {
                 AsyncStorage.getItem('Address').then((Address) => {
-                    const UserAddress = Address ? JSON.parse(Address) : [];
-                    this.state.Address.push(UserAddress);
+                    // const UserAddress = Address ? JSON.parse(Address) : [];
+                    this.UserAddress = JSON.parse(Address)
+                    // this.state.Address = this.state.Address.concat(this.UserAddress);
                     this.setState({ loader: false })
                 })
             }
@@ -69,11 +71,11 @@ class AddressList extends Component {
 
     placeOrder = () => {
         this.setState({ loader: true })
-        var order = this.state.Address[0].slice(this.state.selected, this.state.selected + 1)
+        var order = this.UserAddress[0].slice(this.state.selected, this.state.selected + 1)
         var place = JSON.stringify(order[0])
         let formData = new FormData();
         formData.append('address', place)
-        if (this.state.Address[0].length !== 0) {
+        if (this.UserAddress[0].length !== 0) {
             apiCaller(url.host + url.Order, 'POST', { access_token: this.props.user_data.access_token }, formData,
                 (response) => {
                     this.setState({ loader: false })
@@ -123,24 +125,26 @@ class AddressList extends Component {
                         <Text style={styles.shippping}>Shipping Address</Text>
                         <FlatList
                             onEndReachedThreshold={0.1}
-                            data={this.state.Address[0]}
+                            data={this.UserAddress}
                             keyExtractor={(item, index) => index + ""}
                             extraData={this.state}
                             renderItem={({ item, index }) =>
                                 <View style={styles.itemRow}>
-                                    {console.log('in flatlist')}
                                     <TouchableOpacity style={styles.radioView} onPress={() => this.select(index)} >
                                         <View style={[styles.radio, this.state.selected == index ? { backgroundColor: Colors.gRadioChecked } : { backgroundColor: Colors.primary }]} />
                                     </TouchableOpacity>
                                     <View style={styles.addressBox}>
                                         <View style={styles.HeadView}>
                                             <Text style={styles.Heading}>{this.props.user_data.first_name} {this.props.user_data.last_name}</Text>
+                                            <TouchableOpacity onPress={() => this.props.navigation.replace('AddAddress', { Index: index, Item: item })}>
+                                                <Text>Edit</Text>
+                                            </TouchableOpacity>
                                             <TouchableOpacity onPress={() => this.delete(index)}>
                                                 <Icon name="multiply" size={15} color={Colors.blackSecondary} />
                                             </TouchableOpacity>
                                         </View>
                                         <Text style={styles.shippping}>
-                                            {item}
+                                            {`${item.address}, ${item.landmark}, ${item.city},\n ${item.state}-${item.zip}. ${item.country}`}
                                         </Text>
                                     </View>
                                 </View>
@@ -158,7 +162,6 @@ class AddressList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return state;
 };
 

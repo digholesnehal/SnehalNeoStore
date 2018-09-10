@@ -143,22 +143,27 @@ class EditProfile extends Component {
                         <View style={styles.mid}>
                             <View style={styles.textFieldView}>
                                 <Icon name="user" style={styles.icon} />
-                                <TextInput style={styles.textField} onChangeText={(changedText) => { this.setState({ "first_name": changedText }) }} value={this.state.first_name == null ? this.data.first_name : this.state.first_name}>
+                                <TextInput style={styles.textField} onSubmitEditing={() => { this.input3.focus(); }} returnKeyType={'next'}
+                                    onChangeText={(changedText) => { this.setState({ "first_name": changedText }) }} value={this.state.first_name == null ? this.data.first_name : this.state.first_name}>
                                 </TextInput>
                             </View>
                             <View style={styles.textFieldView}>
                                 <Icon name="user" style={styles.icon} />
-                                <TextInput style={styles.textField} onChangeText={(changedText) => { this.setState({ "last_name": changedText }) }} value={this.state.last_name == null ? this.data.last_name : this.state.last_name}>
+                                <TextInput style={styles.textField} ref={(input) => { this.input3 = input; }} onSubmitEditing={() => { this.input4.focus(); }} returnKeyType={'next'}
+                                    onChangeText={(changedText) => { this.setState({ "last_name": changedText }) }} value={this.state.last_name == null ? this.data.last_name : this.state.last_name}>
                                 </TextInput>
                             </View>
                             <View style={styles.textFieldView}>
                                 <Icon name="email" style={styles.envelope} />
-                                <TextInput style={styles.textField} keyboardType={'email-address'} onChangeText={(changedText) => { this.setState({ "email": changedText }) }} value={this.state.email == null ? this.data.email : this.state.email}>
+                                <TextInput style={styles.textField} keyboardType={'email-address'} ref={(input) => { this.input4 = input; }} returnKeyType={'next'}
+                                    onSubmitEditing={() => { this.input5.focus(); }}
+                                    onChangeText={(changedText) => { this.setState({ "email": changedText }) }} value={this.state.email == null ? this.data.email : this.state.email}>
                                 </TextInput>
                             </View>
                             <View style={styles.textFieldView}>
                                 <Icon name="phone" style={styles.iconPhn} />
-                                <TextInput style={styles.textField} keyboardType={'phone-pad'} onChangeText={(changedText) => { this.setState({ "phone_no": changedText }) }} value={this.state.phone_no == null ? this.data.phone_no : this.state.phone_no}>
+                                <TextInput style={styles.textField} keyboardType={'phone-pad'} ref={(input) => { this.input5 = input; }}
+                                    onChangeText={(changedText) => { this.setState({ "phone_no": changedText }) }} value={this.state.phone_no == null ? this.data.phone_no : this.state.phone_no}>
                                 </TextInput>
                             </View>
                             <View style={styles.textFieldView}>
@@ -171,6 +176,8 @@ class EditProfile extends Component {
                                 isVisible={this.state.isDateTimePickerVisible}
                                 onConfirm={this._handleDatePicked}
                                 onCancel={this._hideDateTimePicker}
+                                minimumDate={new Date('1950-01-01')}
+                                maximumDate={new Date('2005-01-01')}
                             />
                         </View>
                         <View style={styles.btnView}>

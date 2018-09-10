@@ -47,7 +47,6 @@ class MyCart extends Component {
             (response) => {
                 this.setState({ loader: false })
                 if (response.status == 200) {
-                    console.log("mycart", response)
                     this.setState({
                         response: response,
                     });

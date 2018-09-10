@@ -7,7 +7,9 @@
         "test": "jest"
     },
     "dependencies": {
+        "@mapbox/polyline": "^1.0.0",
         "add": "^2.0.6",
+        "feather-icons": "^4.7.3",
         "native-base": "^2.8.0",
         "or": "^0.2.0",
         "react": "16.4.1",

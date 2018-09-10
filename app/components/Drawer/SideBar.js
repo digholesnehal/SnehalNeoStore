@@ -32,13 +32,11 @@ class SideBar extends Component {
         return (
             <View style={styles.bg}>
                 <ScrollView>
-                    {/* <TouchableOpacity style={styles.}> */}
-                    <View style={styles.top}>
+                    <TouchableOpacity style={styles.top} onPress={() => { this.drawerClose('EditProfile', {}); this.props.navigation.closeDrawer() }}>
                         {this.props.user_data.profile_pic === null || this.props.user_data.profile_pic === '' ? <Image style={styles.image} source={require('../../assets/images/appdp.jpg')} /> : <Image style={styles.image} source={{ uri: this.props.user_data.profile_pic }} />}
                         <Text style={styles.UserName}>{this.props.user_data.first_name} {this.props.user_data.last_name}</Text>
                         <Text style={styles.email}>{this.props.user_data.email}</Text>
-                    </View>
-                    {/* </TouchableOpacity> */}
+                    </TouchableOpacity>
                     <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.drawerClose('MyCart', {}); this.props.navigation.closeDrawer() }}>
                         <View style={styles.partitions}>
                             <View style={{ flex: 1 }}>

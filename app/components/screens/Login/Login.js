@@ -106,13 +106,17 @@ class Login extends Component {
                         <View style={styles.loginMid}>
                             <View style={styles.userPass}>
                                 <Icon name='user' style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ "username": changedText }) }} style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
+                                <TextInput returnKeyType={'next'}
+                                    onSubmitEditing={() => { this.input2.focus(); }}
+                                    onChangeText={(changedText) => { this.setState({ "username": changedText }) }}
+                                    style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
                                 </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
+                                <TextInput ref={(input) => { this.input2 = input; }}
+                                    onChangeText={(changedText) => { this.setState({ "password": changedText }) }} secureTextEntry={true} style={styles.textField} placeholder="Password" placeholderTextColor="white" value={this.state.password}>
                                 </TextInput>
                             </View>
                             <View style={styles.pass}>

@@ -36,6 +36,7 @@ export default class Register extends Component {
             cpassword: '',
             email: '',
             mobile: '',
+            gender: '',
             check: false,
             loader: false,
         }
@@ -176,31 +177,41 @@ export default class Register extends Component {
                         <View style={styles.regMid}>
                             <View style={styles.userPass}>
                                 <Icon name="user" style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ firstname: changedText }) }} value={this.state.firstname} style={styles.textField} placeholder="First Name" placeholderTextColor={Colors.primary}>
+                                <TextInput returnKeyType={'next'}
+                                    onSubmitEditing={() => { this.input2.focus(); }}
+                                    onChangeText={(changedText) => { this.setState({ firstname: changedText }) }} value={this.state.firstname} style={styles.textField} placeholder="First Name" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
                                 <Icon name="user" style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ lastname: changedText }) }} value={this.state.lastname} style={styles.textField} placeholder="Last Name" placeholderTextColor={Colors.primary}>
+                                <TextInput ref={(input) => { this.input2 = input; }} returnKeyType={'next'}
+                                    onSubmitEditing={() => { this.input3.focus(); }}
+                                    onChangeText={(changedText) => { this.setState({ lastname: changedText }) }} value={this.state.lastname} style={styles.textField} placeholder="Last Name" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
                                 <Icon name="email" style={styles.envelope} />
-                                <TextInput keyboardType={'email-address'} onChangeText={(changedText) => { this.setState({ email: changedText }) }} value={this.state.email} style={styles.textField} placeholder="Email" placeholderTextColor={Colors.primary}>
+                                <TextInput ref={(input) => { this.input3 = input; }} returnKeyType={'next'}
+                                    onSubmitEditing={() => { this.input4.focus(); }}
+                                    keyboardType={'email-address'} onChangeText={(changedText) => { this.setState({ email: changedText }) }} value={this.state.email} style={styles.textField} placeholder="Email" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ password: changedText }) }} secureTextEntry={true} value={this.state.password} style={styles.textField} placeholder="Password" placeholderTextColor={Colors.primary}>
+                                <TextInput ref={(input) => { this.input4 = input; }} returnKeyType={'next'}
+                                    onSubmitEditing={() => { this.input5.focus(); }}
+                                    onChangeText={(changedText) => { this.setState({ password: changedText }) }} secureTextEntry={true} value={this.state.password} style={styles.textField} placeholder="Password" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ cpassword: changedText }) }} secureTextEntry={true} value={this.state.cpassword} style={styles.textField} placeholder="Confirm Password" placeholderTextColor={Colors.primary}>
+                                <TextInput ref={(input) => { this.input5 = input; }} returnKeyType={'next'}
+                                    onSubmitEditing={() => { this.input6.focus(); }}
+                                    onChangeText={(changedText) => { this.setState({ cpassword: changedText }) }} secureTextEntry={true} value={this.state.cpassword} style={styles.textField} placeholder="Confirm Password" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
 
@@ -216,14 +227,16 @@ export default class Register extends Component {
                                         buttonColor={'#fff'}
                                         selectedButtonColor={'#fff'}
                                         labelStyle={{ fontSize: Platform.OS === 'ios' ? 17 : 15, fontFamily: family.Medium, color: "#fff", padding: 4 }}
-                                        onPress={(value) => { }} />
+                                        onPress={(value) => { this.setState({ gender: value }) }}
+                                    />
                                     <View style={styles.rowFlex}></View>
                                 </View>
                             </View>
 
                             <View style={styles.userPass}>
                                 <Icon name="phone" style={styles.iconPhn} />
-                                <TextInput keyboardType="phone-pad" onChangeText={(changedText) => { this.setState({ mobile: changedText }) }} value={this.state.mobile} style={styles.textField} placeholder="Phone Number" placeholderTextColor={Colors.primary}>
+                                <TextInput ref={(input) => { this.input6 = input; }}
+                                    keyboardType="phone-pad" onChangeText={(changedText) => { this.setState({ mobile: changedText }) }} value={this.state.mobile} style={styles.textField} placeholder="Phone Number" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
                             <View style={styles.checkBox}>

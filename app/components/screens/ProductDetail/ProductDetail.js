@@ -43,8 +43,7 @@ class ProductDetail extends Component {
             opacity: 1,
             Qty: '',
             access_token: '',
-            stars: '',
-            showToast: false
+            stars: ''
         }
     }
 

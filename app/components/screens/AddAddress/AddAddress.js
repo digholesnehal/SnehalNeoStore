@@ -16,15 +16,16 @@ import { Toast } from 'native-base';
 export default class AddAddress extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            address: 'Santosh Nagar, TTN college road, Khadaki',
-            landmark: 'Near Anand Park appartment',
-            city: 'Akola',
-            state: 'Maharashtra',
-            zip: '444001',
-            country: 'India',
+            address: '',
+            landmark: '',
+            city: '',
+            state: '',
+            zip: '',
+            country: '',
             UserAdd: '',
+            Index: 0,
+            addList: []
         }
     }
 
@@ -76,21 +77,49 @@ export default class AddAddress extends Component {
             return false;
         }
         else {
-            this.state.UserAdd = this.state.address + ', ' + this.state.landmark
-                + ', ' + this.state.city + ',\n' + this.state.state + ' - ' + this.state.zip + '.' + this.state.country;
-
-            AsyncStorage.getItem('Address')
-                .then((Address) => {
-                    const UserAddress = Address ? JSON.parse(Address) : [];
-                    UserAddress.push(this.state.UserAdd);
-                    AsyncStorage.setItem('Address', JSON.stringify(UserAddress), () => {
+            this.state.UserAdd = [{ address: this.state.address, landmark: this.state.landmark, city: this.state.city, state: this.state.state, zip: this.state.zip, country: this.state.country }]
+            AsyncStorage.getItem('Address').then((Address) => {
+                this.state.addList = Address ? JSON.parse(Address) : [];
+                if (this.state.Index == 0) {
+                    this.state.addList = this.state.addList.concat(this.state.UserAdd);
+                    AsyncStorage.setItem('Address', JSON.stringify(this.state.addList), () => {
                         Toast.show({
                             text: 'Address added successfully.',
                             duration: 3000
                         })
                         this.props.navigation.replace('AddressList');
                     });
-                });
+                }
+                else {
+                    this.state.addList.splice(this.props.navigation.state.params.Index, 1, this.state.UserAdd);
+                    AsyncStorage.setItem('Address', JSON.stringify(this.state.addList), () => {
+                        Toast.show({
+                            text: 'Address edited successfully.',
+                            duration: 3000
+                        })
+                        this.props.navigation.replace('AddressList');
+                    });
+                }
+            });
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.navigation.state.params == undefined) {
+            console.log('addressList1', this.props.navigation.state.params.Item)
+        }
+        else {
+            console.log('addressList2', this.props.navigation.state.params.Item)
+            this.setState({
+                address: this.props.navigation.state.params.Item.address,
+                landmark: this.props.navigation.state.params.Item.landmark,
+                city: this.props.navigation.state.params.Item.city,
+                state: this.props.navigation.state.params.Item.state,
+                zip: this.props.navigation.state.params.Item.zip,
+                country: this.props.navigation.state.params.Item.country,
+                Index: 2,
+            });
+            console.log('states', this.state)
         }
     }
 

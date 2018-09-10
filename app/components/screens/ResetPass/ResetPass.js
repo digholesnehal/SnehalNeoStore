@@ -101,21 +101,25 @@ export default class ResetPass extends Component {
                         <View style={styles.fpMid}>
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ "password": changedText }) }} value={this.state.username}
+                                <TextInput onSubmitEditing={() => { this.input2.focus(); }} returnKeyType={'next'}
+                                    onChangeText={(changedText) => { this.setState({ "password": changedText }) }} value={this.state.username}
                                     style={styles.textField} placeholder="Current Password" placeholderTextColor={primary}>
                                 </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ "npassword": changedText }) }} value={this.state.npassword}
+                                <TextInput ref={(input) => { this.input2 = input; }} returnKeyType={'next'}
+                                    onSubmitEditing={() => { this.input3.focus(); }}
+                                    onChangeText={(changedText) => { this.setState({ "npassword": changedText }) }} value={this.state.npassword}
                                     style={styles.textField} placeholder="New Password" placeholderTextColor={primary}>
                                 </TextInput>
                             </View>
 
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
-                                <TextInput onChangeText={(changedText) => { this.setState({ "cpassword": changedText }) }} value={this.state.cpassword}
+                                <TextInput ref={(input) => { this.input3 = input; }}
+                                    onChangeText={(changedText) => { this.setState({ "cpassword": changedText }) }} value={this.state.cpassword}
                                     style={styles.textField} placeholder="Confirm Password" placeholderTextColor={primary}>
                                 </TextInput>
                             </View>
