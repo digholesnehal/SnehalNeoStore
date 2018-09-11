@@ -7,7 +7,6 @@ import styles from "./Styles";
 import Icon from '../../../utils/Icons.js';
 import Header from '../../../components/Header/header.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import * as url from '../../../lib/api.js';
 import { SwipeListView } from 'react-native-swipe-list-view';

@@ -12,7 +12,6 @@ import { apiCaller } from '../../../lib/Fetcher.js';
 import Stars from 'react-native-stars';
 import Icon from '../../../utils/Icons.js';
 import Loader from '../../Loader/Loader.js';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import Modal from "react-native-modal";
 import { Toast } from 'native-base';
 

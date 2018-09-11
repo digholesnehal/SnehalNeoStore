@@ -15,7 +15,6 @@ import Loader from '../../Loader/Loader.js';
 import Icon from '../../../utils/Icons.js';
 import Modal from "react-native-modal";
 import { Share } from 'react-native';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ImageZoom from 'react-native-image-pan-zoom';
 import { connect } from 'react-redux';

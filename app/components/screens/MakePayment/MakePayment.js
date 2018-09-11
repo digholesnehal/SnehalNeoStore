@@ -11,17 +11,24 @@ import * as URL from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import { Toast } from 'native-base';
 import AddressList from '../AddressList/AddressList.js';
+import { connect } from 'react-redux';
 
-export default class MakePayment extends Component {
+const setDelete = (state) => {
+    return {
+        type: 'EDIT',
+        state,
+    }
+}
+
+class MakePayment extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loader: false,
-            selected: this.props.navigation.state.params.selected,
-            access_token: this.props.navigation.state.access_token
+            access_token: this.props.user_data.access_token,
         }
-        this.UserAddress = this.props.navigation.state.params.UserAddress
-        console.log(this.props.navigation.state.params)
+        this.UserAddress = this.props.navigation.state.params.UserAddress[this.props.navigation.state.params.selected]
+        this.URL = Platform.OS == 'ios' ? URL.Payios : URL.Payment
     }
 
     MakePayment = async () => {
@@ -29,13 +36,13 @@ export default class MakePayment extends Component {
             requiredBillingAddressFields: 'full',
             prefilledInformation: {
                 billingAddress: {
-                    name: 'Gunilla Haugeh',
-                    line1: 'Canary Place',
-                    line2: '3',
-                    city: 'Macon',
-                    state: 'Georgia',
-                    country: 'US',
-                    postalCode: '31217',
+                    name: this.props.user_data.first_name + ' ' + this.props.user_data.last_name,
+                    line1: this.UserAddress.address,
+                    line2: this.UserAddress.landmark,
+                    city: this.UserAddress.city,
+                    state: this.UserAddress.state,
+                    country: this.UserAddress.country,
+                    postalCode: this.UserAddress.zip,
                 },
             },
         }
@@ -45,20 +52,17 @@ export default class MakePayment extends Component {
             androidPayMode: 'test',
         })
         const token = await stripe.paymentRequestWithCardForm(options)
-        // console.log(token);
-        fetch(URL.Payment, {
+        fetch(this.URL, {
             method: 'POST',
             body: token.tokenId
         }).then((response) => {
             if (response.status == 200) {
                 this.setState({ loader: true })
-                var order = this.UserAddress[this.state.selected]
-                var place = JSON.stringify(order[0])
+                var place = JSON.stringify(this.UserAddress)
                 let formData = new FormData();
                 formData.append('address', place)
                 apiCaller(URL.host + URL.Order, 'POST', { access_token: this.state.access_token }, formData,
                     (response) => {
-                        console.log('abc', response);
                         this.setState({ loader: false })
                         if (response.status == 200) {
                             Vibration.vibrate(150)
@@ -66,6 +70,7 @@ export default class MakePayment extends Component {
                                 text: response.user_msg,
                                 duration: 3000
                             })
+                            this.props.setDelete({ 'total_carts': 0 })
                             this.props.navigation.replace('DrawerStack');
                         }
                         else {
@@ -78,6 +83,11 @@ export default class MakePayment extends Component {
                         }
                     });
             }
+        }).catch((error) => {
+            Toast.show({
+                text: error.message,
+                duration: 5000
+            })
         })
     }
 
@@ -102,3 +112,9 @@ export default class MakePayment extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps, { setDelete })(MakePayment);

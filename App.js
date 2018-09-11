@@ -28,10 +28,9 @@ import MyOrders from './app/components/screens/MyOrders/MyOrders.js';
 import OrderID from './app/components/screens/OrderID/OrderID.js';
 import StoreLocator from './app/components/screens/StoreLocator/StoreLocator.js';
 import { Provider } from "react-redux";
-import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Root } from 'native-base';
 import MakePayment from './app/components/screens/MakePayment/MakePayment.js';
-
+import store from './app/Redux/store.js';
 const DrawerStack = createDrawerNavigator({
     HomeScreen: {
         screen: HomeScreen,
@@ -169,24 +168,6 @@ const RootStack = createStackNavigator({
         initialRouteName: 'Starter',
     },
 
-);
-
-const initialState = {}
-
-const profileReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case "EDIT":
-            return { ...state, ...action.state }
-            break;
-
-        default:
-            return state;
-    }
-};
-
-
-const store = createStore(
-    profileReducer
 );
 
 export default class App extends Component {

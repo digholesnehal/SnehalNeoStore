@@ -109,7 +109,6 @@ export default class AddAddress extends Component {
         if (this.props.navigation.state.params == undefined) {
         }
         else {
-            console.log('addressList2', this.props.navigation.state.params.Item)
             this.setState({
                 address: this.props.navigation.state.params.Item.address,
                 landmark: this.props.navigation.state.params.Item.landmark,
@@ -119,7 +118,6 @@ export default class AddAddress extends Component {
                 country: this.props.navigation.state.params.Item.country,
                 Index: 2,
             });
-            console.log('states', this.state)
         }
     }
 

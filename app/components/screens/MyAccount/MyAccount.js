@@ -10,7 +10,6 @@ import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import Header from '../../Header/header.js';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { connect } from 'react-redux';
 
 class MyAccount extends Component {

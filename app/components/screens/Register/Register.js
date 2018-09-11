@@ -14,7 +14,6 @@ import Keyboard from 'react-native-keyboard';
 import { AsyncStorage } from 'react-native';
 import * as url from '../../../lib/api.js';
 import Loader from '../../Loader/Loader.js';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import * as family from '../../../utils/fontFamily';
 import { Toast } from 'native-base';
@@ -82,7 +81,6 @@ export default class Register extends Component {
 
 
     validate = () => {
-        console.log(this.state)
         var regmail = /^[a-zA-Z{1}]+\w.+([\.-]?\w+)*@\w+([\.-]?\w+){1}(\.\w{2,3})$/;
         var alphaExp = /^[a-zA-Zäöüß]+$/;
         var alNum = /^([a-zA-Z0-9]){5,10}$/;

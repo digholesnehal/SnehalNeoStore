@@ -33,7 +33,6 @@ class AddressList extends Component {
             payload => {
                 AsyncStorage.getItem('Address').then((Address) => {
                     this.UserAddress = JSON.parse(Address)
-                    // this.state.Address = this.state.Address.concat(this.UserAddress);
                     this.setState({ loader: false })
                 })
             }
@@ -43,7 +42,7 @@ class AddressList extends Component {
     placeOrder = () => {
 
         if (this.UserAddress[0].length !== 0) {
-            this.props.navigation.navigate('MakePayment', { UserAddress: this.UserAddress, selected: this.state.selected, access_token: this.props.user_data.access_token })
+            this.props.navigation.navigate('MakePayment', { UserAddress: this.UserAddress, selected: this.state.selected })
         }
         else {
             Vibration.vibrate(200);

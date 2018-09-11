@@ -8,12 +8,13 @@ import Icon from '../../../utils/Icons.js';
 import Header from '../../../components/Header/header.js';
 import { primary } from '../../../utils/colors.js';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { userObj, userProvider } from '../../../lib/UserProvider.js';
 import { apiCaller } from '../../../lib/Fetcher.js';
 import * as url from '../../../lib/api.js';
 import { Toast } from 'native-base';
+import { connect } from 'react-redux';
 
-export default class ResetPass extends Component {
+
+class ResetPass extends Component {
 
     constructor(props) {
         super(props);
@@ -22,7 +23,7 @@ export default class ResetPass extends Component {
             password: '',
             npassword: '',
             cpassword: '',
-            access_token: userObj.user_data.access_token,
+            access_token: this.props.user_data.access_token,
         }
     }
 
@@ -136,3 +137,10 @@ export default class ResetPass extends Component {
     }
 
 }
+
+
+const mapStateToProps = (state) => {
+    return state;
+};
+
+export default connect(mapStateToProps)(ResetPass);
