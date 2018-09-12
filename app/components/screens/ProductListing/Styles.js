@@ -9,24 +9,20 @@ export default styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.primary,
     },
-
     cPartition: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
     },
-
     rPartition: {
         flex: 1,
         flexDirection: 'column',
     },
-
     img: {
         height: '100%',
         width: '100%',
     },
-
     itemRow: {
         flex: 1,
         flexDirection: 'row',
@@ -34,42 +30,35 @@ export default styles = StyleSheet.create({
         borderBottomColor: Colors.myCartSmallBG,
         borderBottomWidth: 2,
     },
-
     productInfo: {
         flex: 2.5,
         flexDirection: 'column',
     },
-
     iName: {
         color: Colors.blackSecondary,
         fontSize: Fonts.small,
         fontFamily: family.Medium,
         paddingLeft: 10,
     },
-
     iProducer: {
         fontFamily: family.Book,
         color: Colors.blackSecondary,
         fontSize: Fonts.xxSmall,
         paddingLeft: 10,
     },
-
     iCost: {
         color: Colors.tableRTxt,
         fontSize: Fonts.medium,
         fontFamily: family.Medium,
         padding: 10,
     },
-
     myStarStyle: {
         fontSize: 15,
         color: Colors.ratingAfter,
     },
-
     myEmptyStarStyle: {
         color: Colors.ratingBefore,
     },
-
     footer: {
         height: '3%',
         width: '15%',
@@ -77,7 +66,6 @@ export default styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: Colors.blackPrimary,
     },
-
     counter: {
         marginTop: Platform.OS === 'ios' ? '3%' : '0%',
         color: Colors.primary,

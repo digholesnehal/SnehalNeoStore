@@ -3,25 +3,21 @@ import * as Colors from '../../../utils/colors';
 import * as family from '../../../utils/fontFamily';
 
 export default styles = StyleSheet.create({
-
     container: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between',
     },
-
     loginHead: {
         alignItems: 'center',
         flexDirection: 'column',
     },
-
     headFont: {
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 48 : 45,
         paddingTop: Platform.OS === 'ios' ? 140 : 120,
         fontFamily: family.Bold,
     },
-
     loginMid: {
         flex: 3,
         flexDirection: 'column',
@@ -29,7 +25,6 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
     },
-
     textField: {
         fontFamily: family.Medium,
         width: 250,
@@ -40,13 +35,11 @@ export default styles = StyleSheet.create({
         color: Colors.primary,
         padding: 10
     },
-
     user: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'flex-end',
-
     },
     pass: {
         flex: 1,
@@ -55,7 +48,6 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop: Platform.OS === 'ios' ? 0 : 10,
     },
-
     buttonStyle: {
         backgroundColor: Colors.primary,
         width: 280,
@@ -66,14 +58,12 @@ export default styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 20,
     },
-
     btnTxt: {
         color: Colors.redBtnTxt,
         fontSize: Platform.OS === 'ios' ? 30 : 26,
         fontFamily: family.Medium,
         paddingTop: Platform.OS === 'ios' ? 10 : 0,
     },
-
     fgotPass: {
         flex: 1,
         flexDirection: 'column',
@@ -84,12 +74,10 @@ export default styles = StyleSheet.create({
         fontFamily: family.Medium,
         paddingTop: 3,
     },
-
     icon: {
         fontSize: Platform.OS === 'ios' ? 20 : 15,
         color: Colors.primary,
     },
-
     userPass: {
         height: Platform.OS === 'ios' ? 45 : 40,
         width: 280,
@@ -100,14 +88,12 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
     },
-
     loginFoot: {
         flex: 4,
         flexDirection: 'column',
         justifyContent: 'flex-end',
         paddingTop: Platform.OS === 'ios' ? 130 : 70,
     },
-
     noAcc: {
         flex: 5,
         color: Colors.primary,
@@ -116,7 +102,6 @@ export default styles = StyleSheet.create({
         paddingBottom: 15,
         fontFamily: family.Medium,
     },
-
     newAcc: {
         flex: 1,
         backgroundColor: Colors.redAddAccBtn,
@@ -126,7 +111,6 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
     bottom: {
         flex: 1,
         flexDirection: 'row',
@@ -135,5 +119,4 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
 });

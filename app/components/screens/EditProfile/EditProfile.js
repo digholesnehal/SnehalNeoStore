@@ -105,13 +105,8 @@ class EditProfile extends Component {
                     duration: 3000
                 })
             }
-            else if (response.customButton) {
-                // alert('User tapped custom button: ', response.customButton);
-            }
+            else if (response.customButton) { }
             else {
-                // let source = { uri: response.uri };
-
-                // You can also display the image using data:
                 let source = 'data:image/jpeg;base64,' + response.data;
 
                 this.setState({

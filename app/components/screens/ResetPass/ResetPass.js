@@ -85,7 +85,6 @@ class ResetPass extends Component {
 
     render() {
         return (
-
             <View style={styles.container}>
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
                     <Header
@@ -98,7 +97,6 @@ class ResetPass extends Component {
                         <View style={styles.fpHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>
                         </View>
-
                         <View style={styles.fpMid}>
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
@@ -107,7 +105,6 @@ class ResetPass extends Component {
                                     style={styles.textField} placeholder="Current Password" placeholderTextColor={primary}>
                                 </TextInput>
                             </View>
-
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
                                 <TextInput ref={(input) => { this.input2 = input; }} returnKeyType={'next'}
@@ -116,7 +113,6 @@ class ResetPass extends Component {
                                     style={styles.textField} placeholder="New Password" placeholderTextColor={primary}>
                                 </TextInput>
                             </View>
-
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
                                 <TextInput ref={(input) => { this.input3 = input; }}
@@ -135,9 +131,7 @@ class ResetPass extends Component {
             </View >
         );
     }
-
 }
-
 
 const mapStateToProps = (state) => {
     return state;

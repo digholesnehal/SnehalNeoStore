@@ -72,7 +72,6 @@ export default class ForgotPass extends Component {
 
     render() {
         return (
-
             <View style={styles.container}>
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
                     <Header

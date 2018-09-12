@@ -159,17 +159,14 @@ class ProductDetail extends Component {
         );
     }
 
-
     RatingPopUp(visible) {
         this.setState({ RatingVisible: visible })
         visible ? this.setState({ opacity: 0.3 }) : this.setState({ opacity: 1 });
     }
-
     BuyNowPopUp(visible) {
         this.setState({ buyNowVisible: visible })
         visible ? this.setState({ opacity: 0.3 }) : this.setState({ opacity: 1 });
     }
-
     imgContent = (data) => {
         let returnData = [];
         for (let i = 0; i < data.length; i++) {
@@ -192,7 +189,6 @@ class ProductDetail extends Component {
                     isSearch={true}
                     back={() => { this.props.navigation.goBack(null) }} />
                 {this.state.loader ? <Loader /> : null}
-
                 <ScrollView>
                     <View style={styles.Details}>
                         <View >
@@ -258,10 +254,10 @@ class ProductDetail extends Component {
                             <Text style={styles.RateTxt}> RATE </Text>
                         </TouchableOpacity>
                     </View>
+
                     {/* modal for buy now */}
                     <Modal visible={this.state.buyNowVisible} style={styles.modalView} transparent={true}>
                         <View style={{ flex: 1 }}></View>
-
                         <KeyboardAwareScrollView>
                             <View style={styles.modalInnerView}>
                                 <TouchableOpacity onPress={() => { this.BuyNowPopUp(!this.state.buyNowVisible); }}>
@@ -294,7 +290,6 @@ class ProductDetail extends Component {
                             </View>
                         </KeyboardAwareScrollView>
                         <View style={{ flex: 1 }}></View>
-
                     </Modal>
 
                     {/* modal for rating button */}
@@ -336,7 +331,6 @@ class ProductDetail extends Component {
             </View >
         )
     }
-
 }
 
 const mapStateToProps = (state) => {

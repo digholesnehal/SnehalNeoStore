@@ -79,7 +79,6 @@ export default class Register extends Component {
             })
     }
 
-
     validate = () => {
         var regmail = /^[a-zA-Z{1}]+\w.+([\.-]?\w+)*@\w+([\.-]?\w+){1}(\.\w{2,3})$/;
         var alphaExp = /^[a-zA-Zäöüß]+$/;
@@ -93,7 +92,6 @@ export default class Register extends Component {
             })
             return false;
         }
-
         else if (this.state.lastname == "" || !this.state.lastname.match(alphaExp)) {
             Toast.show({
                 text: "Please enter the correct Last Name.",
@@ -101,7 +99,6 @@ export default class Register extends Component {
             })
             return false;
         }
-
         else if (this.state.email == "") {
             Toast.show({
                 text: "Please provide your Email address.",
@@ -109,7 +106,6 @@ export default class Register extends Component {
             })
             return false;
         }
-
         else if (!this.state.email.match(regmail)) {
             Toast.show({
                 text: "Invalid Email address.",
@@ -117,7 +113,6 @@ export default class Register extends Component {
             })
             return false;
         }
-
         else if (this.state.password == "" || !this.state.password.match(alNum)) {
             Toast.show({
                 text: " Password should contain 5-10 alphanumeric characters",
@@ -125,7 +120,6 @@ export default class Register extends Component {
             })
             return false;
         }
-
         else if (this.state.cpassword != this.state.password || this.state.cpassword == "") {
             Toast.show({
                 text: "Password should be same as above.",
@@ -133,7 +127,6 @@ export default class Register extends Component {
             })
             return false;
         }
-
         else if (this.state.mobile == "" || !this.state.mobile.match(num)) {
             Toast.show({
                 text: "Mobile number should contain 10-13 numbers.",
@@ -141,7 +134,6 @@ export default class Register extends Component {
             })
             return false;
         }
-
         else if (this.state.check == false) {
             Toast.show({
                 text: "Please agree terms and conditions.",
@@ -171,7 +163,6 @@ export default class Register extends Component {
                         <View style={styles.regHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>
                         </View>
-
                         <View style={styles.regMid}>
                             <View style={styles.userPass}>
                                 <Icon name="user" style={styles.icon} />
@@ -180,7 +171,6 @@ export default class Register extends Component {
                                     onChangeText={(changedText) => { this.setState({ firstname: changedText }) }} value={this.state.firstname} style={styles.textField} placeholder="First Name" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
-
                             <View style={styles.userPass}>
                                 <Icon name="user" style={styles.icon} />
                                 <TextInput ref={(input) => { this.input2 = input; }} returnKeyType={'next'}
@@ -188,7 +178,6 @@ export default class Register extends Component {
                                     onChangeText={(changedText) => { this.setState({ lastname: changedText }) }} value={this.state.lastname} style={styles.textField} placeholder="Last Name" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
-
                             <View style={styles.userPass}>
                                 <Icon name="email" style={styles.envelope} />
                                 <TextInput ref={(input) => { this.input3 = input; }} returnKeyType={'next'}
@@ -196,7 +185,6 @@ export default class Register extends Component {
                                     keyboardType={'email-address'} onChangeText={(changedText) => { this.setState({ email: changedText }) }} value={this.state.email} style={styles.textField} placeholder="Email" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
-
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
                                 <TextInput ref={(input) => { this.input4 = input; }} returnKeyType={'next'}
@@ -204,7 +192,6 @@ export default class Register extends Component {
                                     onChangeText={(changedText) => { this.setState({ password: changedText }) }} secureTextEntry={true} value={this.state.password} style={styles.textField} placeholder="Password" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
-
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
                                 <TextInput ref={(input) => { this.input5 = input; }} returnKeyType={'next'}
@@ -212,7 +199,6 @@ export default class Register extends Component {
                                     onChangeText={(changedText) => { this.setState({ cpassword: changedText }) }} secureTextEntry={true} value={this.state.cpassword} style={styles.textField} placeholder="Confirm Password" placeholderTextColor={Colors.primary}>
                                 </TextInput>
                             </View>
-
                             <View style={styles.rowFlex}>
                                 <View style={styles.rowFlex}></View>
                                 <View style={styles.radio}>
@@ -230,7 +216,6 @@ export default class Register extends Component {
                                     <View style={styles.rowFlex}></View>
                                 </View>
                             </View>
-
                             <View style={styles.userPass}>
                                 <Icon name="phone" style={styles.iconPhn} />
                                 <TextInput ref={(input) => { this.input6 = input; }}

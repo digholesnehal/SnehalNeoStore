@@ -14,7 +14,6 @@ import SplashScreen from 'react-native-splash-screen';
 import { connect } from "react-redux";
 import { Toast } from 'native-base';
 
-
 const setProfile = (state) => {
     return {
         type: 'EDIT',
@@ -63,7 +62,6 @@ class Starter extends Component {
                 })
             })
     }
-
 
     render() {
         return (

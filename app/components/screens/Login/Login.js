@@ -95,12 +95,9 @@ class Login extends Component {
                 <ScrollView style={{ flex: 1 }}>
                     <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>
                         {this.state.loader ? <Loader /> : null}
-
-
                         <View style={styles.loginHead}>
                             <Text style={styles.headFont}> NeoSTORE </Text>
                         </View>
-
                         <View style={styles.loginMid}>
                             <View style={styles.userPass}>
                                 <Icon name='user' style={styles.icon} />
@@ -110,7 +107,6 @@ class Login extends Component {
                                     style={styles.textField} placeholder="Username" value={this.state.username} placeholderTextColor="white">
                                 </TextInput>
                             </View>
-
                             <View style={styles.userPass}>
                                 <Icon name="Lock" style={styles.icon} />
                                 <TextInput ref={(input) => { this.input2 = input; }}
@@ -138,8 +134,6 @@ class Login extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-
-
                     </ImageBackground>
                 </ScrollView>
             </KeyboardAvoidingView >

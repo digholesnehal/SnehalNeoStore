@@ -16,7 +16,6 @@ import Modal from "react-native-modal";
 import { Toast } from 'native-base';
 
 export default class ProductList extends Component {
-
     constructor(props) {
         super(props);
         this.state = {

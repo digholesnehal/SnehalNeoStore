@@ -7,7 +7,6 @@ export default styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.primary,
     },
-
     itemRow: {
         flexDirection: 'row',
         padding: 12,

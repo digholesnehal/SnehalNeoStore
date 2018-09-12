@@ -3,7 +3,6 @@ import * as Colors from '../../../utils/colors';
 import * as family from '../../../utils/fontFamily';
 
 export default styles = StyleSheet.create({
-
     container: {
         flex: 1,
     },
@@ -59,13 +58,11 @@ export default styles = StyleSheet.create({
         fontSize: Platform.OS === 'ios' ? 20 : 15,
         color: Colors.primary,
     },
-
     envelope: {
         fontSize: Platform.OS === 'ios' ? 20 : 15,
         color: Colors.primary,
         paddingLeft: 8,
     },
-
     iconPhn: {
         fontSize: Platform.OS === 'ios' ? 22 : 18,
         color: Colors.primary,

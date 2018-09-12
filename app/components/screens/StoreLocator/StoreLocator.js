@@ -112,7 +112,6 @@ export default class OrderID extends Component {
                             title={'NeoSoft Technologies'}
                             description={'Unique Industrial Estate, 124, SVS Rd, Off, Prabhadevi'}
                         />
-
                     </MapView>
                 </View>
                 <TouchableOpacity style={styles.addressView} onPress={() => this.highLight(19.0244, 72.8438)}>
@@ -128,7 +127,6 @@ export default class OrderID extends Component {
                         </Text>
                     </View>
                 </TouchableOpacity>
-
                 <TouchableOpacity style={styles.addressView} onPress={() => this.highLight(20.1411, 73.0087)}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />
@@ -142,7 +140,6 @@ export default class OrderID extends Component {
                         </Text>
                     </View>
                 </TouchableOpacity>
-
                 <TouchableOpacity style={styles.addressView} onPress={() => this.highLight(18.5947, 73.7095)}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />
@@ -156,7 +153,6 @@ export default class OrderID extends Component {
                         </Text>
                     </View>
                 </TouchableOpacity>
-
                 <TouchableOpacity style={styles.addressView} onPress={() => this.highLight(19.0180, 72.8283)}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />
@@ -170,7 +166,6 @@ export default class OrderID extends Component {
                         </Text>
                     </View>
                 </TouchableOpacity>
-
                 <TouchableOpacity style={styles.addressView} onPress={() => this.highLight(18.5947, 73.7095)}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />

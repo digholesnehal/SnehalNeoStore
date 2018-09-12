@@ -119,7 +119,6 @@ class MyCart extends Component {
         )
     }
 
-
     selectQty = (index, id, value) => {
         this.setState({ loader: true })
         let formData = new FormData();
@@ -167,14 +166,12 @@ class MyCart extends Component {
                         isSearch={true}
                         back={() => { this.props.navigation.goBack(null) }} />
                     {this.state.loader ? <Loader /> : null}
-
                     <ScrollView>
                         <View>
                             <SwipeListView
                                 useFlatList
                                 data={this.state.response.data}
                                 keyExtractor={(item, index) => "" + index}
-
                                 renderItem={({ item, index }) => (
                                     <View style={styles.SwipeView}>
                                         <View style={styles.imgView}>
@@ -244,7 +241,6 @@ class MyCart extends Component {
         }
     }
 }
-
 
 const mapStateToProps = (state) => {
     return state;

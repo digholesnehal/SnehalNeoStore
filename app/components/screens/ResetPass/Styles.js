@@ -4,19 +4,16 @@ import { xxSmall } from '../../../utils/fonts';
 import * as family from '../../../utils/fontFamily';
 
 export default styles = StyleSheet.create({
-
     container: {
         flex: 1,
         justifyContent: "space-between",
     },
-
     fpHead: {
         flex: 3,
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'center',
     },
-
     headFont: {
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 45 : 40,
@@ -24,14 +21,12 @@ export default styles = StyleSheet.create({
         paddingTop: 70,
         padding: 20,
     },
-
     fpMid: {
         flex: 9,
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
-
     textField: {
         width: 250,
         height: Platform.OS === 'ios' ? 40 : 60,
@@ -41,14 +36,12 @@ export default styles = StyleSheet.create({
         fontWeight: '500',
         color: Colors.primary,
     },
-
     pass: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
     },
-
     buttonStyle: {
         backgroundColor: Colors.primary,
         width: Platform.OS === 'ios' ? 280 : 280,
@@ -60,13 +53,11 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
     btnTxt: {
         color: Colors.redBtnTxt,
         fontSize: Platform.OS === 'ios' ? 25 : 25,
         fontWeight: '500',
     },
-
     userPass: {
         height: 45,
         width: 280,
@@ -77,7 +68,6 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center'
     },
-
     icon: {
         fontSize: 20,
         color: Colors.primary,

@@ -15,7 +15,6 @@ import { connect } from 'react-redux';
 import { Toast } from 'native-base';
 
 class MyOrders extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
