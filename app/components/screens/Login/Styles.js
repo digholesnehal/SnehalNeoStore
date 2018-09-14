@@ -17,6 +17,9 @@ export default styles = StyleSheet.create({
         fontSize: Platform.OS === 'ios' ? 48 : 45,
         paddingTop: Platform.OS === 'ios' ? 140 : 120,
         fontFamily: family.Bold,
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 1, height: 5 },
+        textShadowRadius: 5
     },
     loginMid: {
         flex: 3,
@@ -33,7 +36,10 @@ export default styles = StyleSheet.create({
         alignSelf: 'center',
         paddingLeft: 15,
         color: Colors.primary,
-        padding: 10
+        padding: 10,
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 1, height: 5 },
+        textShadowRadius: 5
     },
     user: {
         flex: 1,
@@ -57,6 +63,10 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 20,
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     btnTxt: {
         color: Colors.redBtnTxt,
@@ -73,10 +83,16 @@ export default styles = StyleSheet.create({
         fontSize: Platform.OS === 'ios' ? 20 : 18,
         fontFamily: family.Medium,
         paddingTop: 3,
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
     },
     icon: {
         fontSize: Platform.OS === 'ios' ? 20 : 15,
         color: Colors.primary,
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 1, height: 5 },
+        textShadowRadius: 15
     },
     userPass: {
         height: Platform.OS === 'ios' ? 45 : 40,
@@ -92,7 +108,7 @@ export default styles = StyleSheet.create({
         flex: 4,
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        paddingTop: Platform.OS === 'ios' ? 130 : 70,
+        paddingTop: Platform.OS === 'ios' ? 130 : 123,
     },
     noAcc: {
         flex: 5,
@@ -101,6 +117,9 @@ export default styles = StyleSheet.create({
         alignSelf: "flex-end",
         paddingBottom: 15,
         fontFamily: family.Medium,
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
     },
     newAcc: {
         flex: 1,
@@ -110,6 +129,10 @@ export default styles = StyleSheet.create({
         alignSelf: "flex-end",
         alignItems: 'center',
         justifyContent: 'center',
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     bottom: {
         flex: 1,
@@ -119,4 +142,9 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    shadow: {
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
+    }
 });

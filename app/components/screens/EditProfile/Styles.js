@@ -11,6 +11,10 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     image: {
         borderColor: Colors.primary,
@@ -37,7 +41,11 @@ export default styles = StyleSheet.create({
         padding: Platform.OS === 'ios' ? 10 : 8,
         margin: 6,
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 6, width: 2 },
     },
     textField: {
         width: 250,
@@ -89,10 +97,17 @@ export default styles = StyleSheet.create({
         fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     btnTxt: {
         color: Colors.redBtnTxt,
         fontSize: Platform.OS === 'ios' ? 25 : 25,
         fontWeight: '500',
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 2, height: 3 },
+        textShadowRadius: 3
     },
 });

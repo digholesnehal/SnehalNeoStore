@@ -23,12 +23,19 @@ export default styles = StyleSheet.create({
         color: Colors.blackPrimary,
         paddingTop: 27,
         paddingBottom: 17,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 2
     },
     AddressTextField: {
         backgroundColor: Colors.primary,
         height: 100,
         fontSize: 17,
         padding: 10,
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     addressMid: {
         flexDirection: 'row',
@@ -40,6 +47,10 @@ export default styles = StyleSheet.create({
         fontSize: 17,
         fontFamily: family.Book,
         padding: Platform.OS === 'ios' ? 10 : 5,
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     hrPartition: {
         flex: 1,
@@ -53,6 +64,10 @@ export default styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     btnTxt: {
         color: Colors.primary,

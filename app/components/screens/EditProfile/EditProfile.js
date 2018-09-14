@@ -75,7 +75,7 @@ class EditProfile extends Component {
                     }
                 }
             }
-        );
+        )
     }
 
     _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
@@ -108,17 +108,14 @@ class EditProfile extends Component {
             else if (response.customButton) { }
             else {
                 let source = 'data:image/jpeg;base64,' + response.data;
-
                 this.setState({
                     profile_pic: source
                 });
             }
         });
-
     }
 
     render() {
-
         return (
             <View style={styles.container}>
                 <ImageBackground style={styles.container} source={require('../../../assets/images/Android_Master_bg.jpg')}>

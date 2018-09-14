@@ -51,13 +51,13 @@ class Login extends Component {
                                     if (response.hasOwnProperty('user_msg')) {
                                         Toast.show({
                                             text: response.user_msg,
-                                            duration: 5000
+                                            duration: 3000
                                         })
                                     }
                                     else {
                                         Toast.show({
                                             text: response.message,
-                                            duration: 5000
+                                            duration: 3000
                                         })
                                     }
                                 }
@@ -130,7 +130,7 @@ class Login extends Component {
                                     DONT HAVE AN ACCOUNT?
                                 </Text>
                                 <TouchableOpacity style={styles.newAcc} onPress={() => this.props.navigation.navigate('Register')}>
-                                    <Icon name="addAcc" size={30} color="#fff" />
+                                    <Icon name="addAcc" size={30} color="#fff" style={styles.shadow} />
                                 </TouchableOpacity>
                             </View>
                         </View>

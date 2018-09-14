@@ -12,10 +12,10 @@ import { apiCaller } from '../../../lib/Fetcher.js';
 import * as url from '../../../lib/api.js';
 import { Toast } from 'native-base';
 import { connect } from 'react-redux';
-
+import Loader from '../../Loader/Loader.js';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 class ResetPass extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -31,8 +31,8 @@ class ResetPass extends Component {
         var alNum = /^([a-zA-Z0-9]){5,10}$/;
         if (this.state.password == "" || !this.state.password.match(alNum)) {
             Toast.show({
-                text: "Please enter the correct password",
-                duration: 5000
+                text: "Please insert the correct password.",
+                duration: 3000
             })
             return false;
         }
@@ -40,7 +40,7 @@ class ResetPass extends Component {
         else if (this.state.cpassword != this.state.npassword) {
             Toast.show({
                 text: "Password should be same as above",
-                duration: 5000
+                duration: 3000
             })
             return false;
         }
@@ -49,7 +49,7 @@ class ResetPass extends Component {
         }
     }
     reset() {
-        thi.setState({ loader: true })
+        this.setState({ loader: true })
         let formData = new FormData();
         formData.append('old_password', this.state.password)
         formData.append('password', this.state.npassword)
@@ -62,20 +62,27 @@ class ResetPass extends Component {
                 if (response.status == 200) {
                     Toast.show({
                         text: response.user_msg,
-                        duration: 5000
+                        duration: 3000
                     })
+                    AsyncStorage.removeItem('access_token', (err) => {
+                        const resetAction = StackActions.reset({
+                            index: 0,
+                            actions: [NavigationActions.navigate({ routeName: 'Login' })],
+                        });
+                        this.props.navigation.dispatch(resetAction);
+                    });
                 }
                 else {
                     if (response.hasOwnProperty('user_msg')) {
                         Toast.show({
                             text: response.user_msg,
-                            duration: 5000
+                            duration: 3000
                         })
                     }
                     else {
                         Toast.show({
                             text: response.user_msg,
-                            duration: 5000
+                            duration: 3000
                         })
                     }
                 }

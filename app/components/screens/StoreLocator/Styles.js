@@ -31,11 +31,17 @@ export default styles = StyleSheet.create({
     Icon: {
         color: Colors.blackSecondary,
         fontSize: 20,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 2, height: 3 },
+        textShadowRadius: 3
     },
     HeadText: {
         fontSize: 15,
         fontFamily: family.Bold,
         color: Colors.blackPrimary,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 2
     },
     NormalText: {
         fontSize: 13.5,

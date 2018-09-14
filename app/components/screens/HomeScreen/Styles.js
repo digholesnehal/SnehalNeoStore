@@ -69,6 +69,9 @@ export default styles = StyleSheet.create({
         fontWeight: '600',
         padding: Platform.OS === 'ios' ? 10 : 5,
         alignSelf: 'flex-end',
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
     },
     cTitle2: {
         fontFamily: family.Medium,
@@ -77,6 +80,9 @@ export default styles = StyleSheet.create({
         fontWeight: '600',
         padding: Platform.OS === 'ios' ? 10 : 5,
         alignSelf: 'flex-start',
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
     },
     cTitle3: {
         fontFamily: family.Medium,
@@ -84,6 +90,9 @@ export default styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: '600',
         padding: Platform.OS === 'ios' ? 10 : 5,
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
     },
     cTitle4: {
         fontFamily: family.Medium,
@@ -92,28 +101,43 @@ export default styles = StyleSheet.create({
         fontWeight: '600',
         padding: Platform.OS === 'ios' ? 10 : 5,
         alignSelf: 'flex-end',
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
     },
     icon1: {
         fontSize: 80,
         color: Colors.primary,
         padding: Platform.OS === 'ios' ? 15 : 10,
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
     },
     icon2: {
         fontSize: 80,
         color: Colors.primary,
         padding: Platform.OS === 'ios' ? 15 : 10,
         alignSelf: 'flex-end',
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
     },
     icon3: {
         fontSize: 80,
         color: Colors.primary,
         padding: Platform.OS === 'ios' ? 15 : 10,
         alignSelf: 'flex-end',
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
     },
     icon4: {
         fontSize: 80,
         color: Colors.primary,
         padding: Platform.OS === 'ios' ? 15 : 10,
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 5 },
+        textShadowRadius: 5
     },
     TO: {
         flex: 1,

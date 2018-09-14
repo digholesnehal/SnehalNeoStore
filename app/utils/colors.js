@@ -18,3 +18,4 @@ export const enterQtyB = "#2C2B2B";
 export const orderIDSH = "#6B6B6B";
 export const orderIDH = "#1C1C1C";
 export const rateText = "#525151";
+export const black = "#000000";

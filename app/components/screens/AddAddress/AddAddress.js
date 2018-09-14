@@ -88,7 +88,7 @@ export default class AddAddress extends Component {
                             text: 'Address added successfully.',
                             duration: 3000
                         })
-                        this.props.navigation.replace('AddressList');
+                        this.props.navigation.goBack(null)
                     });
                 }
                 else {
@@ -98,7 +98,7 @@ export default class AddAddress extends Component {
                             text: 'Address edited successfully.',
                             duration: 3000
                         })
-                        this.props.navigation.replace('AddressList');
+                        this.props.navigation.goBack(null)
                     });
                 }
             });

@@ -61,6 +61,10 @@ export default styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     btnView: {
         paddingTop: 30,
@@ -76,5 +80,11 @@ export default styles = StyleSheet.create({
         borderWidth: 1,
         marginLeft: 120,
         padding: 2,
-    }
+    },
+    shadow: {
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
+    },
 })

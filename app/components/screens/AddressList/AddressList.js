@@ -15,6 +15,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Loader from '../../Loader/Loader.js';
 import { connect } from 'react-redux';
 import { Toast } from 'native-base';
+import Styles from './Styles';
 
 class AddressList extends Component {
     constructor(props) {
@@ -107,7 +108,7 @@ class AddressList extends Component {
                                     <TouchableOpacity style={styles.radioView} onPress={() => this.select(index)} >
                                         <View style={[styles.radio, this.state.selected == index ? { backgroundColor: Colors.gRadioChecked } : { backgroundColor: Colors.primary }]} />
                                     </TouchableOpacity>
-                                    <View style={styles.addressBox}>
+                                    <View style={[styles.addressBox, Styles.shadow]}>
                                         <View style={styles.HeadView}>
                                             <Text style={styles.Heading}>{this.props.user_data.first_name} {this.props.user_data.last_name}</Text>
                                             <TouchableOpacity style={styles.edit} onPress={() => this.props.navigation.replace('AddAddress', { Index: index, Item: item })}>

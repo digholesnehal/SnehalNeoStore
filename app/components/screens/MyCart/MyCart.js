@@ -25,7 +25,6 @@ const setDelete = (state) => {
 }
 
 class MyCart extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -120,39 +119,41 @@ class MyCart extends Component {
     }
 
     selectQty = (index, id, value) => {
-        this.setState({ loader: true })
-        let formData = new FormData();
-        formData.append('product_id', id)
-        formData.append('quantity', value)
-        return apiCaller(
-            url.host + url.EditCart,
-            'POST', { access_token: this.state.access_token }, formData,
-            (response) => {
-                this.setState({ loader: false })
-                if (response.status == 200) {
-                    alert(response.user_msg)
-                    this.state.response.data[index].quantity = value
-                    this.state.response.total = this.state.response.total - this.state.response.data[index].product.sub_total;
-                    this.state.response.data[index].product.sub_total = (this.state.response.data[index].product.cost) * (this.state.response.data[index].quantity);
-                    this.state.response.total = this.state.response.total + this.state.response.data[index].product.sub_total;
+        if (this.state.response.data[index].quantity != value) {
+            this.setState({ loader: true })
+            let formData = new FormData();
+            formData.append('product_id', id)
+            formData.append('quantity', value)
+            return apiCaller(
+                url.host + url.EditCart,
+                'POST', { access_token: this.state.access_token }, formData,
+                (response) => {
                     this.setState({ loader: false })
-                }
-                else {
-                    if (response.hasOwnProperty('user_msg')) {
-                        Toast.show({
-                            text: response.user_msg,
-                            duration: 5000
-                        })
+                    if (response.status == 200) {
+                        alert(response.user_msg)
+                        this.state.response.data[index].quantity = value
+                        this.state.response.total = this.state.response.total - this.state.response.data[index].product.sub_total;
+                        this.state.response.data[index].product.sub_total = (this.state.response.data[index].product.cost) * (this.state.response.data[index].quantity);
+                        this.state.response.total = this.state.response.total + this.state.response.data[index].product.sub_total;
+                        this.setState({ loader: false })
                     }
                     else {
-                        Toast.show({
-                            text: response.message,
-                            duration: 5000
-                        })
+                        if (response.hasOwnProperty('user_msg')) {
+                            Toast.show({
+                                text: response.user_msg,
+                                duration: 5000
+                            })
+                        }
+                        else {
+                            Toast.show({
+                                text: response.message,
+                                duration: 5000
+                            })
+                        }
                     }
                 }
-            }
-        );
+            );
+        }
     }
 
     render() {

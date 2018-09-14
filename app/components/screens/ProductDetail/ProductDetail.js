@@ -222,7 +222,7 @@ class ProductDetail extends Component {
                                 Rs. {this.state.dataArray.cost}
                             </Text>
                             <TouchableOpacity onPress={() => { this.sharing() }}>
-                                <Icon name="share" size={25} color={Colors.ratingBefore} />
+                                <Icon name="share" size={25} color={Colors.ratingBefore} style={styles.shadow} />
                             </TouchableOpacity>
                         </View>
                         <View style={styles.largeImg}>

@@ -18,11 +18,17 @@ export default styles = StyleSheet.create({
         color: Colors.proHeading,
         fontSize: size.medium,
         fontFamily: family.Medium,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 3
     },
     category: {
         fontSize: size.small,
         color: Colors.proHeading,
         fontFamily: family.Book,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 3
     },
     row: {
         flex: 1,
@@ -33,15 +39,23 @@ export default styles = StyleSheet.create({
         fontSize: size.xxSmall,
         fontFamily: family.Book,
         color: Colors.proHeading,
-
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 3
     },
     myStarStyle: {
         fontSize: 17,
         color: Colors.ratingAfter,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 12 },
+        textShadowRadius: 3
     },
 
     myEmptyStarStyle: {
         color: Colors.ratingBefore,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 3, height: 12 },
+        textShadowRadius: 3
     },
     imgGrp: {
         flex: 8,
@@ -61,6 +75,9 @@ export default styles = StyleSheet.create({
         color: Colors.redBtnTxt,
         fontSize: size.medium,
         fontFamily: family.Medium,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 3
     },
     largeImg: {
         flex: 6,
@@ -108,6 +125,9 @@ export default styles = StyleSheet.create({
         color: Colors.sbarBGdesc,
         fontSize: size.xxSmall,
         fontFamily: family.Bold,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 3 },
+        textShadowRadius: 3
     },
     normalTxt: {
         fontFamily: family.Book,
@@ -137,6 +157,9 @@ export default styles = StyleSheet.create({
         fontSize: Platform.OS === 'ios' ? 20 : 16,
         fontFamily: family.Medium,
         paddingTop: Platform.OS === 'ios' ? 7 : 0,
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 3 },
+        textShadowRadius: 3
     },
     Rate: {
         backgroundColor: Colors.gRadioUnchecked,
@@ -151,6 +174,9 @@ export default styles = StyleSheet.create({
         fontSize: Platform.OS === 'ios' ? 20 : 16,
         fontFamily: family.Medium,
         paddingTop: Platform.OS === 'ios' ? 7 : 0,
+        textShadowColor: Colors.black,
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 3
     },
     modalView: {
         flex: 1,
@@ -161,6 +187,9 @@ export default styles = StyleSheet.create({
         fontFamily: family.Book,
         fontSize: size.mLarge,
         paddingBottom: 10,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 3 },
+        textShadowRadius: 3
     },
     textField: {
         height: 30,
@@ -202,5 +231,13 @@ export default styles = StyleSheet.create({
     ratingStarStyle: {
         fontSize: 50,
         color: Colors.ratingAfter,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 3, height: 12 },
+        textShadowRadius: 3
     },
+    shadow: {
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 2
+    }
 });

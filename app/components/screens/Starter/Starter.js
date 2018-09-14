@@ -52,15 +52,14 @@ class Starter extends Component {
                 this.setState({ loader: true })
                 this.props.navigation.replace('Login');
             }
-        })
-            .catch((error) => {
-                //Some error. Navigate to login.
-                this.props.navigation.replace('Login');
-                Toast.show({
-                    text: error.message,
-                    duration: 5000
-                })
+        }).catch((error) => {
+            //Some error. Navigate to login.
+            this.props.navigation.replace('Login');
+            Toast.show({
+                text: error.message,
+                duration: 5000
             })
+        })
     }
 
     render() {

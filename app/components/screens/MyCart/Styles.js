@@ -36,6 +36,9 @@ export default styles = StyleSheet.create({
         fontFamily: family.Book,
         fontSize: 23,
         color: Colors.orderIDH,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 2
     },
     quantity: {
         fontSize: 15,
@@ -52,6 +55,9 @@ export default styles = StyleSheet.create({
         fontFamily: family.Book,
         fontSize: 15,
         color: Colors.blackPrimary,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 2
     },
     midPartitionC: {
         flex: 2,
@@ -78,6 +84,9 @@ export default styles = StyleSheet.create({
         fontFamily: family.Book,
         color: Colors.blackSecondary,
         paddingTop: 3,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 2
     },
     icon: {
         fontSize: 20,
@@ -95,6 +104,9 @@ export default styles = StyleSheet.create({
         fontSize: 15,
         fontFamily: family.Medium,
         color: Colors.orderIDH,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 2
     },
     deleteView: {
         flex: 1,
@@ -124,6 +136,10 @@ export default styles = StyleSheet.create({
         fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     btnTxt: {
         color: Colors.primary,

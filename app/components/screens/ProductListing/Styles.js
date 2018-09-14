@@ -39,25 +39,40 @@ export default styles = StyleSheet.create({
         fontSize: Fonts.small,
         fontFamily: family.Medium,
         paddingLeft: 10,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 2
     },
     iProducer: {
         fontFamily: family.Book,
         color: Colors.blackSecondary,
         fontSize: Fonts.xxSmall,
         paddingLeft: 10,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 2
     },
     iCost: {
         color: Colors.tableRTxt,
         fontSize: Fonts.medium,
         fontFamily: family.Medium,
         padding: 10,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 2 },
+        textShadowRadius: 2
     },
     myStarStyle: {
         fontSize: 15,
         color: Colors.ratingAfter,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 10 },
+        textShadowRadius: 3
     },
     myEmptyStarStyle: {
         color: Colors.ratingBefore,
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 1, height: 10 },
+        textShadowRadius: 3
     },
     footer: {
         height: '3%',

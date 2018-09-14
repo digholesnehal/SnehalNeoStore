@@ -44,27 +44,47 @@ export default styles = StyleSheet.create({
         paddingLeft: 15,
         fontWeight: '500',
         color: Colors.primary,
-        fontFamily: "Gotham-Book"
+        fontFamily: "Gotham-Book",
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     icon: {
         fontSize: Platform.OS === 'ios' ? 20 : 15,
         color: Colors.primary,
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
 
     envelope: {
         fontSize: Platform.OS === 'ios' ? 20 : 15,
         color: Colors.primary,
         paddingLeft: 8,
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
 
     iconPhn: {
         fontSize: Platform.OS === 'ios' ? 22 : 18,
         color: Colors.primary,
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     iconCake: {
         fontSize: Platform.OS === 'ios' ? 22 : 18,
         color: Colors.primary,
         paddingLeft: 8,
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     resetPass: {
         flex: 1,
@@ -90,15 +110,24 @@ export default styles = StyleSheet.create({
         fontWeight: 'bold',
         alignItems: 'center',
         justifyContent: 'center',
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     btnTxt: {
         color: Colors.redBtnTxt,
         fontSize: Platform.OS === 'ios' ? 25 : 25,
-        fontWeight: '500',
+        fontWeight: '500', textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 2, height: 3 },
+        textShadowRadius: 3
     },
     ResetBtnTxt: {
         color: Colors.blackSecondary,
         fontSize: Platform.OS === 'ios' ? 25 : 25,
         fontWeight: '500',
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: { width: 2, height: 3 },
+        textShadowRadius: 3
     }
 });

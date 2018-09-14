@@ -46,15 +46,18 @@ export default class OrderID extends Component {
 
     async getDirections(startLoc, destinationLoc) {
         try {
+            console.log('start end location', startLoc, destinationLoc)
             let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}`)
             let respJson = await resp.json();
             let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
+            console.log('points', points)
             let coords = points.map((point, index) => {
                 return {
                     latitude: point[0],
                     longitude: point[1]
                 }
             })
+            console.log('coords', coords)
             this.setState({ coords: coords })
             this.setState({ x: "true" })
             return coords
