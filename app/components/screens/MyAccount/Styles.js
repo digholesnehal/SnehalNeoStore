@@ -118,16 +118,17 @@ export default styles = StyleSheet.create({
     btnTxt: {
         color: Colors.redBtnTxt,
         fontSize: Platform.OS === 'ios' ? 25 : 25,
-        fontWeight: '500', textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 3
+        fontWeight: '500',
+        textShadowColor: Colors.blackSecondary,
+        textShadowOffset: Platform.OS === 'ios' ? { width: 2, height: 3 } : { width: 1, height: 1 },
+        textShadowRadius: Platform.OS === 'ios' ? 3 : 1
     },
     ResetBtnTxt: {
         color: Colors.blackSecondary,
         fontSize: Platform.OS === 'ios' ? 25 : 25,
         fontWeight: '500',
         textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 3
+        textShadowOffset: Platform.OS === 'ios' ? { width: 2, height: 3 } : { width: 1, height: 1 },
+        textShadowRadius: Platform.OS === 'ios' ? 3 : 1
     }
 });

@@ -3,6 +3,7 @@ package com.neostore;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.maps.MapsPackage;
 import com.gettipsi.stripe.StripeReactPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.rnds.DirectedScrollViewPackage;
@@ -29,13 +30,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new MapsPackage(),
             new StripeReactPackage(),
             new ImagePickerPackage(),
             new DirectedScrollViewPackage(),
             new SplashScreenReactPackage(),
-            new VectorIconsPackage(),
-            new MapsPackage()
-
+            new VectorIconsPackage()
       );
     }
 

@@ -180,87 +180,130 @@ class ProductDetail extends Component {
     }
 
     render() {
-        return (
-            <View style={[styles.container, { opacity: this.state.opacity }]}>
-                <Header
-                    title={this.state.dataArray.name}
-                    mainTitle={false}
-                    isDrawer={false}
-                    isSearch={true}
-                    back={() => { this.props.navigation.goBack(null) }} />
-                {this.state.loader ? <Loader /> : null}
-                <ScrollView>
-                    <View style={styles.Details}>
-                        <View >
-                            <Text style={styles.Name}>
-                                {this.state.dataArray.name}
-                            </Text>
+        if (this.state.loader == true) {
+            return (
+                <View style={[styles.container, { opacity: this.state.opacity }]}>
+                    <Loader />
+                </View>
+            )
+        }
+        else {
+            return (
+                <View style={[styles.container, { opacity: this.state.opacity }]}>
+                    <Header
+                        title={this.state.dataArray.name}
+                        mainTitle={false}
+                        isDrawer={false}
+                        isSearch={true}
+                        back={() => { this.props.navigation.goBack(null) }} />
+                    <ScrollView>
+                        <View style={styles.Details}>
+                            <View >
+                                <Text style={styles.Name}>
+                                    {this.state.dataArray.name}
+                                </Text>
+                            </View>
+                            <View style={styles.container}>
+                                <Text style={styles.category}>
+                                    Category - {this.state.category}
+                                </Text>
+                            </View>
+                            <View style={styles.row} >
+                                <Text style={styles.producer}>
+                                    {this.state.dataArray.producer}
+                                </Text>
+                                <Stars
+                                    default={this.state.dataArray.rating}
+                                    count={5}
+                                    half={false}
+                                    disabled={true}
+                                    backingColor={Colors.ratingBefore}
+                                    fullStar={<Icon name={'star'} style={[styles.myStarStyle]} />}
+                                    emptyStar={<Icon name={'star'} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
+                                />
+                            </View>
                         </View>
-                        <View style={styles.container}>
-                            <Text style={styles.category}>
-                                Category - {this.state.category}
-                            </Text>
+                        <View style={styles.imgGrp}>
+                            <View style={styles.priceView}>
+                                <Text style={styles.price}>
+                                    Rs. {this.state.dataArray.cost}
+                                </Text>
+                                <TouchableOpacity onPress={() => { this.sharing() }}>
+                                    <Icon name="share" size={20} color={Colors.ratingBefore} style={styles.shadow} />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.largeImg}>
+                                <ImageZoom cropWidth={290}
+                                    cropHeight={200}
+                                    imageWidth={290}
+                                    imageHeight={200}>
+                                    {this.state.URI !== 'abc' ? <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
+                                        : null}
+                                </ImageZoom>
+
+                            </View>
+                            <ScrollView horizontal={this.state.horizontalScroll}>
+                                <View style={styles.subImages}>
+                                    {this.state.dataArray.product_images !== undefined ? this.imgContent(this.state.dataArray.product_images) : null}
+                                </View>
+                            </ScrollView>
+
+                            <View style={styles.Description}>
+                                <Text style={styles.heading}>DESCRIPTION</Text>
+                                <Text style={styles.normalTxt}>{this.state.dataArray.description}</Text>
+                            </View>
                         </View>
-                        <View style={styles.row} >
-                            <Text style={styles.producer}>
-                                {this.state.dataArray.producer}
-                            </Text>
-                            <Stars
-                                default={this.state.dataArray.rating}
-                                count={5}
-                                half={false}
-                                disabled={true}
-                                backingColor={Colors.ratingBefore}
-                                fullStar={<Icon name={'star'} style={[styles.myStarStyle]} />}
-                                emptyStar={<Icon name={'star'} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
-                            />
-                        </View>
-                    </View>
-                    <View style={styles.imgGrp}>
-                        <View style={styles.priceView}>
-                            <Text style={styles.price}>
-                                Rs. {this.state.dataArray.cost}
-                            </Text>
-                            <TouchableOpacity onPress={() => { this.sharing() }}>
-                                <Icon name="share" size={25} color={Colors.ratingBefore} style={styles.shadow} />
+                        <View style={styles.footerBtn}>
+                            <TouchableOpacity style={styles.BuyNow} onPress={() => { this.BuyNowPopUp(!this.state.buyNowVisible); }}>
+                                <Text style={styles.BuyNowTxt}> BUY NOW </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.Rate} onPress={() => { this.RatingPopUp(!this.state.RatingVisible); }}>
+                                <Text style={styles.RateTxt}> RATE </Text>
                             </TouchableOpacity>
                         </View>
-                        <View style={styles.largeImg}>
-                            <ImageZoom cropWidth={290}
-                                cropHeight={200}
-                                imageWidth={290}
-                                imageHeight={200}>
-                                {this.state.URI !== 'abc' ? <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
-                                    : null}
-                            </ImageZoom>
 
-                        </View>
-                        <ScrollView horizontal={this.state.horizontalScroll}>
-                            <View style={styles.subImages}>
-                                {this.state.dataArray.product_images !== undefined ? this.imgContent(this.state.dataArray.product_images) : null}
-                            </View>
-                        </ScrollView>
+                        {/* modal for buy now */}
+                        <Modal visible={this.state.buyNowVisible} style={styles.modalView} transparent={true}>
+                            <View style={{ flex: 1 }}></View>
+                            <KeyboardAwareScrollView>
+                                <View style={styles.modalInnerView}>
+                                    <TouchableOpacity onPress={() => { this.BuyNowPopUp(!this.state.buyNowVisible); }}>
+                                        <Icon name="multiply" size={20} style={styles.close} color={Colors.redBtnBG} />
+                                    </TouchableOpacity>
+                                    <View style={styles.Submit}>
+                                        <Text style={styles.ModalName}>
+                                            {this.state.dataArray.name}
+                                        </Text>
+                                    </View>
+                                    <View style={styles.Submit}>
+                                        <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
+                                    </View>
+                                    <View style={styles.Submit}>
+                                        <Text style={styles.category}>
+                                            Enter Qty
+                                </Text>
+                                    </View>
+                                    <View style={styles.Submit}>
+                                        <View style={styles.qtyInput}>
+                                            <TextInput maxLength={1} onChangeText={(changedText) => { this.setState({ "Qty": changedText }) }} style={styles.textField} keyboardType="number-pad">
+                                            </TextInput>
+                                        </View>
+                                    </View>
+                                    <View style={styles.Submit}>
+                                        <TouchableOpacity style={styles.BuyNow} onPress={() => { this.Submit(!this.state.Qty); }}>
+                                            <Text style={styles.BuyNowTxt}>SUBMIT</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
+                            </KeyboardAwareScrollView>
+                            <View style={{ flex: 1 }}></View>
+                        </Modal>
 
-                        <View style={styles.Description}>
-                            <Text style={styles.heading}>DESCRIPTION</Text>
-                            <Text style={styles.normalTxt}>{this.state.dataArray.description}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.footerBtn}>
-                        <TouchableOpacity style={styles.BuyNow} onPress={() => { this.BuyNowPopUp(!this.state.buyNowVisible); }}>
-                            <Text style={styles.BuyNowTxt}> BUY NOW </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.Rate} onPress={() => { this.RatingPopUp(!this.state.RatingVisible); }}>
-                            <Text style={styles.RateTxt}> RATE </Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    {/* modal for buy now */}
-                    <Modal visible={this.state.buyNowVisible} style={styles.modalView} transparent={true}>
-                        <View style={{ flex: 1 }}></View>
-                        <KeyboardAwareScrollView>
+                        {/* modal for rating button */}
+                        <Modal visible={this.state.RatingVisible} style={styles.modalView} transparent={true}>
+                            <View style={{ flex: 1 }}></View>
                             <View style={styles.modalInnerView}>
-                                <TouchableOpacity onPress={() => { this.BuyNowPopUp(!this.state.buyNowVisible); }}>
+                                <TouchableOpacity onPress={() => { this.RatingPopUp(!this.state.RatingVisible); }}>
                                     <Icon name="multiply" size={20} style={styles.close} color={Colors.redBtnBG} />
                                 </TouchableOpacity>
                                 <View style={styles.Submit}>
@@ -272,64 +315,29 @@ class ProductDetail extends Component {
                                     <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
                                 </View>
                                 <View style={styles.Submit}>
-                                    <Text style={styles.category}>
-                                        Enter Qty
-                                </Text>
+                                    <Stars
+                                        default={this.state.dataArray.rating}
+                                        count={5}
+                                        half={false}
+                                        disabled={false}
+                                        backingColor={Colors.ratingBefore}
+                                        fullStar={<Icon name={'star'} style={[styles.ratingStarStyle]} />}
+                                        emptyStar={<Icon name={'star'} style={[styles.ratingStarStyle, styles.myEmptyStarStyle]} />}
+                                        update={(val) => this.setState({ stars: val })}
+                                    />
                                 </View>
                                 <View style={styles.Submit}>
-                                    <View style={styles.qtyInput}>
-                                        <TextInput maxLength={1} onChangeText={(changedText) => { this.setState({ "Qty": changedText }) }} style={styles.textField} keyboardType="number-pad">
-                                        </TextInput>
-                                    </View>
-                                </View>
-                                <View style={styles.Submit}>
-                                    <TouchableOpacity style={styles.BuyNow} onPress={() => { this.Submit(!this.state.Qty); }}>
-                                        <Text style={styles.BuyNowTxt}>SUBMIT</Text>
+                                    <TouchableOpacity style={styles.BuyNow} onPress={() => { this.Rate(); }}>
+                                        <Text style={styles.BuyNowTxt}>RATE NOW</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
-                        </KeyboardAwareScrollView>
-                        <View style={{ flex: 1 }}></View>
-                    </Modal>
-
-                    {/* modal for rating button */}
-                    <Modal visible={this.state.RatingVisible} style={styles.modalView} transparent={true}>
-                        <View style={{ flex: 1 }}></View>
-                        <View style={styles.modalInnerView}>
-                            <TouchableOpacity onPress={() => { this.RatingPopUp(!this.state.RatingVisible); }}>
-                                <Icon name="multiply" size={20} style={styles.close} color={Colors.redBtnBG} />
-                            </TouchableOpacity>
-                            <View style={styles.Submit}>
-                                <Text style={styles.ModalName}>
-                                    {this.state.dataArray.name}
-                                </Text>
-                            </View>
-                            <View style={styles.Submit}>
-                                <Image style={styles.Bimg} source={{ uri: this.state.URI }} />
-                            </View>
-                            <View style={styles.Submit}>
-                                <Stars
-                                    default={this.state.dataArray.rating}
-                                    count={5}
-                                    half={false}
-                                    disabled={false}
-                                    backingColor={Colors.ratingBefore}
-                                    fullStar={<Icon name={'star'} style={[styles.ratingStarStyle]} />}
-                                    emptyStar={<Icon name={'star'} style={[styles.ratingStarStyle, styles.myEmptyStarStyle]} />}
-                                    update={(val) => this.setState({ stars: val })}
-                                />
-                            </View>
-                            <View style={styles.Submit}>
-                                <TouchableOpacity style={styles.BuyNow} onPress={() => { this.Rate(); }}>
-                                    <Text style={styles.BuyNowTxt}>RATE NOW</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                        <View style={{ flex: 2 }}></View>
-                    </Modal>
-                </ScrollView>
-            </View >
-        )
+                            <View style={{ flex: 2 }}></View>
+                        </Modal>
+                    </ScrollView>
+                </View >
+            )
+        }
     }
 }
 

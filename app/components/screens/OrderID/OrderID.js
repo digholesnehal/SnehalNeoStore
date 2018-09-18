@@ -81,7 +81,7 @@ class OrderID extends Component {
                                     </View>
                                     <View style={styles.midPartitionR}>
                                         <Text style={styles.quantity}>QTY : {item.quantity}</Text>
-                                        <Text style={styles.shadow}>&#8377;{item.total}</Text>
+                                        <Text>&#8377;{item.total}</Text>
                                     </View>
                                 </View>
                             </View>

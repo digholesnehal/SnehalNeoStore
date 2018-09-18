@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Platform, StyleSheet, Dimensions, Text, View, Image, Vibration,
-    ImageBackground, TextInput, TouchableOpacity, ActivityIndicator
+    ImageBackground, TextInput, TouchableOpacity, ActivityIndicator, AsyncStorage
 } from 'react-native';
 import styles from "./Styles";
 import Icon from '../../../utils/Icons.js';

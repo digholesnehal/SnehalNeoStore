@@ -18,17 +18,14 @@ export default styles = StyleSheet.create({
         color: Colors.proHeading,
         fontSize: size.medium,
         fontFamily: family.Medium,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 2 },
-        textShadowRadius: 3
+        textShadowColor: Platform.OS === 'ios' ? Colors.blackSecondary : 'transparent',
+        textShadowOffset: Platform.OS === 'ios' ? { width: 1, height: 2 } : {},
+        textShadowRadius: Platform.OS === 'ios' ? 3 : 0
     },
     category: {
         fontSize: size.small,
         color: Colors.proHeading,
         fontFamily: family.Book,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 2 },
-        textShadowRadius: 3
     },
     row: {
         flex: 1,
@@ -39,23 +36,14 @@ export default styles = StyleSheet.create({
         fontSize: size.xxSmall,
         fontFamily: family.Book,
         color: Colors.proHeading,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 2 },
-        textShadowRadius: 3
     },
     myStarStyle: {
         fontSize: 17,
         color: Colors.ratingAfter,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 12 },
-        textShadowRadius: 3
     },
 
     myEmptyStarStyle: {
         color: Colors.ratingBefore,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 3, height: 12 },
-        textShadowRadius: 3
     },
     imgGrp: {
         flex: 8,
@@ -125,9 +113,9 @@ export default styles = StyleSheet.create({
         color: Colors.sbarBGdesc,
         fontSize: size.xxSmall,
         fontFamily: family.Bold,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 3 },
-        textShadowRadius: 3
+        textShadowColor: Platform.OS === 'ios' ? Colors.blackSecondary : 'transparent',
+        textShadowOffset: Platform.OS === 'ios' ? { width: 1, height: 3 } : {},
+        textShadowRadius: Platform.OS === 'ios' ? 3 : 0
     },
     normalTxt: {
         fontFamily: family.Book,
@@ -151,15 +139,16 @@ export default styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        shadowOpacity: Platform.OS === 'ios' ? 0.75 : 0,
+        shadowRadius: Platform.OS === 'ios' ? 5 : 0,
+        shadowColor: Platform.OS === 'ios' ? Colors.black : 'transparent',
+        shadowOffset: Platform.OS === 'ios' ? { height: 5, width: 2 } : {},
     },
     BuyNowTxt: {
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 20 : 16,
         fontFamily: family.Medium,
         paddingTop: Platform.OS === 'ios' ? 7 : 0,
-        textShadowColor: Colors.black,
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 3
     },
     Rate: {
         backgroundColor: Colors.gRadioUnchecked,
@@ -168,15 +157,16 @@ export default styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        shadowOpacity: 0.75,
+        shadowRadius: 5,
+        shadowColor: Colors.black,
+        shadowOffset: { height: 5, width: 2 },
     },
     RateTxt: {
         color: Colors.rateText,
         fontSize: Platform.OS === 'ios' ? 20 : 16,
         fontFamily: family.Medium,
         paddingTop: Platform.OS === 'ios' ? 7 : 0,
-        textShadowColor: Colors.black,
-        textShadowOffset: { width: 2, height: 2 },
-        textShadowRadius: 3
     },
     modalView: {
         flex: 1,
@@ -187,9 +177,9 @@ export default styles = StyleSheet.create({
         fontFamily: family.Book,
         fontSize: size.mLarge,
         paddingBottom: 10,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 3 },
-        textShadowRadius: 3
+        textShadowColor: Platform.OS === 'ios' ? Colors.blackSecondary : 'transparent',
+        textShadowOffset: Platform.OS === 'ios' ? { width: 1, height: 3 } : {},
+        textShadowRadius: Platform.OS === 'ios' ? 3 : 0
     },
     textField: {
         height: 30,
@@ -231,13 +221,5 @@ export default styles = StyleSheet.create({
     ratingStarStyle: {
         fontSize: 50,
         color: Colors.ratingAfter,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 3, height: 12 },
-        textShadowRadius: 3
     },
-    shadow: {
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 2 },
-        textShadowRadius: 2
-    }
 });

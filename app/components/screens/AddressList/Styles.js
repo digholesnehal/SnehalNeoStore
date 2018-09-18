@@ -37,7 +37,7 @@ export default styles = StyleSheet.create({
         marginRight: 0,
         margin: 10,
         flex: 9,
-        flexDirection: 'column',
+        flexDirection: 'row',
         borderColor: Colors.blackSecondary,
         borderWidth: 1,
         borderRadius: 4,
@@ -46,7 +46,6 @@ export default styles = StyleSheet.create({
         paddingRight: 5,
     },
     HeadView: {
-        flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'space-between',
     },
@@ -75,11 +74,9 @@ export default styles = StyleSheet.create({
         fontFamily: family.Medium,
         paddingTop: Platform.OS === 'ios' ? 10 : 0,
     },
-    edit: {
-        borderColor: Colors.blackSecondary,
-        borderWidth: 1,
-        marginLeft: 120,
-        padding: 2,
+    iconsView: {
+        flexDirection: 'column',
+        justifyContent: 'space-between'
     },
     shadow: {
         shadowOpacity: 0.75,

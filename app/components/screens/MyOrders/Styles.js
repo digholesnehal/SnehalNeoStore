@@ -27,9 +27,6 @@ export default styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: family.Book,
         color: Colors.orderIDH,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 2 },
-        textShadowRadius: 2
     },
     headingPadding: {
         paddingBottom: 10,
@@ -43,15 +40,9 @@ export default styles = StyleSheet.create({
         color: Colors.blackSecondary,
         fontSize: 12,
         fontFamily: family.Book,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 2 },
-        textShadowRadius: 2
     },
     cost: {
         fontFamily: family.Book,
         fontSize: 20,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 2 },
-        textShadowRadius: 2
     },
 })

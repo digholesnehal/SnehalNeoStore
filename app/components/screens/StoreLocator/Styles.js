@@ -39,9 +39,6 @@ export default styles = StyleSheet.create({
         fontSize: 15,
         fontFamily: family.Bold,
         color: Colors.blackPrimary,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 2 },
-        textShadowRadius: 2
     },
     NormalText: {
         fontSize: 13.5,

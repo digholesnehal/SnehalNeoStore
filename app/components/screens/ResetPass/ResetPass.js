@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Platform, Dimensions, ScrollView, StyleSheet, Text, View, KeyboardAvoidingView,
-    ImageBackground, TextInput, TouchableOpacity
+    ImageBackground, TextInput, TouchableOpacity, AsyncStorage
 } from 'react-native';
 import styles from "./Styles";
 import Icon from '../../../utils/Icons.js';

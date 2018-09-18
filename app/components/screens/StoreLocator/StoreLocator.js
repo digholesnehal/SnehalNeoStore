@@ -24,7 +24,7 @@ export default class OrderID extends Component {
 
     highLight = (Latitude, Longitude) => {
         this.map.fitToCoordinates([{ latitude: Latitude, longitude: Longitude }], {
-            edgePadding: { top: 100, right: 100, bottom: 100, left: 100 },
+            edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
             animated: true,
         });
         this.getDirections(`${this.state.latitude},${this.state.longitude}`, `${Latitude},${Longitude}`)
@@ -46,18 +46,15 @@ export default class OrderID extends Component {
 
     async getDirections(startLoc, destinationLoc) {
         try {
-            console.log('start end location', startLoc, destinationLoc)
             let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destinationLoc}`)
             let respJson = await resp.json();
             let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
-            console.log('points', points)
             let coords = points.map((point, index) => {
                 return {
                     latitude: point[0],
                     longitude: point[1]
                 }
             })
-            console.log('coords', coords)
             this.setState({ coords: coords })
             this.setState({ x: "true" })
             return coords
@@ -117,29 +114,29 @@ export default class OrderID extends Component {
                         />
                     </MapView>
                 </View>
-                <TouchableOpacity style={styles.addressView} onPress={() => this.highLight(19.0244, 72.8438)}>
+                <TouchableOpacity style={styles.addressView} onPress={() => this.highLight(19.1044, 72.8438)}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />
                     </View>
                     <View style={styles.StoreView}>
                         <Text style={styles.HeadText}>
-                            SKYLAND STORE
+                            NeoSoft Technologies
                         </Text>
                         <Text style={styles.NormalText}>
-                            6335 Edgewood Road Reisterstown, MD 21136
+                            4th Floor, The Ruby, 29, Senapati Bapat Marg, Dadar West
                         </Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.addressView} onPress={() => this.highLight(20.1411, 73.0087)}>
+                <TouchableOpacity style={styles.addressView} onPress={() => this.highLight(19.1898, 73.0087)}>
                     <View style={styles.Locator}>
                         <Icon name='Locator' style={styles.Icon} />
                     </View>
                     <View style={styles.StoreView}>
                         <Text style={styles.HeadText}>
-                            WOODMOUNT STORE
+                            NeoSoft Technologies
                         </Text>
                         <Text style={styles.NormalText}>
-                            9437 Pin Oak Drive South Plainfield, NJ 07080
+                            5th Floor, Sigma IT Park,MIDC area, Rabale, Navi Mumbai
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -149,10 +146,10 @@ export default class OrderID extends Component {
                     </View>
                     <View style={styles.StoreView}>
                         <Text style={styles.HeadText}>
-                            NATUFUR STORE
+                            NeoSoft Technologies
                         </Text>
                         <Text style={styles.NormalText}>
-                            3798 Pennsylvania Avenue Brandon, FL 33510
+                            1st Floor, Rajiv Gandhi - Infotech Park, Phase-I, Hinjewadi
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -162,23 +159,10 @@ export default class OrderID extends Component {
                     </View>
                     <View style={styles.StoreView}>
                         <Text style={styles.HeadText}>
-                            LAVANDER STORE
+                            NeoSoft Technologies
                         </Text>
                         <Text style={styles.NormalText}>
-                            9311 Garfield Avenue Hamburg, NY 14075
-                        </Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.addressView} onPress={() => this.highLight(18.5947, 73.7095)}>
-                    <View style={styles.Locator}>
-                        <Icon name='Locator' style={styles.Icon} />
-                    </View>
-                    <View style={styles.StoreView}>
-                        <Text style={styles.HeadText}>
-                            FURNIMATT STORE
-                        </Text>
-                        <Text style={styles.NormalText}>
-                            7346 Hanover Court Arlington, MA 02474
+                            Unique Industrial Estate, 124, SVS Rd, Off, Prabhadev
                         </Text>
                     </View>
                 </TouchableOpacity>

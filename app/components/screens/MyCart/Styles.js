@@ -55,9 +55,6 @@ export default styles = StyleSheet.create({
         fontFamily: family.Book,
         fontSize: 15,
         color: Colors.blackPrimary,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 2 },
-        textShadowRadius: 2
     },
     midPartitionC: {
         flex: 2,
@@ -84,9 +81,6 @@ export default styles = StyleSheet.create({
         fontFamily: family.Book,
         color: Colors.blackSecondary,
         paddingTop: 3,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 2 },
-        textShadowRadius: 2
     },
     icon: {
         fontSize: 20,

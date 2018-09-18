@@ -49,8 +49,8 @@ export default styles = StyleSheet.create({
         marginTop: Platform.OS === 'ios' ? 5 : 0,
         color: Colors.primary,
         textShadowColor: Colors.black,
-        textShadowOffset: { width: 2, height: 5 },
-        textShadowRadius: 5
+        textShadowOffset: Platform.OS === 'ios' ? { width: 2, height: 5 } : { width: 2, height: 2 },
+        textShadowRadius: Platform.OS === 'ios' ? 5 : 2
     },
     menuIcon: {
         backgroundColor: 'transparent',
@@ -63,7 +63,7 @@ export default styles = StyleSheet.create({
         backgroundColor: 'transparent',
         paddingLeft: 5,
         textShadowColor: Colors.black,
-        textShadowOffset: { width: 2, height: 5 },
-        textShadowRadius: 5
+        textShadowOffset: Platform.OS === 'ios' ? { width: 2, height: 5 } : { width: 2, height: 2 },
+        textShadowRadius: Platform.OS === 'ios' ? 5 : 2
     }
 });

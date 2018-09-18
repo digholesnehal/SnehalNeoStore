@@ -83,7 +83,7 @@ export default class ProductList extends Component {
                                 </View>
                                 <View style={styles.productInfo}>
                                     <View style={styles.rPartition}>
-                                        <Text style={styles.iName}> {item.name} </Text>
+                                        <Text style={styles.iName}>{item.name} </Text>
                                         <Text style={styles.iProducer}>  {item.producer} </Text>
                                     </View>
                                     <View style={styles.cPartition}>

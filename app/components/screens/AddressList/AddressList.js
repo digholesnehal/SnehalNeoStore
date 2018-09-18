@@ -5,6 +5,10 @@ import {
     FlatList, backgroundColor, Vibration
 } from 'react-native';
 import Icon from '../../../utils/Icons.js';
+import FeatherIcon from 'react-native-vector-icons/dist/FontAwesome';
+// const feather = require('feather-icons')
+// import Feather from 'feather-icons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './Styles';
 import * as Colors from '../../../utils/colors';
 import Header from '../../../components/Header/header.js';
@@ -93,7 +97,7 @@ class AddressList extends Component {
                     isSearch={false}
                     isAdd={true}
                     back={() => { this.props.navigation.goBack() }}
-                    search={() => { this.props.navigation.replace('AddAddress') }} />
+                    search={() => { this.props.navigation.navigate('AddAddress') }} />
                 {this.state.loader ? <Loader /> : null}
                 <ScrollView>
                     <View style={styles.container1}>
@@ -108,19 +112,21 @@ class AddressList extends Component {
                                     <TouchableOpacity style={styles.radioView} onPress={() => this.select(index)} >
                                         <View style={[styles.radio, this.state.selected == index ? { backgroundColor: Colors.gRadioChecked } : { backgroundColor: Colors.primary }]} />
                                     </TouchableOpacity>
-                                    <View style={[styles.addressBox, Styles.shadow]}>
+                                    <View style={styles.addressBox}>
                                         <View style={styles.HeadView}>
                                             <Text style={styles.Heading}>{this.props.user_data.first_name} {this.props.user_data.last_name}</Text>
-                                            <TouchableOpacity style={styles.edit} onPress={() => this.props.navigation.replace('AddAddress', { Index: index, Item: item })}>
-                                                <Text>Edit</Text>
-                                            </TouchableOpacity>
+                                            <Text style={styles.shippping}>
+                                                {`${item.address}, ${item.landmark}, ${item.city},\n${item.state}-${item.zip}. ${item.country}`}
+                                            </Text>
+                                        </View>
+                                        <View style={styles.iconsView}>
                                             <TouchableOpacity onPress={() => this.delete(index)}>
                                                 <Icon name="multiply" size={15} color={Colors.blackSecondary} />
                                             </TouchableOpacity>
+                                            <TouchableOpacity onPress={() => this.props.navigation.navigate('AddAddress', { Index: index, Item: item })}>
+                                                <FeatherIcon name="edit" size={18} color={Colors.blackSecondary} />
+                                            </TouchableOpacity>
                                         </View>
-                                        <Text style={styles.shippping}>
-                                            {`${item.address}, ${item.landmark}, ${item.city},\n${item.state}-${item.zip}. ${item.country}`}
-                                        </Text>
                                     </View>
                                 </View>
                             } />

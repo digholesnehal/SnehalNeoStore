@@ -107,7 +107,7 @@ export default styles = StyleSheet.create({
         fontSize: Platform.OS === 'ios' ? 25 : 25,
         fontWeight: '500',
         textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 3
+        textShadowOffset: Platform.OS === 'ios' ? { width: 2, height: 3 } : { width: 1, height: 1 },
+        textShadowRadius: Platform.OS === 'ios' ? 3 : 0
     },
 });

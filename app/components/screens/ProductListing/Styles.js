@@ -39,18 +39,12 @@ export default styles = StyleSheet.create({
         fontSize: Fonts.small,
         fontFamily: family.Medium,
         paddingLeft: 10,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 2 },
-        textShadowRadius: 2
     },
     iProducer: {
         fontFamily: family.Book,
         color: Colors.blackSecondary,
         fontSize: Fonts.xxSmall,
         paddingLeft: 10,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 1, height: 2 },
-        textShadowRadius: 2
     },
     iCost: {
         color: Colors.tableRTxt,

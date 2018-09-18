@@ -30,7 +30,7 @@ export default class AddAddress extends Component {
     }
 
     AddAddress = () => {
-        var alphaExp = /^[a-zA-Zäöüß]+$/;
+        var alphaExp = /^[a-zA-Zäöüß ]+$/;
         var num = /^([0-9*\+\#]){4,8}$/;
 
         if (this.state.address == "") {
@@ -50,28 +50,28 @@ export default class AddAddress extends Component {
         }
         else if (this.state.city == "" || !this.state.city.match(alphaExp)) {
             Toast.show({
-                text: 'City..??',
+                text: 'City should contain alphabets only.',
                 duration: 3000
             })
             return false;
         }
         else if (this.state.state == "" || !this.state.state.match(alphaExp)) {
             Toast.show({
-                text: 'State..??',
+                text: 'State should contain alphabets only.',
                 duration: 3000
             })
             return false;
         }
         else if (this.state.zip == "" || !this.state.zip.match(num)) {
             Toast.show({
-                text: 'Zip Code..??',
+                text: 'Zip Code should contain 4-8 numbers.',
                 duration: 3000
             })
             return false;
         }
         else if (this.state.country == "" || !this.state.country.match(alphaExp)) {
             Toast.show({
-                text: 'Country..??',
+                text: 'Country should contain alphabets only.',
                 duration: 3000
             })
             return false;

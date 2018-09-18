@@ -36,9 +36,6 @@ export default styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: family.Book,
         color: Colors.orderIDH,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 3
     },
     midPartitionC: {
         flex: 2,
@@ -56,9 +53,6 @@ export default styles = StyleSheet.create({
         fontSize: 15,
         color: Colors.blackSecondary,
         paddingTop: 3,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 3
     },
     totalView: {
         padding: 20,
@@ -73,20 +67,9 @@ export default styles = StyleSheet.create({
         fontSize: 15,
         fontFamily: family.Medium,
         color: Colors.orderIDH,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 3
     },
     quantity: {
         fontSize: 14,
         fontFamily: family.Book,
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 3
     },
-    shadow: {
-        textShadowColor: Colors.blackSecondary,
-        textShadowOffset: { width: 2, height: 3 },
-        textShadowRadius: 3
-    }
 })

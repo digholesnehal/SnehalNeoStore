@@ -13,6 +13,7 @@ export default styles = StyleSheet.create({
         flexDirection: 'column',
     },
     headFont: {
+        backgroundColor: 'transparent',
         color: Colors.primary,
         fontSize: Platform.OS === 'ios' ? 48 : 45,
         paddingTop: Platform.OS === 'ios' ? 140 : 120,
@@ -108,7 +109,7 @@ export default styles = StyleSheet.create({
         flex: 4,
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        paddingTop: Platform.OS === 'ios' ? 130 : 123,
+        paddingTop: Platform.OS === 'ios' ? 130 : 135,
     },
     noAcc: {
         flex: 5,
@@ -117,6 +118,7 @@ export default styles = StyleSheet.create({
         alignSelf: "flex-end",
         paddingBottom: 15,
         fontFamily: family.Medium,
+        backgroundColor: 'transparent',
         textShadowColor: Colors.black,
         textShadowOffset: { width: 2, height: 5 },
         textShadowRadius: 5
@@ -143,6 +145,7 @@ export default styles = StyleSheet.create({
         justifyContent: 'center',
     },
     shadow: {
+        backgroundColor: 'transparent',
         textShadowColor: Colors.black,
         textShadowOffset: { width: 2, height: 5 },
         textShadowRadius: 5
